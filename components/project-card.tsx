@@ -108,7 +108,7 @@ export function ProjectCard({ project, showFullDetails = false }: ProjectCardPro
         )}
         <Link
           href={`/progress#${project.slug}`}
-          className="font-medium text-secondary hover:underline active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary min-h-[36px] flex items-center"
+          className="font-medium text-secondary hover:underline active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary min-h-9 flex items-center"
         >
           View Full Tracker
         </Link>

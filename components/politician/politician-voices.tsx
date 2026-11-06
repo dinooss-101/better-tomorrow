@@ -33,8 +33,8 @@ const submissions = [
 ]
 
 const statusColor: Record<string, string> = {
-  "In progress": "text-amber-700 bg-amber-50 border-amber-200",
-  Facilitated: "text-pine-700 bg-green-50 border-green-200",
+  "In progress": "text-amber-800 bg-amber-50 border-amber-200 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-300",
+  Facilitated: "text-emerald-800 bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300",
   "Under review": "text-foreground bg-muted border-border",
 }
 

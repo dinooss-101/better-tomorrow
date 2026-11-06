@@ -49,11 +49,11 @@ export default function AboutPage() {
         {/* Quick Anchor Navigation */}
         <div className="sticky top-14 z-30 border-b border-border/60 bg-background/95 backdrop-blur-sm py-2 sm:py-3">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-4 sm:gap-6 overflow-x-auto text-xs font-medium text-muted-foreground">
-            <a href="#identity" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-[36px] flex items-center py-1">Operator Identity</a>
-            <a href="#statutory" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-[36px] flex items-center py-1">Statutory Boundaries</a>
-            <a href="#dpdp" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-[36px] flex items-center py-1">DPDP Privacy &amp; Safeguarding</a>
-            <a href="#election" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-[36px] flex items-center py-1">ECI Compliance</a>
-            <a href="#corrections" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-[36px] flex items-center py-1">Corrections Policy</a>
+            <a href="#identity" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-9 flex items-center py-1">Operator Identity</a>
+            <a href="#statutory" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-9 flex items-center py-1">Statutory Boundaries</a>
+            <a href="#dpdp" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-9 flex items-center py-1">DPDP Privacy &amp; Safeguarding</a>
+            <a href="#election" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-9 flex items-center py-1">ECI Compliance</a>
+            <a href="#corrections" className="hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary shrink-0 min-h-9 flex items-center py-1">Corrections Policy</a>
           </div>
         </div>
 

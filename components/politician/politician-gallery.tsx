@@ -22,13 +22,13 @@ export function PoliticianGallery() {
         <Tabs defaultValue="consultations" className="w-full">
           <div className="mb-8 flex items-center justify-between border-b border-border pb-3 gap-2 overflow-x-auto">
             <TabsList className="bg-muted/40 p-1 border border-border/60 w-max shrink-0">
-              <TabsTrigger value="consultations" className="text-xs px-3 py-1.5 min-h-[36px] sm:min-h-0">
+              <TabsTrigger value="consultations" className="text-xs px-3 py-1.5 min-h-9 sm:min-h-0">
                 Citizen consultations
               </TabsTrigger>
-              <TabsTrigger value="infrastructure" className="text-xs px-3 py-1.5 min-h-[36px] sm:min-h-0">
+              <TabsTrigger value="infrastructure" className="text-xs px-3 py-1.5 min-h-9 sm:min-h-0">
                 Public works &amp; ecology
               </TabsTrigger>
-              <TabsTrigger value="youth" className="text-xs px-3 py-1.5 min-h-[36px] sm:min-h-0">
+              <TabsTrigger value="youth" className="text-xs px-3 py-1.5 min-h-9 sm:min-h-0">
                 Youth &amp; open office
               </TabsTrigger>
             </TabsList>
