@@ -40,7 +40,7 @@ export function PoliticianStatement() {
             </blockquote>
 
             <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
-              We offer our community a governance model built on transparency, technical competence, and regular presence across all six wards.
+              We offer our community a governance model built on transparency, technical competence, and regular presence across all 12 municipal wards.
             </p>
 
             <Separator className="my-6" />

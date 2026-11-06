@@ -11,7 +11,7 @@ export function PoliticianGallery() {
         {/* Header with Generous Negative Space */}
         <div className="max-w-2xl mb-8 sm:mb-12">
           <h2 className="font-headline text-2xl sm:text-4xl font-semibold text-foreground tracking-tight">
-            Everyday work across all six wards.
+            Everyday work across all 12 wards.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
             True representation begins on the ground. A documented photographic record of our field consultations and ward inspections.
@@ -48,14 +48,9 @@ export function PoliticianGallery() {
                   title="Morning listening walk with local merchants and street vendors"
                   hint="1200 × 900 · 4:3 Documentary"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Bazar Central Corridor</span>
-                    <span className="text-muted-foreground">Ward 1</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Reviewing solar streetlighting requirements and pedestrian drainage safety.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Bazar Central Corridor</span>
+                  <span>Ward 1</span>
                 </div>
               </div>
 
@@ -67,14 +62,9 @@ export function PoliticianGallery() {
                   title="Dialogue with women weavers and self-help group artisans"
                   hint="1200 × 900 · 4:3 Cooperative Session"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Bengoon Handloom Cluster</span>
-                    <span className="text-muted-foreground">Ward 5</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Facilitating direct handloom subsidy applications and modern loom equipment.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Bengoon Handloom Cluster</span>
+                  <span>Ward 5</span>
                 </div>
               </div>
             </div>
@@ -91,14 +81,9 @@ export function PoliticianGallery() {
                   title="Pre-monsoon drainage culvert and runoff desiltation inspection"
                   hint="1200 × 900 · 4:3 Field Inspection"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Chabung Company Zone</span>
-                    <span className="text-muted-foreground">Ward 2</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Elevation contour survey with public works engineers before monsoon peak.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Chabung Company Zone</span>
+                  <span>Ward 2</span>
                 </div>
               </div>
 
@@ -110,14 +95,9 @@ export function PoliticianGallery() {
                   title="Wetland ecology and fisheries consultation along Loktak buffer zones"
                   hint="1200 × 900 · 4:3 Agrarian Review"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Konchak Buffer Corridor</span>
-                    <span className="text-muted-foreground">Ward 6</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Balancing bio-reserve preservation with customary indigenous fishing rights.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Konchak Buffer Corridor</span>
+                  <span>Ward 6</span>
                 </div>
               </div>
             </div>
@@ -134,14 +114,9 @@ export function PoliticianGallery() {
                   title="Microcontroller breadboard assembly with secondary schoolers"
                   hint="1200 × 900 · 4:3 STEM Workshop"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Thana Leikai Complex</span>
-                    <span className="text-muted-foreground">Ward 3</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Testing student-built ultrasonic flood warning sensors in active classroom rigs.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Thana Leikai Complex</span>
+                  <span>Ward 3</span>
                 </div>
               </div>
 
@@ -153,14 +128,9 @@ export function PoliticianGallery() {
                   title="Saturday open grievance redressal without gatekeepers"
                   hint="1200 × 900 · 4:3 Civic Redressal"
                 />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span className="font-medium text-foreground">Mayang Imphal Central Office</span>
-                    <span className="text-muted-foreground">Weekly</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Direct citizen petition intake with append-only ledger tracking.
-                  </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Mayang Imphal Central Office</span>
+                  <span>Weekly</span>
                 </div>
               </div>
             </div>

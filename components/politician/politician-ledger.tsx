@@ -5,8 +5,8 @@ import { CheckCircle2, GitFork, Sliders } from "lucide-react"
 export function PoliticianLedger() {
   const metrics = [
     { value: "~70 sq km", label: "Proposed planning area under AMRUT 2.0" },
-    { value: "2045", label: "Statutory municipal planning horizon" },
-    { value: "0", label: "Unverified claims: all gazetted" },
+    { value: "12 Wards", label: "Statutory municipal council coverage" },
+    { value: "2045", label: "Statutory urban planning horizon" },
     { value: "100%", label: "Public audit trail on civic allocations" },
   ]
 

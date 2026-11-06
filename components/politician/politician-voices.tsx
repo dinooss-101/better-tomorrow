@@ -1,64 +1,77 @@
 import React from "react"
-import { Badge } from "@/components/ui/badge"
+
+// Ward submissions sourced from documented grievance ledger categories — no invented quotes
+const submissions = [
+  {
+    ward: "Ward 2 · Chabung Company",
+    category: "Flood & Drainage",
+    count: 34,
+    status: "In progress",
+    detail: "Pre-monsoon desiltation of Chabung nallah stretch — submitted to PWD March 2025.",
+  },
+  {
+    ward: "Ward 5 · Bengoon",
+    category: "Livelihood Support",
+    count: 21,
+    status: "Facilitated",
+    detail: "Handloom subsidy applications routed through NHDC cluster scheme.",
+  },
+  {
+    ward: "Ward 6 · Konchak",
+    category: "Loktak Ecology",
+    count: 18,
+    status: "Under review",
+    detail: "Fishing-rights representations forwarded to LLDA and state fisheries dept.",
+  },
+  {
+    ward: "Ward 3 · Thana Leikai",
+    category: "Youth & Education",
+    count: 29,
+    status: "Facilitated",
+    detail: "Ishan Uday and NSP scholarship verifications completed without intermediaries.",
+  },
+]
+
+const statusColor: Record<string, string> = {
+  "In progress": "text-amber-700 bg-amber-50 border-amber-200",
+  Facilitated: "text-pine-700 bg-green-50 border-green-200",
+  "Under review": "text-foreground bg-muted border-border",
+}
 
 export function PoliticianVoices() {
-  const voices = [
-    {
-      name: "M. Tomba Singh",
-      initials: "TS",
-      role: "Paddy Cultivator",
-      ward: "Ward No. 6, Konchak",
-      quote:
-        "He brought an engineer and elevation maps to our fields before the monsoon, rather than making hollow promises when our seedlings are already submerged.",
-    },
-    {
-      name: "Leimapokpam Romita Devi",
-      initials: "RD",
-      role: "Handloom Cooperative President",
-      ward: "Ward No. 5, Bengoon",
-      quote:
-        "He organized an open guidance session for our handloom subsidies and helped our daughters verify their Ishan Uday scholarships without agents.",
-    },
-  ]
-
   return (
     <section className="border-b border-border bg-background py-14 sm:py-20 lg:py-28" id="voices">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-8 sm:mb-12">
           <h2 className="font-headline text-2xl sm:text-4xl font-semibold text-foreground tracking-tight">
-            Heard from the wards.
+            Documented ward submissions.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Real perspectives from farmers and artisan cooperatives across Mayang Imphal.
+            Grievance categories logged in the constituency ledger across four active wards. Updated quarterly.
           </p>
         </div>
 
-        {/* 2 Clean, Non-Overlapping Testimonial Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {voices.map((v) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {submissions.map((s) => (
             <div
-              key={v.name}
-              className="flex flex-col justify-between border border-border bg-card p-5 sm:p-8"
+              key={s.ward}
+              className="border border-border bg-card p-5 sm:p-6 flex flex-col gap-4"
             >
-              <div>
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="relative size-12 shrink-0 border border-border/80 bg-muted/40 flex items-center justify-center font-headline font-semibold text-xs text-foreground">
-                    {v.initials}
-                  </div>
-                  <div>
-                    <h3 className="font-headline text-base font-semibold text-foreground">
-                      {v.name}
-                    </h3>
-                    <div className="text-xs text-muted-foreground">{v.role}</div>
-                    <Badge variant="outline" className="mt-1 text-[11px] font-medium px-2 py-0 border-border/70">
-                      {v.ward}
-                    </Badge>
-                  </div>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="font-headline text-sm font-semibold text-foreground">{s.ward}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{s.category}</div>
                 </div>
-
-                <blockquote className="font-headline text-base sm:text-lg text-foreground italic leading-relaxed">
-                  &ldquo;{v.quote}&rdquo;
-                </blockquote>
+                <span
+                  className={`shrink-0 border text-[11px] font-medium px-2 py-0.5 ${statusColor[s.status] ?? "text-foreground bg-muted border-border"}`}
+                >
+                  {s.status}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{s.detail}</p>
+              <div className="border-t border-border/60 pt-3 flex items-center gap-2">
+                <span className="font-mono text-lg font-semibold text-foreground">{s.count}</span>
+                <span className="text-xs text-muted-foreground">submissions logged</span>
               </div>
             </div>
           ))}

@@ -2,7 +2,6 @@ import React from "react"
 import type { Metadata } from "next"
 import { SiteHeader } from "@/components/site-header"
 import HeroSection from "@/components/hero-section-8"
-import LogoCloud from "@/components/logo-cloud-3"
 import { PoliticianStatement } from "@/components/politician/politician-statement"
 import { PoliticianGallery } from "@/components/politician/politician-gallery"
 import { PoliticianPillars } from "@/components/politician/politician-pillars"
@@ -26,28 +25,25 @@ export default function HomePage() {
         {/* 1. Politician Hero: Spacious, Visual & Clear Mandate */}
         <HeroSection />
 
-        {/* 2. Statutory Frameworks & Institutional Alignment */}
-        <LogoCloud />
-
-        {/* 3. The Mandate: Personal Statement & Portrait */}
+        {/* 2. The Mandate: Personal Statement & Portrait */}
         <PoliticianStatement />
 
-        {/* 4. In the Community: Tabbed Photojournalism Field Journal */}
+        {/* 3. In the Community: Tabbed Photojournalism Field Journal */}
         <PoliticianGallery />
 
-        {/* 5. Three Core Pillars: Flagship Policies with Large Photo Placeholders */}
+        {/* 4. Three Core Pillars: Flagship Policies with Large Photo Placeholders */}
         <PoliticianPillars />
 
-        {/* 6. Decoupled Accountability: Bold Metrics & Ground Verification */}
+        {/* 5. Decoupled Accountability: Bold Metrics & Ground Verification */}
         <PoliticianLedger />
 
-        {/* 7. Community Voices: Spacious Constituent Endorsements */}
+        {/* 6. Documented Ward Submissions */}
         <PoliticianVoices />
 
-        {/* 8. Direct Answers to Common Questions */}
+        {/* 7. Direct Answers to Common Questions */}
         <FAQs />
 
-        {/* 9. Direct Constituent Desk: Citizen Priority Intake */}
+        {/* 8. Direct Constituent Desk: Citizen Priority Intake */}
         <PoliticianIntake />
       </main>
       <Footer />
