@@ -20,9 +20,8 @@ export default function HeroSection() {
           {/* Left Column: Vision & Mandate */}
           <div className="flex flex-col items-start lg:col-span-7">
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 border border-border/90 bg-card px-3 py-1 font-mono text-[11px] font-medium text-foreground">
-                <span className="size-1.5 bg-secondary shrink-0" />
-                <span>Mayang Imphal · AC-23</span>
+              <div className="border border-border/90 bg-card px-3 py-1 font-mono text-[11px] font-medium text-foreground">
+                Mayang Imphal · AC-23
               </div>
               <span className="font-mono text-xs font-semibold text-secondary uppercase tracking-wider">
                 Civic Mandate 2027
