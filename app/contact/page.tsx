@@ -98,7 +98,7 @@ export default function ContactPage() {
 
                 {/* Ward Coverage */}
                 <div className="space-y-3">
-                  <span className="text-xs font-semibold text-foreground block">Ward coverage</span>
+                  <span className="text-xs font-semibold text-foreground block">Ward coverage (12 Wards)</span>
                   <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
                     {[
                       "Ward 1: Bazar Central",
@@ -107,6 +107,12 @@ export default function ContactPage() {
                       "Ward 4: Kokchai",
                       "Ward 5: Bengoon",
                       "Ward 6: Konchak",
+                      "Ward 7: Chirai",
+                      "Ward 8: Charoibung",
+                      "Ward 9: Heigrumakhong",
+                      "Ward 10: Moijing Corridor",
+                      "Ward 11: Bengoon Mamang",
+                      "Ward 12: Konchak Awang",
                     ].map((w) => (
                       <div key={w} className="border border-border/60 bg-muted/20 px-2.5 py-1.5 text-[11px]">
                         {w}
@@ -205,6 +211,12 @@ export default function ContactPage() {
                             <option value="ward-4">Ward 4: Kokchai</option>
                             <option value="ward-5">Ward 5: Bengoon</option>
                             <option value="ward-6">Ward 6: Konchak</option>
+                            <option value="ward-7">Ward 7: Chirai</option>
+                            <option value="ward-8">Ward 8: Charoibung</option>
+                            <option value="ward-9">Ward 9: Heigrumakhong</option>
+                            <option value="ward-10">Ward 10: Moijing Corridor</option>
+                            <option value="ward-11">Ward 11: Bengoon Mamang</option>
+                            <option value="ward-12">Ward 12: Konchak Awang</option>
                             <option value="peripheral">Peripheral Boundary Area</option>
                           </select>
                         </div>

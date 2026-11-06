@@ -13,7 +13,7 @@ export default function Footer() {
   ]
 
   const statutoryLinks = [
-    { href: "https://townplanning.mn.gov.in", label: "Manipur Town Planning Department" },
+    { href: "https://www.tpmanipur.mn.gov.in", label: "Manipur Town Planning Department" },
     { href: "https://amrut.gov.in", label: "AMRUT 2.0 GIS Master Plan" },
     { href: "https://lgdirectory.gov.in", label: "Local Government Directory (LGD 250326)" },
     { href: "https://scholarships.gov.in", label: "National Scholarship Portal (NSP)" },

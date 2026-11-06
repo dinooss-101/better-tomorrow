@@ -102,6 +102,12 @@ export function PoliticianIntake() {
                     <option value="ward-4">Ward 4: Kokchai</option>
                     <option value="ward-5">Ward 5: Bengoon</option>
                     <option value="ward-6">Ward 6: Konchak</option>
+                    <option value="ward-7">Ward 7: Chirai</option>
+                    <option value="ward-8">Ward 8: Charoibung</option>
+                    <option value="ward-9">Ward 9: Heigrumakhong</option>
+                    <option value="ward-10">Ward 10: Moijing Corridor</option>
+                    <option value="ward-11">Ward 11: Bengoon Mamang</option>
+                    <option value="ward-12">Ward 12: Konchak Awang</option>
                     <option value="peripheral">Peripheral Boundary Area</option>
                   </select>
                 </div>
