@@ -216,10 +216,10 @@ export function PrioritySubmissionDialog({
             <DialogFooter className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-border/60 pt-4">
               <span className="text-[11px] text-muted-foreground text-center sm:text-left">Demo Mode · Client-side preview</span>
               <div className="flex items-center gap-2">
-                <Button type="button" variant="outline" size="sm" onClick={() => setIsOpen(false)} className="flex-1 sm:flex-initial min-h-[44px] sm:min-h-0">
+                <Button type="button" variant="outline" size="sm" onClick={() => setIsOpen(false)} className="flex-1 sm:flex-initial min-h-11 sm:min-h-0">
                   Cancel
                 </Button>
-                <Button type="submit" size="sm" className="flex-1 sm:flex-initial min-h-[44px] sm:min-h-0 bg-primary text-primary-foreground">
+                <Button type="submit" size="sm" className="flex-1 sm:flex-initial min-h-11 sm:min-h-0 bg-primary text-primary-foreground">
                   Validate & Submit Preview
                 </Button>
               </div>

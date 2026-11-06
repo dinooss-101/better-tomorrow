@@ -130,7 +130,7 @@ export default function ScholarshipsPage() {
 
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                 <RegisterInterestDialog initialProgramType="SCHOLARSHIP_ALERT">
-                  <Button className="rounded-none bg-secondary hover:bg-secondary/90 text-secondary-foreground text-xs sm:text-sm font-semibold min-h-[44px] justify-center active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-50">
+                  <Button className="rounded-none bg-secondary hover:bg-secondary/90 text-secondary-foreground text-xs sm:text-sm font-semibold min-h-11 justify-center active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-50">
                     Get Deadline Alerts via Email
                   </Button>
                 </RegisterInterestDialog>
@@ -138,7 +138,7 @@ export default function ScholarshipsPage() {
                   href="https://scholarships.gov.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 text-xs text-primary-foreground/80 hover:text-primary-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary py-2.5 px-3 min-h-[44px] border border-primary-foreground/30 rounded-none transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs text-primary-foreground/80 hover:text-primary-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary py-2.5 px-3 min-h-11 border border-primary-foreground/30 rounded-none transition-colors"
                 >
                   <span>Visit National Scholarship Portal</span>
                   <ExternalLink className="size-3" />

@@ -98,7 +98,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
           href={scholarship.officialApplicationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-none bg-primary py-2.5 min-h-[44px] text-xs font-medium text-primary-foreground hover:bg-primary/90"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-none bg-primary py-2.5 min-h-11 text-xs font-medium text-primary-foreground hover:bg-primary/90"
         >
           Apply via Official Portal <ExternalLink className="size-3.5" />
         </a>

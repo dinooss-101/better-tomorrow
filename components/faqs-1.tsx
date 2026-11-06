@@ -67,7 +67,7 @@ export default function FAQs() {
                   value={item.id}
                   className="border border-border bg-card px-4 sm:px-5 py-1"
                 >
-                  <AccordionTrigger className="cursor-pointer text-left font-headline text-sm sm:text-base font-medium text-foreground hover:no-underline py-3.5 min-h-[44px]">
+                  <AccordionTrigger className="cursor-pointer text-left font-headline text-sm sm:text-base font-medium text-foreground hover:no-underline py-3.5 min-h-11">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="pt-1 pb-4">

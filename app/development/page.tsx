@@ -104,14 +104,14 @@ export default function DevelopmentPage() {
                     href={rfpUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-none bg-secondary px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-semibold text-secondary-foreground hover:bg-secondary/90 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-50 transition-colors"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-none bg-secondary px-4 py-2.5 min-h-11 text-xs sm:text-sm font-semibold text-secondary-foreground hover:bg-secondary/90 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-50 transition-colors"
                   >
                     <span>Download Official RFP Document</span>
                     <ExternalLink className="size-3.5" />
                   </a>
                   <Link
                     href="/progress"
-                    className="inline-flex items-center justify-center gap-1.5 text-xs text-primary-foreground/80 hover:text-primary-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary py-2.5 px-3 min-h-[44px] border border-primary-foreground/30 rounded-none transition-colors"
+                    className="inline-flex items-center justify-center gap-1.5 text-xs text-primary-foreground/80 hover:text-primary-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary py-2.5 px-3 min-h-11 border border-primary-foreground/30 rounded-none transition-colors"
                   >
                     <span>Track Municipal Works</span>
                     <ArrowRight className="size-3" />

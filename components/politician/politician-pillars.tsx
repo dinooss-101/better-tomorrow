@@ -91,7 +91,7 @@ export function PoliticianPillars() {
                   <div>
                     <Link
                       href={p.href}
-                      className="inline-flex items-center gap-1.5 py-2.5 min-h-[44px] text-xs font-semibold text-foreground hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary transition-colors"
+                      className="inline-flex items-center gap-1.5 py-2.5 min-h-11 text-xs font-semibold text-foreground hover:text-secondary focus-visible:outline-2 focus-visible:outline-secondary transition-colors"
                     >
                       <span>Explore details</span>
                       <ArrowRight className="size-3" />

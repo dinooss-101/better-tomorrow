@@ -152,7 +152,7 @@ export function SiteHeader() {
                             handleNavClick(e, item.href)
                             setMobileOpen(false)
                           }}
-                          className={`px-4 py-3 min-h-[44px] flex items-center text-sm font-medium transition-colors ${
+                          className={`px-4 py-3 min-h-11 flex items-center text-sm font-medium transition-colors ${
                             active
                               ? "bg-muted text-foreground font-semibold border-l-2 border-secondary"
                               : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
