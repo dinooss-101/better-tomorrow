@@ -53,7 +53,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors mb-6 sm:mb-8 min-h-[44px]"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors mb-6 sm:mb-8 min-h-11"
             >
               <ArrowLeft className="size-3.5" />
               Back to Mayang Imphal Platform
@@ -294,7 +294,7 @@ export default function ContactPage() {
                         </span>
                         <Button
                           type="submit"
-                          className="px-6 py-2.5 min-h-[44px] text-xs font-semibold flex items-center justify-center gap-2 w-full sm:w-auto"
+                          className="px-6 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-center gap-2 w-full sm:w-auto"
                         >
                           <span>Submit priority to desk</span>
                           <Send className="size-3.5" />

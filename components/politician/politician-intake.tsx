@@ -182,7 +182,7 @@ export function PoliticianIntake() {
                 </span>
                 <Button
                   type="submit"
-                  className="px-6 py-2.5 min-h-[44px] text-xs font-semibold flex items-center justify-center gap-2 w-full sm:w-auto"
+                  className="px-6 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   <span>Submit priority to desk</span>
                   <Send className="size-3.5" />
