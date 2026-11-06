@@ -78,8 +78,3 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 0px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
 }
-
-@keyframes kokonutui-typewriter-caret {
-  0%, 33.333% { opacity: 1; }
-  66.667%, 100% { opacity: 0; }
-}
