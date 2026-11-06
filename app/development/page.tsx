@@ -384,7 +384,7 @@ export default function DevelopmentPage() {
             </div>
 
             <div className="overflow-x-auto rounded-none border border-border/80 bg-card shadow-xs">
-              <table className="w-full min-w-[640px] text-left text-xs">
+              <table className="w-full min-w-160 text-left text-xs">
                 <thead className="bg-muted/60 text-foreground font-semibold border-b border-border/80">
                   <tr>
                     <th className="p-4">Jurisdictional Body</th>
