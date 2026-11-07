@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScholarshipScheme } from "@/lib/types/scholarship"
 import { Calendar, ExternalLink, ShieldCheck } from "lucide-react"
@@ -20,56 +19,56 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
   const isClosingSoon = isDeadlineClosingSoon(scholarship.studentDeadline)
 
   return (
-    <Card className="flex flex-col justify-between border-border/80 bg-card/90 transition-shadow hover:shadow-sm">
-      <CardHeader className="flex flex-col gap-2.5 pb-3">
+    <article className="flex flex-col justify-between border border-border bg-card p-6 sm:p-8 transition-shadow hover:shadow-xs gap-5">
+      <div className="flex flex-col gap-3 pb-4 border-b border-border/60">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <Badge variant="outline" className="text-[11px] font-semibold text-secondary">
+          <Badge variant="outline" className="rounded-none text-[11px] font-ui font-semibold uppercase tracking-wider text-secondary px-2.5 py-1">
             AY {scholarship.academicYear}
           </Badge>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 font-ui">
             {scholarship.applicationCycle === "RENEWAL" && (
-              <Badge variant="secondary" className="text-[11px]">
+              <Badge variant="secondary" className="rounded-none text-[11px] font-ui font-semibold uppercase tracking-wider px-2 py-0.5">
                 Renewal Cycle Only
               </Badge>
             )}
             {scholarship.applicationCycle === "FRESH" && (
-              <Badge variant="secondary" className="text-[11px]">
+              <Badge variant="secondary" className="rounded-none text-[11px] font-ui font-semibold uppercase tracking-wider px-2 py-0.5">
                 Fresh Applications Only
               </Badge>
             )}
             {scholarship.applicationCycle === "FRESH_AND_RENEWAL" && (
-              <Badge variant="secondary" className="text-[11px]">
+              <Badge variant="secondary" className="rounded-none text-[11px] font-ui font-semibold uppercase tracking-wider px-2 py-0.5">
                 Fresh & Renewal
               </Badge>
             )}
           </div>
         </div>
 
-        <CardTitle className="font-heading text-lg font-semibold leading-snug text-foreground">
+        <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight leading-snug text-foreground">
           {scholarship.name}
-        </CardTitle>
+        </h3>
 
-        <CardDescription className="text-xs font-medium text-secondary dark:text-emerald-400">
+        <p className="text-xs font-ui font-semibold uppercase tracking-wider text-secondary dark:text-emerald-400">
           Official Sponsor: {scholarship.officialSponsor}
-        </CardDescription>
-      </CardHeader>
+        </p>
+      </div>
 
-      <CardContent className="flex flex-col gap-3.5 text-sm">
-        <p className="line-clamp-3 leading-relaxed text-muted-foreground">
+      <div className="flex flex-col gap-4 text-sm">
+        <p className="font-sans leading-relaxed text-muted-foreground text-xs sm:text-sm">
           {scholarship.eligibilitySummary}
         </p>
 
         {scholarship.keyExclusions && (
-          <p className="text-xs text-muted-foreground/80 italic">
+          <p className="text-xs text-muted-foreground italic font-sans">
             Note: {scholarship.keyExclusions}
           </p>
         )}
 
-        <div className="flex flex-col gap-1.5 rounded-none border border-border/60 bg-muted/30 p-2.5 text-xs">
+        <div className="flex flex-col gap-2 rounded-none border border-border/60 bg-muted/30 p-3 sm:p-3.5 text-xs">
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-muted-foreground">
+            <span className="flex items-center gap-1.5 text-muted-foreground font-ui uppercase tracking-wider text-[11px]">
               <Calendar className="size-3.5 text-secondary" />
-              Student Application Deadline:
+              Student Deadline:
             </span>
             <span className={`font-mono font-medium ${isClosingSoon ? "text-amber-700 dark:text-amber-400" : "text-foreground"}`}>
               {scholarship.studentDeadline || "Announced by Portal"}
@@ -78,31 +77,32 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
 
           {scholarship.institutionVerificationDeadline && (
             <div className="flex items-center justify-between text-muted-foreground">
-              <span>Institute Verification:</span>
+              <span className="font-ui uppercase tracking-wider text-[11px]">Institute Verification:</span>
               <span className="font-mono">{scholarship.institutionVerificationDeadline}</span>
             </div>
           )}
         </div>
-      </CardContent>
+      </div>
 
-      <CardFooter className="flex flex-col gap-2.5 border-t border-border/60 pt-3">
-        <div className="flex w-full items-center justify-between text-[11px] text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <ShieldCheck className="size-3.5 text-emerald-600" />
+      <div className="flex flex-col gap-3 border-t border-border/60 pt-4 mt-2">
+        <div className="flex w-full items-center justify-between text-[11px] text-muted-foreground font-ui">
+          <span className="flex items-center gap-1 font-medium">
+            <ShieldCheck className="size-3.5 text-emerald-600 dark:text-emerald-400" />
             Verified on NSP: {scholarship.lastVerifiedAt}
           </span>
-          <span className="truncate max-w-37.5">{scholarship.targetGroup}</span>
+          <span className="truncate max-w-48 sm:max-w-64 text-right uppercase tracking-wider font-medium">{scholarship.targetGroup}</span>
         </div>
 
         <a
           href={scholarship.officialApplicationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-none bg-primary py-2.5 min-h-11 text-xs font-medium text-primary-foreground hover:bg-primary/90"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-primary py-3 min-h-11 text-xs font-ui font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
-          Apply via Official Portal <ExternalLink className="size-3.5" />
+          <span>Apply on Portal</span>
+          <ExternalLink className="size-3.5" />
         </a>
-      </CardFooter>
-    </Card>
+      </div>
+    </article>
   )
 }

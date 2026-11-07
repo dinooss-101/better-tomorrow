@@ -1,67 +1,72 @@
-/* Hallmark tokens - Nordic Lagom Minimalist Theme */
+/* Mayang Imphal / Quiet Imphal — Nordic Lagom Tokens */
 
 :root {
-    /* Nordic Limestone, Warm Paper & Fjord Ink */
-    --background: #f7f6f1;
-    --foreground: #181c20;
-    --card: #ffffff;
-    --card-foreground: #181c20;
-    --popover: #ffffff;
-    --popover-foreground: #181c20;
-    --primary: #182230;
-    --primary-foreground: #f7f6f1;
-    --secondary: #264938;
-    --secondary-foreground: #f7f6f1;
-    --muted: #edebe4;
-    --muted-foreground: #555d67;
-    --accent: #e6e3da;
-    --accent-foreground: #182230;
-    --destructive: #9e2a2b;
-    --border: #dedbd2;
-    --input: #dedbd2;
-    --ring: #264938;
-    --radius: 0;
+  /* Quiet Imphal Palette */
+  --background: #f7f6f2;
+  --foreground: #232b29;
+  --card: #ffffff;
+  --card-foreground: #232b29;
+  --popover: #ffffff;
+  --popover-foreground: #232b29;
+  --primary: #294f46;
+  --primary-foreground: #ffffff;
+  --secondary: #294f46;
+  --secondary-foreground: #ffffff;
+  --muted: #e7ebe5;
+  --muted-foreground: #47544f;
+  --accent: #e7ebe5;
+  --accent-foreground: #232b29;
+  --destructive: #a4352b;
+  --border: #d7ddd7;
+  --input: #d7ddd7;
+  --ring: #294f46;
+  --radius: 0.5rem;
 
-    /* Nordic Semantic Palette */
-    --nordic-stone: #f7f6f1;
-    --nordic-paper: #ffffff;
-    --nordic-charcoal: #181c20;
-    --nordic-fjord: #182230;
-    --nordic-pine: #264938;
-    --nordic-amber: #b8793b;
-    --nordic-sand: #edebe4;
-    --nordic-border: #dedbd2;
+  /* Nordic Semantic Palette */
+  --nordic-stone: #f7f6f2;
+  --nordic-paper: #ffffff;
+  --nordic-charcoal: #232b29;
+  --nordic-fjord: #294f46;
+  --nordic-pine: #294f46;
+  --nordic-amber: #b38c6d;
+  --nordic-sand: #e7ebe5;
+  --nordic-border: #d7ddd7;
+  /* Brand Logo Colors — forensic match to reference identity */
+  --logo-navy: #170852;
+  --logo-red:  #fa2816;
 }
 
 .dark {
-    /* Nordic Granite, Fjord Night & Crisp Warm Type */
-    --background: #0f141c;
-    --foreground: #f2f0eb;
-    --card: #151c26;
-    --card-foreground: #f2f0eb;
-    --popover: #151c26;
-    --popover-foreground: #f2f0eb;
-    --primary: #f2f0eb;
-    --primary-foreground: #0f141c;
-    --secondary: #3b6b52;
-    --secondary-foreground: #f2f0eb;
-    --muted: #1a222e;
-    --muted-foreground: #9ca7b5;
-    --accent: #1f2836;
-    --accent-foreground: #f2f0eb;
-    --destructive: #d9534f;
-    --border: rgba(242, 240, 235, 0.14);
-    --input: rgba(242, 240, 235, 0.18);
-    --ring: #3b6b52;
-    --radius: 0;
+  --background: #0f141c;
+  --foreground: #f2f0eb;
+  --card: #151c26;
+  --card-foreground: #f2f0eb;
+  --popover: #151c26;
+  --popover-foreground: #f2f0eb;
+  --primary: #f2f0eb;
+  --primary-foreground: #0f141c;
+  --secondary: #3b6b52;
+  --secondary-foreground: #f2f0eb;
+  --muted: #1a222e;
+  --muted-foreground: #9ca7b5;
+  --accent: #1f2836;
+  --accent-foreground: #f2f0eb;
+  --destructive: #d9534f;
+  --border: rgba(242, 240, 235, 0.14);
+  --input: rgba(242, 240, 235, 0.18);
+  --ring: #3b6b52;
+  --radius: 0.5rem;
 
-    /* Dark Nordic Semantic Palette */
-    --nordic-stone: #0f141c;
-    --nordic-paper: #151c26;
-    --nordic-charcoal: #f2f0eb;
-    --nordic-fjord: #1a2432;
-    --nordic-pine: #3b6b52;
-    --nordic-amber: #c88949;
-    --nordic-sand: #1f2836;
-    --nordic-border: rgba(242, 240, 235, 0.14);
+  --nordic-stone: #0f141c;
+  --nordic-paper: #151c26;
+  --nordic-charcoal: #f2f0eb;
+  --nordic-fjord: #1a2432;
+  --nordic-pine: #3b6b52;
+  --nordic-amber: #c88949;
+  --nordic-sand: #1f2836;
+  --nordic-border: rgba(242, 240, 235, 0.14);
+
+  /* Brand Logo Colors — high-contrast luminous palette for dark backgrounds (WCAG AAA) */
+  --logo-navy: #c7d2fe;
+  --logo-red:  #ff523b;
 }

@@ -1,111 +1,238 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
+import { useDensity } from "@/components/density-provider"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { Menu, Sun, Moon } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu"
+import { Menu, Sun, Moon, ChevronDown, Send, ArrowRight, UnfoldVertical, FoldVertical } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { TextLogo } from "@/components/text-logo"
 
-interface NavLinkItem {
+interface NavSubItem {
   href: string
   label: string
-  exactPath?: string
+  description: string
+  badge?: string
 }
 
-const NAV_ITEMS: NavLinkItem[] = [
-  { href: "/#mandate", label: "Mandate", exactPath: "/" },
-  { href: "/development", label: "Plan", exactPath: "/development" },
-  { href: "/future-labs", label: "Labs", exactPath: "/future-labs" },
-  { href: "/progress", label: "Track", exactPath: "/progress" },
-  { href: "/scholarships", label: "Scholars", exactPath: "/scholarships" },
-  { href: "/about", label: "About", exactPath: "/about" },
-  { href: "/contact", label: "Desk", exactPath: "/contact" },
+interface NavGroup {
+  id: string
+  label: string
+  items: NavSubItem[]
+}
+
+const NAV_GROUPS: NavGroup[] = [
+  {
+    id: "planning",
+    label: "Civic Plan",
+    items: [
+      {
+        href: "/development",
+        label: "Master Plan 2045",
+        description: "AMRUT 2.0 GIS town plan, drainage corridors & ward zoning",
+        badge: "GIS Master Plan",
+      },
+      {
+        href: "/progress",
+        label: "Civic Tracker",
+        description: "Live status of municipal works, budget utilization & ward audits",
+        badge: "Accountability",
+      },
+    ],
+  },
+  {
+    id: "programs",
+    label: "Programs",
+    items: [
+      {
+        href: "/scholarships",
+        label: "Scholarships",
+        description: "Verified higher education grants, state aid & merit scholarship directory",
+        badge: "Directory",
+      },
+      {
+        href: "/future-labs",
+        label: "Future Labs",
+        description: "Atal Tinkering Labs, robotics hubs & youth technology incubation",
+        badge: "STEM Hub",
+      },
+    ],
+  },
+  {
+    id: "governance",
+    label: "Governance",
+    items: [
+      {
+        href: "/about",
+        label: "Mandate & Profile",
+        description: "Assembly Constituency AC-23 profile, MLA leadership & disclosures",
+        badge: "AC-23",
+      },
+      {
+        href: "/contact",
+        label: "Constituency Desk",
+        description: "Citizen priority intake, Saturday open grievance hours & DPDP compliance",
+        badge: "Open Desk",
+      },
+    ],
+  },
 ]
 
 export function SiteHeader() {
   const { theme, setTheme } = useTheme()
+  const { density, toggleDensity } = useDensity()
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState("")
-
-  useEffect(() => {
-    const handleHash = () => {
-      setActiveHash(window.location.hash)
-    }
-    handleHash()
-    window.addEventListener("hashchange", handleHash)
-    return () => window.removeEventListener("hashchange", handleHash)
-  }, [])
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.includes("#")) {
-      const hashPart = href.split("#")[1]
-      if (pathname === "/") {
-        e.preventDefault()
-        const el = document.getElementById(hashPart)
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" })
-          window.history.pushState(null, "", `#${hashPart}`)
-          setActiveHash(`#${hashPart}`)
-        }
-      }
-    }
-  }
-
-  const isItemActive = (item: NavLinkItem) => {
-    if (item.exactPath === "/") {
-      return pathname === "/" && (!activeHash || item.href === `/#${activeHash.replace("#", "")}`)
-    }
-    return item.exactPath === pathname
-  }
 
   return (
     <header className="sticky top-0 z-40 w-full bg-background/95 backdrop-blur-md border-b border-border text-foreground shadow-none transition-colors">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
-        {/* Minimalist Logo Mark: Just BMI */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 min-h-14 sm:min-h-15 flex items-center justify-between gap-4">
+        {/* ================================================================ */}
+        {/* BRAND TEXT LOGO LOCKUP                                          */}
+        {/* ================================================================ */}
         <Link
           href="/"
-          className="font-headline text-lg sm:text-xl font-bold tracking-tight text-foreground hover:text-secondary transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
-          aria-label="BMI Home"
+          className="group shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary py-0.5"
+          aria-label="Mayang Imphal Home · Dr. Khumujam Ratankumar Singh"
         >
-          BMI
+          <TextLogo />
         </Link>
 
-        {/* Minimalist Desktop Navigation */}
+        {/* ================================================================ */}
+        {/* GROUPED DESKTOP NAVIGATION                                       */}
+        {/* ================================================================ */}
         <nav
           aria-label="Primary navigation"
-          className="hidden md:flex items-center gap-1 sm:gap-2 shrink-0"
+          className="hidden md:flex items-center gap-1.5 lg:gap-2.5 shrink-0"
         >
-          {NAV_ITEMS.map((item) => {
-            const active = isItemActive(item)
+          {/* Overview Direct Link */}
+          <Link
+            href="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className={cn(
+              "font-ui uppercase tracking-wider px-3 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-primary",
+              pathname === "/"
+                ? "text-foreground border-b-2 border-primary dark:border-emerald-400"
+                : "text-muted-foreground hover:text-foreground"
+            )}
+          >
+            Overview
+          </Link>
+
+          {/* Grouped Dropdowns */}
+          {NAV_GROUPS.map((group) => {
+            const isGroupActive = group.items.some((item) => pathname === item.href)
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                aria-current={active ? "page" : undefined}
-                className={`px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-secondary ${
-                  active
-                    ? "text-foreground font-semibold border-b-2 border-secondary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
+              <DropdownMenu key={group.id}>
+                <DropdownMenuTrigger
+                  openOnHover
+                  delay={120}
+                  closeDelay={150}
+                  className={cn(
+                    "font-ui uppercase tracking-wider px-3 py-1.5 text-xs font-semibold transition-colors inline-flex items-center gap-1 group outline-none focus-visible:outline-2 focus-visible:outline-primary cursor-pointer data-popup-open:text-foreground",
+                    isGroupActive
+                      ? "text-foreground border-b-2 border-primary dark:border-emerald-400"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <span>{group.label}</span>
+                  <ChevronDown className="size-3 text-muted-foreground group-hover:text-foreground group-data-popup-open:rotate-180 transition-transform duration-150" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  sideOffset={8}
+                  className="w-72 sm:w-80 p-1.5 rounded-none border border-border bg-popover text-popover-foreground shadow-lg ring-1 ring-border"
+                >
+                  <div className="px-2.5 py-1.5 border-b border-border/60 mb-1 flex items-center justify-between">
+                    <span className="font-ui text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      {group.label}
+                    </span>
+                    <span className="font-ui text-[9px] uppercase tracking-wider text-primary dark:text-emerald-400 font-semibold">
+                      Mayang Imphal AC-23
+                    </span>
+                  </div>
+                  {group.items.map((subItem) => {
+                    const active = pathname === subItem.href
+                    return (
+                      <DropdownMenuItem
+                        key={subItem.href}
+                        render={<Link href={subItem.href} />}
+                        className={cn(
+                          "p-2.5 rounded-none flex flex-col items-start gap-0.5 hover:bg-muted/60 focus:bg-muted cursor-pointer transition-colors",
+                          active && "bg-muted/80 border-l-2 border-primary dark:border-emerald-400"
+                        )}
+                      >
+                        <div className="w-full flex items-center justify-between">
+                          <span className="font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
+                            {subItem.label}
+                          </span>
+                          {subItem.badge && (
+                            <span className="font-ui text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
+                              {subItem.badge}
+                            </span>
+                          )}
+                        </div>
+                        <span className="font-sans text-[11px] text-muted-foreground leading-snug">
+                          {subItem.description}
+                        </span>
+                      </DropdownMenuItem>
+                    )
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
             )
           })}
         </nav>
 
-        {/* Right Section: Theme Toggle & Mobile Trigger */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* ================================================================ */}
+        {/* RIGHT CONTROLS: Quick Desk Action, Theme Toggle, Mobile Trigger  */}
+        {/* ================================================================ */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          {/* Quick Desk Action Button */}
+          <Link
+            href="/contact"
+            className="hidden sm:inline-flex font-ui uppercase tracking-widest text-[11px] font-semibold items-center gap-1.5 border border-border bg-card px-3.5 py-2 text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary min-h-9"
+          >
+            <Send className="size-3 text-primary dark:text-emerald-400" />
+            <span>Desk</span>
+          </Link>
+
+          {/* Breathing Room / Density Toggle Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={toggleDensity}
+            aria-label={
+              density === "spacious"
+                ? "Comfort view active. Click for compact mode"
+                : "Compact view active. Click for spacious mode"
+            }
+            title={density === "spacious" ? "Spacing: Comfort (Spacious)" : "Spacing: Compact"}
+            className="size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors"
+          >
+            {density === "spacious" ? (
+              <UnfoldVertical className="size-3.5 text-foreground" />
+            ) : (
+              <FoldVertical className="size-3.5 text-foreground" />
+            )}
+          </Button>
+
+          {/* Theme Toggle Button */}
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
-            className="size-11 sm:size-8 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-secondary transition-colors"
+            className="size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors"
           >
             <Sun className="size-3.5 rotate-0 scale-100 motion-safe:transition-transform motion-reduce:transition-none duration-200 dark:-rotate-90 dark:scale-0 text-foreground" />
             <Moon className="absolute size-3.5 rotate-90 scale-0 motion-safe:transition-transform motion-reduce:transition-none duration-200 dark:rotate-0 dark:scale-100 text-foreground" />
@@ -119,7 +246,7 @@ export function SiteHeader() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="size-11 sm:size-8 p-0 rounded-none border border-border bg-card text-foreground hover:bg-muted active:scale-95 focus-visible:outline-2 focus-visible:outline-secondary"
+                    className="size-9 p-0 rounded-none border border-border bg-card text-foreground hover:bg-muted active:scale-95 focus-visible:outline-2 focus-visible:outline-primary"
                     aria-label="Open navigation menu"
                   >
                     <Menu className="size-4" />
@@ -128,41 +255,110 @@ export function SiteHeader() {
               />
               <SheetContent
                 side="right"
-                className="w-72 max-w-[85vw] flex flex-col justify-between py-6 rounded-none bg-background border-l border-border text-foreground"
+                className="w-80 max-w-[85vw] flex flex-col justify-between p-6 rounded-none bg-background border-l border-border text-foreground overflow-y-auto"
               >
-                <div className="flex flex-col gap-6">
-                  <SheetHeader className="text-left border-b border-border pb-3">
-                    <SheetTitle className="font-headline text-lg font-bold text-foreground tracking-tight">
-                      BMI
-                    </SheetTitle>
-                    <p className="text-xs text-muted-foreground">
-                      Better Mayang Imphal
-                    </p>
+                <div className="flex flex-col gap-5">
+                  <SheetHeader className="text-left border-b border-border pb-4">
+                    <div className="flex items-start gap-3">
+                      <TextLogo />
+                      <SheetTitle className="sr-only">
+                        Dr. Khumujam Ratankumar Singh · Mayang Imphal AC-23
+                      </SheetTitle>
+                    </div>
                   </SheetHeader>
 
-                  {/* Mobile Navigation Links */}
-                  <nav className="flex flex-col divide-y divide-border border border-border bg-card">
-                    {NAV_ITEMS.map((item) => {
-                      const active = isItemActive(item)
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={(e) => {
-                            handleNavClick(e, item.href)
-                            setMobileOpen(false)
-                          }}
-                          className={`px-4 py-3 min-h-11 flex items-center text-sm font-medium transition-colors ${
-                            active
-                              ? "bg-muted text-foreground font-semibold border-l-2 border-secondary"
-                              : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      )
-                    })}
+                  {/* Grouped Mobile Navigation */}
+                  <nav className="flex flex-col gap-4">
+                    {/* Overview Direct Link */}
+                    <Link
+                      href="/"
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        "font-ui uppercase tracking-wider px-3 py-2 text-xs font-semibold flex items-center justify-between border border-border bg-card transition-colors",
+                        pathname === "/"
+                          ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      <span>Overview</span>
+                      <ArrowRight className="size-3 text-muted-foreground" />
+                    </Link>
+
+                    {/* Nav Groups */}
+                    {NAV_GROUPS.map((group) => (
+                      <div key={group.id} className="space-y-1.5">
+                        <span className="font-ui text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/80 px-1 block">
+                          {group.label}
+                        </span>
+                        <div className="border border-border bg-card divide-y divide-border/60">
+                          {group.items.map((subItem) => {
+                            const active = pathname === subItem.href
+                            return (
+                              <Link
+                                key={subItem.href}
+                                href={subItem.href}
+                                onClick={() => setMobileOpen(false)}
+                                className={cn(
+                                  "p-3 flex flex-col gap-0.5 transition-colors",
+                                  active
+                                    ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
+                                    : "text-muted-foreground hover:bg-muted/40 hover:text-foreground"
+                                )}
+                              >
+                                <div className="flex items-center justify-between">
+                                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
+                                    {subItem.label}
+                                  </span>
+                                  {subItem.badge && (
+                                    <span className="font-ui text-[9px] uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
+                                      {subItem.badge}
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="font-sans text-[11px] text-muted-foreground leading-snug">
+                                  {subItem.description}
+                                </span>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </nav>
+                </div>
+
+                {/* Bottom Controls in Mobile Drawer */}
+                <div className="pt-4 border-t border-border mt-4 space-y-3">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="font-ui text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Reading Comfort
+                    </span>
+                    <button
+                      type="button"
+                      onClick={toggleDensity}
+                      className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5"
+                    >
+                      {density === "spacious" ? (
+                        <>
+                          <UnfoldVertical className="size-3.5" />
+                          <span>Spacious</span>
+                        </>
+                      ) : (
+                        <>
+                          <FoldVertical className="size-3.5" />
+                          <span>Compact</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="font-ui uppercase tracking-widest text-xs font-semibold w-full flex items-center justify-center gap-2 bg-primary px-4 py-2.5 text-primary-foreground hover:bg-primary/90 transition-colors"
+                  >
+                    <Send className="size-3.5" />
+                    <span>Log Priority</span>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>

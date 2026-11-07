@@ -1,14 +1,16 @@
 import Link from "next/link"
 import { MapPin, Mail, Clock } from "lucide-react"
+import { TextLogo } from "@/components/text-logo"
+import { ReplayIntroButton } from "@/components/home/cinematic-intro"
 
 export default function Footer() {
   const navLinks = [
-    { href: "/#mandate", label: "Civic Mandate (2027)" },
+    { href: "/", label: "Overview" },
     { href: "/development", label: "Master Plan 2045" },
-    { href: "/future-labs", label: "Future Labs & STEM" },
-    { href: "/progress", label: "Decoupled Tracker" },
+    { href: "/progress", label: "Civic Tracker" },
     { href: "/scholarships", label: "Scholarship Directory" },
-    { href: "/about", label: "Statutory Disclosures" },
+    { href: "/future-labs", label: "Future Labs & STEM" },
+    { href: "/about", label: "Governance & Disclosures" },
     { href: "/contact", label: "Constituency Desk" },
   ]
 
@@ -25,23 +27,18 @@ export default function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-border/60">
-          {/* Office of the Representative with Clean BMI Logo */}
+          {/* Office of the Representative with Mayang Imphal Logo */}
           <div className="md:col-span-5 space-y-4">
             <Link
               href="/"
-              className="inline-flex flex-col items-start group focus-visible:outline-2 focus-visible:outline-offset-2"
-              aria-label="Better Mayang Imphal Home"
+              className="inline-flex group focus-visible:outline-2 focus-visible:outline-offset-2"
+              aria-label="Mayang Imphal Home · Dr. Khumujam Ratankumar Singh, For the People"
             >
-              <span className="font-headline text-3xl font-bold tracking-tight text-foreground transition-colors group-hover:text-secondary">
-                BMI
-              </span>
-              <span className="text-xs text-muted-foreground lowercase mt-0.5">
-                better mayang imphal
-              </span>
+              <TextLogo size="lg" />
             </Link>
 
             <p className="text-xs text-muted-foreground leading-relaxed max-w-sm">
-              Constituency Transition &amp; Civic Leadership Platform for Mayang Imphal (Assembly Constituency AC-23 &amp; Municipal Area LGD 250326), Manipur.
+              Civic leadership and public accountability platform for Mayang Imphal (Assembly Constituency AC-23 &amp; Municipal Area LGD 250326), Manipur.
             </p>
 
             <div className="pt-2 space-y-2 text-xs text-muted-foreground">
@@ -109,11 +106,14 @@ export default function Footer() {
         {/* Bottom Dignified Copyright & Disclosures */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-muted-foreground">
           <p>
-            &copy; 2026 Better Mayang Imphal. Published for constituent accountability.
+            &copy; 2026 Mayang Imphal Civic Platform. Published for citizen transparency.
           </p>
-          <p>
-            Class-III Town Delineation, AMRUT 2.0 GIS Horizon 2045
-          </p>
+          <div className="flex items-center gap-4">
+            <ReplayIntroButton className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-ui uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground border border-border/70 hover:border-border transition-colors cursor-pointer" />
+            <p>
+              Class-III Town Delineation, AMRUT 2.0 GIS Horizon 2045
+            </p>
+          </div>
         </div>
       </div>
     </footer>

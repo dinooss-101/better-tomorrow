@@ -107,7 +107,7 @@ export function PrioritySubmissionDialog({
               <div>Anonymity: {isAnonymous ? "Anonymous Submission" : contactEmail}</div>
             </div>
             <Button onClick={handleReset} className="mx-auto mt-2 w-fit">
-              Close Preview
+              Close
             </Button>
           </div>
         ) : (
@@ -220,7 +220,7 @@ export function PrioritySubmissionDialog({
                   Cancel
                 </Button>
                 <Button type="submit" size="sm" className="flex-1 sm:flex-initial min-h-11 sm:min-h-0 bg-primary text-primary-foreground">
-                  Validate & Submit Preview
+                  Submit
                 </Button>
               </div>
             </DialogFooter>

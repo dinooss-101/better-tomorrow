@@ -71,7 +71,7 @@ export function ProjectStatusBadge({ stage, condition, className }: ProjectStatu
 
   return (
     <div className={`flex flex-wrap items-center gap-2 ${className || ""}`}>
-      <Badge variant="secondary" className="font-medium text-foreground">
+      <Badge variant="outline" className="font-medium text-foreground bg-muted/40 border-border">
         Stage: {getStageLabel(stage)}
       </Badge>
       {getConditionBadge(condition)}
