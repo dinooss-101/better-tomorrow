@@ -74,7 +74,7 @@ export function DevelopmentView() {
               </div>
 
               <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-[280px] sm:max-w-[320px] lg:max-w-[300px] xl:max-w-xs border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
+                <div className="relative mx-auto max-w-70 sm:max-w-80 lg:max-w-75 xl:max-w-xs border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/master-plan-gis-survey.png"
