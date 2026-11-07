@@ -104,7 +104,7 @@ export function AboutView() {
         {/* Section 1: Platform Identity */}
         <section
           id="identity"
-          className="border-b border-border bg-background py-14 sm:py-20 lg:py-24"
+          className="border-b border-border bg-background py-12 sm:py-16 lg:py-20 [[data-density=compact]_&]:py-8 [[data-density=compact]_&]:sm:py-12"
         >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl space-y-6 sm:space-y-8">
@@ -182,7 +182,7 @@ export function AboutView() {
         {/* Section 2: Statutory Boundaries & Exclusions */}
         <section
           id="statutory"
-          className="border-b border-border bg-muted/20 py-16 sm:py-24 lg:py-28"
+          className="border-b border-border bg-muted/20 py-12 sm:py-16 lg:py-20 [[data-density=compact]_&]:py-8 [[data-density=compact]_&]:sm:py-12"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -259,7 +259,7 @@ export function AboutView() {
         {/* Section 3: DPDP Privacy Policy */}
         <section
           id="dpdp"
-          className="border-b border-border bg-background py-16 sm:py-24 lg:py-28"
+          className="border-b border-border bg-background py-12 sm:py-16 lg:py-20 [[data-density=compact]_&]:py-8 [[data-density=compact]_&]:sm:py-12"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -322,7 +322,7 @@ export function AboutView() {
         {/* Section 4: Election Compliance */}
         <section
           id="election"
-          className="border-b border-border bg-muted/20 py-16 sm:py-24 lg:py-28"
+          className="border-b border-border bg-muted/20 py-12 sm:py-16 lg:py-20 [[data-density=compact]_&]:py-8 [[data-density=compact]_&]:sm:py-12"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -354,7 +354,10 @@ export function AboutView() {
         </section>
 
         {/* Section 5: Corrections Policy */}
-        <section id="corrections" className="bg-background py-16 sm:py-24 lg:py-28">
+        <section
+          id="corrections"
+          className="bg-background py-12 sm:py-16 lg:py-20 [[data-density=compact]_&]:py-8 [[data-density=compact]_&]:sm:py-12"
+        >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
