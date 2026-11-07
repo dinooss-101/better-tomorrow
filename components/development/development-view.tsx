@@ -139,9 +139,9 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 2: The 4 Core Survey Layers (Stacking Cards Parallax) */}
-        <section className="py-16 sm:py-24 lg:py-28 bg-muted/20 border-b border-border/60">
+        <section className="py-14 sm:py-20 lg:py-24 bg-muted/20 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-10 sm:mb-14">
+            <div className="max-w-3xl mb-8 sm:mb-12">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary dark:text-emerald-400 tracking-wider uppercase font-ui">
                 <Map className="size-3.5" />
                 <span>Geospatial Survey Layers</span>
@@ -149,9 +149,16 @@ export function DevelopmentView() {
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground mt-2">
                 The 4 Core Survey Layers Required by AMRUT 2.0
               </h2>
-              <p className="font-sans text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">
+              <p className="font-sans text-sm sm:text-base text-muted-foreground mt-3 leading-relaxed max-w-2xl">
                 Scroll through the 4 statutory field surveys required under MoHUA guidelines before capital works and municipal infrastructure can be sanctioned:
               </p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-4 text-xs font-ui text-muted-foreground">
+                <span className="font-medium uppercase tracking-wider text-foreground">Scope: ~70 sq. km</span>
+                <span className="text-border">·</span>
+                <span className="uppercase tracking-wider">12 Municipal Wards</span>
+                <span className="text-border">·</span>
+                <span className="uppercase tracking-wider">MoHUA Sub-Scheme Grade A</span>
+              </div>
             </div>
 
             {/* Scroll-Driven Stacking Card Parallax */}
