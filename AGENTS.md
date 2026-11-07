@@ -1,40 +1,48 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Mayang Imphal — Project Agent Instructions
 
-# This is NOT the Next.js you know
+## Mission
+Refactor the existing BMI web application into **Mayang Imphal**: a fast, accessible, calm, locally grounded digital experience using Nordic Lagom principles. This is a redesign of an EXISTING application, not permission to discard or silently replace features, data, routes, integrations, or content.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Source of truth / uncertainty
+1. Inspect `package.json`, lockfile, `app/` (including `app/development/page.tsx`), `src/`, components, styles, assets, routes, data integrations, tests, deployment, `components.json`, and other agent rules before editing.
+2. Detect framework, Tailwind version, package manager, shadcn configuration, and all routes; do not assume a template matches the repository. Prefer the existing package manager and lockfile. For this project, prefer `pnpm` unless repo evidence contradicts it.
+3. Read `docs/REDESIGN_BLUEPRINT.md` and `docs/QUALITY_GATES.md` before implementation. `docs/ROUTE_AUDIT_TEMPLATE.md` describes the mandatory page-by-page inventory.
+4. Unknown facts about the town, community, organizations, programmes, metrics, and contact details remain unverified. Do not invent them for prettier layouts. Preserve sourced factual content.
+5. If instructions conflict with existing functional requirements, document the conflict and preserve behavior while proposing an intentional migration.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## Non-negotiable product principles
+- **Lagom**: enough, never more. Prioritize one useful idea per section, whitespace, restraint, strong typography, hierarchy, and purposeful imagery.
+- **Mayang Imphal identity**: brand name visible as "Mayang Imphal". Local imagery and cultural facts require provenance and respectful presentation. Do not substitute generic faux-heritage decoration.
+- **Progressive disclosure**: short summaries lead to deeper routes; do not delete essential information simply to reduce word count.
+- **Responsive**: mobile-first at 320/375/768/1024/1440px; no accidental horizontal page scroll.
+- **Accessible**: target WCAG 2.2 AA; semantic headings, keyboard operability, visible focus, reduced motion, appropriate contrast, meaningful alt text.
+- **Performant**: server rendering and accessible native elements by default; client components only where behavior requires them; avoid unnecessary dependencies and JS animation.
+- **Stable**: preserve external URLs, internal routes, semantics, forms, data services, auth/security and SEO unless a migration is explicit and tested.
 
-<!-- END:nextjs-agent-rules -->
+## Engineering standards
+- TypeScript strictness is not to be weakened. No `any`, disabled ESLint rules, broad `@ts-ignore`, or unreviewed package upgrades as shortcuts.
+- Organize by feature/domain and shared UI boundaries. Keep routes thin; place domain data and transformation logic outside presentation.
+- Reuse existing architecture unless clear duplication, coupling, or performance evidence justifies a change. No speculative global rewrite.
+- Use semantic design tokens, not one-off colors/padding in every page. Avoid duplicating navigation/content constants.
+- Use shadcn/ui selectively as **source-owned components**, not as a mandate to import every registry item. Initialize only if needed; preserve/merge existing `components.json` and styles.
+- Never modify database schemas, delete records, rename backend identifiers, rotate credentials, or deploy without explicit necessity and a reversible plan.
+- Treat Tailwind canonical-class hints as low priority. Inspect responsive intent before replacing `min-w-[640px]` with `min-w-160`; a fixed minimum may be wrong for the UI.
 
-# Ponytail, lazy senior dev mode
+## Required working procedure
+1. **Audit first**: produce route/component inventory, feature checklist, content density report, design anti-patterns, accessibility/performance findings, and dependency/registry status. Capture screenshots where browser access is available.
+2. **Design system second**: define semantic color/typography/spacing/radii tokens and shared layout primitives. Validate existing components against them.
+3. **Refactor by vertical slice**: header + landing page, then `development`, then each real route. Use one small coherent change set per slice; validate functionality before continuing.
+4. **Rename safely**: change brand-facing BMI occurrences to Mayang Imphal across metadata, nav, footer, headings, structured data, manifests, tests, emails, social image copy, and accessibility labels. Keep internal identifiers where renaming would break contracts until explicitly migrated.
+5. **Verify**: run repository-specific lint/typecheck/test/build and browser checks. Report exact commands and results; if unavailable, mark as unverified rather than claiming success.
+6. **Report**: show changed files, before/after route screenshots (if possible), component removals, retained functionality, measured quality deltas, residual risks, and rollback steps.
 
-You are a lazy senior developer. The best code is the code never written. You solve the whole problem with the least new code. End your reply with one or two lines: what you skipped or did not check, and any risk the user must know.
+## Rules and skills
+When relevant, apply `.agents/rules/design-system.md`, `.agents/rules/architecture.md`, and `.agents/rules/content-and-brand.md`.
+Use `/.agents/skills/lagom-audit` conceptually (or invoke `/lagom-audit`), then `/lagom-refactor`, then `/release-verify`.
 
-## Before you write
-
-Read the task and the code it touches. List every place your change must reach: callers, tests, fixtures, config, exports. Check what your change could break for users: data it would destroy or expose, callers that stop working. That is scope. Extra features are not.
-
-## The smallest complete change
-
-Take the first option that fully works:
-
-1. Does it need to exist? Skip features, options and flexibility nobody asked for, and name them in one line. A vague request ("build me X") gets the smallest version that does the core job.
-2. Already in this codebase (a helper, component, service, pattern)? Use it the way the surrounding code does.
-3. Standard library or a platform feature? Use it, unless the project has its own. A house component beats a native widget.
-4. An installed dependency? Use it. Never add a dependency for a few lines.
-5. Can it be one line a reader gets at a glance? One line.
-6. Otherwise: the minimum code that works.
-
-- Be lazy about the solution, never about the change itself: finish every part the task needs, including the callers, tests and fixtures your change breaks.
-- No abstraction, wrapper, type conversion, option, config, boilerplate or "for later" code nobody asked for. Keep values in the form the platform already gives you. Deletion beats addition. Keep the structure the codebase already has: its layers, interfaces and conventions.
-- The shortest working diff wins, once you know everything it must touch. A one-liner that needs decoding is not short.
-- Comment only the why the code cannot show, in one line.
-- Bug fix: before you edit, grep every caller of the function you touch, then fix the root cause once in the shared code.
-- Code you move or merge keeps its error handling and validation.
-- Between options of equal size, take the one that is correct on edge cases.
-- Lazy code without its check is unfinished: new non-trivial logic (a branch, a loop, a parser, money or security, or a whole new script or app) leaves one small test or an assert-based self-check. Trivial changes need none.
-- A shortcut with a known limit gets a code comment in this form: `shortcut: <the limit>, <when to upgrade>`.
-
-Never cut: validation at trust boundaries, error handling that prevents data loss, security, accessibility, the calibration real hardware needs, anything the user asked for.
+## Prohibited shortcuts
+- Do not replace the whole project with a static mockup or remove working features.
+- Do not mass-install all shadcn components, force a framework migration, or overwrite existing config blindly.
+- Do not hide essential accessibility, legal, source, or data information to satisfy an aesthetic preference.
+- Do not invent town claims, KPIs, project completion rates, organisation claims or placeholder testimonials.
+- Do not claim the entire redesign is complete after only modifying one page or fixing a linter hint.

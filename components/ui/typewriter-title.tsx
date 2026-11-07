@@ -1,106 +1,95 @@
-"use client"
+"use client";
 
 /**
- * @description: TypewriterTitle - robust cross-platform typewriter
- * Supports iOS WebKit (Safari/Chrome), desktop browsers, reduced motion controls,
- * visibility tracking, and zero layout shift.
+ * @author: @dorianbaffier
+ * @description: Typewriter
+ * @version: 1.1.0
+ * @date: 2026-10-14
+ * @license: MIT
+ * @website: https://kokonutui.com
+ * @github: https://github.com/kokonut-labs/kokonutui
  */
 
-import { type Ref, useEffect, useRef, useState, useSyncExternalStore } from "react"
-import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(callback: () => void) {
-  if (typeof window === "undefined") return () => {}
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", callback)
-  return () => media.removeEventListener("change", callback)
-}
-
-function getReducedMotionSnapshot() {
-  if (typeof window === "undefined") return false
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
-}
-
-function getReducedMotionServerSnapshot() {
-  return false
-}
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { type Ref, useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export interface TypewriterSequence {
-  text: string
-  deleteAfter?: boolean
-  pauseAfter?: number
+  text: string;
+  deleteAfter?: boolean;
+  pauseAfter?: number;
 }
 
-export type TypewriterElement = "div" | "p" | "span" | "h1" | "h2" | "h3"
+export type TypewriterElement = "div" | "p" | "span" | "h1" | "h2" | "h3";
 
 export interface TypewriterTitleProps {
-  sequences?: TypewriterSequence[]
-  typingSpeed?: number
-  startDelay?: number
-  autoLoop?: boolean
-  loopDelay?: number
-  deleteSpeed?: number
-  pauseBeforeDelete?: number
-  naturalVariance?: boolean
+  sequences?: TypewriterSequence[];
+  typingSpeed?: number;
+  startDelay?: number;
+  autoLoop?: boolean;
+  loopDelay?: number;
+  deleteSpeed?: number;
+  pauseBeforeDelete?: number;
+  naturalVariance?: boolean;
   /**
    * How a phrase is erased. `"backspace"` removes it one character at a
    * time; `"select"` highlights it right to left, as with Shift+Home, then
    * cuts it in one go.
    */
-  deleteMode?: "backspace" | "select"
+  deleteMode?: "backspace" | "select";
   /**
    * Hit a neighbouring key now and then, pause, backspace and correct it.
    * `true` is about a 4% chance per letter; a number sets the chance.
    */
-  typos?: boolean | number
+  typos?: boolean | number;
   /** Seed for the variance and typos, so every visit types the same way. */
-  seed?: number
+  seed?: number;
   /**
    * Stops the typing where it is. Wire it to a pause control to let users
    * stop the endless loop (WCAG 2.2.2). It also pauses while off screen.
    */
-  paused?: boolean
-  /**
-   * Whether to freeze animation if OS has reduced motion enabled.
-   * Defaults to false so headline remains animated across mobile devices.
-   */
-  respectReducedMotion?: boolean
+  paused?: boolean;
   /** Element to render, e.g. `h1` when it is the page title. */
-  as?: TypewriterElement
+  as?: TypewriterElement;
   /** Classes for the wrapper. Its width sets the font size. */
-  className?: string
+  className?: string;
   /** Classes for the text itself, e.g. to fix the font size. */
-  textClassName?: string
+  textClassName?: string;
 }
 
 const DEFAULT_SEQUENCES: TypewriterSequence[] = [
   { text: "Typewriter", deleteAfter: true },
   { text: "Multiple Words", deleteAfter: true },
   { text: "Auto Loop", deleteAfter: false },
-]
+];
 
-const NEXT_SEQUENCE_DELAY = 100
+const NEXT_SEQUENCE_DELAY = 100;
 // The caret stays solid while keys are being hit and only starts blinking
 // once typing has stopped for this long, as in a text editor.
-const CARET_IDLE_MS = 500
+const CARET_IDLE_MS = 500;
 // A wrong key: noticed after this pause, then backspaced and retyped.
-const TYPO_NOTICE_MS = 250
-const DEFAULT_TYPO_RATE = 0.04
+const TYPO_NOTICE_MS = 250;
+const DEFAULT_TYPO_RATE = 0.04;
 // Select-to-delete: the highlight sweeps the phrase in this long, holds
 // for a moment, then the text is cut.
-const SELECT_SWEEP_MS = 120
-const SELECT_HOLD_MS = 220
+const SELECT_SWEEP_MS = 120;
+const SELECT_HOLD_MS = 220;
 
-const KEY_ROWS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
+// The blink is a CSS animation so it runs off the main thread: solid for
+// the first third of the cycle, fades out, then stays hidden.
+const CARET_KEYFRAMES =
+  "@keyframes kokonutui-typewriter-caret { 0%, 33.333% { opacity: 1; } 66.667%, 100% { opacity: 0; } }";
+
+const KEY_ROWS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 
 /** The keys around a letter on a QWERTY keyboard, in the same case. */
 function neighbours(char: string) {
-  const lower = char.toLowerCase()
-  const row = KEY_ROWS.findIndex((keys) => keys.includes(lower))
+  const lower = char.toLowerCase();
+  const row = KEY_ROWS.findIndex((keys) => keys.includes(lower));
   if (row === -1) {
-    return ""
+    return "";
   }
-  const col = KEY_ROWS[row].indexOf(lower)
+  const col = KEY_ROWS[row].indexOf(lower);
   const around = [
     KEY_ROWS[row][col - 1],
     KEY_ROWS[row][col + 1],
@@ -108,17 +97,17 @@ function neighbours(char: string) {
     KEY_ROWS[row + 1]?.[col],
   ]
     .filter(Boolean)
-    .join("")
-  return char === lower ? around : around.toUpperCase()
+    .join("");
+  return char === lower ? around : around.toUpperCase();
 }
 
 /** Small seeded generator (Park-Miller), 0 to 1. */
 function createRandom(seed: number) {
-  let state = (Math.abs(Math.floor(seed)) % 2_147_483_646) + 1
+  let state = (Math.abs(Math.floor(seed)) % 2_147_483_646) + 1;
   return () => {
-    state = (state * 16_807) % 2_147_483_647
-    return (state - 1) / 2_147_483_646
-  }
+    state = (state * 16_807) % 2_147_483_647;
+    return (state - 1) / 2_147_483_646;
+  };
 }
 
 function getTypingDelay(
@@ -127,35 +116,35 @@ function getTypingDelay(
   random: () => number
 ) {
   if (!naturalVariance) {
-    return typingSpeed
+    return typingSpeed;
   }
-  const roll = random()
+  const roll = random();
   // 10% chance of a hesitation, 10% chance of a burst.
   if (roll < 0.1) {
-    return typingSpeed * 2
+    return typingSpeed * 2;
   }
   if (roll > 0.9) {
-    return typingSpeed * 0.5
+    return typingSpeed * 0.5;
   }
   // Otherwise +/- 40%.
-  return typingSpeed * (0.6 + random() * 0.8)
+  return typingSpeed * (0.6 + random() * 0.8);
 }
 
 class Stopped extends Error {}
 
 interface Position {
-  sequence: number
-  char: number
-  deleting: boolean
+  sequence: number;
+  char: number;
+  deleting: boolean;
 }
 
 interface Screen {
-  text: string
+  text: string;
   /** Characters at the end of `text` shown as selected. */
-  selected: number
+  selected: number;
 }
 
-export default function TypewriterTitle({
+export function TypewriterTitle({
   sequences = DEFAULT_SEQUENCES,
   typingSpeed = 50,
   startDelay = 200,
@@ -168,234 +157,200 @@ export default function TypewriterTitle({
   typos = false,
   seed = 7,
   paused = false,
-  respectReducedMotion = false,
   as: Component = "div",
   className,
   textClassName,
 }: TypewriterTitleProps) {
-  const [screen, setScreen] = useState<Screen>({ text: "", selected: 0 })
-  const [isInView, setIsInView] = useState(true)
-  const [isVisible, setIsVisible] = useState(true)
+  const [screen, setScreen] = useState<Screen>({ text: "", selected: 0 });
+  const ref = useRef<HTMLSpanElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref);
+  const isRunning = !paused && isInView;
+  const shouldReduceMotion = useReducedMotion();
+  const position = useRef<Position>({ sequence: 0, char: 0, deleting: false });
+  const random = useRef<() => number>(createRandom(seed));
 
-  const prefersReducedMotion = useSyncExternalStore(
-    subscribeReducedMotion,
-    getReducedMotionSnapshot,
-    getReducedMotionServerSnapshot
-  )
-  const shouldReduceMotion = respectReducedMotion && prefersReducedMotion
-
-  const ref = useRef<HTMLSpanElement>(null)
-  const caretRef = useRef<HTMLSpanElement>(null)
-  const position = useRef<Position>({ sequence: 0, char: 0, deleting: false })
-  const random = useRef<() => number>(createRandom(seed))
-
-  // Viewport intersection and tab visibility detection (resilient for iOS WebKit)
+  const sequencesRef = useRef(sequences);
   useEffect(() => {
-    if (typeof window === "undefined") return
-
-    const handleVisibility = () => {
-      setIsVisible(document.visibilityState !== "hidden")
-    }
-    document.addEventListener("visibilitychange", handleVisibility)
-
-    const el = ref.current
-    let observer: IntersectionObserver | null = null
-    if (el && typeof IntersectionObserver !== "undefined") {
-      observer = new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0]
-          if (entry) {
-            setIsInView(entry.isIntersecting)
-          }
-        },
-        { rootMargin: "150px 0px", threshold: 0 }
-      )
-      observer.observe(el)
-    }
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibility)
-      observer?.disconnect()
-    }
-  }, [])
-
-  const isRunning = !paused && isInView && isVisible
-
-  const sequencesRef = useRef(sequences)
-  useEffect(() => {
-    sequencesRef.current = sequences
-  }, [sequences])
+    sequencesRef.current = sequences;
+  }, [sequences]);
 
   useEffect(() => {
-    random.current = createRandom(seed)
-  }, [seed])
+    random.current = createRandom(seed);
+  }, [seed]);
 
-  // Reduced motion fallback: show the final phrase statically if requested
-  const finalText = sequences.at(-1)?.text ?? ""
+  // Reduced motion: show the primary phrase, no typing loop.
+  const staticText = sequences[0]?.text ?? sequences.at(-1)?.text ?? "";
 
   useEffect(() => {
     if (shouldReduceMotion) {
-      return
+      return;
     }
-
-    // Paused, off-screen, or hidden tab: keep current text. Position remembers where it was.
+    // Paused or off screen: keep the current text. `position` remembers
+    // where it was, so typing resumes there.
     if (!isRunning) {
-      return
+      return;
     }
 
-    let typoRate = 0
+    let typoRate = 0;
     if (typeof typos === "number") {
-      typoRate = typos
+      typoRate = typos;
     } else if (typos) {
-      typoRate = DEFAULT_TYPO_RATE
+      typoRate = DEFAULT_TYPO_RATE;
     }
-    const pos = position.current
-    const timers = new Set<ReturnType<typeof setTimeout>>()
-    let idleTimer: ReturnType<typeof setTimeout> | undefined
-    let stopped = false
+    const pos = position.current;
+    const timers = new Set<ReturnType<typeof setTimeout>>();
+    let idleTimer: ReturnType<typeof setTimeout> | undefined;
+    let stopped = false;
 
     const wait = (ms: number) =>
       new Promise<void>((resolve, reject) => {
         if (stopped) {
-          reject(new Stopped())
-          return
+          reject(new Stopped());
+          return;
         }
         const timer = setTimeout(() => {
-          timers.delete(timer)
+          timers.delete(timer);
           if (stopped) {
-            reject(new Stopped())
+            reject(new Stopped());
           } else {
-            resolve()
+            resolve();
           }
-        }, ms)
-        timers.add(timer)
-      })
+        }, ms);
+        timers.add(timer);
+      });
 
-    // Keystroke holds caret solid; blinks again once idle
+    // Every keystroke holds the caret solid; it blinks again once idle.
     const keystroke = () => {
-      const caret = caretRef.current
-      if (!caret) return
-      caret.dataset.idle = "false"
-      clearTimeout(idleTimer)
+      const caret = caretRef.current;
+      if (!caret) {
+        return;
+      }
+      caret.dataset.idle = "false";
+      clearTimeout(idleTimer);
       idleTimer = setTimeout(() => {
-        caret.dataset.idle = "true"
-      }, CARET_IDLE_MS)
-    }
-
+        caret.dataset.idle = "true";
+      }, CARET_IDLE_MS);
+    };
     const show = (text: string, selected = 0) => {
-      setScreen({ text, selected })
-    }
+      setScreen({ text, selected });
+    };
 
     const typeChar = async (text: string) => {
-      const wrongKeys = neighbours(text[pos.char])
+      const wrongKeys = neighbours(text[pos.char]);
       if (wrongKeys && random.current() < typoRate) {
-        const wrong = wrongKeys[Math.floor(random.current() * wrongKeys.length)]
-        show(text.slice(0, pos.char) + wrong)
-        keystroke()
-        await wait(TYPO_NOTICE_MS + typingSpeed)
-        show(text.slice(0, pos.char))
-        keystroke()
-        await wait(typingSpeed * 1.5)
+        const wrong =
+          wrongKeys[Math.floor(random.current() * wrongKeys.length)];
+        show(text.slice(0, pos.char) + wrong);
+        keystroke();
+        await wait(TYPO_NOTICE_MS + typingSpeed);
+        show(text.slice(0, pos.char));
+        keystroke();
+        await wait(typingSpeed * 1.5);
       }
-      pos.char += 1
-      show(text.slice(0, pos.char))
-      keystroke()
-      await wait(getTypingDelay(typingSpeed, naturalVariance, random.current))
-    }
+      pos.char += 1;
+      show(text.slice(0, pos.char));
+      keystroke();
+      await wait(getTypingDelay(typingSpeed, naturalVariance, random.current));
+    };
 
     const erase = async (text: string) => {
       if (deleteMode === "select") {
-        const length = pos.char
-        const step = SELECT_SWEEP_MS / Math.max(length, 1)
+        const length = pos.char;
+        const step = SELECT_SWEEP_MS / Math.max(length, 1);
         for (let selected = 1; selected <= length; selected++) {
-          show(text.slice(0, length), selected)
-          keystroke()
-          await wait(step)
+          show(text.slice(0, length), selected);
+          keystroke();
+          await wait(step);
         }
-        await wait(SELECT_HOLD_MS)
-        pos.char = 0
-        show("")
-        keystroke()
-        return
+        await wait(SELECT_HOLD_MS);
+        pos.char = 0;
+        show("");
+        keystroke();
+        return;
       }
       while (pos.char > 0) {
-        pos.char -= 1
-        show(text.slice(0, pos.char))
-        keystroke()
-        await wait(deleteSpeed)
+        pos.char -= 1;
+        show(text.slice(0, pos.char));
+        keystroke();
+        await wait(deleteSpeed);
       }
-    }
+    };
 
     /** Move on to the next phrase. False when the run is over. */
     const advance = async (delay: number) => {
-      const isLast = pos.sequence >= sequencesRef.current.length - 1
+      const isLast = pos.sequence >= sequencesRef.current.length - 1;
       if (isLast && !autoLoop) {
-        return false
+        return false;
       }
-      pos.sequence = isLast ? 0 : pos.sequence + 1
-      pos.char = 0
-      pos.deleting = false
-      await wait(isLast ? loopDelay : delay)
-      show("")
-      return true
-    }
+      // Advance first, so pausing during the wait can't retype this one.
+      pos.sequence = isLast ? 0 : pos.sequence + 1;
+      pos.char = 0;
+      pos.deleting = false;
+      await wait(isLast ? loopDelay : delay);
+      show("");
+      return true;
+    };
 
     const phrase = async () => {
-      const list = sequencesRef.current
+      const list = sequencesRef.current;
+      // `sequences` may have shrunk past the current phrase: start over.
       if (pos.sequence >= list.length) {
-        pos.sequence = 0
-        pos.char = 0
-        pos.deleting = false
+        pos.sequence = 0;
+        pos.char = 0;
+        pos.deleting = false;
       }
-      const sequence = list[pos.sequence]
+      const sequence = list[pos.sequence];
       if (!sequence) {
-        return false
+        return false;
       }
-      const { text } = sequence
-      pos.char = Math.min(pos.char, text.length)
-      show(text.slice(0, pos.char))
+      const { text } = sequence;
+      pos.char = Math.min(pos.char, text.length);
+      // Resuming after a pause: put the screen back in step.
+      show(text.slice(0, pos.char));
 
       if (!pos.deleting) {
         while (pos.char < text.length) {
-          await typeChar(text)
+          await typeChar(text);
         }
-        const pause = sequence.pauseAfter ?? pauseBeforeDelete
-        const isLast = pos.sequence === list.length - 1
+        const pause = sequence.pauseAfter ?? pauseBeforeDelete;
+        const isLast = pos.sequence === list.length - 1;
+        // Looping deletes the last phrase too, instead of it vanishing.
         if (!(sequence.deleteAfter || (isLast && autoLoop))) {
-          return advance(pause)
+          return advance(pause);
         }
-        await wait(pause)
-        pos.deleting = true
+        await wait(pause);
+        pos.deleting = true;
       }
-      await erase(text)
-      return advance(NEXT_SEQUENCE_DELAY)
-    }
+      await erase(text);
+      return advance(NEXT_SEQUENCE_DELAY);
+    };
 
     const run = async () => {
       try {
-        await wait(startDelay)
+        await wait(startDelay);
         while (await phrase()) {
-          // loop continues
+          // On to the next phrase.
         }
       } catch (error) {
         if (!(error instanceof Stopped)) {
-          throw error
+          throw error;
         }
       }
-    }
-    run()
+    };
+    run();
 
-    const caret = caretRef.current
+    const caret = caretRef.current;
     return () => {
-      stopped = true
+      stopped = true;
       for (const timer of timers) {
-        clearTimeout(timer)
+        clearTimeout(timer);
       }
-      clearTimeout(idleTimer)
+      clearTimeout(idleTimer);
       if (caret) {
-        caret.dataset.idle = "true"
+        caret.dataset.idle = "true";
       }
-    }
+    };
   }, [
     typingSpeed,
     deleteSpeed,
@@ -408,57 +363,79 @@ export default function TypewriterTitle({
     typos,
     shouldReduceMotion,
     isRunning,
-  ])
+  ]);
 
-  const displayText = shouldReduceMotion ? finalText : screen.text
-  const displaySelected = shouldReduceMotion ? 0 : screen.selected
-  const kept = displayText.slice(0, displayText.length - displaySelected)
-  const selected = displayText.slice(kept.length)
+  const currentText = shouldReduceMotion ? staticText : screen.text;
+  const currentSelected = shouldReduceMotion ? 0 : screen.selected;
+  const kept = currentText.slice(0, currentText.length - currentSelected);
+  const selected = currentText.slice(kept.length);
 
   return (
-    <Component className={cn("inline-flex items-center tracking-tight", className)}>
-      {/* Screen readers receive full text list for accessibility */}
+    <Component
+      className={cn(
+        "@container flex w-full items-center justify-center font-mono text-foreground tracking-tight",
+        className
+      )}
+    >
+      <style href="kokonutui-type-writer" precedence="default">
+        {CARET_KEYFRAMES}
+      </style>
+      {/* Screen readers get every phrase once instead of whatever partial
+          string is on screen. */}
       <span className="sr-only">
-        {sequences.map((sequence) => sequence.text).join(", ")}
+        {sequences.map((sequence) => sequence.text).join(". ")}
       </span>
-      <span
-        ref={ref}
+      <motion.span
+        animate={{ opacity: 1 }}
         aria-hidden="true"
         className={cn(
-          "inline-grid justify-items-start whitespace-pre pr-[0.25em] leading-[1.15]",
+          // Every phrase sits invisibly in the same grid cell, so the box is
+          // as wide as the widest one as rendered (proportional fonts, CJK)
+          // and the text grows from a fixed left edge.
+          "inline-grid justify-items-start whitespace-pre pr-[0.25em] leading-[1.2]",
+          !textClassName && "text-4xl @lg:text-5xl @2xl:text-6xl",
           textClassName
         )}
+        initial={{ opacity: 0 }}
+        ref={ref}
+        transition={{ duration: 0.5 }}
       >
         {sequences.map((sequence, index) => (
-          <span className="invisible col-start-1 row-start-1" key={index}>
+          <span
+            className="invisible col-start-1 row-start-1"
+            key={`${index}-${sequence.text}`}
+          >
             {sequence.text}
           </span>
         ))}
-        <span className="col-start-1 row-start-1 min-h-[1.15em]">
+        <span className="col-start-1 row-start-1 min-h-[1.2em]">
           {kept}
           <Caret caretRef={caretRef} />
           {selected && (
-            <span className="rounded-[0.08em] bg-secondary/25 dark:bg-secondary/35">
+            <span className="rounded-[0.08em] bg-primary/20 text-foreground dark:bg-emerald-400/25">
               {selected}
             </span>
           )}
         </span>
-      </span>
+      </motion.span>
     </Component>
-  )
+  );
 }
 
+export default TypewriterTitle;
+
 /**
- * Solid while typing; blinks once idle via CSS keyframes in globals.css.
+ * Takes no room, so the text never shifts when the caret moves to the start
+ * of a selection. Solid while typing; blinks once idle.
  */
 function Caret({ caretRef }: { caretRef: Ref<HTMLSpanElement> }) {
   return (
     <span className="relative inline-block w-0">
       <span
-        className="absolute bottom-[-0.05em] left-[0.04em] h-[1em] w-[0.08em] min-w-0.5 bg-current motion-safe:data-[idle=true]:animate-[kokonutui-typewriter-caret_1s_linear_infinite]"
+        className="absolute bottom-[-0.1em] left-[0.04em] h-[1.05em] w-[0.08em] min-w-0.5 bg-primary dark:bg-emerald-400 motion-safe:data-[idle=true]:animate-[kokonutui-typewriter-caret_1s_linear_infinite]"
         data-idle="true"
         ref={caretRef}
       />
     </span>
-  )
+  );
 }

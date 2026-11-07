@@ -54,8 +54,14 @@ export function RegisterInterestDialog({
       setErrorMessage("Please enter a valid email address.")
       return
     }
-    if (role === "STUDENT" && isMinor && (!guardianName.trim() || !guardianConsent)) {
-      setErrorMessage("Applicants under 18 require parental/guardian consent and guardian name.")
+    if (
+      role === "STUDENT" &&
+      isMinor &&
+      (!guardianName.trim() || !guardianConsent)
+    ) {
+      setErrorMessage(
+        "Applicants under 18 require parental/guardian consent and guardian name."
+      )
       return
     }
 
@@ -78,16 +84,20 @@ export function RegisterInterestDialog({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       {children && <DialogTrigger render={children} />}
-      <DialogContent className="w-[calc(100vw-2rem)] sm:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+      <DialogContent className="max-h-[90vh] w-[calc(100vw-2rem)] overflow-y-auto p-4 sm:max-w-lg sm:p-6">
         <DialogHeader className="flex flex-col gap-2">
-          <Badge variant="outline" className="w-fit border-secondary/30 text-secondary text-xs">
+          <Badge
+            variant="outline"
+            className="w-fit border-secondary/30 text-xs text-secondary"
+          >
             Preview Mode · Program Interest
           </Badge>
           <DialogTitle className="font-heading text-2xl font-semibold text-foreground">
             Register Program Interest
           </DialogTitle>
           <DialogDescription className="text-xs leading-relaxed text-muted-foreground">
-            Express interest in proposed learning workshops, scholarship alerts, or volunteer diaspora mentoring.
+            Express interest in proposed learning workshops, scholarship alerts,
+            or volunteer diaspora mentoring.
           </DialogDescription>
         </DialogHeader>
 
@@ -96,10 +106,13 @@ export function RegisterInterestDialog({
             <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
               <CheckCircle2 className="size-6" />
             </div>
-            <h3 className="text-lg font-semibold text-foreground">Preview Interest Registered</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Preview Interest Registered
+            </h3>
             <p className="text-sm text-muted-foreground">
-              Thank you. In this frontend preview, inputs pass client-side validation. In Phase 4, official enrollment
-              will launch with verified school partners and screened mentors.
+              Thank you. In this frontend preview, inputs pass client-side
+              validation. In Phase 4, official enrollment will launch with
+              verified school partners and screened mentors.
             </p>
             <Button onClick={handleReset} className="mx-auto mt-2 w-fit">
               Close
@@ -108,14 +121,17 @@ export function RegisterInterestDialog({
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 py-2">
             <div className="rounded-none border border-amber-500/20 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
-              <span className="font-semibold flex items-center gap-1 mb-1">
+              <span className="mb-1 flex items-center gap-1 font-semibold">
                 <ShieldAlert className="size-3.5" /> Prototype Notice:
               </span>
-              This form is a preview demonstration. Programs labeled &ldquo;Proposed&rdquo; (such as Future Labs &amp; Diaspora Mentoring) are currently in pre-pilot assessment. No personal data is stored to a production server during this demonstration.
+              This form is a preview demonstration. Programs labeled
+              &ldquo;Proposed&rdquo; (such as Future Labs &amp; Diaspora
+              Mentoring) are currently in pre-pilot assessment. No personal data
+              is stored to a production server during this demonstration.
             </div>
 
             {errorMessage && (
-              <div className="rounded-none border border-rose-500/20 bg-rose-500/10 p-2.5 text-xs text-rose-800 dark:text-rose-200 flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 rounded-none border border-rose-500/20 bg-rose-500/10 p-2.5 text-xs text-rose-800 dark:text-rose-200">
                 <AlertCircle className="size-4 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
@@ -123,36 +139,66 @@ export function RegisterInterestDialog({
 
             <FieldGroup className="flex flex-col gap-3">
               <Field>
-                <FieldLabel htmlFor="prog-type" className="text-xs font-semibold">Initiative</FieldLabel>
+                <FieldLabel
+                  htmlFor="prog-type"
+                  className="text-xs font-semibold"
+                >
+                  Initiative
+                </FieldLabel>
                 <select
                   id="prog-type"
                   value={programType}
-                  onChange={(e) => setProgramType(e.target.value as "FUTURE_LABS" | "DIASPORA_MENTOR" | "SCHOLARSHIP_ALERT")}
-                  className="w-full rounded-none border border-input bg-background px-3 py-2 text-base sm:text-sm text-foreground focus-visible:outline-ring/50"
+                  onChange={(e) =>
+                    setProgramType(
+                      e.target.value as
+                        "FUTURE_LABS" | "DIASPORA_MENTOR" | "SCHOLARSHIP_ALERT"
+                    )
+                  }
+                  className="w-full rounded-none border border-input bg-background px-3 py-2 text-base text-foreground focus-visible:outline-ring/50 sm:text-sm"
                 >
-                  <option value="FUTURE_LABS">Mayang Imphal Future Labs (STEM, Robotics & Coding)</option>
-                  <option value="DIASPORA_MENTOR">Global Mentor Circle (Diaspora Volunteer)</option>
-                  <option value="SCHOLARSHIP_ALERT">Official Scholarship Alerts & Updates</option>
+                  <option value="FUTURE_LABS">
+                    Mayang Imphal Future Labs (STEM, Robotics & Coding)
+                  </option>
+                  <option value="DIASPORA_MENTOR">
+                    Global Mentor Circle (Diaspora Volunteer)
+                  </option>
+                  <option value="SCHOLARSHIP_ALERT">
+                    Official Scholarship Alerts & Updates
+                  </option>
                 </select>
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="user-role" className="text-xs font-semibold">I am participating as</FieldLabel>
+                <FieldLabel
+                  htmlFor="user-role"
+                  className="text-xs font-semibold"
+                >
+                  I am participating as
+                </FieldLabel>
                 <select
                   id="user-role"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full rounded-none border border-input bg-background px-3 py-2 text-base sm:text-sm text-foreground focus-visible:outline-ring/50"
+                  className="w-full rounded-none border border-input bg-background px-3 py-2 text-base text-foreground focus-visible:outline-ring/50 sm:text-sm"
                 >
                   <option value="STUDENT">Secondary / College Student</option>
                   <option value="PARENT">Parent or Legal Guardian</option>
-                  <option value="EDUCATOR">Local School Teacher / Headmaster</option>
-                  <option value="DIASPORA_PROFESSIONAL">Diaspora Professional / Researcher</option>
+                  <option value="EDUCATOR">
+                    Local School Teacher / Headmaster
+                  </option>
+                  <option value="DIASPORA_PROFESSIONAL">
+                    Diaspora Professional / Researcher
+                  </option>
                 </select>
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="reg-name" className="text-xs font-semibold">Full Name</FieldLabel>
+                <FieldLabel
+                  htmlFor="reg-name"
+                  className="text-xs font-semibold"
+                >
+                  Full Name
+                </FieldLabel>
                 <Input
                   id="reg-name"
                   placeholder="Your full name"
@@ -163,7 +209,12 @@ export function RegisterInterestDialog({
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="reg-email" className="text-xs font-semibold">Contact Email</FieldLabel>
+                <FieldLabel
+                  htmlFor="reg-email"
+                  className="text-xs font-semibold"
+                >
+                  Contact Email
+                </FieldLabel>
                 <Input
                   id="reg-email"
                   type="email"
@@ -176,7 +227,7 @@ export function RegisterInterestDialog({
 
               {role === "STUDENT" && (
                 <div className="flex flex-col gap-2 rounded-none border border-border/80 bg-muted/20 p-3 text-xs">
-                  <label className="flex items-center gap-2 font-medium text-foreground cursor-pointer">
+                  <label className="flex cursor-pointer items-center gap-2 font-medium text-foreground">
                     <input
                       type="checkbox"
                       checked={isMinor}
@@ -187,9 +238,14 @@ export function RegisterInterestDialog({
                   </label>
 
                   {isMinor && (
-                    <div className="flex flex-col gap-2.5 pt-2 border-t border-border/60">
+                    <div className="flex flex-col gap-2.5 border-t border-border/60 pt-2">
                       <Field>
-                        <FieldLabel htmlFor="guardian-name" className="text-xs font-semibold">Parent / Legal Guardian Name</FieldLabel>
+                        <FieldLabel
+                          htmlFor="guardian-name"
+                          className="text-xs font-semibold"
+                        >
+                          Parent / Legal Guardian Name
+                        </FieldLabel>
                         <Input
                           id="guardian-name"
                           placeholder="Parent or Guardian's full name"
@@ -198,14 +254,15 @@ export function RegisterInterestDialog({
                           className="text-sm"
                         />
                       </Field>
-                      <label className="flex items-start gap-2 text-[11px] leading-relaxed text-muted-foreground cursor-pointer">
+                      <label className="flex cursor-pointer items-start gap-2 text-[11px] leading-relaxed text-muted-foreground">
                         <input
                           type="checkbox"
                           checked={guardianConsent}
                           onChange={(e) => setGuardianConsent(e.target.checked)}
                           className="mt-0.5 rounded border-input text-secondary"
                         />
-                        Parent/Guardian confirms permission for the student to register interest in upcoming supervised workshops.
+                        Parent/Guardian confirms permission for the student to
+                        register interest in upcoming supervised workshops.
                       </label>
                     </div>
                   )}
@@ -213,21 +270,37 @@ export function RegisterInterestDialog({
               )}
 
               {programType === "DIASPORA_MENTOR" && (
-                <div className="rounded-none border border-border/80 bg-muted/40 p-3 text-xs text-muted-foreground leading-relaxed">
-                  <span className="font-semibold text-foreground block mb-1">Mentor Safeguarding Protocol:</span>
-                  All volunteer mentors must complete credential screening and agree to supervised group interaction guidelines before participating in student sessions.
+                <div className="rounded-none border border-border/80 bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
+                  <span className="mb-1 block font-semibold text-foreground">
+                    Mentor Safeguarding Protocol:
+                  </span>
+                  All volunteer mentors must complete credential screening and
+                  agree to supervised group interaction guidelines before
+                  participating in student sessions.
                 </div>
               )}
             </FieldGroup>
 
-            <DialogFooter className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-border/60 pt-4">
-              <span className="text-[11px] text-muted-foreground text-center sm:text-left">Preview demonstration</span>
+            <DialogFooter className="flex flex-col-reverse items-stretch justify-between gap-3 border-t border-border/60 pt-4 sm:flex-row sm:items-center">
+              <span className="text-center text-[11px] text-muted-foreground sm:text-left">
+                Preview demonstration
+              </span>
               <div className="flex items-center gap-2">
-                <Button type="button" variant="outline" size="sm" onClick={() => setIsOpen(false)} className="flex-1 sm:flex-initial min-h-[44px] sm:min-h-0">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsOpen(false)}
+                  className="min-h-11 flex-1 sm:min-h-0 sm:flex-initial"
+                >
                   Cancel
                 </Button>
-                <Button type="submit" size="sm" className="flex-1 sm:flex-initial min-h-[44px] sm:min-h-0 bg-primary text-primary-foreground">
-                  Submit Preview
+                <Button
+                  type="submit"
+                  size="sm"
+                  className="min-h-11 flex-1 bg-primary text-primary-foreground sm:min-h-0 sm:flex-initial"
+                >
+                  Register
                 </Button>
               </div>
             </DialogFooter>
