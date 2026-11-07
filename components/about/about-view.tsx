@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { SiteHeader } from "@/components/site-header"
 import Footer from "@/components/footer-2"
-import { ArrowLeft, ShieldCheck, Lock, Scale, CheckCircle2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, ShieldCheck, Lock, Scale, CheckCircle2 } from "lucide-react"
 
 export function AboutView() {
   return (
@@ -12,10 +12,10 @@ export function AboutView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <section className="border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14">
+        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="flex flex-col gap-3 sm:gap-3.5 lg:col-span-7">
+              <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
                   className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
@@ -24,7 +24,7 @@ export function AboutView() {
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold tracking-wider text-primary dark:text-emerald-400 uppercase">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
                     Governance &amp; Compliance
                   </span>
                   <span className="text-muted-foreground/80">/</span>
@@ -37,11 +37,27 @@ export function AboutView() {
                   About Mayang Imphal
                 </h1>
 
-                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl font-normal tracking-normal">
+                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mt-3.5 max-w-2xl font-normal tracking-normal">
                   Platform identity, operator disclosures, statutory boundaries,
                   DPDP privacy policy, and public compliance standards for Mayang
                   Imphal.
                 </p>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                  <a
+                    href="#identity"
+                    className="inline-flex min-h-11 items-center justify-center rounded-none bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:scale-95 transition-colors"
+                  >
+                    Platform Disclosures
+                  </a>
+                  <a
+                    href="#corrections"
+                    className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-none border border-border px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:opacity-80 transition-colors"
+                  >
+                    <span>Submit Evidence</span>
+                    <ArrowRight className="size-3" />
+                  </a>
+                </div>
               </div>
 
               <div className="lg:col-span-5">
@@ -49,21 +65,21 @@ export function AboutView() {
                   <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/Leadership_Portrait.png"
-                      alt="Dr. Khumujam Ratankumar Singh in community dialogue with ward residents, Mayang Imphal"
+                      alt="Constituency delimitation and jurisdictional scope of Mayang Imphal (AC-23), Imphal West"
                       fill
-                      sizes="(max-width: 768px) 100vw, 320px"
+                      sizes="(max-width: 768px) 100vw, 360px"
                       className="object-cover"
                       priority
                     />
                   </div>
-                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[11px] font-sans text-muted-foreground">
-                    Civic Leadership Dialogue · Mayang Imphal (AC-23)
+                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-[11px] font-sans text-muted-foreground">
+                    Constituency Jurisdiction &amp; Scope · AC-23 Mayang Imphal
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Quick Anchor Navigation */}
         <div className="sticky top-14 sm:top-15 z-30 border-b border-border bg-background/95 py-2.5 backdrop-blur-sm sm:py-3.5">
