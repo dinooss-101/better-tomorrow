@@ -78,11 +78,11 @@ export function PrioritySubmissionDialog({
       <DialogContent className="w-[calc(100vw-2rem)] sm:max-w-xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="border-secondary/30 text-secondary text-xs">
+            <Badge variant="outline" className="rounded-none border-secondary/30 text-secondary text-xs font-ui font-semibold uppercase tracking-wider">
               Demonstration Preview Mode
             </Badge>
           </div>
-          <DialogTitle className="font-heading text-2xl font-semibold text-foreground">
+          <DialogTitle className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground">
             Share a Local Priority
           </DialogTitle>
           <DialogDescription className="text-xs leading-relaxed text-muted-foreground">

@@ -36,32 +36,37 @@ export function ProjectStatusBadge({ stage, condition, className }: ProjectStatu
     switch (c) {
       case "NORMAL":
         return (
-          <Badge variant="outline" className="border-emerald-600/30 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
-            Condition: Normal Schedule
+          <Badge variant="outline" className="border-emerald-600/30 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300 gap-1.5">
+            <span className="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+            Normal Schedule
           </Badge>
         )
       case "DELAYED":
         return (
-          <Badge variant="outline" className="border-amber-600/30 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
-            Condition: Reported Delay
+          <Badge variant="outline" className="border-amber-600/30 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300 gap-1.5">
+            <span className="size-1.5 rounded-full bg-amber-600 dark:bg-amber-400" />
+            Reported Delay
           </Badge>
         )
       case "ON_HOLD":
         return (
-          <Badge variant="outline" className="border-rose-600/30 bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300">
-            Condition: On Hold
+          <Badge variant="outline" className="border-rose-600/30 bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300 gap-1.5">
+            <span className="size-1.5 rounded-full bg-rose-600 dark:bg-rose-400" />
+            On Hold
           </Badge>
         )
       case "UNDER_VERIFICATION":
         return (
-          <Badge variant="outline" className="border-blue-600/30 bg-blue-50 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300">
-            Condition: Evidence Verification Pending
+          <Badge variant="outline" className="border-blue-600/30 bg-blue-50 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300 gap-1.5">
+            <span className="size-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            Verification Pending
           </Badge>
         )
       case "DISPUTED":
         return (
-          <Badge variant="outline" className="border-purple-600/30 bg-purple-50 text-purple-800 dark:bg-purple-950/40 dark:text-purple-300">
-            Condition: Boundary / Scope Disputed
+          <Badge variant="outline" className="border-purple-600/30 bg-purple-50 text-purple-800 dark:bg-purple-950/40 dark:text-purple-300 gap-1.5">
+            <span className="size-1.5 rounded-full bg-purple-600 dark:bg-purple-400" />
+            Scope Disputed
           </Badge>
         )
       default:

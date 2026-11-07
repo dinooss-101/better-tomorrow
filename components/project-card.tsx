@@ -15,7 +15,7 @@ export function ProjectCard({ project, showFullDetails = false }: ProjectCardPro
   return (
     <article
       id={project.slug}
-      className="flex flex-col justify-between border border-border bg-card p-6 sm:p-8 transition-colors hover:border-secondary/60 scroll-mt-20 gap-5"
+      className="flex flex-col justify-between border border-border bg-card p-6 sm:p-8 transition-all duration-200 hover:border-primary/50 hover:shadow-2xs scroll-mt-20 gap-5"
     >
       <div className="flex flex-col gap-3.5 pb-5 border-b border-border/60">
         <div className="flex flex-wrap items-center justify-between gap-2">
