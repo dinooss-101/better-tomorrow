@@ -30,8 +30,8 @@ export default function Footer() {
           {/* Office of the Representative with Mayang Imphal Logo */}
           <div className="md:col-span-5 space-y-4">
             <Link
-              href="/"
-              className="inline-flex group focus-visible:outline-2 focus-visible:outline-offset-2"
+              href="/#hero"
+              className="inline-flex group focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer"
               aria-label="Mayang Imphal Home · Dr. Khumujam Ratankumar Singh, For the People"
             >
               <TextLogo size="lg" />

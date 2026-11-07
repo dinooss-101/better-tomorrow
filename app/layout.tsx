@@ -4,6 +4,7 @@ import { Oswald, Montserrat, Public_Sans, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { DensityProvider } from "@/components/density-provider"
+import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { cn } from "@/lib/utils"
 
 const oswald = Oswald({
@@ -159,7 +160,10 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>
-          <DensityProvider>{children}</DensityProvider>
+          <DensityProvider>
+            {children}
+            <ScrollToTop />
+          </DensityProvider>
         </ThemeProvider>
       </body>
     </html>

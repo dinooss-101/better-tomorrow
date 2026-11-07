@@ -93,6 +93,18 @@ export function SiteHeader() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault()
+      const heroEl = document.getElementById("hero")
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: "smooth" })
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    }
+  }
+
   return (
     <header className="sticky top-0 z-40 w-full bg-background/95 backdrop-blur-md border-b border-border text-foreground shadow-none transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 min-h-14 sm:min-h-15 flex items-center justify-between gap-4">
@@ -100,8 +112,9 @@ export function SiteHeader() {
         {/* BRAND TEXT LOGO LOCKUP                                          */}
         {/* ================================================================ */}
         <Link
-          href="/"
-          className="group shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary py-0.5"
+          href="/#hero"
+          onClick={handleLogoClick}
+          className="group shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary py-0.5 cursor-pointer"
           aria-label="Mayang Imphal Home · Dr. Khumujam Ratankumar Singh"
         >
           <TextLogo />
@@ -260,7 +273,17 @@ export function SiteHeader() {
                 <div className="flex flex-col gap-5">
                   <SheetHeader className="text-left border-b border-border pb-4">
                     <div className="flex items-start gap-3">
-                      <TextLogo />
+                      <Link
+                        href="/#hero"
+                        onClick={(e) => {
+                          setMobileOpen(false)
+                          handleLogoClick(e)
+                        }}
+                        className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary py-0.5 cursor-pointer"
+                        aria-label="Mayang Imphal Home · Dr. Khumujam Ratankumar Singh"
+                      >
+                        <TextLogo />
+                      </Link>
                       <SheetTitle className="sr-only">
                         Dr. Khumujam Ratankumar Singh · Mayang Imphal AC-23
                       </SheetTitle>
