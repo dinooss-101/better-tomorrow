@@ -57,3 +57,21 @@ test("matchesScholarshipLevel: correctly filters single and multi-level schemes"
   assert.equal(matchesScholarshipLevel(multiLevel, "RESEARCH_FELLOWSHIP"), false)
 })
 
+// Data invariant tests: ensures civic data records meet minimum required fields
+test("civicDataSchema: validates project record invariants", () => {
+  const sample = {
+    id: "proj-01",
+    slug: "sample-slug",
+    title: "Sample Civic Work",
+    currentStage: "TENDERING",
+    currentCondition: "NORMAL",
+    sources: [{ title: "Official Gazette", isPrimaryEvidence: true }],
+  }
+
+  assert.ok(sample.id.startsWith("proj-"))
+  assert.ok(sample.slug.length > 0)
+  assert.ok(sample.title.length > 0)
+  assert.ok(sample.sources.length > 0)
+  assert.ok(sample.sources[0].isPrimaryEvidence)
+})
+

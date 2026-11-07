@@ -86,6 +86,47 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "GovernmentOrganization",
+      "@id": "https://mayangimphal.org/#organization",
+      name: "Mayang Imphal Civic Leadership Platform",
+      alternateName: "Mayang Imphal AC-23",
+      url: "https://mayangimphal.org",
+      logo: "https://mayangimphal.org/image/logo-bmi.png",
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Mayang Imphal",
+        identifier: "LGD 250326",
+        containedInPlace: {
+          "@type": "State",
+          name: "Manipur",
+        },
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "Constituency Grievance Desk",
+        email: "desk@bettermayangimphal.org",
+        availableLanguage: ["Manipuri", "English"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mayangimphal.org/#website",
+      url: "https://mayangimphal.org",
+      name: "Mayang Imphal",
+      description:
+        "Civic leadership and public accountability platform for Mayang Imphal (AC-23), Manipur.",
+      publisher: {
+        "@id": "https://mayangimphal.org/#organization",
+      },
+      inLanguage: "en-IN",
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -104,6 +145,12 @@ export default function RootLayout({
         fontMono.variable
       )}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       {/* Public Sans becomes the default sans-serif for the entire app */}
       <body className="bg-background font-sans text-[15px] leading-relaxed text-foreground antialiased">
         <script
