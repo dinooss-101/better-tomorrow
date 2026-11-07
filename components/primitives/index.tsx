@@ -50,9 +50,9 @@ export function Section({
   ...props
 }: SectionProps) {
   const spacingStyles = {
-    compact: "py-12 sm:py-16",
-    default: "py-16 sm:py-24 lg:py-28",
-    spacious: "py-20 sm:py-28 lg:py-36",
+    compact: "py-10 sm:py-14",
+    default: "py-16 sm:py-24 lg:py-28 [[data-density=compact]_&]:py-10 [[data-density=compact]_&]:sm:py-14",
+    spacious: "py-20 sm:py-28 lg:py-36 [[data-density=compact]_&]:py-12 [[data-density=compact]_&]:sm:py-16",
   }[spacing]
 
   const bgStyles = {

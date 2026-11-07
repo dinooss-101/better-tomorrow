@@ -73,7 +73,7 @@ export function HomeContactPanel() {
               notification.
             </p>
             <div className="pt-2">
-              <TextLink href="/about#statutory-disclosures">
+              <TextLink href="/about#statutory">
                 Legal Boundaries
               </TextLink>
             </div>

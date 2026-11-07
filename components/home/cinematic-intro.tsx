@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, useRef, useCallback } from "react"
+import { useRouter } from "next/navigation"
 import { AnimatePresence, useReducedMotion } from "motion/react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -11,6 +12,7 @@ export function CinematicIntro() {
   const shouldReduceMotion = useReducedMotion()
 
   const curtainRef = useRef<HTMLDivElement>(null)
+  const skipBtnRef = useRef<HTMLButtonElement>(null)
   const masterTimelineRef = useRef<gsap.core.Timeline | null>(null)
 
   // Elements for Phase 1 & 2 Build
@@ -58,6 +60,17 @@ export function CinematicIntro() {
 
   // Check on mount if user already experienced intro or prefers reduced motion
   useEffect(() => {
+    // Check if navigated from another page with ?replay=1
+    if (typeof window !== "undefined" && window.location.search.includes("replay=1")) {
+      try {
+        sessionStorage.removeItem("bmi_intro_seen")
+        window.history.replaceState({}, "", window.location.pathname)
+      } catch {
+        // Ignore
+      }
+      return
+    }
+
     const checkTimer = setTimeout(() => {
       if (shouldReduceMotion) {
         setIsDismissed(true)
@@ -74,16 +87,7 @@ export function CinematicIntro() {
       }
     }, 0)
 
-    // Keyboard escape listener
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === " ") {
-        e.preventDefault()
-        dismiss()
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown)
-
-    // Replay intro listener
+    // Replay intro custom event listener
     const handleReplay = () => {
       try {
         sessionStorage.removeItem("bmi_intro_seen")
@@ -100,10 +104,33 @@ export function CinematicIntro() {
 
     return () => {
       clearTimeout(checkTimer)
-      window.removeEventListener("keydown", handleKeyDown)
       window.removeEventListener("bmi:replay-intro", handleReplay)
     }
-  }, [shouldReduceMotion, dismiss])
+  }, [shouldReduceMotion])
+
+  // Manage keyboard listener and focus trap ONLY while intro is actively visible
+  useEffect(() => {
+    if (isDismissed) return
+
+    // Auto-focus skip button for keyboard and screen-reader accessibility
+    skipBtnRef.current?.focus()
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" || e.key === " ") {
+        e.preventDefault()
+        dismiss()
+      } else if (e.key === "Tab") {
+        // Trap focus inside the intro curtain
+        e.preventDefault()
+        skipBtnRef.current?.focus()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [isDismissed, dismiss])
 
   // GSAP Master Timeline (10.5s Total Cinematic Orchestration)
   useGSAP(
@@ -349,6 +376,7 @@ export function CinematicIntro() {
         ref={curtainRef}
         className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f7f6f2] dark:bg-[#070b09] text-foreground dark:text-white select-none overflow-hidden transition-colors"
         role="dialog"
+        aria-modal="true"
         aria-label="Mayang Imphal Vision Intro"
       >
         {/* Subtle Ambient Radial Glow */}
@@ -373,6 +401,7 @@ export function CinematicIntro() {
 
         {/* Skip Intro Button */}
         <button
+          ref={skipBtnRef}
           type="button"
           onClick={dismiss}
           className="absolute top-6 right-6 z-20 inline-flex items-center gap-1.5 border border-border bg-card/80 hover:bg-card text-foreground/80 hover:text-foreground dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/80 dark:hover:text-white px-3 py-1.5 text-[10px] font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-sm cursor-pointer shadow-xs"
@@ -505,6 +534,8 @@ export function CinematicIntro() {
  * Reusable button to replay the cinematic vision intro anytime on demand
  */
 export function ReplayIntroButton({ className }: { className?: string }) {
+  const router = useRouter()
+
   const triggerReplay = () => {
     try {
       sessionStorage.removeItem("bmi_intro_seen")
@@ -512,6 +543,13 @@ export function ReplayIntroButton({ className }: { className?: string }) {
     } catch {
       // Ignore
     }
+
+    // If triggered from another route (e.g. /progress, /scholarships), navigate to home with replay flag
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      router.push("/?replay=1")
+      return
+    }
+
     window.dispatchEvent(new CustomEvent("bmi:replay-intro"))
   }
 

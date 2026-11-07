@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useState, useCallback } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import { Play, Pause } from "lucide-react"
 
 gsap.registerPlugin(useGSAP)
 
@@ -68,8 +69,21 @@ export function CircleCredits({
   className,
 }: CircleCreditsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const tweenRef = useRef<gsap.core.Tween | null>(null)
+  const [isPaused, setIsPaused] = useState(false)
   const rows = Math.max(left.length, right.length)
   const middle = (rows - 1) / 2
+
+  const togglePause = useCallback(() => {
+    if (!tweenRef.current) return
+    if (isPaused) {
+      tweenRef.current.play()
+      setIsPaused(false)
+    } else {
+      tweenRef.current.pause()
+      setIsPaused(true)
+    }
+  }, [isPaused])
 
   // Slots along the track, clockwise: 0 … rows-1 run up the left side
   // (bottom → top), rows … 2·rows-1 run down the right side (top → bottom).
@@ -160,7 +174,7 @@ export function CircleCredits({
         return () => resize.disconnect()
       }
 
-      gsap.to(lap, {
+      tweenRef.current = gsap.to(lap, {
         progress: 1,
         duration,
         ease: "power2.inOut",
@@ -266,18 +280,25 @@ export function CircleCredits({
         className="relative w-full font-ui font-medium whitespace-nowrap text-foreground/80 text-[clamp(7px,1.4cqw,10.5px)] tracking-wider uppercase"
         style={{ height: `${(rows + 1) * LINE}em` }}
       >
-        {/* Center Circular Hole Radar Anchor */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center pointer-events-none select-none z-10 size-20 rounded-full border border-dashed border-border/80 bg-background/90 p-2 shadow-2xs">
-          <span className="font-ui text-[8px] font-bold uppercase tracking-widest text-primary dark:text-emerald-400">
+        {/* Center Circular Hole Radar Anchor with Accessible Motion Pause/Play */}
+        <button
+          type="button"
+          onClick={togglePause}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center cursor-pointer select-none z-10 size-20 rounded-full border border-dashed border-border/80 bg-background/90 p-2 shadow-2xs hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors"
+          aria-label={isPaused ? "Resume registry motion" : "Pause registry motion"}
+          title={isPaused ? "Resume motion" : "Pause motion"}
+        >
+          <span className="font-ui text-[8px] font-bold uppercase tracking-widest text-primary dark:text-emerald-400 flex items-center gap-1">
             Registry
+            {isPaused ? <Play className="size-2 fill-current" /> : <Pause className="size-2 fill-current" />}
           </span>
           <span className="font-display text-xs font-bold uppercase tracking-tight text-foreground">
             AC-23
           </span>
           <span className="font-ui text-[7px] font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
-            Active
+            {isPaused ? "Paused" : "Active"}
           </span>
-        </div>
+        </button>
 
         {Array.from({ length: rows }, (_, row) => [
           renderName(left[row], leftSlot(row), row),

@@ -64,25 +64,48 @@ export function ProjectCard({ project, showFullDetails = false }: ProjectCardPro
             {project.targetCompletionDate && <span>Target: {project.targetCompletionDate}</span>}
           </div>
         )}
-      </div>
 
-      <div className="pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-        <div className="flex items-center gap-1.5 max-w-[85%] font-ui">
-          <FileText className="size-3.5 text-secondary shrink-0" />
-          <span className="truncate">Evidence: {primarySource.title}</span>
-        </div>
-        {primarySource.sourceUrl && (
-          <a
-            href={primarySource.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-secondary hover:underline shrink-0 font-ui font-semibold uppercase tracking-wider"
-          >
-            <span>Gazette Ref</span>
-            <ExternalLink className="size-3" />
-          </a>
+        {showFullDetails && project.statusHistory && project.statusHistory.length > 0 && (
+          <div className="flex flex-col gap-2 rounded-none border border-border/60 bg-muted/20 p-3 text-xs mt-1">
+            <span className="font-semibold font-ui uppercase tracking-wider text-foreground">
+              Status History Trail ({project.statusHistory.length})
+            </span>
+            <div className="flex flex-col gap-2 divide-y divide-border/40">
+              {project.statusHistory.map((hist, hIdx) => (
+                <div key={hIdx} className="pt-2 first:pt-0 flex flex-col gap-1">
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="font-medium text-foreground">
+                      {hist.stage.replace(/_/g, " ")} ({hist.condition})
+                    </span>
+                    <span className="text-muted-foreground">{hist.effectiveDate}</span>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">{hist.rationale}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
+
+      {primarySource && (
+        <div className="pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5 max-w-[85%] font-ui">
+            <FileText className="size-3.5 text-secondary shrink-0" />
+            <span className="truncate">Evidence: {primarySource.title}</span>
+          </div>
+          {primarySource.sourceUrl && (
+            <a
+              href={primarySource.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-secondary hover:underline shrink-0 font-ui font-semibold uppercase tracking-wider"
+            >
+              <span>Gazette Ref</span>
+              <ExternalLink className="size-3" />
+            </a>
+          )}
+        </div>
+      )}
     </article>
   )
 }

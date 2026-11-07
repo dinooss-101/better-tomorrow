@@ -108,3 +108,9 @@
     opacity: 0;
   }
 }
+
+/* Reading Comfort Density: Dynamic Global Compact Override */
+html[data-density="compact"] section {
+  padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
