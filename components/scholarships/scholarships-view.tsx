@@ -120,10 +120,10 @@ export function ScholarshipsView() {
 
       <main className="flex-1">
         {/* Page Hero */}
-        <div className="border-b border-border bg-background py-12 sm:py-16 md:py-20">
+        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="flex flex-col gap-4 lg:col-span-7">
+              <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
                   className="inline-flex w-fit items-center gap-1.5 font-ui text-xs font-semibold tracking-wider text-primary uppercase transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-80 dark:text-emerald-400"
@@ -171,7 +171,7 @@ export function ScholarshipsView() {
               </div>
 
               <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-sm border border-border/80 bg-card p-3 shadow-xs">
+                <div className="relative mx-auto max-w-[280px] sm:max-w-[320px] lg:max-w-[300px] xl:max-w-xs border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/scholarship-academic-aspiration.png"

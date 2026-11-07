@@ -50,42 +50,49 @@ export function ContactView() {
 
       <main>
         {/* Page Header */}
-        <section className="border-b border-border bg-background pt-16 pb-14 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
+        <section className="border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <Link
-              href="/"
-              className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground transition-colors mb-8 sm:mb-10 min-h-11"
-            >
-              <ArrowLeft className="size-3.5" />
-              Overview
-            </Link>
-
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="max-w-2xl lg:col-span-7">
-                <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 block mb-2.5">
-                  Direct access / Open Constituency Desk
-                </span>
+              <div className="flex flex-col gap-3 sm:gap-3.5 lg:col-span-7">
+                <Link
+                  href="/"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                >
+                  <ArrowLeft className="size-3.5" /> Overview
+                </Link>
+
+                <div className="flex items-center gap-2">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+                    Direct access
+                  </span>
+                  <span className="text-muted-foreground/80">/</span>
+                  <span className="font-ui text-xs text-muted-foreground font-semibold uppercase tracking-wider">
+                    Open Constituency Desk
+                  </span>
+                </div>
+
                 <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight uppercase">
                   Contact the constituency desk.
                 </h1>
-                <p className="mt-4 font-sans text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl font-normal tracking-normal">
+
+                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl font-normal tracking-normal">
                   Direct access to our ward team in Mayang Imphal. No gatekeepers. No agents. Log a priority or attend open office hours.
                 </p>
               </div>
 
               <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-sm border border-border/80 bg-card p-3 shadow-xs">
+                <div className="relative mx-auto max-w-[280px] sm:max-w-[320px] lg:max-w-[300px] xl:max-w-xs border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/constituency-open-desk.png"
                       alt="Mayang Imphal Constituency Open Desk citizen intake"
                       fill
-                      sizes="(max-width: 768px) 100vw, 360px"
+                      sizes="(max-width: 768px) 100vw, 320px"
                       className="object-cover"
                       priority
                     />
                   </div>
-                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-[11px] font-sans text-muted-foreground">
+                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[11px] font-sans text-muted-foreground">
                     Open Office &amp; Grievance Intake · Ward 5, Bazar
                   </div>
                 </div>
@@ -95,7 +102,7 @@ export function ContactView() {
         </section>
 
         {/* Office Info + Form */}
-        <section className="border-b border-border bg-background py-16 sm:py-24 lg:py-28">
+        <section className="border-b border-border bg-background py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
 

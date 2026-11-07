@@ -12,7 +12,7 @@ export function AboutView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <div className="border-b border-border bg-background py-12 text-foreground sm:py-16 md:py-20">
+        <div className="border-b border-border bg-background py-10 text-foreground sm:py-12 md:py-14 lg:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="flex max-w-3xl flex-col gap-4">
               <Link
