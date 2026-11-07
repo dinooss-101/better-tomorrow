@@ -51,8 +51,8 @@ export function Section({
 }: SectionProps) {
   const spacingStyles = {
     compact: "py-10 sm:py-14",
-    default: "py-16 sm:py-24 lg:py-28 [[data-density=compact]_&]:py-10 [[data-density=compact]_&]:sm:py-14",
-    spacious: "py-20 sm:py-28 lg:py-36 [[data-density=compact]_&]:py-12 [[data-density=compact]_&]:sm:py-16",
+    default: "py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14",
+    spacious: "py-20 sm:py-28 lg:py-36 in-data-[density=compact]:py-12 in-data-[density=compact]:sm:py-16",
   }[spacing]
 
   const bgStyles = {
