@@ -154,7 +154,7 @@ export function HomeHero() {
                     <span className="font-ui text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white/95">
                       Dr. Khumujam Ratankumar Singh
                     </span>
-                    <span className="flex items-center gap-1 font-ui text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/70">
+                    <span className="flex items-center gap-1 font-ui text-[11px] font-medium uppercase tracking-wider text-white/70">
                       <MapPin className="size-2.5" />
                       MLA · Mayang Imphal AC-23
                     </span>

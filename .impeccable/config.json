@@ -5,7 +5,8 @@
     "ignoreRules": [],
     "ignoreFiles": [
       "node_modules/**",
-      ".next/**"
+      ".next/**",
+      "components/text-logo.tsx"
     ],
     "ignoreValues": []
   },

@@ -153,10 +153,10 @@ export function SiteHeader() {
                   className="w-72 sm:w-80 p-1.5 rounded-none border border-border bg-popover text-popover-foreground shadow-lg ring-1 ring-border"
                 >
                   <div className="px-2.5 py-1.5 border-b border-border/60 mb-1 flex items-center justify-between">
-                    <span className="font-ui text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                       {group.label}
                     </span>
-                    <span className="font-ui text-[9px] uppercase tracking-wider text-primary dark:text-emerald-400 font-semibold">
+                    <span className="font-ui text-[11px] uppercase tracking-wider text-primary dark:text-emerald-400 font-semibold">
                       Mayang Imphal AC-23
                     </span>
                   </div>
@@ -176,7 +176,7 @@ export function SiteHeader() {
                             {subItem.label}
                           </span>
                           {subItem.badge && (
-                            <span className="font-ui text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
+                            <span className="font-ui text-[11px] font-semibold uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
                               {subItem.badge}
                             </span>
                           )}
@@ -287,7 +287,7 @@ export function SiteHeader() {
                     {/* Nav Groups */}
                     {NAV_GROUPS.map((group) => (
                       <div key={group.id} className="space-y-1.5">
-                        <span className="font-ui text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/80 px-1 block">
+                        <span className="font-ui text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/80 px-1 block">
                           {group.label}
                         </span>
                         <div className="border border-border bg-card divide-y divide-border/60">
@@ -310,7 +310,7 @@ export function SiteHeader() {
                                     {subItem.label}
                                   </span>
                                   {subItem.badge && (
-                                    <span className="font-ui text-[9px] uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
+                                    <span className="font-ui text-[11px] uppercase tracking-wider px-1.5 py-0.5 border border-border/80 bg-background text-muted-foreground">
                                       {subItem.badge}
                                     </span>
                                   )}

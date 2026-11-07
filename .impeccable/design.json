@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T22:12:00Z",
+  "title": "Design System: Mayang Imphal",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Nordic Pine",
+        "canonical": "#294f46",
+        "tonalRamp": [
+          "#10221e",
+          "#1b352f",
+          "#294f46",
+          "#396c60",
+          "#4c8b7c",
+          "#68ab9c",
+          "#94ccbf",
+          "#d1ece5"
+        ]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Nordic Pine Subdued",
+        "canonical": "#294f46",
+        "tonalRamp": [
+          "#10221e",
+          "#1b352f",
+          "#294f46",
+          "#396c60",
+          "#4c8b7c",
+          "#68ab9c",
+          "#94ccbf",
+          "#d1ece5"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Nordic Stone",
+        "canonical": "#f7f6f2",
+        "tonalRamp": [
+          "#181c20",
+          "#2c333a",
+          "#4b5563",
+          "#9ca3af",
+          "#d1d5db",
+          "#e7ebe5",
+          "#f0efe9",
+          "#f7f6f2"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Nordic Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#151c26",
+          "#202937",
+          "#374151",
+          "#6b7280",
+          "#9ca3af",
+          "#d1d5db",
+          "#f3f4f6",
+          "#ffffff"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Stone Border",
+        "canonical": "#d7ddd7",
+        "tonalRamp": [
+          "#1a221f",
+          "#2e3b36",
+          "#50635c",
+          "#7e968d",
+          "#adbfb7",
+          "#c8d4ce",
+          "#d7ddd7",
+          "#edf2ee"
+        ]
+      },
+      "nordic-amber": {
+        "role": "tertiary",
+        "displayName": "Nordic Amber",
+        "canonical": "#b38c6d",
+        "tonalRamp": [
+          "#2d2015",
+          "#4a3523",
+          "#6f5035",
+          "#946c48",
+          "#b38c6d",
+          "#cca788",
+          "#e3c7ab",
+          "#f5e8db"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Oswald)",
+        "purpose": "Authoritative civic hero titles and section banners."
+      },
+      "ui": {
+        "displayName": "UI / Label (Montserrat)",
+        "purpose": "Navigation tabs, status badges, and uppercase category tags."
+      },
+      "body": {
+        "displayName": "Body (Public Sans)",
+        "purpose": "Neutral, highly legible text for long-form reading and tables."
+      },
+      "mono": {
+        "displayName": "Data / Mono (Geist Mono)",
+        "purpose": "Statutory tender IDs, coordinates, and cryptographic verification receipts."
+      }
+    },
+    "shadows": [
+      {
+        "name": "structural-none",
+        "value": "none",
+        "purpose": "Surfaces are flat at rest; depth is created via contrasting tonal layers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-decelerate",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Calm, dignified state transitions without bouncy overshoot."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Rectilinear civic commitment button with high-contrast text.",
+      "html": "<button class=\"ds-btn-primary\">SUBMIT INQUIRY</button>",
+      "css": ".ds-btn-primary { background: #294f46; color: #ffffff; padding: 12px 24px; font-family: Montserrat, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: none; border-radius: 0; cursor: pointer; transition: background 0.15s ease-out; min-height: 44px; } .ds-btn-primary:hover { background: #1e3b34; } .ds-btn-primary:focus-visible { outline: 2px solid #294f46; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Outline Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Transparent action button anchored by a 1px stone border.",
+      "html": "<button class=\"ds-btn-secondary\">EXPLORE LAYER</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #232b29; padding: 12px 24px; font-family: Montserrat, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid #d7ddd7; border-radius: 0; cursor: pointer; transition: background 0.15s ease-out, border-color 0.15s ease-out; min-height: 44px; } .ds-btn-secondary:hover { background: #e7ebe5; border-color: #232b29; } .ds-btn-secondary:focus-visible { outline: 2px solid #294f46; outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Badge (Officially Sanctioned)",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Two-state decoupling badge for funded and gazetted public projects.",
+      "html": "<span class=\"ds-badge-sanctioned\"><span class=\"ds-dot-green\"></span>OFFICIALLY SANCTIONED</span>",
+      "css": ".ds-badge-sanctioned { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; background: rgba(41, 79, 70, 0.1); color: #294f46; border: 1px solid rgba(41, 79, 70, 0.3); font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 0; } .ds-dot-green { width: 6px; height: 6px; background: #294f46; border-radius: 0; }"
+    },
+    {
+      "name": "Status Badge (Proposed Initiative)",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Decoupled badge for citizen proposals awaiting statutory sanction.",
+      "html": "<span class=\"ds-badge-proposed\"><span class=\"ds-dot-amber\"></span>PROPOSED INITIATIVE · IN ASSESSMENT</span>",
+      "css": ".ds-badge-proposed { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; background: rgba(179, 140, 109, 0.12); color: #946c48; border: 1px solid rgba(179, 140, 109, 0.35); font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 0; } .ds-dot-amber { width: 6px; height: 6px; background: #b38c6d; border-radius: 0; }"
+    },
+    {
+      "name": "Civic Record Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Solid white card bed with 1px stone border and rectilinear geometry.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">AMRUT 2.0 GIS Delineation</h3><p class=\"ds-card-body\">Statutory boundary verification across all 12 wards under Town Planning Horizon 2045.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #d7ddd7; padding: 24px; border-radius: 0; display: flex; flex-direction: column; gap: 8px; } .ds-card-title { margin: 0; font-family: Oswald, sans-serif; font-size: 20px; font-weight: 700; color: #232b29; text-transform: uppercase; } .ds-card-body { margin: 0; font-family: Public Sans, sans-serif; font-size: 14px; line-height: 1.6; color: #47544f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Civic Ledger",
+    "overview": "Mayang Imphal employs a Nordic Lagom Minimalist aesthetic rooted in architectural restraint, civic gravitas, and honest communication. Lagom rejects empty tech decoration, artificial urgency, and AI visual clichés in favor of calm, high-contrast, editorial clarity.\n\nEvery layout is built on a rectilinear grid with zero rounded corners (rounded-none), evoking statutory municipal charters, town planning maps, and physical civic monuments. The interface recedes to let verified public records, scholarship deadlines, and spatial planning layers lead.",
+    "keyCharacteristics": [
+      "Rectilinear Geometry: Strict rounded: 0px across all buttons, cards, containers, and badges.",
+      "Nordic Pine & Stone Palette: Warm limestone parchment, deep forest pine accents, and quiet dividing lines.",
+      "Dual-Status Clarity: Clear visual separation between official state tenders and community proposals.",
+      "Architectural Typography: Oswald for authoritative headlines, Montserrat for uppercase navigation, Public Sans for body text."
+    ],
+    "rules": [
+      {
+        "name": "The Rarity of Pine Rule",
+        "body": "Primary pine fills are reserved for primary action commitments, key progress badges, and navigation focal points. At least 85% of the viewport remains neutral stone and crisp white.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Faux-Heritage Rule",
+        "body": "Never use simulated parchment stains, skeuomorphic crests, or artificial antique gradients. Dignity comes from geometric precision and honest data.",
+        "section": "colors"
+      },
+      {
+        "name": "The 11px Floor Rule",
+        "body": "Functional text and labels never fall below 11px. Micro-text smaller than 11px is prohibited to ensure full WCAG 2.2 accessibility.",
+        "section": "typography"
+      },
+      {
+        "name": "The Dual-Font Nav Rule",
+        "body": "Navigation items pair Montserrat uppercase labels (tracking-wider) with Public Sans descriptive subtitles.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do ground every civic claim with a verifiable tender reference, department notice, or official citation.",
+      "Do maintain strict dual-status decoupling between community proposals and sanctioned public works.",
+      "Do enforce minimum 44×44px interactive touch targets and visible focus indicators.",
+      "Do keep functional UI text at or above the 11px accessibility floor.",
+      "Do keep interactive button and card edges rectilinear (rounded-none)."
+    ],
+    "donts": [
+      "Don't use purple-to-cyan gradients, dark glowing halos, or floating spotlights.",
+      "Don't nest cards within cards (avoid container-in-container visual bloat).",
+      "Don't use bouncy or rubber-band animations; use subtle ease-out deceleration.",
+      "Don't reduce functional UI text below 11px.",
+      "Don't hide important statutory disclaimers in tiny unreadable smallprint."
+    ]
+  }
+}

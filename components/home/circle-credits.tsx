@@ -288,14 +288,14 @@ export function CircleCredits({
           aria-label={isPaused ? "Resume registry motion" : "Pause registry motion"}
           title={isPaused ? "Resume motion" : "Pause motion"}
         >
-          <span className="font-ui text-[8px] font-bold uppercase tracking-widest text-primary dark:text-emerald-400 flex items-center gap-1">
+          <span className="font-ui text-[11px] font-bold uppercase tracking-widest text-primary dark:text-emerald-400 flex items-center gap-1">
             Registry
-            {isPaused ? <Play className="size-2 fill-current" /> : <Pause className="size-2 fill-current" />}
+            {isPaused ? <Play className="size-2.5 fill-current" /> : <Pause className="size-2.5 fill-current" />}
           </span>
-          <span className="font-display text-xs font-bold uppercase tracking-tight text-foreground">
+          <span className="font-display text-sm font-bold uppercase tracking-tight text-foreground">
             AC-23
           </span>
-          <span className="font-ui text-[7px] font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
+          <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mt-0.5">
             {isPaused ? "Paused" : "Active"}
           </span>
         </button>

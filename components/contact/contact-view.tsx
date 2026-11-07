@@ -155,7 +155,7 @@ export function ContactView() {
                 <div className="border border-border/80 bg-muted/20 p-5 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-ui font-bold uppercase tracking-wider text-foreground">
                     <Shield className="size-4 text-secondary" />
-                    <span>DPDP Act 2025 Compliant</span>
+                    <span>DPDP Act 2023 Compliant</span>
                   </div>
                   <p className="font-sans text-xs text-muted-foreground leading-relaxed">
                     Zero Aadhaar harvesting. No family documents. No banking credentials collected at any point.

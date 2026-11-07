@@ -163,7 +163,7 @@ function StackingCard({
                 <span className="font-mono text-xs sm:text-[13px] font-bold text-foreground">
                   {h.value}
                 </span>
-                <span className="font-ui text-[10px] sm:text-[11px] text-muted-foreground uppercase tracking-wider font-medium">
+                <span className="font-ui text-[11px] sm:text-xs text-muted-foreground uppercase tracking-wider font-medium">
                   {h.label}
                 </span>
               </div>

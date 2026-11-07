@@ -394,7 +394,7 @@ export function CinematicIntro() {
         />
 
         {/* Top Civic Mandate Marker */}
-        <div className="absolute top-6 left-6 z-20 hidden sm:flex items-center gap-2 text-[10px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
+        <div className="absolute top-6 left-6 z-20 hidden sm:flex items-center gap-2 text-[11px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
           <span className="size-1.5 rounded-full bg-primary dark:bg-emerald-500 animate-pulse" />
           <span>Mayang Imphal AC-23 · LGD 250326</span>
         </div>
@@ -404,7 +404,7 @@ export function CinematicIntro() {
           ref={skipBtnRef}
           type="button"
           onClick={dismiss}
-          className="absolute top-6 right-6 z-20 inline-flex items-center gap-1.5 border border-border bg-card/80 hover:bg-card text-foreground/80 hover:text-foreground dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/80 dark:hover:text-white px-3 py-1.5 text-[10px] font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-sm cursor-pointer shadow-xs"
+          className="absolute top-6 right-6 z-20 inline-flex items-center gap-1.5 border border-border bg-card/80 hover:bg-card text-foreground/80 hover:text-foreground dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/80 dark:hover:text-white px-3 py-1.5 text-[11px] font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-sm cursor-pointer shadow-xs"
           aria-label="Skip introduction"
         >
           <span>Skip [ESC]</span>
@@ -421,7 +421,7 @@ export function CinematicIntro() {
           {/* Coordinates Header */}
           <div
             ref={coordsRef}
-            className="mb-4 font-mono text-[10px] tracking-[0.3em] uppercase text-primary/80 dark:text-emerald-400/80 font-medium"
+            className="mb-4 font-mono text-[11px] tracking-[0.3em] uppercase text-primary/80 dark:text-emerald-400/80 font-medium"
           >
             24°46&apos;N 93°53&apos;E · HORIZON 2045
           </div>
@@ -469,7 +469,7 @@ export function CinematicIntro() {
           {/* Eyebrow Pill */}
           <div
             ref={eyebrowRef}
-            className="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-primary/20 bg-primary/5 dark:border-white/20 dark:bg-white/5 px-3 py-1 font-ui text-[10px] font-semibold uppercase tracking-widest text-primary dark:text-emerald-400 backdrop-blur-xs"
+            className="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-primary/20 bg-primary/5 dark:border-white/20 dark:bg-white/5 px-3 py-1 font-ui text-[11px] font-semibold uppercase tracking-widest text-primary dark:text-emerald-400 backdrop-blur-xs"
           >
             <span className="size-1.5 rounded-full bg-primary dark:bg-emerald-400 animate-ping inline-block" />
             <span>Civic Leadership &amp; Mandate</span>

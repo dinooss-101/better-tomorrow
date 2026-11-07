@@ -1,5 +1,7 @@
 import test from "node:test"
 import assert from "node:assert/strict"
+import fs from "node:fs"
+import path from "node:path"
 
 // Pure unit test of the closing soon window logic (7-day threshold)
 function isDeadlineClosingSoon(deadline, now) {
@@ -75,3 +77,53 @@ test("civicDataSchema: validates project record invariants", () => {
   assert.ok(sample.sources[0].isPrimaryEvidence)
 })
 
+// Compliance invariant: ensures DPDP Act references are strictly 2023 across public disclosures
+test("compliance: validates DPDP Act citation year across public disclosures", () => {
+  const footerPath = path.resolve("components/footer-2.tsx")
+  const contactPath = path.resolve("components/contact/contact-view.tsx")
+  const productPath = path.resolve("PRODUCT.md")
+
+  const footerContent = fs.readFileSync(footerPath, "utf-8")
+  const contactContent = fs.readFileSync(contactPath, "utf-8")
+  const productContent = fs.readFileSync(productPath, "utf-8")
+
+  assert.ok(!footerContent.includes("DPDP Act 2025"), "footer must not cite DPDP Act 2025")
+  assert.ok(footerContent.includes("DPDP Act 2023"), "footer must cite DPDP Act 2023")
+
+  assert.ok(!contactContent.includes("DPDP Act 2025"), "contact view must not cite DPDP Act 2025")
+  assert.ok(contactContent.includes("DPDP Act 2023"), "contact view must cite DPDP Act 2023")
+
+  assert.ok(productContent.includes("DPDP) Act 2023"), "PRODUCT.md must cite DPDP Act 2023")
+})
+
+// Security header invariant: validates presence of essential defensive headers in next.config.ts
+test("security: validates HTTP security headers configuration in next.config.ts", () => {
+  const configPath = path.resolve("next.config.ts")
+  const configContent = fs.readFileSync(configPath, "utf-8")
+
+  assert.ok(configContent.includes("X-Frame-Options"), "must configure X-Frame-Options")
+  assert.ok(configContent.includes("X-Content-Type-Options"), "must configure X-Content-Type-Options")
+  assert.ok(configContent.includes("Strict-Transport-Security"), "must configure HSTS")
+  assert.ok(configContent.includes("Referrer-Policy"), "must configure Referrer-Policy")
+  assert.ok(configContent.includes("Permissions-Policy"), "must configure Permissions-Policy")
+})
+
+// Route inventory invariant: ensures all 7 core routes exist in sitemap
+test("routes: validates presence of all 7 core routes in sitemap.ts", () => {
+  const sitemapPath = path.resolve("app/sitemap.ts")
+  const sitemapContent = fs.readFileSync(sitemapPath, "utf-8")
+
+  const expectedRoutes = [
+    '""',
+    '"/about"',
+    '"/contact"',
+    '"/development"',
+    '"/future-labs"',
+    '"/progress"',
+    '"/scholarships"',
+  ]
+
+  for (const route of expectedRoutes) {
+    assert.ok(sitemapContent.includes(route), `sitemap must include route ${route}`)
+  }
+})

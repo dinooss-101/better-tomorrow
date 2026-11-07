@@ -1,124 +1,102 @@
 ---
-name: Better Mayang Imphal (BMI)
-description: Nordic Lagom Minimalist civic design system for transparent local planning and STEM advocacy
+name: Mayang Imphal
+description: Nordic Lagom Minimalist civic platform for transparent planning, youth STEM, and verified progress
 colors:
-  primary: "#182230"
-  primary-foreground: "#f7f6f1"
-  secondary: "#264938"
-  secondary-foreground: "#f7f6f1"
-  background: "#f7f6f1"
-  foreground: "#181c20"
+  primary: "#294f46"
+  primary-foreground: "#ffffff"
+  secondary: "#294f46"
+  secondary-foreground: "#ffffff"
+  background: "#f7f6f2"
+  foreground: "#232b29"
   card: "#ffffff"
-  card-foreground: "#181c20"
+  card-foreground: "#232b29"
   popover: "#ffffff"
-  popover-foreground: "#181c20"
-  muted: "#edebe4"
-  muted-foreground: "#555d67"
-  accent: "#e6e3da"
-  accent-foreground: "#182230"
-  border: "#dedbd2"
-  input: "#dedbd2"
-  ring: "#264938"
-  destructive: "#9e2a2b"
-  nordic-stone: "#f7f6f1"
+  popover-foreground: "#232b29"
+  muted: "#e7ebe5"
+  muted-foreground: "#47544f"
+  accent: "#e7ebe5"
+  accent-foreground: "#232b29"
+  border: "#d7ddd7"
+  input: "#d7ddd7"
+  ring: "#294f46"
+  destructive: "#a4352b"
+  nordic-stone: "#f7f6f2"
   nordic-paper: "#ffffff"
-  nordic-charcoal: "#181c20"
-  nordic-fjord: "#182230"
-  nordic-pine: "#264938"
-  nordic-amber: "#b8793b"
-  nordic-sand: "#edebe4"
-  brand-navy: "#101722"
+  nordic-charcoal: "#232b29"
+  nordic-fjord: "#294f46"
+  nordic-pine: "#294f46"
+  nordic-amber: "#b38c6d"
+  nordic-sand: "#e7ebe5"
+  logo-navy: "#170852"
+  logo-red: "#fa2816"
 typography:
   display:
-    fontFamily: "var(--font-headline), Source Serif 4, Georgia, serif"
+    fontFamily: "var(--font-display), Oswald, sans-serif"
     fontSize: "3.25rem"
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "var(--font-headline), Source Serif 4, Georgia, serif"
+    fontFamily: "var(--font-headline), Oswald, sans-serif"
     fontSize: "2.25rem"
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: "-0.01em"
   title:
-    fontFamily: "var(--font-headline), Source Serif 4, Georgia, serif"
+    fontFamily: "var(--font-headline), Oswald, sans-serif"
     fontSize: "1.5rem"
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "0em"
-  subtitle:
-    fontFamily: "var(--font-headline), Source Serif 4, Georgia, serif"
-    fontSize: "1.125rem"
+  ui:
+    fontFamily: "var(--font-ui), Montserrat, sans-serif"
+    fontSize: "0.75rem"
     fontWeight: 600
-    lineHeight: 1.35
-    letterSpacing: "0em"
+    lineHeight: 1.25
+    letterSpacing: "0.05em"
+  label:
+    fontFamily: "var(--font-ui), Montserrat, sans-serif"
+    fontSize: "11px"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "0.05em"
+  caption:
+    fontFamily: "var(--font-body), Public Sans, system-ui, sans-serif"
+    fontSize: "11px"
+    fontWeight: 400
+    lineHeight: 1.4
   body:
     fontFamily: "var(--font-body), Public Sans, system-ui, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 400
     lineHeight: 1.6
-    letterSpacing: "0em"
-  sm:
-    fontFamily: "var(--font-body), Public Sans, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "0em"
-  label:
-    fontFamily: "var(--font-body), Public Sans, system-ui, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 600
-    lineHeight: 1.4
-    letterSpacing: "0.02em"
-  caption:
-    fontFamily: "var(--font-body), Public Sans, system-ui, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: "0.01em"
-  micro:
-    fontFamily: "var(--font-mono), Geist Mono, monospace"
-    fontSize: "0.6875rem"
-    fontWeight: 500
-    lineHeight: 1.3
-    letterSpacing: "0.02em"
   mono:
     fontFamily: "var(--font-mono), Geist Mono, monospace"
     fontSize: "0.8125rem"
     fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: "0.01em"
 rounded:
   none: "0px"
-  sm: "0px"
-  md: "0px"
-  lg: "0px"
-  full: "9999px"
 spacing:
   xs: "4px"
   sm: "8px"
   md: "16px"
   lg: "24px"
   xl: "32px"
-  2xl: "48px"
-  3xl: "64px"
 components:
   button-primary:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.secondary-foreground}"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.primary-foreground}"
     rounded: "{rounded.none}"
     padding: "12px 24px"
-  button-primary-hover:
-    backgroundColor: "#1e3a2c"
-  button-outline:
+  button-secondary:
     backgroundColor: "transparent"
-    textColor: "{colors.primary}"
+    textColor: "{colors.foreground}"
     rounded: "{rounded.none}"
     padding: "12px 24px"
   badge:
     backgroundColor: "{colors.muted}"
-    textColor: "{colors.primary}"
+    textColor: "{colors.foreground}"
     rounded: "{rounded.none}"
     padding: "4px 8px"
   card:
@@ -128,87 +106,119 @@ components:
     padding: "24px"
 ---
 
-# Design System
+# Design System: Mayang Imphal
 
 ## Overview
 
-Better Mayang Imphal (BMI) employs a **Nordic Lagom Minimalist** aesthetic rooted in architectural restraint, civic gravitas, and honest communication. Lagom—"not too little, not too much, just enough"—rejects empty tech decoration, artificial urgency, and AI visual cliches in favor of calm, high-contrast, editorial clarity.
+**Creative North Star: "The Civic Ledger"**
 
-Every layout is built on a rectilinear grid with zero rounded corners (`rounded-none`), evoking statutory municipal charters, town planning maps, and physical civic monuments.
+Mayang Imphal employs a **Nordic Lagom Minimalist** aesthetic rooted in architectural restraint, civic gravitas, and honest communication. Lagom—"not too little, not too much, just enough"—rejects empty tech decoration, artificial urgency, and AI visual clichés in favor of calm, high-contrast, editorial clarity.
+
+Every layout is built on a rectilinear grid with zero rounded corners (`rounded-none`), evoking statutory municipal charters, town planning maps, and physical civic monuments. The interface recedes to let verified public records, scholarship deadlines, and spatial planning layers lead.
+
+**Key Characteristics:**
+- **Rectilinear Geometry:** Strict `rounded: 0px` across all buttons, cards, containers, and badges.
+- **Nordic Pine & Stone Palette:** Warm limestone parchment, deep forest pine accents, and quiet dividing lines.
+- **Dual-Status Clarity:** Clear visual separation between official state tenders and community proposals.
+- **Architectural Typography:** Oswald for authoritative headlines, Montserrat for uppercase navigation, Public Sans for body text.
 
 ## Colors
 
-The palette balances warm limestone surfaces with deep fjord ink and botanical pine:
+The palette balances warm limestone surfaces with deep forest pine ink and burnished amber status alerts.
 
-- **Nordic Stone (`#f7f6f1` / `--background`):** Light, warm paper background that prevents screen glare and evokes natural parchment.
-- **Nordic Charcoal (`#181c20` / `--foreground`):** High-contrast neutral ink for effortless long-form reading.
-- **Nordic Fjord (`#182230` / `--primary`):** Deep oceanic navy used for major editorial structures, deep headers, and anchors.
-- **Nordic Pine (`#264938` / `--secondary`):** Rich evergreen accent representing civic growth, environmental stewardship, and primary interactive commitments.
-- **Nordic Amber (`#b8793b` / `--nordic-amber`):** Warm burnished gold for statutory alerts, application deadlines, and verified status markers.
-- **Stone Border (`#dedbd2` / `--border`):** Tactile architectural dividing lines that provide structure without visual clutter.
-- **Dark Mode:** Deep slate granite (`#0f141c`), night fjord card beds (`#151c26`), and soft warm white ink (`#f2f0eb`).
+### Primary
+- **Nordic Pine** (`#294f46` / `--primary`): Evergreen accent representing public stewardship, civic longevity, and primary action commitments.
+
+### Secondary
+- **Nordic Pine Subdued** (`#294f46` / `--secondary`): Secondary action anchor and high-visibility status indicators.
+
+### Neutral
+- **Nordic Stone** (`#f7f6f2` / `--background`): Light, warm limestone surface that eliminates screen glare and evokes natural archival paper.
+- **Nordic Charcoal** (`#232b29` / `--foreground`): High-contrast mineral ink for effortless long-form reading.
+- **Nordic Paper** (`#ffffff` / `--card`): Crisp white card beds anchored cleanly over the stone background plane.
+- **Stone Border** (`#d7ddd7` / `--border`): Subtle architectural grid lines providing structure without visual noise.
+- **Nordic Amber** (`#b38c6d` / `--nordic-amber`): Burnished earth gold for closing deadlines, statutory alerts, and review tags.
+
+### Named Rules
+**The Rarity of Pine Rule.** Primary pine fills are reserved for primary action commitments, key progress badges, and navigation focal points. At least 85% of the viewport remains neutral stone and crisp white.
+**The No-Faux-Heritage Rule.** Never use simulated parchment stains, skeuomorphic crests, or artificial antique gradients. Dignity comes from geometric precision and honest data.
 
 ## Typography
 
-Typography establishes clear civic hierarchy and editorial authority:
+**Display Font:** Oswald (with sans-serif)  
+**Body Font:** Public Sans (with system-ui, sans-serif)  
+**UI & Label Font:** Montserrat (with sans-serif)  
+**Data & Mono Font:** Geist Mono (with monospace)
 
-- **Headlines (Source Serif 4):** Editorial serif combining classical authority with modern digital proportions. Used for page titles, section headers, and statistical hero metrics.
-- **Body & UI (Public Sans):** A neutral, highly legible geometric grotesk designed for public sector clarity. Ensures effortless scanning across tables, cards, and descriptions.
-- **Statutory Data & Codes (Geist Mono):** Dedicated monospaced typography for coordinates, tender IDs, ward numbers, and cryptographic verification hashes.
+Character: Bold civic gravitas rooted in Nordic Lagom minimalism—Oswald provides tall, authoritative, architectural titles; Montserrat brings crisp uppercase tracking to navigation and labels; Public Sans ensures neutral legibility for long text; and Geist Mono formats coordinates and tender references.
 
-Typographic hierarchy:
-1. Display / Hero Title: 44px–52px, bold, -0.02em tracking.
-2. Section Headings (H2): 28px–36px, bold, tight leading.
-3. Card & Subsection Titles (H3): 18px–22px, semi-bold.
-4. Body Text: 15px (0.9375rem), 1.6 line height.
-5. Functional UI & Captions: 12px–13px, font-medium, always above the 11px floor.
+### Hierarchy
+- **Display** (Bold 700, 48px–56px / 3rem–3.5rem, 1.15 line-height, -0.02em tracking): Hero headlines and major portal banners.
+- **Headline** (Bold 700, 32px–40px / 2rem–2.5rem, 1.2 line-height, -0.01em tracking): Page titles and primary section headers.
+- **Title** (Semi-bold 600, 20px–24px / 1.25rem–1.5rem, 1.3 line-height): Subsections, modal titles, and card headers.
+- **Body** (Regular 400, 14px–16px / 0.875rem–1rem, 1.6 line-height, max-w-3xl line length): Long-form explanatory reading and administrative descriptions.
+- **Label / UI** (Semi-bold 600 / Medium 500, 11px–13px / 0.6875rem–0.8125rem, uppercase with 0.05em tracking): Navigation bars, status tags, form labels, and table headers.
+- **Mono / Data** (Medium 500, 12px–14px / 0.75rem–0.875rem): GPS coordinates, GIS layer tags, tender IDs, and DPDP cryptographic hashes.
+
+### Named Rules
+**The 11px Floor Rule.** Functional text and labels never fall below 11px. Micro-text smaller than 11px is prohibited to ensure full WCAG 2.2 accessibility.
+**The Dual-Font Nav Rule.** Navigation items pair Montserrat uppercase labels (`tracking-wider`) with Public Sans descriptive subtitles.
 
 ## Layout
 
-- **Container Scale:** Maximum content width constrained to `max-w-7xl` (1280px) for wide sections and `max-w-4xl` for editorial reading.
-- **Rhythm & Spacing:** Generous whitespace between sections (`py-16` to `py-24`) paired with dense, structured groupings within data tables and cards (`gap-4` to `gap-6`).
-- **Grid Alignment:** Explicit 12-column and modular asymmetrical grids that reflect municipal master planning layouts.
-- **No Monotonous Spacing:** Distinct separation between structural boundaries and inline content relationships.
+- **Container Scale:** Wide dashboards and maps scale up to `max-w-7xl` (1280px); editorial narratives and form surfaces are constrained to `max-w-4xl` or `max-w-5xl`.
+- **Rhythm & Spacing:** Generous whitespace between major sections (`py-12` to `py-16` comfortable, compacted automatically via `in-data-[density=compact]:py-8`).
+- **12-Column Grid:** Asymmetric split layouts (e.g., 5-col sticky context + 7-col data stream) mirror statutory planning ledgers.
+- **Zero Horizontal Overflow:** Mobile-first layout verified across 320px, 375px, 768px, 1024px, and 1440px viewports.
 
 ## Elevation & Depth
 
-- **Tonal Layering over Shadows:** Elevation is achieved through contrasting background planes (Stone -> Card White -> Deep Fjord) rather than fuzzy drop shadows.
-- **Borders as Structure:** Subtle 1px stone borders (`border-border`) anchor interactive elements and cards to the page.
+- **Tonal Layering over Shadows:** Elevation is achieved through contrasting background planes (Nordic Stone -> Card White -> Deep Navy) rather than fuzzy drop shadows.
+- **Borders as Structure:** 1px stone borders (`border-border`) anchor interactive elements and cards to the grid.
 - **Zero Floating Glows:** No chromatic radial halos or neon blur effects. All depth is structural and physically plausible.
 
 ## Shapes
 
 - **Rectilinear Geometry:** Strictly `rounded-none` (`0px` border-radius) across buttons, input fields, badges, and cards.
 - **Architectural Edge:** Straight lines convey stability, civic permanence, and transparency.
-- **Pills Reserved for Badges:** Only micro status badges may optionally use restrained radius when distinct from structural buttons.
 
 ## Components
 
-- **Buttons:**
-  - `Primary`: Rectilinear Nordic Pine button with crisp high-contrast white typography, 2px focus ring.
-  - `Secondary / Outline`: Transparent background, 1px stone border, hover fill to subtle tint.
-  - `Civic Action`: High visibility, minimum 44px touch target height.
-- **Cards:**
-  - Solid white or stone bed with crisp 1px border.
-  - No nested cards (container inside container); uses typographic dividers and spacing instead.
-- **Status Badges:**
-  - Two-state decoupling: *Proposed Initiative* (Amber tint) vs *Officially Sanctioned* (Pine tint).
-  - Explicit metadata: tender source, verification date, jurisdiction tag.
-- **Intake Forms:**
-  - Uncluttered fields with visible labels, clear field descriptions, and explicit DPDP consent confirmation.
+### Buttons
+- **Shape:** Strictly rectilinear (`rounded-none`, 0px radius).
+- **Primary:** Nordic Pine fill (`bg-primary`), crisp white typography (`text-primary-foreground`), 44px minimum touch target height.
+- **Secondary / Outline:** Transparent background, 1px stone border (`border-border`), subtle hover fill.
+- **Focus:** 2px solid ring with high-contrast offset for keyboard navigation.
+
+### Cards / Containers
+- **Corner Style:** Strictly rectilinear (`rounded-none`).
+- **Background:** Solid white (`bg-card`) in light mode; deep night fjord (`bg-card`) in dark mode.
+- **Border:** 1px stone border (`border-border`).
+- **Internal Padding:** 24px (`p-6`) for standard cards; 16px (`p-4`) on mobile.
+
+### Status Badges
+- **Two-State Decoupling:**
+  - *Proposed Initiative:* Amber tint (`bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30`).
+  - *Officially Sanctioned:* Pine tint (`bg-primary/10 text-primary dark:text-emerald-400 border-primary/30`).
+- **Typography:** Montserrat uppercase (`text-[11px] font-semibold tracking-wider`).
+
+### Inputs / Fields
+- **Style:** 1px stone border (`border-border`), neutral background, rectilinear edges.
+- **Focus:** 1px ring in secondary pine (`focus:ring-secondary focus:outline-none`).
+- **Touch Target:** Minimum 44px height (`min-h-11`).
 
 ## Do's and Don'ts
 
 ### Do:
-- Ground every claim with a verifiable citation or official departmental reference.
-- Explicitly differentiate between community concepts and funded government works.
-- Maintain high contrast ratios (WCAG AA minimum 4.5:1 for body, 3:1 for large text).
-- Use Source Serif 4 for headlines and Public Sans for body copy.
-- Keep interactive button and card edges rectilinear (`rounded-none`).
+- **Do** ground every civic claim with a verifiable tender reference, department notice, or official citation.
+- **Do** maintain strict dual-status decoupling between community proposals and sanctioned public works.
+- **Do** enforce minimum 44×44px interactive touch targets and visible focus indicators.
+- **Do** keep functional UI text at or above the 11px accessibility floor.
+- **Do** keep interactive button and card edges rectilinear (`rounded-none`).
 
 ### Don't:
-- Don't use purple-to-cyan gradients, dark glowing halos, or floating spotlights.
-- Don't nest cards within cards (avoid container-in-container visual bloat).
-- Don't use bouncy or rubber-band animations; use subtle ease-out deceleration.
-- Don't reduce functional UI text below 11px.
-- Don't hide important statutory disclaimers in tiny unreadable smallprint.
+- **Don't** use purple-to-cyan gradients, dark glowing halos, or floating spotlights.
+- **Don't** nest cards within cards (avoid container-in-container visual bloat).
+- **Don't** use bouncy or rubber-band animations; use subtle ease-out deceleration.
+- **Don't** reduce functional UI text below 11px.
+- **Don't** hide important statutory disclaimers in tiny unreadable smallprint.

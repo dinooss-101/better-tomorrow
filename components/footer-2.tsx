@@ -97,7 +97,7 @@ export default function Footer() {
             </ul>
             <div className="pt-4">
               <span className="inline-block border border-border/80 bg-muted/30 px-3 py-1 text-[11px] text-muted-foreground">
-                DPDP Act 2025 Compliant
+                DPDP Act 2023 Compliant
               </span>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Footer() {
             &copy; 2026 Mayang Imphal Civic Platform. Published for citizen transparency.
           </p>
           <div className="flex items-center gap-4">
-            <ReplayIntroButton className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-ui uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground border border-border/70 hover:border-border transition-colors cursor-pointer" />
+            <ReplayIntroButton className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-ui uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground border border-border/70 hover:border-border transition-colors cursor-pointer" />
             <p>
               Class-III Town Delineation, AMRUT 2.0 GIS Horizon 2045
             </p>
