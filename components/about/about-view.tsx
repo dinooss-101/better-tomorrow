@@ -12,38 +12,58 @@ export function AboutView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <div className="border-b border-border bg-background py-10 text-foreground sm:py-12 md:py-14 lg:py-16">
+        <section className="border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="flex max-w-3xl flex-col gap-4">
-              <Link
-                href="/"
-                className="font-ui inline-flex w-fit items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-80"
-              >
-                <ArrowLeft className="size-3.5" /> Overview
-              </Link>
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+              <div className="flex flex-col gap-3 sm:gap-3.5 lg:col-span-7">
+                <Link
+                  href="/"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                >
+                  <ArrowLeft className="size-3.5" /> Overview
+                </Link>
 
-              <div className="flex items-center gap-2">
-                <span className="font-ui text-xs font-semibold tracking-wider text-primary dark:text-emerald-400 uppercase">
-                  Governance &amp; Compliance
-                </span>
-                <span className="text-muted-foreground/80">/</span>
-                <span className="font-ui text-xs text-muted-foreground font-semibold uppercase tracking-wider">
-                  Statutory Transparency Record
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-ui text-xs font-semibold tracking-wider text-primary dark:text-emerald-400 uppercase">
+                    Governance &amp; Compliance
+                  </span>
+                  <span className="text-muted-foreground/80">/</span>
+                  <span className="font-ui text-xs text-muted-foreground font-semibold uppercase tracking-wider">
+                    Statutory Transparency Record
+                  </span>
+                </div>
+
+                <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight uppercase">
+                  About Mayang Imphal
+                </h1>
+
+                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl font-normal tracking-normal">
+                  Platform identity, operator disclosures, statutory boundaries,
+                  DPDP privacy policy, and public compliance standards for Mayang
+                  Imphal.
+                </p>
               </div>
 
-              <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight uppercase">
-                About Mayang Imphal
-              </h1>
-
-              <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mt-3.5 max-w-2xl font-normal tracking-normal">
-                Platform identity, operator disclosures, statutory boundaries,
-                DPDP privacy policy, and public compliance standards for Mayang
-                Imphal.
-              </p>
+              <div className="lg:col-span-5">
+                <div className="relative mx-auto max-w-70 sm:max-w-80 lg:max-w-75 xl:max-w-xs border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
+                  <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
+                    <Image
+                      src="/image/Leadership_Portrait.png"
+                      alt="Dr. Khumujam Ratankumar Singh in community dialogue with ward residents, Mayang Imphal"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[11px] font-sans text-muted-foreground">
+                    Civic Leadership Dialogue · Mayang Imphal (AC-23)
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Quick Anchor Navigation */}
         <div className="sticky top-14 sm:top-15 z-30 border-b border-border bg-background/95 py-2.5 backdrop-blur-sm sm:py-3.5">
@@ -84,95 +104,76 @@ export function AboutView() {
         {/* Section 1: Platform Identity */}
         <section
           id="identity"
-          className="border-b border-border bg-background py-16 sm:py-24 lg:py-28"
+          className="border-b border-border bg-background py-14 sm:py-20 lg:py-24"
         >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-              {/* Left: Leadership Portrait */}
-              <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-sm border border-border bg-card p-3 shadow-xs">
-                  <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
-                    <Image
-                      src="/image/Leadership_Portrait.png"
-                      alt="Dr. Khumujam Ratankumar Singh in community dialogue with ward residents, Mayang Imphal"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 360px"
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-xs font-sans text-muted-foreground">
-                    Civic leadership dialogue with ward residents · Mayang Imphal (AC-23)
-                  </div>
+            <div className="max-w-3xl space-y-6 sm:space-y-8">
+              <div>
+                <span className="font-ui text-xs font-bold uppercase tracking-wider text-secondary block mb-1.5">
+                  Platform Governance
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
+                  Who Operates Mayang Imphal?
+                </h2>
+              </div>
+
+              <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
+                <strong>Mayang Imphal</strong> is established as a{" "}
+                <strong>
+                  civic-advocacy and public-information platform
+                </strong>
+                . Its purpose is to connect the constituency development
+                priorities of Mayang Imphal with future-ready opportunities in
+                STEM education, verified scholarships, and evidence-based
+                urban planning.
+              </p>
+
+              <div className="grid grid-cols-1 gap-5 border border-border bg-card p-6 sm:p-8 sm:grid-cols-2">
+                <div>
+                  <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
+                    Jurisdictional Scope
+                  </span>
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Mayang Imphal Assembly Constituency (AC-23), Imphal West
+                    District, Manipur.
+                  </p>
+                </div>
+                <div>
+                  <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
+                    Operational Headquarters
+                  </span>
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Central Bazaar Corridor, Mayang Imphal, Manipur 795132.
+                  </p>
+                </div>
+                <div>
+                  <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
+                    Editorial &amp; Grievance Contact
+                  </span>
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    desk@bettermayangimphal.org · Public inquiries processed
+                    weekly.
+                  </p>
+                </div>
+                <div>
+                  <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
+                    Statutory Affiliation
+                  </span>
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Independent citizen initiative; not an executive department
+                    of the State Government.
+                  </p>
                 </div>
               </div>
 
-              {/* Right: Narrative & Scope */}
-              <div className="flex flex-col gap-6 sm:gap-8 lg:col-span-7">
-                <div>
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
-                    Who Operates Mayang Imphal?
-                  </h2>
-                </div>
-
-                <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  <strong>Mayang Imphal</strong> is established as a{" "}
-                  <strong>
-                    civic-advocacy and public-information platform
-                  </strong>
-                  . Its purpose is to connect the constituency development
-                  priorities of Mayang Imphal with future-ready opportunities in
-                  STEM education, verified scholarships, and evidence-based
-                  urban planning.
-                </p>
-
-                <div className="grid grid-cols-1 gap-5 border border-border bg-card p-6 sm:p-8 sm:grid-cols-2">
-                  <div>
-                    <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
-                      Jurisdictional Scope
-                    </span>
-                    <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Mayang Imphal Assembly Constituency (AC-23), Imphal West
-                      District, Manipur.
-                    </p>
-                  </div>
-                  <div>
-                    <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
-                      Operational Headquarters
-                    </span>
-                    <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Central Bazaar Corridor, Mayang Imphal, Manipur 795132.
-                    </p>
-                  </div>
-                  <div>
-                    <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
-                      Editorial &amp; Grievance Contact
-                    </span>
-                    <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      desk@bettermayangimphal.org · Public inquiries processed
-                      weekly.
-                    </p>
-                  </div>
-                  <div>
-                    <span className="mb-1.5 block font-ui text-xs font-bold text-secondary uppercase tracking-wider">
-                      Statutory Affiliation
-                    </span>
-                    <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Independent citizen initiative; not an executive department
-                      of the State Government.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="border border-secondary/30 bg-secondary/5 p-5 sm:p-6 text-xs sm:text-sm leading-relaxed text-muted-foreground font-sans">
-                  <strong className="block text-foreground font-ui uppercase tracking-wider font-bold mb-1">
-                    Core Commitment:
-                  </strong>
-                  Every public claim, project budget, and deadline displayed on
-                  this platform is tied to verifiable public sources (Gazette
-                  notifications, Legislative Assembly starred questions, AMRUT
-                  2.0 state tenders, or National Scholarship Portal guidelines).
-                </div>
+              <div className="border border-secondary/30 bg-secondary/5 p-5 sm:p-6 text-xs sm:text-sm leading-relaxed text-muted-foreground font-sans">
+                <strong className="block text-foreground font-ui uppercase tracking-wider font-bold mb-1">
+                  Core Commitment:
+                </strong>
+                Every public claim, project budget, and deadline displayed on
+                this platform is tied to verifiable public sources (Gazette
+                notifications, Legislative Assembly starred questions, AMRUT
+                2.0 state tenders, or National Scholarship Portal guidelines).
               </div>
             </div>
           </div>
