@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { AnimatePresence, useReducedMotion } from "motion/react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { Sparkles, X } from "lucide-react"
+import { RotateCcw, X } from "lucide-react"
 
 export function CinematicIntro() {
   const [isDismissed, setIsDismissed] = useState(false)
@@ -395,7 +395,7 @@ export function CinematicIntro() {
 
         {/* Top Civic Mandate Marker */}
         <div className="absolute top-6 left-6 z-20 hidden sm:flex items-center gap-2 text-[11px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
-          <span className="size-1.5 rounded-full bg-primary dark:bg-emerald-500 animate-pulse" />
+          <span className="size-1.5 rounded-none bg-primary dark:bg-emerald-500" />
           <span>Mayang Imphal AC-23 · LGD 250326</span>
         </div>
 
@@ -445,11 +445,9 @@ export function CinematicIntro() {
           {/* Build Line 2: Cuts in during Phase 2 */}
           <div
             ref={buildLine2Ref}
-            className="mt-4 opacity-0 flex items-center gap-2 text-primary dark:text-emerald-400 font-display text-lg sm:text-2xl font-bold uppercase tracking-widest"
+            className="mt-4 opacity-0 flex items-center justify-center text-primary dark:text-emerald-400 font-display text-lg sm:text-2xl font-bold uppercase tracking-widest"
           >
-            <Sparkles className="size-4 animate-pulse text-primary dark:text-emerald-400" />
             <span>For Tomorrow</span>
-            <Sparkles className="size-4 animate-pulse text-primary dark:text-emerald-400" />
           </div>
         </div>
 
@@ -471,7 +469,7 @@ export function CinematicIntro() {
             ref={eyebrowRef}
             className="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-primary/20 bg-primary/5 dark:border-white/20 dark:bg-white/5 px-3 py-1 font-ui text-[11px] font-semibold uppercase tracking-widest text-primary dark:text-emerald-400 backdrop-blur-xs"
           >
-            <span className="size-1.5 rounded-full bg-primary dark:bg-emerald-400 animate-ping inline-block" />
+            <span className="size-1.5 rounded-none bg-primary dark:bg-emerald-400 inline-block" />
             <span>Civic Leadership &amp; Mandate</span>
           </div>
 
@@ -560,7 +558,7 @@ export function ReplayIntroButton({ className }: { className?: string }) {
       className={className}
       aria-label="Replay Mayang Imphal vision intro"
     >
-      <Sparkles className="size-3 text-primary dark:text-emerald-400" />
+      <RotateCcw className="size-3 text-primary dark:text-emerald-400" />
       <span>Vision Intro</span>
     </button>
   )
