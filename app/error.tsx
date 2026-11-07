@@ -35,7 +35,7 @@ export default function GlobalError({
               System Notice
             </span>
 
-            <h1 className="font-headline text-2xl sm:text-4xl font-bold tracking-tight text-foreground leading-tight mb-3">
+            <h1 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight text-foreground leading-tight mb-3">
               Unable to Render View
             </h1>
 

@@ -23,7 +23,7 @@ export default function NotFound() {
               Notice 404
             </span>
 
-            <h1 className="font-headline text-3xl sm:text-5xl font-bold tracking-tight text-foreground leading-tight mb-4">
+            <h1 className="font-display text-3xl sm:text-5xl font-bold uppercase tracking-tight text-foreground leading-tight mb-4">
               Page Not Found
             </h1>
 
