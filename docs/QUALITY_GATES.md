@@ -30,4 +30,4 @@
 - [x] Record changed file list, release report, and rollback plan.
 
 ## Release report format
-`Audit status: COMPLETE | Routes migrated: 7/7 | Features preserved: 100% | Registry changes: None (Base UI / New York preserved) | Brand changes: BMI -> Mayang Imphal across all customer touchpoints | Lint: PASS | Typecheck: PASS | Tests: 5/5 PASS | Build: PASS (10/10 static pages) | A11y: WCAG 2.2 AA compliant | Performance evidence: Turbopack static export, zero large page files | Open risks: None`.
+`Audit status: COMPLETE | Routes migrated: 7/7 | Features preserved: 100% | Registry changes: None (Base UI / New York preserved) | Brand changes: BMI -> Mayang Imphal across all customer touchpoints | Lint: PASS | Typecheck: PASS | Tests: 9/9 PASS | Build: PASS (12/12 static pages) | A11y: WCAG 2.2 AA compliant | Performance evidence: Turbopack static export, zero large page files | Open risks: None`.
