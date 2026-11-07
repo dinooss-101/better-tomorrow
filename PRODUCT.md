@@ -18,7 +18,7 @@ Connect Mayang Imphal's grassroots constituency development priorities with futu
 
 ## Positioning
 
-A rigorous civic-advocacy and public-information platform that practices cryptographic transparency and verifiable citations. Unlike partisan campaign portals or opaque municipal notices, Better Mayang Imphal (BMI) maintains strict dual-status clarity: every initiative is explicitly labeled as either an unfunded community proposal (*Proposed Initiative · In Assessment*) or a verifiable public project (*Officially Sanctioned*), citing statutory tenders and Town Planning records.
+A rigorous civic-advocacy and public-information platform that practices cryptographic transparency and verifiable citations. Unlike partisan campaign portals or opaque municipal notices, Mayang Imphal maintains strict dual-status clarity: every initiative is explicitly labeled as either an unfunded community proposal (*Proposed Initiative · In Assessment*) or a verifiable public project (*Officially Sanctioned*), citing statutory tenders and Town Planning records.
 
 ## Operating Context
 
@@ -28,21 +28,25 @@ A rigorous civic-advocacy and public-information platform that practices cryptog
 
 ## Capabilities and Constraints
 
-- **Master Plan 2045 Interactive Explorer:** Two-dimensional statutory planning matrix tracking spatial planning, drainage master plans, and environmental protections.
-- **Mayang Future Labs Hub:** 3-tier framework (Foundation, Builder, Launch) coordinating Atal Tinkering Labs (ATL) synergy, robotics bootcamps, and mentor circles.
-- **Freshness-Aware Scholarship Directory:** Live searchable, filterable directory with verified application windows, eligibility criteria, and direct portal links.
-- **Dual-Status Verified Progress Tracker:** Status decoupling (Official Tender Status vs Ground Delivery Verification) with milestone provenance.
-- **DPDP-Compliant Civic Intake Form:** Privacy-preserving priority submission with ward-level categorization and consent receipts.
+- **Civic Overview & Leadership Portal (`/`):** Strategic entry point establishing constituency identity, core initiatives, and navigation pathways across all development programs.
+- **Master Plan 2045 Interactive Explorer (`/development`):** Two-dimensional statutory planning matrix tracking spatial planning, drainage master plans, and environmental protections.
+- **Dual-Status Verified Progress Tracker (`/progress`):** Real-time project tracking with strict status decoupling (Official Tender Status vs Ground Delivery Verification) and milestone provenance.
+- **Freshness-Aware Scholarship Directory (`/scholarships`):** Live searchable, filterable directory with verified application windows, eligibility criteria, and direct portal links.
+- **Mayang Future Labs Hub (`/future-labs`):** 3-tier framework (Foundation, Builder, Launch) coordinating Atal Tinkering Labs (ATL) synergy, robotics bootcamps, and mentor circles.
+- **Statutory Transparency & Identity Record (`/about`):** Platform operator disclosures, municipal statutory boundaries, DPDP privacy policies, and public corrections registry.
+- **DPDP-Compliant Civic Intake Form (`/contact`):** Privacy-preserving priority submission with ward-level categorization and consent receipts.
+- **Dynamic Density System:** Global interface density toggle (`Comfortable` vs `Compact`) with persistence and reduced-padding styles across all routes.
+- **Structured Civic Data:** Complete Schema.org `GovernmentOrganization` and `WebSite` JSON-LD for statutory search transparency.
 - **Technical Stack:** Next.js 16 (App Router), React 19, Tailwind CSS v4, Base UI, Lucide icons, Motion, next-themes.
 - **Constraints:** Platform holds no executive state powers, cannot disburse public funds directly, and never captures sensitive biometric or Aadhaar data.
 
 ## Brand Commitments
 
-- **Name:** BETTER MAYANG IMPHAL (BMI)
+- **Name:** Mayang Imphal (Assembly Constituency AC-23 & Municipal Area LGD 250326; formerly referred to as Better Mayang Imphal / BMI).
 - **Design Philosophy:** Nordic Lagom Minimalist — measured, restrained, calm, and functional. No hyperbolic claims, no neon gradients, no artificial urgency.
 - **Palette Identity:** Nordic Stone / Warm Paper (`#f7f6f1`, `#ffffff`), Nordic Fjord / Deep Navy (`#182230`, `#101722`), Nordic Pine (`#264938`), Nordic Amber (`#b8793b`), and precision stone borders (`#dedbd2`).
 - **Geometry & Structure:** Strictly rectilinear (`rounded: 0` / sharp edges) giving civic and architectural solidity.
-- **Typography:** Source Serif 4 (editorial authority for headings), Public Sans (clean, neutral, highly legible body), Geist Mono (data, coordinates, statutory references).
+- **Typography:** Oswald (display & authoritative headlines), Montserrat (crisp uppercase navigation, badges, and labels), Public Sans (clean, neutral, highly legible body), Geist Mono (data, coordinates, statutory references).
 
 ## Evidence on Hand
 
@@ -60,7 +64,7 @@ A rigorous civic-advocacy and public-information platform that practices cryptog
 
 ## Accessibility & Inclusion
 
-- Adherence to WCAG 2.1 AA standards across contrast, tap targets (minimum 44x44px), and keyboard navigation.
+- Adherence to WCAG 2.2 AA standards across contrast, tap targets (minimum 44x44px), and keyboard navigation.
 - Native high-contrast support across light and dark modes.
 - Low-bandwidth optimization for 3G/4G rural mobile networks common across peri-urban Manipur.
 - Screen-reader accessible landmarks, semantic headings, and ARIA disclosures.
