@@ -4,6 +4,7 @@ import { Oswald, Montserrat, Public_Sans, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { DensityProvider } from "@/components/density-provider"
+import { AuthProvider } from "@/lib/auth/auth-context"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { cn } from "@/lib/utils"
 
@@ -161,8 +162,10 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <DensityProvider>
-            {children}
-            <ScrollToTop />
+            <AuthProvider>
+              {children}
+              <ScrollToTop />
+            </AuthProvider>
           </DensityProvider>
         </ThemeProvider>
       </body>

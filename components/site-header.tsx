@@ -13,9 +13,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu"
-import { Menu, Sun, Moon, ChevronDown, Send, ArrowRight, UnfoldVertical, FoldVertical } from "lucide-react"
+import { Menu, Sun, Moon, ChevronDown, Send, ArrowRight, UnfoldVertical, FoldVertical, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { TextLogo } from "@/components/text-logo"
+import { useAuth } from "@/lib/auth/auth-context"
 
 interface NavSubItem {
   href: string
@@ -90,6 +91,7 @@ const NAV_GROUPS: NavGroup[] = [
 export function SiteHeader() {
   const { theme, setTheme } = useTheme()
   const { density, toggleDensity } = useDensity()
+  const { isAuthenticated } = useAuth()
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -210,6 +212,15 @@ export function SiteHeader() {
         {/* RIGHT CONTROLS: Quick Desk Action, Theme Toggle, Mobile Trigger  */}
         {/* ================================================================ */}
         <div className="flex items-center gap-2.5 shrink-0">
+          {/* Civic Portal / Dashboard Link */}
+          <Link
+            href={isAuthenticated ? "/dashboard" : "/login"}
+            className="hidden sm:inline-flex font-ui uppercase tracking-widest text-[11px] font-semibold items-center gap-1.5 border border-border bg-card px-3 py-2 text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary min-h-9"
+          >
+            <User className="size-3 text-primary dark:text-emerald-400" />
+            <span>{isAuthenticated ? "Dashboard" : "Sign In"}</span>
+          </Link>
+
           {/* Quick Desk Action Button */}
           <Link
             href="/contact"
@@ -374,6 +385,14 @@ export function SiteHeader() {
                       )}
                     </button>
                   </div>
+                  <Link
+                    href={isAuthenticated ? "/dashboard" : "/login"}
+                    onClick={() => setMobileOpen(false)}
+                    className="font-ui uppercase tracking-widest text-xs font-semibold w-full flex items-center justify-center gap-2 border border-border bg-card px-4 py-2.5 text-foreground hover:bg-muted transition-colors"
+                  >
+                    <User className="size-3.5 text-primary dark:text-emerald-400" />
+                    <span>{isAuthenticated ? "Citizen Dashboard" : "Sign In to Ward Portal"}</span>
+                  </Link>
                   <Link
                     href="/contact"
                     onClick={() => setMobileOpen(false)}
