@@ -61,8 +61,8 @@ export function FutureLabsView() {
 
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                   <RegisterInterestDialog initialProgramType="FUTURE_LABS">
-                    <Button className="rounded-none text-xs sm:text-sm font-semibold min-h-11 justify-center active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary disabled:opacity-50">
-                      Register
+                    <Button className="rounded-none text-xs sm:text-sm font-semibold min-h-11 justify-center active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50 px-5">
+                      Request School Workshop
                     </Button>
                   </RegisterInterestDialog>
                   <a

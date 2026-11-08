@@ -116,3 +116,4 @@ export function formatWardLabel(wardNum: WardNumber | number): string {
   const w = getWardByNumber(wardNum)
   return w ? `Ward ${w.ward} · ${w.name}` : `Ward ${wardNum}`
 }
+

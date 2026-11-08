@@ -59,6 +59,22 @@ export function DevelopmentView() {
                   Statutory GIS-based urban planning framework formulated under the Ministry of Housing &amp; Urban Affairs (MoHUA) AMRUT 2.0 guidelines. Delineating drainage corridors, road rights-of-way, and agricultural preservation zones for the next two decades.
                 </p>
 
+                {/* Quick Guide Navigation */}
+                <div className="flex flex-wrap items-center gap-2 pt-1 font-ui text-xs">
+                  <span className="text-muted-foreground font-medium text-[11px] uppercase tracking-wider">Plan Outline:</span>
+                  <a href="#mandate" className="text-primary hover:underline font-semibold uppercase tracking-wider text-[11px]">
+                    1. What is Proposed?
+                  </a>
+                  <span className="text-border">·</span>
+                  <a href="#survey-layers" className="text-primary hover:underline font-semibold uppercase tracking-wider text-[11px]">
+                    2. 4 Survey Layers
+                  </a>
+                  <span className="text-border">·</span>
+                  <a href="#jurisdiction" className="text-primary hover:underline font-semibold uppercase tracking-wider text-[11px]">
+                    3. Who Does What?
+                  </a>
+                </div>
+
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
                     href={rfpUrl}
@@ -98,7 +114,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 1: Statutory Framework */}
-        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
+        <section id="mandate" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
@@ -142,7 +158,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 2: The 4 Core Survey Layers (Stacking Cards Parallax) */}
-        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20 border-b border-border/60">
+        <section id="survey-layers" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-8 sm:mb-12">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
@@ -227,15 +243,20 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 4: Accountability Demarcation Table */}
-        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-background border-b border-border/60">
+        <section id="jurisdiction" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-background border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-12 sm:mb-16">
+            <div className="max-w-3xl mb-8 sm:mb-12">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
                 Understanding Who Does What in Mayang Imphal
               </h2>
               <p className="font-sans text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">
                 Clear civic accountability prevents shifting responsibility. Below is the constitutional demarcation of powers across municipal, state, and legislative authorities:
               </p>
+            </div>
+
+            <div className="sm:hidden mb-2.5 text-[11px] font-ui uppercase font-semibold tracking-wider text-muted-foreground flex items-center gap-1.5">
+              <span>Scroll horizontally to view complete table</span>
+              <ArrowRight className="size-3" />
             </div>
 
             <div className="overflow-x-auto rounded-none border border-border/80 bg-card shadow-xs">

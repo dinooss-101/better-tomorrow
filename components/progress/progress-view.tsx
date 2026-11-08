@@ -168,6 +168,46 @@ export function ProgressView() {
         {/* Search & Filter Bar with Dropdown Menus */}
         <section className="py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12 bg-background border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            {/* Top Evidence & Metrics Overview Strip */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 text-xs font-ui">
+              <div className="border border-border/70 bg-card p-3.5 space-y-1">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+                  Tracked Initiatives
+                </span>
+                <span className="font-display text-2xl font-bold text-foreground">
+                  {mockProjects.length}
+                </span>
+                <span className="text-[10px] text-muted-foreground block">Across 12 Wards</span>
+              </div>
+              <div className="border border-border/70 bg-card p-3.5 space-y-1">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+                  Field Verified
+                </span>
+                <span className="font-display text-2xl font-bold text-primary">
+                  {mockProjects.filter((p) => p.currentCondition === "NORMAL" || p.currentStage === "COMPLETED").length}
+                </span>
+                <span className="text-[10px] text-primary block">Physical Audit Conducted</span>
+              </div>
+              <div className="border border-border/70 bg-card p-3.5 space-y-1">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+                  Active Works
+                </span>
+                <span className="font-display text-2xl font-bold text-foreground">
+                  {mockProjects.filter((p) => p.currentStage === "IMPLEMENTATION" || p.currentStage === "TENDERING").length}
+                </span>
+                <span className="text-[10px] text-muted-foreground block">Tendered or Underway</span>
+              </div>
+              <div className="border border-border/70 bg-card p-3.5 space-y-1">
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+                  Evidence Invariant
+                </span>
+                <span className="font-display text-base font-bold text-primary pt-1 block leading-tight">
+                  100% Sourced
+                </span>
+                <span className="text-[10px] text-muted-foreground block">Primary Gazette / RFP</span>
+              </div>
+            </div>
+
             <div className="rounded-none border border-border/80 bg-card p-6 sm:p-8 mb-10 sm:mb-14 shadow-xs">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center">
                 {/* Search Input */}

@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { useAuth } from "@/lib/auth/auth-context"
 import { WARD_METRICS } from "@/lib/data/mock-user-data"
+import { getWardByNumber } from "@/lib/data/wards"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -283,10 +284,14 @@ export function DashboardOverview() {
                   <TableBody>
                     {WARD_METRICS.map((wm) => {
                       const wardRate = Math.round((wm.resolvedIssues / wm.totalIssues) * 100)
+                      const wardInfo = getWardByNumber(wm.ward)
                       return (
                         <TableRow key={wm.ward} className="border-b border-border/40 hover:bg-muted/30">
                           <TableCell className="py-2.5 pl-4 font-ui font-semibold text-foreground text-[11px]">
-                            Ward {wm.ward}
+                            <span>Ward {wm.ward}</span>
+                            <span className="block text-[10px] font-sans font-normal text-muted-foreground truncate max-w-[110px]">
+                              {wardInfo?.name || ""}
+                            </span>
                           </TableCell>
                           <TableCell className="py-2.5 text-center text-muted-foreground text-[11px]">
                             {wm.totalIssues}
