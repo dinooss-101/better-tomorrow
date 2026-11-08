@@ -31,11 +31,12 @@ import {
   LogOut,
   MapPin,
   Check,
-  ChevronDown,
   Database,
   Bell,
   Eye,
   Sliders,
+  ClipboardList,
+  CheckCircle,
 } from "lucide-react"
 
 export function DashboardUserNav() {
@@ -69,39 +70,24 @@ export function DashboardUserNav() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger
-          className="flex items-center gap-2 p-1 rounded-none hover:bg-muted/40 transition-colors focus-visible:outline-2 focus-visible:outline-primary cursor-pointer select-none"
-          aria-label="User profile and settings menu"
+          className="size-9 flex items-center justify-center rounded-none border border-border/80 bg-background hover:bg-muted/40 transition-colors focus-visible:outline-2 focus-visible:outline-primary cursor-pointer select-none relative group"
+          aria-label="User profile, settings, and account menu"
+          title={`${user?.name || "Constituent"} (${roleLabels[role]})`}
         >
-          {/* User Avatar */}
-          <Avatar className="size-8 rounded-none border border-border shrink-0">
-            <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui text-[11px] font-bold">
+          {/* Square Avatar UI */}
+          <Avatar className="size-full rounded-none border-0">
+            <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui text-xs font-bold uppercase tracking-wider group-hover:bg-primary/20 transition-colors">
               {initials}
             </AvatarFallback>
           </Avatar>
-
-          {/* User Details (Desktop) */}
-          <div className="hidden lg:flex flex-col text-left min-w-0 pr-1">
-            <span className="font-sans font-semibold text-xs text-foreground truncate max-w-32 leading-tight">
-              {user?.name || "Constituent"}
-            </span>
-            <span className="font-ui text-[10px] text-muted-foreground uppercase tracking-wider flex items-center gap-1">
-              <span>{roleLabels[role]}</span>
-              {user?.ward && (
-                <>
-                  <span>·</span>
-                  <span>W{user.ward}</span>
-                </>
-              )}
-            </span>
-          </div>
-
-          <ChevronDown className="size-3 text-muted-foreground shrink-0 hidden sm:block" />
+          {/* Active online status indicator */}
+          <span className="absolute bottom-0 right-0 size-2 bg-emerald-600 dark:bg-emerald-400 rounded-none ring-1 ring-background" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
           align="end"
           sideOffset={8}
-          className="w-64 min-w-64 p-1.5 rounded-none border border-border/80 bg-popover shadow-md"
+          className="w-72 min-w-72 p-2 rounded-none border border-border/80 bg-popover shadow-lg"
         >
           {/* Identity Header */}
           <DropdownMenuLabel className="p-2 space-y-1">
@@ -144,6 +130,28 @@ export function DashboardUserNav() {
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground">Citizen Profile</div>
                 <div className="text-[10px] text-muted-foreground">Ward enrollment &amp; credentials</div>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem
+              className="cursor-pointer flex items-center gap-2 p-2 text-xs"
+              onClick={() => router.push("/dashboard/grievances")}
+            >
+              <ClipboardList className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="font-medium text-foreground">Ward Grievances</div>
+                <div className="text-[10px] text-muted-foreground">Casework docket &amp; new intake</div>
+              </div>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem
+              className="cursor-pointer flex items-center gap-2 p-2 text-xs"
+              onClick={() => router.push("/dashboard/verifications")}
+            >
+              <CheckCircle className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="font-medium text-foreground">Ground Audits</div>
+                <div className="text-[10px] text-muted-foreground">Photographic site inspections</div>
               </div>
             </DropdownMenuItem>
 

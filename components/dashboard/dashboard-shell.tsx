@@ -5,8 +5,6 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth/auth-context"
 import { TextLogo } from "@/components/text-logo"
-import { Button } from "@/components/ui/button"
-import { DevAccountSwitcher } from "@/components/auth/dev-account-switcher"
 import { DashboardUserNav } from "@/components/dashboard/dashboard-user-nav"
 import {
   LayoutDashboard,
@@ -36,7 +34,6 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const { user, role, logout, isLoading, isAuthenticated } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [showDevSwitcher, setShowDevSwitcher] = useState(false)
 
   React.useEffect(() => {
     if (isClient && !isLoading && !isAuthenticated) {
@@ -128,19 +125,9 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
 
-            {/* Right: User Profile Dropdown + Role Actions */}
-            <div className="flex items-center gap-2 sm:gap-2.5">
-              {/* Quick Dev Role Switcher Trigger (Tablet/Desktop) */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowDevSwitcher(!showDevSwitcher)}
-                className="hidden sm:flex h-8 px-2.5 rounded-none text-[10px] font-ui uppercase font-semibold border-dashed text-muted-foreground hover:text-foreground"
-              >
-                Switch Role
-              </Button>
-
-              {/* Top Navigation Right User Profile Menu with Settings & Sign Out */}
+            {/* Right: Square Profile UI containing all options */}
+            <div className="flex items-center gap-2">
+              {/* Square User Profile UI */}
               <DashboardUserNav />
 
               {/* Mobile Menu Trigger */}
@@ -155,15 +142,6 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </div>
-
-        {/* Dev Switcher Drawer Panel */}
-        {showDevSwitcher && (
-          <div className="border-t border-border bg-muted/40 p-3 sm:p-4">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <DevAccountSwitcher />
-            </div>
-          </div>
-        )}
 
         {/* Secondary Navigation Bar (Desktop) */}
         <div className="hidden sm:block border-t border-border/70 bg-card/40">
