@@ -16,6 +16,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Field, FieldLabel, FieldDescription, FieldGroup } from "@/components/ui/field"
 import { Badge } from "@/components/ui/badge"
 import { AlertCircle, CheckCircle2, ShieldAlert } from "lucide-react"
+import { useAuth } from "@/lib/auth/auth-context"
+import { GrievanceCategory } from "@/lib/types/dashboard"
 
 interface PrioritySubmissionDialogProps {
   children?: React.ReactElement
@@ -28,13 +30,14 @@ export function PrioritySubmissionDialog({
   open: externalOpen,
   onOpenChange: setExternalOpen,
 }: PrioritySubmissionDialogProps) {
+  const { user, addGrievance } = useAuth()
   const [internalOpen, setInternalOpen] = useState(false)
   const isControlled = externalOpen !== undefined
   const isOpen = isControlled ? externalOpen : internalOpen
   const setIsOpen = isControlled ? setExternalOpen! : setInternalOpen
 
   const [submitted, setSubmitted] = useState(false)
-  const [category, setCategory] = useState("WATER_DRAINAGE")
+  const [category, setCategory] = useState("WATER_AND_DRAINAGE")
   const [locality, setLocality] = useState("")
   const [description, setDescription] = useState("")
   const [isAnonymous, setIsAnonymous] = useState(true)
@@ -57,7 +60,25 @@ export function PrioritySubmissionDialog({
       return
     }
 
-    // shortcut: client-side mock submission only, connect to Supabase/PostgreSQL after frontend review
+    const mappedCategory: GrievanceCategory =
+      category.includes("WATER") ? "WATER_AND_DRAINAGE" :
+      category.includes("ROAD") ? "ROAD_CONNECTIVITY" :
+      category.includes("EDUCATION") ? "EDUCATION_STEM" :
+      "MUNICIPAL_SERVICES"
+
+    addGrievance({
+      citizenId: user?.id || "usr_public_citizen",
+      citizenName: user?.name || (isAnonymous ? "Constituency Resident" : (contactEmail ? contactEmail.split("@")[0] : "Constituency Resident")),
+      citizenContact: contactEmail || user?.phone || "+91 (Public Submission)",
+      ward: user?.ward || 5,
+      locality,
+      title: `${category.replace(/_/g, " ")}: ${locality}`,
+      description,
+      category: mappedCategory,
+      priority: "ROUTINE",
+      status: "PROPOSED",
+    })
+
     setErrorMessage("")
     setSubmitted(true)
   }
@@ -95,10 +116,9 @@ export function PrioritySubmissionDialog({
             <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
               <CheckCircle2 className="size-6" />
             </div>
-            <h3 className="text-lg font-semibold text-foreground">Demonstration Intake Validated</h3>
+            <h3 className="text-lg font-semibold text-foreground">Priority Docketed</h3>
             <p className="text-sm text-muted-foreground">
-              In this preview milestone, the form inputs pass client-side data validation. In Phase 4, submissions
-              will securely persist to an encrypted PostgreSQL database protected by Row Level Security (RLS).
+              Your civic feedback has been logged to the constituency casework docket. Municipal caseworkers can review and verify this record in the coordinator dashboard.
             </p>
             <div className="rounded-none border border-border/80 bg-muted/40 p-3 text-left text-xs text-muted-foreground">
               <div className="font-medium text-foreground">Preview Record Summary:</div>
