@@ -83,12 +83,12 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-secondary selection:text-secondary-foreground">
         <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+          <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 h-14 flex items-center justify-between">
             <TextLogo size="sm" />
             <div className="text-xs text-muted-foreground font-ui">Civic Portal</div>
           </div>
         </header>
-        <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 flex items-center justify-center">
+        <main className="flex-1 max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 2xl:px-10 py-5 sm:py-7 flex items-center justify-center">
           <div className="text-xs text-muted-foreground font-sans">
             Loading civic docket...
           </div>
@@ -109,7 +109,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-secondary selection:text-secondary-foreground">
       {/* Top Header */}
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10">
           <div className="flex items-center justify-between h-14 sm:h-16 gap-4">
             {/* Left: Brand + Section Title */}
             <div className="flex items-center gap-3 sm:gap-4">
@@ -145,7 +145,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
         {/* Secondary Navigation Bar (Desktop) */}
         <div className="hidden sm:block border-t border-border/70 bg-card/40">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 flex items-center justify-between">
             <nav className="flex items-center gap-1.5 overflow-x-auto py-1">
               {navItems.map((item) => {
                 const Icon = item.icon
@@ -231,13 +231,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Main Content Body */}
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
+      <main className="flex-1 max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 2xl:px-10 py-8 sm:py-10 lg:py-12">
         {children}
       </main>
 
       {/* Dashboard Footer */}
       <footer className="border-t border-border/70 py-6 px-4 sm:px-6 lg:px-8 text-xs font-sans text-muted-foreground">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <span>Mayang Imphal AC-23 Civic Dashboard · LGD 250326</span>
           <span className="flex items-center gap-3">
             <Link href="/about#dpdp" className="hover:underline">DPDP Compliance</Link>

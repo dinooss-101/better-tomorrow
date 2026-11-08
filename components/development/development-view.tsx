@@ -31,9 +31,9 @@ export function DevelopmentView() {
         {/* Page Hero: Quiet Imphal Editorial Style */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 md:py-10 lg:py-12 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),720px)] 2xl:min-h-[min(calc(100dvh-3.75rem),760px)] py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
         >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
@@ -115,7 +115,7 @@ export function DevelopmentView() {
 
         {/* Section 1: Statutory Framework */}
         <section id="mandate" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
                 <Layers className="size-3.5" />
@@ -159,7 +159,7 @@ export function DevelopmentView() {
 
         {/* Section 2: The 4 Core Survey Layers (Stacking Cards Parallax) */}
         <section id="survey-layers" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20 border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="max-w-3xl mb-8 sm:mb-12">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
                 <Map className="size-3.5" />
@@ -187,7 +187,7 @@ export function DevelopmentView() {
 
         {/* Section 3: Drainage Hotspot & Technical Specs */}
         <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <div className="lg:col-span-6 space-y-5">
                 <div className="flex items-center gap-2 text-xs font-semibold text-secondary tracking-wider uppercase font-ui">
@@ -244,7 +244,7 @@ export function DevelopmentView() {
 
         {/* Section 4: Accountability Demarcation Table */}
         <section id="jurisdiction" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-background border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="max-w-3xl mb-8 sm:mb-12">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
                 Understanding Who Does What in Mayang Imphal

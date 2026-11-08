@@ -122,9 +122,9 @@ export function ScholarshipsView() {
         {/* Page Hero */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 md:py-10 lg:py-12 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),720px)] 2xl:min-h-[min(calc(100dvh-3.75rem),760px)] py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
         >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
             <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-10">
               <div className="flex flex-col gap-2.5 sm:gap-3.5 lg:col-span-7">
                 <Link
@@ -195,7 +195,7 @@ export function ScholarshipsView() {
 
         {/* Directory Controls & Listings with Dropdown Menus */}
         <section className="border-b border-border/60 bg-background py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             {/* Filter Controls Bar */}
             <div className="mb-10 sm:mb-14 rounded-none border border-border/80 bg-card p-6 sm:p-8 shadow-xs">
               <div className="grid grid-cols-1 items-center gap-4 sm:gap-6 md:grid-cols-12">
@@ -409,7 +409,7 @@ export function ScholarshipsView() {
 
         {/* Essential Documents & Checklist */}
         <section className="border-b border-border/60 bg-muted/30 py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="mb-12 sm:mb-16 max-w-2xl">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
                 Before You Apply on the National Scholarship Portal
@@ -480,7 +480,7 @@ export function ScholarshipsView() {
 
         {/* Diaspora Mentoring & Safeguarding */}
         <section className="bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="rounded-none border border-border/80 bg-card p-8 shadow-xs sm:p-12">
               <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
                 <div className="flex flex-col gap-5 lg:col-span-8">

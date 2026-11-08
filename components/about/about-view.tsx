@@ -14,9 +14,9 @@ export function AboutView() {
         {/* Page Hero: Quiet Imphal Editorial Style */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 md:py-10 lg:py-12 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),720px)] 2xl:min-h-[min(calc(100dvh-3.75rem),760px)] py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
         >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
@@ -86,7 +86,7 @@ export function AboutView() {
 
         {/* Quick Anchor Navigation */}
         <div className="sticky top-14 sm:top-15 z-30 border-b border-border bg-background/95 py-2.5 backdrop-blur-sm sm:py-3.5">
-          <div className="mx-auto flex max-w-5xl items-center gap-5 overflow-x-auto px-4 text-xs font-ui font-semibold uppercase tracking-wider text-muted-foreground sm:gap-8 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-5xl xl:max-w-6xl 2xl:max-w-7xl items-center gap-5 overflow-x-auto px-4 text-xs font-ui font-semibold uppercase tracking-wider text-muted-foreground sm:gap-8 sm:px-6 lg:px-8 2xl:px-10">
             <a
               href="#identity"
               className="flex min-h-10 shrink-0 items-center py-1 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:opacity-80"
@@ -125,7 +125,7 @@ export function AboutView() {
           id="identity"
           className="border-b border-border bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="max-w-3xl space-y-6 sm:space-y-8">
               <div>
                 <span className="font-ui text-xs font-bold uppercase tracking-wider text-secondary block mb-1.5">

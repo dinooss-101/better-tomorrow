@@ -101,9 +101,9 @@ export function ProgressView() {
         {/* Page Hero */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 md:py-10 lg:py-12 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),720px)] 2xl:min-h-[min(calc(100dvh-3.75rem),760px)] py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
         >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
@@ -167,7 +167,7 @@ export function ProgressView() {
 
         {/* Search & Filter Bar with Dropdown Menus */}
         <section className="py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12 bg-background border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             {/* Top Evidence & Metrics Overview Strip */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 text-xs font-ui">
               <div className="border border-border/70 bg-card p-3.5 space-y-1">
@@ -371,7 +371,7 @@ export function ProgressView() {
 
         {/* Methodology & Integrity Architecture */}
         <section id="methodology" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/30 border-b border-border/60">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
                 The Verification Standard: Sourcing, Not Rhetoric

@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border bg-card">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12">
+      <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 pt-12 sm:pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-border/60">
           {/* Office of the Representative with Mayang Imphal Logo */}
           <div className="md:col-span-5 space-y-4">

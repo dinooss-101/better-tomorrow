@@ -137,7 +137,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-background/95 backdrop-blur-md border-b border-border text-foreground shadow-none transition-colors">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 min-h-14 sm:min-h-15 flex items-center justify-between gap-4">
+      <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 py-2 sm:py-2.5 min-h-14 sm:min-h-15 flex items-center justify-between gap-4">
         {/* ================================================================ */}
         {/* BRAND TEXT LOGO LOCKUP                                          */}
         {/* ================================================================ */}
