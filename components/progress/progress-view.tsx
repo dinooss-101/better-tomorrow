@@ -101,9 +101,11 @@ export function ProgressView() {
         {/* Page Hero */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),720px)] 2xl:min-h-[min(calc(100dvh-3.75rem),760px)] py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),48rem)] 2xl:min-h-[min(calc(100dvh-3.75rem),54rem)] py-8 sm:py-10 md:py-14 2xl:py-20 3xl:py-24 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8 overflow-hidden"
         >
-          <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
+          {/* Subtle Atmospheric Ambient Radial Light for 4K / Large Desktop Monitors */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)/0.035,transparent_75%)] pointer-events-none" />
+          <div className="relative mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
@@ -381,7 +383,7 @@ export function ProgressView() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-4 gap-8 lg:gap-10">
               <div className="rounded-none border border-border/80 bg-card p-6 sm:p-8 flex flex-col gap-3">
                 <div className="font-ui text-xs font-bold uppercase tracking-wider text-secondary">Rule 01</div>
                 <h4 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-foreground">
