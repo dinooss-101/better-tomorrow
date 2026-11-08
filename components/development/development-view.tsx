@@ -29,10 +29,13 @@ export function DevelopmentView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <div className="bg-background text-foreground py-6 sm:py-8 lg:py-9 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-5 border-b border-border">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-10">
-              <div className="flex flex-col gap-2.5 sm:gap-3 lg:col-span-7">
+        <section
+          id="hero"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-8 sm:py-10 lg:py-12 in-data-[density=compact]:py-6 in-data-[density=compact]:sm:py-8"
+        >
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+              <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
                   className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
@@ -48,15 +51,15 @@ export function DevelopmentView() {
                   <span className="font-ui text-xs text-muted-foreground font-semibold uppercase tracking-wider">Class-III Town Master Plan</span>
                 </div>
 
-                <h1 className="font-display text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight text-foreground leading-tight uppercase">
+                <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight uppercase">
                   Mayang Imphal Master Plan 2045
                 </h1>
 
-                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mt-2 max-w-2xl font-normal tracking-normal">
+                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mt-2.5 max-w-2xl font-normal tracking-normal">
                   Statutory GIS-based urban planning framework formulated under the Ministry of Housing &amp; Urban Affairs (MoHUA) AMRUT 2.0 guidelines. Delineating drainage corridors, road rights-of-way, and agricultural preservation zones for the next two decades.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3 pt-1.5">
+                <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
                     href={rfpUrl}
                     target="_blank"
@@ -74,25 +77,25 @@ export function DevelopmentView() {
               </div>
 
               <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-60 sm:max-w-64 lg:max-w-64 xl:max-w-70 border border-border/80 bg-card p-2 sm:p-2.5 shadow-xs">
-                  <div className="relative aspect-4/3 w-full overflow-hidden bg-muted/20">
+                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
+                  <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/master-plan-gis-survey.png"
                       alt="Mayang Imphal Master Plan 2045 GIS Survey and Cartography"
                       fill
-                      sizes="(max-width: 768px) 100vw, 280px"
+                      sizes="(max-width: 768px) 100vw, 360px"
                       className="object-cover"
                       priority
                     />
                   </div>
-                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[10px] sm:text-[11px] font-sans text-muted-foreground">
+                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-[11px] font-sans text-muted-foreground">
                     GIS Master Plan Cartography · MoHUA AMRUT 2.0
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Section 1: Statutory Framework */}
         <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
