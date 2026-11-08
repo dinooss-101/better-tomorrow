@@ -1,5 +1,20 @@
-import { UserProfile } from "@/lib/types/auth"
+import { UserProfile, WardNumber } from "@/lib/types/auth"
 import { GrievanceTicket, WardMetric } from "@/lib/types/dashboard"
+
+export const WARD_OPTIONS: { ward: WardNumber; label: string }[] = [
+  { ward: 1, label: "Ward 1 · Konchak Awang" },
+  { ward: 2, label: "Ward 2 · Konchak Makha" },
+  { ward: 3, label: "Ward 3 · Heituppokpi" },
+  { ward: 4, label: "Ward 4 · Bazaar South" },
+  { ward: 5, label: "Ward 5 · Central Bazar" },
+  { ward: 6, label: "Ward 6 · Chanam Pukhri" },
+  { ward: 7, label: "Ward 7 · Chirai Awang" },
+  { ward: 8, label: "Ward 8 · Chirai Makha" },
+  { ward: 9, label: "Ward 9 · Thana Maning" },
+  { ward: 10, label: "Ward 10 · Wangoi East" },
+  { ward: 11, label: "Ward 11 · Kokhai Awang" },
+  { ward: 12, label: "Ward 12 · Kokhai Makha" },
+]
 
 export const PRESET_USERS: Record<string, UserProfile> = {
   citizen: {

@@ -8,27 +8,13 @@ import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useAuth } from "@/lib/auth/auth-context"
 import { WardNumber } from "@/lib/types/auth"
+import { WARD_OPTIONS } from "@/lib/data/mock-user-data"
 import { TextLogo } from "@/components/text-logo"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, Loader2 } from "lucide-react"
-
-const WARD_OPTIONS: { ward: WardNumber; label: string }[] = [
-  { ward: 1, label: "Ward 1 · Konchak Awang" },
-  { ward: 2, label: "Ward 2 · Konchak Makha" },
-  { ward: 3, label: "Ward 3 · Heituppokpi" },
-  { ward: 4, label: "Ward 4 · Bazaar South" },
-  { ward: 5, label: "Ward 5 · Central Bazar" },
-  { ward: 6, label: "Ward 6 · Chanam Pukhri" },
-  { ward: 7, label: "Ward 7 · Chirai Awang" },
-  { ward: 8, label: "Ward 8 · Chirai Makha" },
-  { ward: 9, label: "Ward 9 · Thana Maning" },
-  { ward: 10, label: "Ward 10 · Wangoi East" },
-  { ward: 11, label: "Ward 11 · Kokhai Awang" },
-  { ward: 12, label: "Ward 12 · Kokhai Makha" },
-]
 
 export function RegisterForm({
   className,

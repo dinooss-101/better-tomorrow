@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react"
 import { useAuth } from "@/lib/auth/auth-context"
 import { GrievanceStatus, GrievanceCategory, GrievancePriority } from "@/lib/types/dashboard"
 import { WardNumber } from "@/lib/types/auth"
+import { WARD_OPTIONS } from "@/lib/data/mock-user-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -160,9 +161,9 @@ export function GrievancesView() {
                 onChange={(e) => setNewWard(Number(e.target.value) as WardNumber)}
                 className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
               >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
-                  <option key={w} value={w}>
-                    Ward {w}
+                {WARD_OPTIONS.map((opt) => (
+                  <option key={opt.ward} value={opt.ward}>
+                    {opt.label}
                   </option>
                 ))}
               </select>
@@ -270,9 +271,9 @@ export function GrievancesView() {
               className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
             >
               <option value="ALL">All 12 Wards</option>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
-                <option key={w} value={String(w)}>
-                  Ward {w}
+              {WARD_OPTIONS.map((opt) => (
+                <option key={opt.ward} value={String(opt.ward)}>
+                  {opt.label}
                 </option>
               ))}
             </select>

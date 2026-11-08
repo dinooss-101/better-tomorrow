@@ -6,7 +6,7 @@ import { UserRole } from "@/lib/types/auth"
 import { Shield, User, HardHat, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export function DevAccountSwitcher() {
+export function DevAccountSwitcher({ className }: { className?: string } = {}) {
   const { role, switchRole } = useAuth()
 
   const roles: { id: UserRole; label: string; sub: string; icon: React.ElementType }[] = [
@@ -31,7 +31,7 @@ export function DevAccountSwitcher() {
   ]
 
   return (
-    <div className="border border-border/80 bg-muted/30 p-3 sm:p-4 mb-6">
+    <div className={cn("border border-border/80 bg-muted/30 p-3 sm:p-4", className)}>
       <div className="flex items-center justify-between gap-2 mb-2.5">
         <span className="font-ui text-[11px] font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
           <span className="size-2 rounded-full bg-primary animate-pulse" />
