@@ -173,7 +173,7 @@ export function ScholarshipsView() {
               </div>
 
               <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-[280px] xl:max-w-xs border border-border/80 bg-card p-2 sm:p-2.5 shadow-xs">
+                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-70 xl:max-w-xs border border-border/80 bg-card p-2 sm:p-2.5 shadow-xs">
                   <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/scholarship-academic-aspiration.png"
