@@ -71,7 +71,7 @@ export function ProfileView() {
     : "MI"
 
   return (
-    <div className="space-y-8 sm:space-y-10 max-w-3xl">
+    <div className="space-y-8 sm:space-y-10">
       {/* Header */}
       <div className="border-b border-border/70 pb-6 sm:pb-7">
         <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
@@ -120,7 +120,7 @@ export function ProfileView() {
         </CardHeader>
 
         <CardContent className="p-5 sm:p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs sm:text-sm font-sans">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs sm:text-sm font-sans">
             <div className="space-y-1.5">
               <span className="text-muted-foreground block text-[10px] font-ui uppercase font-semibold tracking-wider">
                 Registered Mobile Phone
