@@ -317,16 +317,20 @@ export function DashboardOverview() {
 
           {/* DPDP Privacy Notice Card */}
           <Alert className="rounded-none border-border/70 bg-card/60 p-3.5 text-xs">
-            <div className="flex items-center gap-1.5 font-ui text-[11px] font-bold uppercase tracking-wider text-foreground mb-1">
+            <AlertTitle className="flex items-center gap-1.5 font-ui text-[11px] font-bold uppercase tracking-wider text-foreground">
               <ShieldCheck className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
               <span>DPDP Compliance</span>
-            </div>
+            </AlertTitle>
             <AlertDescription className="text-xs text-muted-foreground leading-relaxed">
               Casework is processed under statutory DPDP Act 2023 controls. Citizens may export or request erasure in the{" "}
-              <Link href="/dashboard/profile" className="text-primary dark:text-emerald-400 underline font-semibold inline-flex items-center gap-0.5">
+              <Link
+                href="/dashboard/profile"
+                className="text-primary dark:text-emerald-400 underline font-semibold inline-flex items-center gap-0.5 whitespace-nowrap"
+              >
                 <span>Citizen Data Vault</span>
                 <ExternalLink className="size-2.5" />
-              </Link>.
+              </Link>
+              .
             </AlertDescription>
           </Alert>
         </div>

@@ -169,8 +169,8 @@ export function VerificationsView() {
         </div>
 
         {verifiedTickets.length === 0 ? (
-          <Alert className="rounded-none border-border/70 bg-card p-5 text-center">
-            <ShieldAlert className="size-5 text-muted-foreground mx-auto mb-1" />
+          <Alert className="rounded-none border-border/70 bg-card p-5 text-center flex flex-col items-center justify-center gap-1.5">
+            <ShieldAlert className="size-5 text-muted-foreground mb-0.5" />
             <AlertTitle className="text-sm font-semibold text-foreground">No verified records yet</AlertTitle>
             <AlertDescription className="text-xs text-muted-foreground">
               Tickets verified by ward coordinators will appear in this audit log.
