@@ -3,14 +3,17 @@
 import React, { useState } from "react"
 import { useAuth } from "@/lib/auth/auth-context"
 import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
   ShieldCheck,
   Download,
   Trash2,
   CheckCircle2,
   AlertTriangle,
-  User,
   MapPin,
+  Lock,
 } from "lucide-react"
 
 export function ProfileView() {
@@ -47,13 +50,25 @@ export function ProfileView() {
 
   const handleErasureRequest = async () => {
     // In accordance with DPDP Act 2023, permanently purges profile and personal casework from storage
-    if (confirm("Are you sure you wish to exercise your statutory Right to Erasure? This will permanently delete your stored profile, casework, and personal details under the DPDP Act 2023.")) {
+    if (
+      confirm(
+        "Are you sure you wish to exercise your statutory Right to Erasure? This will permanently delete your stored profile, casework, and personal details under the DPDP Act 2023."
+      )
+    ) {
       setErasureConfirmed(true)
       setTimeout(async () => {
         await eraseUserData()
       }, 600)
     }
   }
+
+  const initials = user?.name
+    ? user.name
+        .split(" ")
+        .map((w) => w[0])
+        .slice(0, 2)
+        .join("")
+    : "MI"
 
   return (
     <div className="space-y-5 sm:space-y-6 max-w-3xl">
@@ -72,113 +87,148 @@ export function ProfileView() {
         </p>
       </div>
 
-      {/* Account Details Card */}
-      <div className="border border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-3.5">
-        <div className="flex items-center justify-between border-b border-border/70 pb-3">
+      {/* Account Details Card Composed with Avatar & Badge */}
+      <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
+        <CardHeader className="p-4 sm:p-5 border-b border-border/70 pb-4 flex flex-row items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="size-9 bg-primary/10 border border-primary/30 flex items-center justify-center font-ui font-bold text-primary dark:text-emerald-400">
-              <User className="size-4" />
-            </div>
+            <Avatar className="size-10 rounded-none border border-border/70 shrink-0">
+              <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui font-bold text-xs">
+                {initials}
+              </AvatarFallback>
+            </Avatar>
             <div>
-              <h2 className="font-sans font-bold text-sm sm:text-base text-foreground leading-tight">
+              <CardTitle className="font-sans font-bold text-sm sm:text-base text-foreground leading-tight">
                 {user?.name || "Constituency Resident"}
-              </h2>
-              <span className="text-[11px] text-muted-foreground font-ui uppercase tracking-wider">
-                Role: <strong>{user?.role?.toUpperCase()}</strong>
-              </span>
+              </CardTitle>
+              <div className="flex items-center gap-2 mt-0.5">
+                <Badge variant="outline" className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1">
+                  Role: {user?.role || "citizen"}
+                </Badge>
+                {user?.id && (
+                  <span className="font-mono text-[10px] text-muted-foreground">ID: {user.id}</span>
+                )}
+              </div>
             </div>
           </div>
 
           {user?.ward && (
-            <span className="font-ui text-[11px] font-semibold px-2 py-0.5 border border-border/80 bg-muted/30 text-foreground flex items-center gap-1">
+            <Badge variant="outline" className="rounded-none text-[10px] font-ui font-semibold uppercase px-2 py-0.5 flex items-center gap-1">
               <MapPin className="size-2.5 text-primary dark:text-emerald-400" />
               Ward {user.ward}
-            </span>
+            </Badge>
           )}
-        </div>
+        </CardHeader>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-sans">
-          <div>
-            <span className="text-muted-foreground block text-[10px] font-ui uppercase">Registered Mobile Phone</span>
-            <span className="font-mono text-foreground font-medium">{user?.phone || "+91 98620 XXXXX"}</span>
-          </div>
+        <CardContent className="p-4 sm:p-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans">
+            <div className="space-y-1">
+              <span className="text-muted-foreground block text-[10px] font-ui uppercase font-semibold tracking-wider">
+                Registered Mobile Phone
+              </span>
+              <span className="font-mono text-foreground font-medium">{user?.phone || "+91 98620 XXXXX"}</span>
+            </div>
 
-          <div>
-            <span className="text-muted-foreground block text-[10px] font-ui uppercase">Email Address</span>
-            <span className="text-foreground font-medium">{user?.email || "Not specified (Optional)"}</span>
-          </div>
+            <div className="space-y-1">
+              <span className="text-muted-foreground block text-[10px] font-ui uppercase font-semibold tracking-wider">
+                Email Address
+              </span>
+              <span className="text-foreground font-medium">{user?.email || "Not specified (Optional)"}</span>
+            </div>
 
-          <div>
-            <span className="text-muted-foreground block text-[10px] font-ui uppercase">Citizen Enrollment Date</span>
-            <span className="text-foreground font-medium">
-              {user?.joinedAt ? new Date(user.joinedAt).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }) : "Active Session"}
-            </span>
-          </div>
+            <div className="space-y-1">
+              <span className="text-muted-foreground block text-[10px] font-ui uppercase font-semibold tracking-wider">
+                Citizen Enrollment Date
+              </span>
+              <span className="text-foreground font-medium">
+                {user?.joinedAt
+                  ? new Date(user.joinedAt).toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })
+                  : "Active Session"}
+              </span>
+            </div>
 
-          <div>
-            <span className="text-muted-foreground block text-[10px] font-ui uppercase">Statutory DPDP Consent Stamp</span>
-            <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
-              <CheckCircle2 className="size-3" /> DPDP 2023 Consent Active
-            </span>
+            <div className="space-y-1">
+              <span className="text-muted-foreground block text-[10px] font-ui uppercase font-semibold tracking-wider">
+                Statutory Consent Status
+              </span>
+              <Badge variant="default" className="rounded-none text-[9px] font-ui uppercase font-semibold h-5 px-1.5 flex items-center gap-1 w-fit">
+                <CheckCircle2 className="size-2.5" /> DPDP 2023 Consent Active
+              </Badge>
+            </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {/* DPDP Sovereign Controls Card */}
-      <div className="border border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-4">
-        <div>
-          <h2 className="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
-            <ShieldCheck className="size-4 text-primary dark:text-emerald-400" />
-            Statutory Data Rights (Sections 11 &amp; 12)
-          </h2>
+      <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
+        <CardHeader className="p-4 sm:p-5 border-b border-border/70 pb-3">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="size-4 text-primary dark:text-emerald-400 shrink-0" />
+            <CardTitle className="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-foreground">
+              Statutory Data Rights (Sections 11 &amp; 12)
+            </CardTitle>
+          </div>
           <p className="text-xs font-sans text-muted-foreground mt-0.5">
             As a citizen of Mayang Imphal, you retain complete sovereignty over all information submitted to our ward desk.
           </p>
-        </div>
+        </CardHeader>
 
-        {/* Action 1: Export Data */}
-        <div className="border-t border-border/70 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <div className="font-ui font-semibold text-xs uppercase text-foreground">
-              1. Right to Access &amp; Portability
+        <CardContent className="p-4 sm:p-5 space-y-4">
+          {/* Action 1: Export Data */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/60">
+            <div>
+              <div className="font-ui font-semibold text-xs uppercase text-foreground">
+                1. Right to Access &amp; Portability
+              </div>
+              <p className="text-xs font-sans text-muted-foreground mt-0.5 max-w-md">
+                Download a complete JSON export of your profile, consent timestamps, and logged casework.
+              </p>
             </div>
-            <p className="text-xs font-sans text-muted-foreground mt-0.5 max-w-md">
-              Download a complete JSON export of your profile, consent timestamps, and logged casework.
-            </p>
+
+            <Button
+              onClick={handleExportData}
+              variant="outline"
+              className="rounded-none h-8 px-3 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-1.5 shadow-xs"
+            >
+              <Download className="size-3" />
+              <span>{downloadSuccess ? "Vault Exported!" : "Export Vault (.json)"}</span>
+            </Button>
           </div>
 
-          <Button
-            onClick={handleExportData}
-            variant="outline"
-            className="rounded-none h-8 px-3 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-1.5"
-          >
-            <Download className="size-3" />
-            <span>{downloadSuccess ? "Vault Exported!" : "Export Vault (.json)"}</span>
-          </Button>
-        </div>
-
-        {/* Action 2: Right to Erasure */}
-        <div className="border-t border-border/70 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <div className="font-ui font-semibold text-xs uppercase text-destructive flex items-center gap-1.5">
-              <AlertTriangle className="size-3" />
-              2. Right to Erasure (Statutory Deletion)
+          {/* Action 2: Right to Erasure */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div className="font-ui font-semibold text-xs uppercase text-destructive flex items-center gap-1.5">
+                <AlertTriangle className="size-3" />
+                2. Right to Erasure (Statutory Deletion)
+              </div>
+              <p className="text-xs font-sans text-muted-foreground mt-0.5 max-w-md">
+                Permanently delete your profile record, mobile number, and personal identifying details from this platform.
+              </p>
             </div>
-            <p className="text-xs font-sans text-muted-foreground mt-0.5 max-w-md">
-              Permanently delete your profile record, mobile number, and personal identifying details from this platform.
-            </p>
-          </div>
 
-          <Button
-            onClick={handleErasureRequest}
-            variant="destructive"
-            className="rounded-none h-8 px-3 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-1.5"
-          >
-            <Trash2 className="size-3" />
-            <span>{erasureConfirmed ? "Purging..." : "Delete Profile"}</span>
-          </Button>
+            <Button
+              onClick={handleErasureRequest}
+              variant="destructive"
+              className="rounded-none h-8 px-3 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-1.5 shadow-xs"
+            >
+              <Trash2 className="size-3" />
+              <span>{erasureConfirmed ? "Purging..." : "Delete Profile"}</span>
+            </Button>
+          </div>
+        </CardContent>
+
+        <div className="border-t border-border/60 py-2.5 px-4 sm:px-5 bg-muted/20 flex items-center justify-between text-[11px] font-sans text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <Lock className="size-3 text-primary dark:text-emerald-400" />
+            End-to-end client-side privacy architecture
+          </span>
+          <span className="font-mono text-[10px]">DPDP-2023-SEC-12</span>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

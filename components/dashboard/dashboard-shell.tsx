@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth/auth-context"
 import { TextLogo } from "@/components/text-logo"
 import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { DevAccountSwitcher } from "@/components/auth/dev-account-switcher"
 import {
   LayoutDashboard,
@@ -131,17 +132,31 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
             {/* Right: User Role Badge + Actions */}
             <div className="flex items-center gap-2 sm:gap-2.5">
-              {/* Role Badge */}
-              <div className="hidden md:flex items-center gap-1.5 border border-border/70 px-2 py-0.5 text-xs bg-muted/20">
-                <Shield className="size-3 text-primary dark:text-emerald-400" />
-                <span className="font-ui text-[10px] font-semibold uppercase tracking-wider text-foreground">
-                  {roleLabels[role]}
-                </span>
-                {user?.ward && (
-                  <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
-                    <MapPin className="size-2.5" /> W{user.ward}
+              {/* User Avatar + Role Badge */}
+              <div className="flex items-center gap-2">
+                <Avatar className="size-7.5 rounded-none border border-border">
+                  <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui text-[11px] font-bold">
+                    {user?.name
+                      ? user.name
+                          .split(" ")
+                          .map((w) => w[0])
+                          .slice(0, 2)
+                          .join("")
+                      : "MI"}
+                  </AvatarFallback>
+                </Avatar>
+
+                <div className="hidden md:flex items-center gap-1.5 border border-border/70 px-2 py-0.5 text-xs bg-muted/20">
+                  <Shield className="size-3 text-primary dark:text-emerald-400" />
+                  <span className="font-ui text-[10px] font-semibold uppercase tracking-wider text-foreground">
+                    {roleLabels[role]}
                   </span>
-                )}
+                  {user?.ward && (
+                    <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
+                      <MapPin className="size-2.5" /> W{user.ward}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Dev Switcher Toggle */}

@@ -7,6 +7,11 @@ import { WardNumber } from "@/lib/types/auth"
 import { WARD_OPTIONS } from "@/lib/data/mock-user-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+import { Field, FieldLabel, FieldGroup } from "@/components/ui/field"
 import {
   Plus,
   Search,
@@ -14,6 +19,8 @@ import {
   MapPin,
   RotateCcw,
   X,
+  AlertCircle,
+  FileCheck,
 } from "lucide-react"
 
 export function GrievancesView() {
@@ -90,12 +97,18 @@ export function GrievancesView() {
     setEditNotes("")
   }
 
-  const statusBadges = {
-    PROPOSED: "bg-muted text-muted-foreground border-border",
-    UNDER_REVIEW: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
-    FIELD_VERIFIED: "bg-primary/10 text-primary dark:text-emerald-400 border-primary/30",
-    DISPATCHED_TO_MUNICIPALITY: "bg-sky-500/10 text-sky-700 dark:text-sky-400 border-sky-500/30",
-    RESOLVED: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
+  const statusVariantMap: Record<GrievanceStatus, "default" | "secondary" | "outline" | "destructive"> = {
+    PROPOSED: "outline",
+    UNDER_REVIEW: "secondary",
+    FIELD_VERIFIED: "default",
+    DISPATCHED_TO_MUNICIPALITY: "secondary",
+    RESOLVED: "default",
+  }
+
+  const priorityVariantMap: Record<GrievancePriority, "default" | "secondary" | "outline" | "destructive"> = {
+    ROUTINE: "outline",
+    URGENT: "secondary",
+    CRITICAL: "destructive",
   }
 
   return (
@@ -118,139 +131,147 @@ export function GrievancesView() {
 
         <Button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-1.5 shrink-0"
+          className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-1.5 shrink-0 shadow-xs"
         >
           {showAddForm ? <X className="size-3.5" /> : <Plus className="size-3.5" />}
           <span>{showAddForm ? "Cancel Form" : "Log Ward Priority"}</span>
         </Button>
       </div>
 
-      {/* Add New Grievance Inline Form */}
+      {/* Add New Grievance Inline Card Form */}
       {showAddForm && (
-        <form
-          onSubmit={handleCreateGrievance}
-          className="border border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-3.5"
-        >
-          <div className="flex items-center justify-between border-b border-border/70 pb-2">
-            <h2 className="font-display text-base font-bold uppercase tracking-tight text-foreground">
-              Submit Constituency Priority Issue
-            </h2>
-            <span className="font-ui text-xs text-muted-foreground">Logged as: {user?.name}</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="sm:col-span-2">
-              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-                Issue Summary / Title *
-              </label>
-              <Input
-                required
-                value={newTitle}
-                onChange={(e) => setNewTitle(e.target.value)}
-                placeholder="e.g. Silt blockage at Bazar primary drainage outfall"
-                className="rounded-none text-xs h-9"
-              />
-            </div>
-
+        <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
+          <CardHeader className="p-4 sm:p-5 border-b border-border/70 pb-3 flex flex-row items-center justify-between">
             <div>
-              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-                Ward Number *
-              </label>
-              <select
-                value={newWard}
-                onChange={(e) => setNewWard(Number(e.target.value) as WardNumber)}
-                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
-              >
-                {WARD_OPTIONS.map((opt) => (
-                  <option key={opt.ward} value={opt.ward}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
+              <CardTitle className="font-display text-base font-bold uppercase tracking-tight text-foreground">
+                Submit Constituency Priority Issue
+              </CardTitle>
+              <span className="font-ui text-xs text-muted-foreground">Logging as: {user?.name}</span>
             </div>
-          </div>
+            <Badge variant="outline" className="rounded-none text-[10px] font-ui uppercase font-semibold">
+              Casework Intake
+            </Badge>
+          </CardHeader>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-                Specific Locality / Landmark *
-              </label>
-              <Input
-                required
-                value={newLocality}
-                onChange={(e) => setNewLocality(e.target.value)}
-                placeholder="e.g. Near Heituppokpi Community Hall"
-                className="rounded-none text-xs h-9"
-              />
-            </div>
+          <CardContent className="p-4 sm:p-5 pt-4">
+            <form onSubmit={handleCreateGrievance} className="space-y-4">
+              <FieldGroup className="space-y-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <Field className="sm:col-span-2">
+                    <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                      Issue Summary / Title *
+                    </FieldLabel>
+                    <Input
+                      required
+                      value={newTitle}
+                      onChange={(e) => setNewTitle(e.target.value)}
+                      placeholder="e.g. Silt blockage at Bazar primary drainage outfall"
+                      className="rounded-none text-xs h-9"
+                    />
+                  </Field>
 
-            <div>
-              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-                Category
-              </label>
-              <select
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value as GrievanceCategory)}
-                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
-              >
-                <option value="WATER_AND_DRAINAGE">Water &amp; Drainage</option>
-                <option value="ROAD_CONNECTIVITY">Roads &amp; Connectivity</option>
-                <option value="MUNICIPAL_SERVICES">Municipal Services</option>
-                <option value="EDUCATION_STEM">Education &amp; STEM</option>
-              </select>
-            </div>
+                  <Field>
+                    <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                      Ward Number *
+                    </FieldLabel>
+                    <select
+                      value={newWard}
+                      onChange={(e) => setNewWard(Number(e.target.value) as WardNumber)}
+                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                    >
+                      {WARD_OPTIONS.map((opt) => (
+                        <option key={opt.ward} value={opt.ward}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </Field>
+                </div>
 
-            <div>
-              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-                Urgency Priority
-              </label>
-              <select
-                value={newPriority}
-                onChange={(e) => setNewPriority(e.target.value as GrievancePriority)}
-                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
-              >
-                <option value="ROUTINE">Routine Maintenance</option>
-                <option value="URGENT">Urgent (Before Rains)</option>
-                <option value="CRITICAL">Critical Emergency</option>
-              </select>
-            </div>
-          </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <Field>
+                    <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                      Specific Locality / Landmark *
+                    </FieldLabel>
+                    <Input
+                      required
+                      value={newLocality}
+                      onChange={(e) => setNewLocality(e.target.value)}
+                      placeholder="e.g. Near Heituppokpi Community Hall"
+                      className="rounded-none text-xs h-9"
+                    />
+                  </Field>
 
-          <div>
-            <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
-              Detailed Description &amp; Ground Evidence *
-            </label>
-            <textarea
-              required
-              rows={3}
-              value={newDescription}
-              onChange={(e) => setNewDescription(e.target.value)}
-              placeholder="Describe the physical condition, number of households affected, or specific impediment..."
-              className="w-full border border-input bg-background p-2.5 text-xs rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary"
-            />
-          </div>
+                  <Field>
+                    <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                      Category
+                    </FieldLabel>
+                    <select
+                      value={newCategory}
+                      onChange={(e) => setNewCategory(e.target.value as GrievanceCategory)}
+                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                    >
+                      <option value="WATER_AND_DRAINAGE">Water &amp; Drainage</option>
+                      <option value="ROAD_CONNECTIVITY">Roads &amp; Connectivity</option>
+                      <option value="MUNICIPAL_SERVICES">Municipal Services</option>
+                      <option value="EDUCATION_STEM">Education &amp; STEM</option>
+                    </select>
+                  </Field>
 
-          <div className="flex justify-end gap-2.5 pt-1">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setShowAddForm(false)}
-              className="rounded-none text-xs h-8 px-3 font-ui uppercase"
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              className="rounded-none text-xs h-8 px-3 font-ui uppercase font-semibold bg-primary text-primary-foreground"
-            >
-              Submit to Ward Desk
-            </Button>
-          </div>
-        </form>
+                  <Field>
+                    <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                      Urgency Priority
+                    </FieldLabel>
+                    <select
+                      value={newPriority}
+                      onChange={(e) => setNewPriority(e.target.value as GrievancePriority)}
+                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                    >
+                      <option value="ROUTINE">Routine Maintenance</option>
+                      <option value="URGENT">Urgent (Before Rains)</option>
+                      <option value="CRITICAL">Critical Emergency</option>
+                    </select>
+                  </Field>
+                </div>
+
+                <Field>
+                  <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
+                    Detailed Description &amp; Ground Evidence *
+                  </FieldLabel>
+                  <textarea
+                    required
+                    rows={3}
+                    value={newDescription}
+                    onChange={(e) => setNewDescription(e.target.value)}
+                    placeholder="Describe the physical condition, number of households affected, or specific impediment..."
+                    className="w-full border border-input bg-background p-2.5 text-xs rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary"
+                  />
+                </Field>
+              </FieldGroup>
+
+              <div className="flex justify-end gap-2.5 pt-2 border-t border-border/60">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowAddForm(false)}
+                  className="rounded-none text-xs h-8 px-3 font-ui uppercase"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="rounded-none text-xs h-8 px-3 font-ui uppercase font-semibold bg-primary text-primary-foreground"
+                >
+                  Submit to Ward Desk
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
       )}
 
-      {/* Filter & Search Bar */}
-      <div className="border border-border/80 bg-card p-3 sm:p-3.5 shadow-xs space-y-2.5">
+      {/* Filter & Search Bar Composed with Card */}
+      <Card className="rounded-none border-border/80 bg-card p-3 sm:p-3.5 shadow-xs space-y-2.5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           {/* Search Input */}
           <div className="relative">
@@ -312,7 +333,12 @@ export function GrievancesView() {
         </div>
 
         <div className="flex items-center justify-between text-[11px] text-muted-foreground font-ui pt-0.5">
-          <span>Showing {filteredTickets.length} of {grievances.length} constituency records</span>
+          <div className="flex items-center gap-2">
+            <span>Showing {filteredTickets.length} of {grievances.length} constituency records</span>
+            <Badge variant="outline" className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1">
+              Active Docket
+            </Badge>
+          </div>
           {(searchQuery || selectedWard !== "ALL" || selectedStatus !== "ALL" || selectedCategory !== "ALL") && (
             <button
               type="button"
@@ -328,46 +354,100 @@ export function GrievancesView() {
             </button>
           )}
         </div>
-      </div>
+      </Card>
 
-      {/* Grievance Ledger Items */}
+      {/* Empty State */}
+      {filteredTickets.length === 0 && (
+        <Alert className="rounded-none border-border/70 bg-card p-6 text-center flex flex-col items-center justify-center gap-2">
+          <AlertCircle className="size-6 text-muted-foreground" />
+          <AlertTitle className="text-sm font-semibold text-foreground">
+            No matching constituency records found
+          </AlertTitle>
+          <AlertDescription className="text-xs text-muted-foreground max-w-sm">
+            Try adjusting your search query, selecting &ldquo;All 12 Wards&rdquo;, or resetting your status filter.
+          </AlertDescription>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setSearchQuery("")
+              setSelectedWard("ALL")
+              setSelectedStatus("ALL")
+              setSelectedCategory("ALL")
+            }}
+            className="rounded-none text-xs h-7.5 px-3 font-ui uppercase mt-1"
+          >
+            Clear Filters
+          </Button>
+        </Alert>
+      )}
+
+      {/* Grievance Ledger Items Composed with Card & Badge */}
       <div className="space-y-2.5 sm:space-y-3">
         {filteredTickets.map((ticket) => {
           const isEditing = editingTicketId === ticket.id
           const canManage = role === "ward_coordinator" || role === "desk_admin"
 
+          const initials = ticket.citizenName
+            ? ticket.citizenName
+                .split(" ")
+                .map((w) => w[0])
+                .slice(0, 2)
+                .join("")
+            : `W${ticket.ward}`
+
           return (
-            <div
+            <Card
               key={ticket.id}
-              className="border border-border/80 bg-card p-3.5 sm:p-4 shadow-xs transition-colors hover:border-primary/40 space-y-2.5"
+              className="rounded-none border-border/80 bg-card p-3.5 sm:p-4 shadow-xs transition-colors hover:border-primary/40 space-y-2.5"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
-                <div className="space-y-0.5">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-[11px] font-bold text-foreground">
-                      {ticket.id}
-                    </span>
-                    <span className="text-muted-foreground">·</span>
-                    <span className="font-ui text-[11px] font-semibold uppercase text-primary dark:text-emerald-400 flex items-center gap-1">
-                      <MapPin className="size-2.5" /> Ward {ticket.ward} ({ticket.locality})
-                    </span>
-                    <span className="text-muted-foreground">·</span>
-                    <span className="text-[10px] font-sans text-muted-foreground">
-                      Logged {new Date(ticket.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
-                    </span>
-                  </div>
+                <div className="flex items-start gap-2.5 min-w-0">
+                  <Avatar className="size-8 rounded-none border border-border/70 shrink-0 mt-0.5">
+                    <AvatarFallback className="rounded-none bg-muted font-ui text-[10px] font-bold text-foreground">
+                      {initials}
+                    </AvatarFallback>
+                  </Avatar>
 
-                  <h3 className="font-sans font-semibold text-xs sm:text-sm text-foreground leading-snug">
-                    {ticket.title}
-                  </h3>
+                  <div className="space-y-0.5 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="font-mono text-[11px] font-bold text-foreground">
+                        {ticket.id}
+                      </span>
+                      <span className="text-muted-foreground">·</span>
+                      <Badge
+                        variant="outline"
+                        className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1 flex items-center gap-0.5"
+                      >
+                        <MapPin className="size-2 text-primary dark:text-emerald-400" />
+                        Ward {ticket.ward} ({ticket.locality})
+                      </Badge>
+                      <span className="text-muted-foreground">·</span>
+                      <span className="text-[10px] font-sans text-muted-foreground">
+                        Logged {new Date(ticket.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                      </span>
+                    </div>
+
+                    <h3 className="font-sans font-semibold text-xs sm:text-sm text-foreground leading-snug">
+                      {ticket.title}
+                    </h3>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span
-                    className={`text-[10px] font-ui uppercase font-semibold tracking-wider px-2 py-0.5 border ${statusBadges[ticket.status]}`}
+                <div className="flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                  <Badge
+                    variant={priorityVariantMap[ticket.priority] || "outline"}
+                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-1.5 py-0.5"
+                  >
+                    {ticket.priority}
+                  </Badge>
+
+                  <Badge
+                    variant={statusVariantMap[ticket.status] || "outline"}
+                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-2 py-0.5"
                   >
                     {ticket.status.replace(/_/g, " ")}
-                  </span>
+                  </Badge>
 
                   {canManage && !isEditing && (
                     <Button
@@ -378,7 +458,7 @@ export function GrievancesView() {
                         setEditStatus(ticket.status)
                         setEditNotes(ticket.fieldVerificationNotes || "")
                       }}
-                      className="h-6.5 text-[10px] px-2 font-ui uppercase rounded-none"
+                      className="h-6 text-[10px] px-2 font-ui uppercase rounded-none border-dashed"
                     >
                       Audit
                     </Button>
@@ -386,7 +466,7 @@ export function GrievancesView() {
                 </div>
               </div>
 
-              <p className="text-xs font-sans text-muted-foreground leading-relaxed">
+              <p className="text-xs font-sans text-muted-foreground leading-relaxed pl-10.5">
                 {ticket.description}
               </p>
 
@@ -394,7 +474,10 @@ export function GrievancesView() {
               {isEditing && (
                 <div className="border-t border-border/70 pt-2.5 mt-2.5 p-3 bg-muted/20 space-y-2.5">
                   <div className="flex items-center justify-between text-[11px] font-ui font-bold uppercase text-primary dark:text-emerald-400">
-                    <span>Field Verification &amp; Status Update</span>
+                    <span className="flex items-center gap-1.5">
+                      <FileCheck className="size-3.5" />
+                      Field Verification &amp; Status Update
+                    </span>
                     <button
                       type="button"
                       onClick={() => setEditingTicketId(null)}
@@ -456,7 +539,7 @@ export function GrievancesView() {
               )}
 
               {/* Field Notes & Dispatch Reference Footer */}
-              <div className="border-t border-border/60 pt-2 flex flex-wrap items-center justify-between gap-2 text-[10px] font-sans text-muted-foreground">
+              <div className="border-t border-border/60 pt-2 flex flex-wrap items-center justify-between gap-2 text-[10px] font-sans text-muted-foreground pl-10.5">
                 <div className="flex items-center gap-3">
                   {ticket.assignedCoordinator && (
                     <span>Assigned: <strong>{ticket.assignedCoordinator}</strong></span>
@@ -473,7 +556,7 @@ export function GrievancesView() {
                   </div>
                 )}
               </div>
-            </div>
+            </Card>
           )
         })}
       </div>
