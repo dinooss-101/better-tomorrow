@@ -1,18 +1,39 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Play, MapPin, RotateCcw } from "lucide-react"
+import { ArrowRight, Play, MapPin, RotateCcw, Volume2, VolumeX } from "lucide-react"
 import { TypewriterTitle } from "@/components/ui/typewriter-title"
+import { ReplayIntroButton } from "@/components/home/cinematic-intro"
 
 export function HomeHero() {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (isPlayingVideo && videoRef.current) {
+      const vid = videoRef.current
+      vid.muted = isMuted
+      const playPromise = vid.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback: enforce muted autoplay if browser blocks audio
+          if (videoRef.current) {
+            videoRef.current.muted = true
+            setIsMuted(true)
+            videoRef.current.play().catch(() => {})
+          }
+        })
+      }
+    }
+  }, [isPlayingVideo, isMuted])
 
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-8 sm:py-10 lg:py-12 in-data-[density=compact]:py-6 in-data-[density=compact]:sm:py-8"
+      className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 md:py-10 lg:py-12 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
@@ -105,22 +126,37 @@ export function HomeHero() {
             {isPlayingVideo ? (
               <div className="relative w-full aspect-4/3 sm:aspect-16/11 bg-black border border-border shadow-xs overflow-hidden">
                 <video
+                  ref={videoRef}
                   controls
                   autoPlay
                   playsInline
+                  muted={isMuted}
+                  preload="metadata"
                   className="w-full h-full object-cover"
                 >
                   <source src="/animation/video_message.mp4" type="video/mp4" />
                   Your browser does not support HTML5 video playback.
                 </video>
-                <button
-                  type="button"
-                  onClick={() => setIsPlayingVideo(false)}
-                  className="absolute top-2.5 right-2.5 inline-flex items-center gap-1.5 bg-black/85 hover:bg-black text-white text-[11px] px-2.5 py-1 font-mono border border-white/20 transition-colors z-10"
-                >
-                  <RotateCcw className="size-3" />
-                  <span>Close Video</span>
-                </button>
+                <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5 z-10">
+                  <button
+                    type="button"
+                    onClick={() => setIsMuted(!isMuted)}
+                    className="inline-flex min-h-11 items-center gap-1 bg-black/85 hover:bg-black text-white text-[11px] px-2.5 py-1 font-mono border border-white/20 transition-colors active:scale-95"
+                    aria-label={isMuted ? "Unmute video sound" : "Mute video sound"}
+                  >
+                    {isMuted ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5 text-emerald-400" />}
+                    <span className="hidden sm:inline">{isMuted ? "Unmute" : "Muted"}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsPlayingVideo(false)}
+                    className="inline-flex min-h-11 items-center gap-1 bg-black/85 hover:bg-black text-white text-[11px] px-2.5 py-1 font-mono border border-white/20 transition-colors active:scale-95"
+                    aria-label="Close video player"
+                  >
+                    <RotateCcw className="size-3" />
+                    <span>Close</span>
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="relative w-full aspect-4/3 sm:aspect-16/11 border border-border/80 bg-card shadow-xs overflow-hidden">
@@ -148,26 +184,29 @@ export function HomeHero() {
                   priority
                 />
 
-                {/* Bottom Overlay: Label & Video Trigger */}
-                <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-linear-to-t from-black/70 via-black/40 to-transparent px-4 pb-3.5 pt-10 sm:px-5 sm:pb-4 sm:pt-14">
+                {/* Bottom Overlay: Label, Vision Intro & Video Trigger */}
+                <div className="absolute inset-x-0 bottom-0 z-10 flex flex-wrap items-center justify-between gap-2 bg-linear-to-t from-black/85 via-black/45 to-transparent px-3.5 pb-3 pt-8 sm:px-5 sm:pb-4 sm:pt-12">
                   <div className="flex flex-col gap-0.5">
                     <span className="font-ui text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white/95">
                       Dr. Khumujam Ratankumar Singh
                     </span>
-                    <span className="flex items-center gap-1 font-ui text-[11px] font-medium uppercase tracking-wider text-white/70">
+                    <span className="flex items-center gap-1 font-ui text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/70">
                       <MapPin className="size-2.5" />
                       MLA · Mayang Imphal AC-23
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsPlayingVideo(true)}
-                    className="inline-flex items-center gap-1.5 border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-3 py-1.5 text-[11px] font-ui font-semibold uppercase tracking-widest transition-colors cursor-pointer"
-                  >
-                    <Play className="size-3 fill-current" />
-                    <span className="hidden sm:inline">Video Brief</span>
-                    <span className="sm:hidden">Play</span>
-                  </button>
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <ReplayIntroButton className="inline-flex min-h-11 items-center gap-1.5 border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-2.5 sm:px-3 py-1.5 text-[11px] font-ui font-semibold uppercase tracking-wider transition-colors cursor-pointer active:scale-95" />
+                    <button
+                      type="button"
+                      onClick={() => setIsPlayingVideo(true)}
+                      className="inline-flex min-h-11 items-center gap-1.5 border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-2.5 sm:px-3 py-1.5 text-[11px] font-ui font-semibold uppercase tracking-wider transition-colors cursor-pointer active:scale-95"
+                      aria-label="Play video message from Dr. Khumujam Ratankumar Singh"
+                    >
+                      <Play className="size-3 fill-current" />
+                      <span>Video Brief</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             )}

@@ -49,8 +49,8 @@ export function HomeRegistryOrbit() {
           </div>
 
           {/* Console Footer Bar */}
-          <div className="flex items-center justify-between border-t border-border/60 pt-3 mt-6 font-ui text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            <span>Hover any project to decode encrypted telemetry</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-t border-border/60 pt-3 mt-6 font-ui text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <span>Tap or hover project to view telemetry</span>
             <span>Mayang Imphal AC-23 · LGD 250326</span>
           </div>
         </div>

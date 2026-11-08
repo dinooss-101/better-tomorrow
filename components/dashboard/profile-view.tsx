@@ -89,7 +89,7 @@ export function ProfileView() {
 
       {/* Account Details Card Composed with Avatar & Badge */}
       <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
-        <CardHeader className="p-5 sm:p-6 border-b border-border/70 pb-4 flex flex-row items-center justify-between">
+        <CardHeader className="p-5 sm:p-6 border-b border-border/70 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3.5">
             <Avatar className="size-11 rounded-none border border-border/70 shrink-0">
               <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui font-bold text-xs sm:text-sm">
@@ -112,7 +112,7 @@ export function ProfileView() {
           </div>
 
           {user?.ward && (
-            <Badge variant="outline" className="rounded-none text-[10px] font-ui font-semibold uppercase px-2.5 py-1 flex items-center gap-1.5">
+            <Badge variant="outline" className="rounded-none text-[10px] font-ui font-semibold uppercase px-2.5 py-1 flex items-center gap-1.5 w-fit">
               <MapPin className="size-3 text-primary dark:text-emerald-400" />
               Ward {user.ward}
             </Badge>
@@ -191,7 +191,7 @@ export function ProfileView() {
             <Button
               onClick={handleExportData}
               variant="outline"
-              className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-2 shadow-xs"
+              className="rounded-none min-h-11 sm:min-h-9 h-11 sm:h-9 px-4 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center justify-center gap-2 shadow-xs w-full sm:w-auto active:scale-95"
             >
               <Download className="size-3.5" />
               <span>{downloadSuccess ? "Vault Exported!" : "Export Vault (.json)"}</span>
@@ -213,7 +213,7 @@ export function ProfileView() {
             <Button
               onClick={handleErasureRequest}
               variant="destructive"
-              className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center gap-2 shadow-xs"
+              className="rounded-none min-h-11 sm:min-h-9 h-11 sm:h-9 px-4 text-xs font-ui font-semibold uppercase tracking-wider shrink-0 flex items-center justify-center gap-2 shadow-xs w-full sm:w-auto active:scale-95"
             >
               <Trash2 className="size-3.5" />
               <span>{erasureConfirmed ? "Purging..." : "Delete Profile"}</span>

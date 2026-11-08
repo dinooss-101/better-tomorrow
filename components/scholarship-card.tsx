@@ -85,12 +85,12 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
       </div>
 
       <div className="flex flex-col gap-3 border-t border-border/60 pt-4 mt-2">
-        <div className="flex w-full items-center justify-between text-[11px] text-muted-foreground font-ui">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-muted-foreground font-ui">
           <span className="flex items-center gap-1 font-medium">
-            <ShieldCheck className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+            <ShieldCheck className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
             Verified on NSP: {scholarship.lastVerifiedAt}
           </span>
-          <span className="truncate max-w-48 sm:max-w-64 text-right uppercase tracking-wider font-medium">{scholarship.targetGroup}</span>
+          <span className="sm:text-right uppercase tracking-wider font-medium text-foreground/80 sm:text-muted-foreground">{scholarship.targetGroup}</span>
         </div>
 
         <a

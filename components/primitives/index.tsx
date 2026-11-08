@@ -138,7 +138,7 @@ export function TextLink({
   return (
     <Link
       className={cn(
-        "group inline-flex items-center gap-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-secondary",
+        "group inline-flex min-h-11 sm:min-h-0 items-center gap-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-secondary py-1 sm:py-0 active:scale-[0.99]",
         className
       )}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}

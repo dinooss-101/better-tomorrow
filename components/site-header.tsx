@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
 import { useDensity } from "@/components/density-provider"
 import { Button } from "@/components/ui/button"
@@ -13,7 +13,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu"
-import { Menu, Sun, Moon, ChevronDown, Send, ArrowRight, UnfoldVertical, FoldVertical, User } from "lucide-react"
+import { Menu, Sun, Moon, ChevronDown, Send, ArrowRight, UnfoldVertical, FoldVertical, User, RotateCcw } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { TextLogo } from "@/components/text-logo"
 import { useAuth } from "@/lib/auth/auth-context"
@@ -93,7 +93,23 @@ export function SiteHeader() {
   const { density, toggleDensity } = useDensity()
   const { isAuthenticated } = useAuth()
   const pathname = usePathname()
+  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleReplayIntro = () => {
+    setMobileOpen(false)
+    try {
+      sessionStorage.removeItem("bmi_intro_seen")
+      document.documentElement.classList.remove("bmi-intro-seen")
+    } catch {
+      // Ignore
+    }
+    if (pathname !== "/") {
+      router.push("/?replay=1")
+      return
+    }
+    window.dispatchEvent(new CustomEvent("bmi:replay-intro"))
+  }
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
@@ -241,7 +257,7 @@ export function SiteHeader() {
                 : "Compact view active. Click for spacious mode"
             }
             title={density === "spacious" ? "Spacing: Comfort (Spacious)" : "Spacing: Compact"}
-            className="size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors"
+            className="min-h-11 min-w-11 sm:min-h-9 sm:min-w-9 sm:size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors flex items-center justify-center"
           >
             {density === "spacious" ? (
               <UnfoldVertical className="size-3.5 text-foreground" />
@@ -256,7 +272,7 @@ export function SiteHeader() {
             size="sm"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
-            className="size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors"
+            className="min-h-11 min-w-11 sm:min-h-9 sm:min-w-9 sm:size-9 p-0 rounded-none border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 focus-visible:outline-2 focus-visible:outline-primary transition-colors flex items-center justify-center"
           >
             <Sun className="size-3.5 rotate-0 scale-100 motion-safe:transition-transform motion-reduce:transition-none duration-200 dark:-rotate-90 dark:scale-0 text-foreground" />
             <Moon className="absolute size-3.5 rotate-90 scale-0 motion-safe:transition-transform motion-reduce:transition-none duration-200 dark:rotate-0 dark:scale-100 text-foreground" />
@@ -270,7 +286,7 @@ export function SiteHeader() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="size-9 p-0 rounded-none border border-border bg-card text-foreground hover:bg-muted active:scale-95 focus-visible:outline-2 focus-visible:outline-primary"
+                    className="min-h-11 min-w-11 sm:min-h-9 sm:min-w-9 sm:size-9 p-0 rounded-none border border-border bg-card text-foreground hover:bg-muted active:scale-95 focus-visible:outline-2 focus-visible:outline-primary flex items-center justify-center"
                     aria-label="Open navigation menu"
                   >
                     <Menu className="size-4" />
@@ -303,20 +319,32 @@ export function SiteHeader() {
 
                   {/* Grouped Mobile Navigation */}
                   <nav className="flex flex-col gap-4">
-                    {/* Overview Direct Link */}
-                    <Link
-                      href="/"
-                      onClick={() => setMobileOpen(false)}
-                      className={cn(
-                        "font-ui uppercase tracking-wider px-3 py-2 text-xs font-semibold flex items-center justify-between border border-border bg-card transition-colors",
-                        pathname === "/"
-                          ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
-                          : "text-muted-foreground hover:text-foreground"
-                      )}
-                    >
-                      <span>Overview</span>
-                      <ArrowRight className="size-3 text-muted-foreground" />
-                    </Link>
+                    {/* Top Mobile Quick Links: Overview & Vision Intro */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link
+                        href="/"
+                        onClick={() => setMobileOpen(false)}
+                        className={cn(
+                          "font-ui uppercase tracking-wider px-3 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-between border border-border bg-card transition-colors",
+                          pathname === "/"
+                            ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
+                            : "text-muted-foreground hover:text-foreground"
+                        )}
+                      >
+                        <span>Overview</span>
+                        <ArrowRight className="size-3 text-muted-foreground" />
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={handleReplayIntro}
+                        className="font-ui uppercase tracking-wider px-3 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-between border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer text-left active:scale-[0.98]"
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <RotateCcw className="size-3 text-primary dark:text-emerald-400" />
+                          <span>Vision Intro</span>
+                        </span>
+                      </button>
+                    </div>
 
                     {/* Nav Groups */}
                     {NAV_GROUPS.map((group) => (

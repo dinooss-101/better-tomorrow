@@ -7,6 +7,10 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { RotateCcw, X } from "lucide-react"
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP)
+}
+
 export function CinematicIntro() {
   const [isDismissed, setIsDismissed] = useState(false)
   const shouldReduceMotion = useReducedMotion()
@@ -58,25 +62,23 @@ export function CinematicIntro() {
     }
   }, [])
 
-  // Check on mount if user already experienced intro or prefers reduced motion
+  // Check on mount if user already experienced intro
   useEffect(() => {
-    // Check if navigated from another page with ?replay=1
-    if (typeof window !== "undefined" && window.location.search.includes("replay=1")) {
-      try {
-        sessionStorage.removeItem("bmi_intro_seen")
-        window.history.replaceState({}, "", window.location.pathname)
-      } catch {
-        // Ignore
+    // Check if navigated from another page with ?replay=1 or ?intro=1
+    if (typeof window !== "undefined") {
+      const search = window.location.search
+      if (search.includes("replay=1") || search.includes("intro=1")) {
+        try {
+          sessionStorage.removeItem("bmi_intro_seen")
+          window.history.replaceState({}, "", window.location.pathname)
+        } catch {
+          // Ignore
+        }
+        return
       }
-      return
     }
 
     const checkTimer = setTimeout(() => {
-      if (shouldReduceMotion) {
-        setIsDismissed(true)
-        return
-      }
-
       try {
         if (sessionStorage.getItem("bmi_intro_seen") === "true") {
           setIsDismissed(true)
@@ -106,7 +108,7 @@ export function CinematicIntro() {
       clearTimeout(checkTimer)
       window.removeEventListener("bmi:replay-intro", handleReplay)
     }
-  }, [shouldReduceMotion])
+  }, [])
 
   // Manage keyboard listener and focus trap ONLY while intro is actively visible
   useEffect(() => {
@@ -132,13 +134,59 @@ export function CinematicIntro() {
     }
   }, [isDismissed, dismiss])
 
-  // GSAP Master Timeline (10.5s Total Cinematic Orchestration)
+  // GSAP Master Timeline (Punchy, Reliable Cinematic Orchestration)
   useGSAP(
     () => {
-      if (isDismissed || shouldReduceMotion) return
+      if (isDismissed) return
 
       // Initial element state resets to eliminate text collision and overlap
       gsap.set(curtainRef.current, { opacity: 1, yPercent: 0 })
+
+      if (shouldReduceMotion) {
+        // Accessible, gentle fade presentation (3.6s total) without intense shake/flashes
+        gsap.set(buildBlockRef.current, { display: "flex", autoAlpha: 1, scale: 1 })
+        gsap.set(buildLine1Ref.current, { opacity: 0, letterSpacing: "0.20em" })
+        gsap.set(buildLine2Ref.current, { opacity: 0, y: 0, scale: 1 })
+        gsap.set(progressLineRef.current, { scaleX: 0 })
+        gsap.set(coordsRef.current, { opacity: 0, y: 0 })
+        gsap.set(slamBlockRef.current, { display: "none", autoAlpha: 0 })
+        gsap.set(titleRow1Ref.current, { opacity: 0, scale: 1, y: 0 })
+        gsap.set(titleRow2Ref.current, { opacity: 0, scale: 1, y: 0 })
+        gsap.set(titleRow3Ref.current, { opacity: 0, scale: 1, y: 0 })
+        gsap.set(dividerRef.current, { opacity: 0, scaleX: 0 })
+        gsap.set(sublineRef.current, { opacity: 0, y: 0 })
+        gsap.set(bottomProgressRef.current, { scaleX: 0 })
+
+        const tl = gsap.timeline({
+          onComplete: () => {
+            try {
+              sessionStorage.setItem("bmi_intro_seen", "true")
+              document.documentElement.classList.add("bmi-intro-seen")
+            } catch {
+              // Ignore
+            }
+            setIsDismissed(true)
+          },
+        })
+        masterTimelineRef.current = tl
+
+        tl.to(bottomProgressRef.current, { scaleX: 1, duration: 3.6, ease: "none" }, 0)
+        tl.to(coordsRef.current, { opacity: 0.9, duration: 0.4 }, 0.2)
+        tl.to(buildLine1Ref.current, { opacity: 1, duration: 0.8 }, 0.3)
+        tl.to(progressLineRef.current, { scaleX: 1, duration: 1.0 }, 0.3)
+        tl.to(buildLine2Ref.current, { opacity: 1, duration: 0.8 }, 0.8)
+
+        tl.to(buildBlockRef.current, { autoAlpha: 0, duration: 0.3, display: "none" }, 1.8)
+        tl.set(slamBlockRef.current, { display: "flex", autoAlpha: 1 }, 1.9)
+        tl.to(eyebrowRef.current, { opacity: 1, duration: 0.3 }, 1.9)
+        tl.to(titleRow1Ref.current, { opacity: 1, duration: 0.4 }, 2.0)
+        tl.to(titleRow2Ref.current, { opacity: 1, duration: 0.4 }, 2.1)
+        tl.to(titleRow3Ref.current, { opacity: 1, duration: 0.4 }, 2.2)
+        tl.to(dividerRef.current, { opacity: 1, scaleX: 1, duration: 0.4 }, 2.3)
+        tl.to(sublineRef.current, { opacity: 1, duration: 0.4 }, 2.4)
+        tl.to(curtainRef.current, { opacity: 0, y: -30, duration: 0.5, ease: "power2.inOut" }, 3.1)
+        return
+      }
 
       // Phase 1/2 starts active and centered
       gsap.set(buildBlockRef.current, { display: "flex", autoAlpha: 1, scale: 0.95 })
@@ -153,9 +201,9 @@ export function CinematicIntro() {
       gsap.set(eyebrowRef.current, { opacity: 0, y: -12 })
 
       // 3-Row Candidate Name Initial Springs
-      gsap.set(titleRow1Ref.current, { opacity: 0, scale: 1.7, y: -20 })
-      gsap.set(titleRow2Ref.current, { opacity: 0, scale: 1.7, y: -22 })
-      gsap.set(titleRow3Ref.current, { opacity: 0, scale: 1.8, y: -25 })
+      gsap.set(titleRow1Ref.current, { opacity: 0, scale: 1.5, y: -16 })
+      gsap.set(titleRow2Ref.current, { opacity: 0, scale: 1.5, y: -18 })
+      gsap.set(titleRow3Ref.current, { opacity: 0, scale: 1.6, y: -20 })
 
       gsap.set(dividerRef.current, { opacity: 0, scaleX: 0 })
       gsap.set(sublineRef.current, { opacity: 0, y: 10 })
@@ -174,41 +222,39 @@ export function CinematicIntro() {
       })
       masterTimelineRef.current = tl
 
-      // Global hairline progress tracker (0.0s -> 10.5s)
+      // Global hairline progress tracker (0.0s -> 7.8s)
       tl.to(
         bottomProgressRef.current,
-        { scaleX: 1, duration: 10.5, ease: "none" },
+        { scaleX: 1, duration: 7.8, ease: "none" },
         0
       )
 
       // ================================================================
-      // PHASE 1: BUILD-UP LINE 1 (0.0s – 3.2s)
-      // "FOR A BETTER MAYANG IMPHAL" breathes in with cinematic tracking
+      // PHASE 1: BUILD-UP LINE 1 (0.0s – 2.4s)
       // ================================================================
-      tl.to(coordsRef.current, { opacity: 0.8, y: 0, duration: 1.0, ease: "power2.out" }, 0.3)
+      tl.to(coordsRef.current, { opacity: 0.8, y: 0, duration: 0.8, ease: "power2.out" }, 0.2)
       tl.to(
         buildLine1Ref.current,
         {
           opacity: 1,
-          letterSpacing: "0.46em",
-          duration: 3.0,
+          letterSpacing: "0.36em",
+          duration: 2.2,
           ease: "power2.out",
         },
-        0.4
+        0.3
       )
       tl.to(
         progressLineRef.current,
         {
           scaleX: 1,
-          duration: 3.0,
+          duration: 2.2,
           ease: "power1.inOut",
         },
-        0.4
+        0.3
       )
 
       // ================================================================
-      // PHASE 2: BUILD-UP LINE 2 & RISING TENSION (3.4s – 5.8s)
-      // "FOR TOMORROW" cuts in with emerald energy
+      // PHASE 2: BUILD-UP LINE 2 & RISING TENSION (2.4s – 4.0s)
       // ================================================================
       tl.to(
         buildLine2Ref.current,
@@ -216,150 +262,134 @@ export function CinematicIntro() {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 1.0,
+          duration: 0.8,
           ease: "back.out(1.5)",
         },
-        3.4
+        2.4
       )
       tl.to(
         buildBlockRef.current,
         {
-          scale: 1.06,
-          duration: 2.4,
+          scale: 1.05,
+          duration: 1.5,
           ease: "power1.out",
         },
-        3.4
+        2.4
       )
 
-      // Quick tension build release before silence - cleanly hide build block
+      // Clean hide build block before slam
       tl.to(
         buildBlockRef.current,
         {
           autoAlpha: 0,
-          scale: 1.15,
-          duration: 0.3,
+          scale: 1.12,
+          duration: 0.25,
           ease: "power2.in",
           display: "none",
         },
-        5.8
+        3.9
       )
 
       // ================================================================
-      // PHASE 3: THE CUT TO TOTAL SILENCE (6.1s – 6.7s, 600ms Peak Tension)
-      // Pure stillness hold. Complete silence before the slam.
+      // PHASE 4: THE BASS DROP SLAM & 3-ROW IDENTITY DETONATION (4.2s – 6.8s)
       // ================================================================
+      tl.set(slamBlockRef.current, { display: "flex", autoAlpha: 1 }, 4.2)
 
-      // ================================================================
-      // PHASE 4: THE BASS DROP SLAM & 3-ROW IDENTITY DETONATION (6.7s – 9.7s)
-      // Radial shockwave burst + 3-Row Candidate Name with heavy spring inertia
-      // ================================================================
-      tl.set(slamBlockRef.current, { display: "flex", autoAlpha: 1 }, 6.7)
-
-      // Shockwave Flash Burst
       tl.fromTo(
         flashRef.current,
-        { opacity: 0.95, scale: 0.4 },
-        { opacity: 0, scale: 2.8, duration: 0.75, ease: "power2.out" },
-        6.7
+        { opacity: 0.9, scale: 0.4 },
+        { opacity: 0, scale: 2.6, duration: 0.65, ease: "power2.out" },
+        4.2
       )
 
-      // Subtle Impact Camera Shake
       tl.to(
         curtainRef.current,
         {
-          x: "+=6",
+          x: "+=5",
           yoyo: true,
-          repeat: 4,
+          repeat: 3,
           duration: 0.035,
           ease: "power1.inOut",
         },
-        6.7
+        4.2
       )
 
-      // Eyebrow Pill Drops In
       tl.to(
         eyebrowRef.current,
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-        6.75
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        4.25
       )
 
-      // CANDIDATE NAME SLAM - 3 MAJESTIC ROWS WITH STAGGERED SPRING INERTIA
-      // Row 1: DR. KHUMUJAM
       tl.to(
         titleRow1Ref.current,
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.65,
-          ease: "back.out(2.2)",
+          duration: 0.55,
+          ease: "back.out(2.0)",
         },
-        6.7
+        4.2
       )
 
-      // Row 2: RATANKUMAR
       tl.to(
         titleRow2Ref.current,
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.65,
-          ease: "back.out(2.2)",
+          duration: 0.55,
+          ease: "back.out(2.0)",
         },
-        6.8
+        4.3
       )
 
-      // Row 3: SINGH (Glowing Accent)
       tl.to(
         titleRow3Ref.current,
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.65,
-          ease: "back.out(2.2)",
+          duration: 0.55,
+          ease: "back.out(2.0)",
         },
-        6.9
+        4.4
       )
 
-      // Cutting Dividing Rules Slicing Horizontally Open
       tl.to(
         dividerRef.current,
         {
           opacity: 1,
           scaleX: 1,
-          duration: 0.65,
+          duration: 0.55,
           ease: "power3.out",
         },
-        7.15
+        4.65
       )
 
-      // Subtitle Sourced Provenance Reveal
       tl.to(
         sublineRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power2.out",
         },
-        7.45
+        4.9
       )
 
       // ================================================================
-      // PHASE 5: CURTAIN WIPE & SMOOTH UNVEILING (9.7s – 10.5s)
-      // Dissolves upward seamlessly into the fully pre-rendered civic home page
+      // PHASE 5: CURTAIN WIPE & SMOOTH UNVEILING (6.8s – 7.6s)
       // ================================================================
       tl.to(
         curtainRef.current,
         {
           yPercent: -100,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: "power3.inOut",
         },
-        9.7
+        6.8
       )
     },
     { scope: curtainRef, dependencies: [isDismissed, shouldReduceMotion] }
@@ -374,7 +404,8 @@ export function CinematicIntro() {
       <div
         id="cinematic-curtain"
         ref={curtainRef}
-        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f7f6f2] dark:bg-[#070b09] text-foreground dark:text-white select-none overflow-hidden transition-colors"
+        onClick={dismiss}
+        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f7f6f2] dark:bg-[#070b09] text-foreground dark:text-white select-none overflow-hidden transition-colors cursor-pointer"
         role="dialog"
         aria-modal="true"
         aria-label="Mayang Imphal Vision Intro"
@@ -394,21 +425,25 @@ export function CinematicIntro() {
         />
 
         {/* Top Civic Mandate Marker */}
-        <div className="absolute top-6 left-6 z-20 hidden sm:flex items-center gap-2 text-[11px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 flex items-center gap-2 text-[10px] sm:text-[11px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
           <span className="size-1.5 rounded-none bg-primary dark:bg-emerald-500" />
           <span>Mayang Imphal AC-23 · LGD 250326</span>
         </div>
 
-        {/* Skip Intro Button */}
+        {/* Skip Intro Button - Mobile Optimized >=44x44px Hit Target */}
         <button
           ref={skipBtnRef}
           type="button"
-          onClick={dismiss}
-          className="absolute top-6 right-6 z-20 inline-flex items-center gap-1.5 border border-border bg-card/80 hover:bg-card text-foreground/80 hover:text-foreground dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white/80 dark:hover:text-white px-3 py-1.5 text-[11px] font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-sm cursor-pointer shadow-xs"
+          onClick={(e) => {
+            e.stopPropagation()
+            dismiss()
+          }}
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 border border-border bg-card/90 hover:bg-card text-foreground dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white px-3.5 py-2 text-xs font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-md cursor-pointer shadow-sm active:scale-95"
           aria-label="Skip introduction"
         >
-          <span>Skip [ESC]</span>
-          <X className="size-3" />
+          <span className="sm:hidden">Skip</span>
+          <span className="hidden sm:inline">Skip [ESC]</span>
+          <X className="size-3.5" />
         </button>
 
         {/* ================================================================ */}

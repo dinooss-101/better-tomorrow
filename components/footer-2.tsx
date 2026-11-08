@@ -109,7 +109,7 @@ export default function Footer() {
             &copy; 2026 Mayang Imphal Civic Platform. Published for citizen transparency.
           </p>
           <div className="flex items-center gap-4">
-            <ReplayIntroButton className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-ui uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground border border-border/70 hover:border-border transition-colors cursor-pointer" />
+            <ReplayIntroButton className="inline-flex min-h-11 items-center gap-1.5 px-3 py-2 text-[11px] font-ui uppercase tracking-wider font-semibold text-muted-foreground hover:text-foreground border border-border/80 hover:border-border transition-colors cursor-pointer active:scale-95" />
             <p>
               Class-III Town Delineation, AMRUT 2.0 GIS Horizon 2045
             </p>
