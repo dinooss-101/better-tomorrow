@@ -25,7 +25,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
   const isPassed = isDeadlinePassed(scholarship.studentDeadline)
 
   return (
-    <article className="group flex flex-col justify-between border border-border bg-card p-6 sm:p-8 transition-all duration-200 hover:border-primary/50 hover:shadow-2xs gap-6">
+    <article className="group flex flex-col justify-between h-full border border-border bg-card p-6 sm:p-8 transition-all duration-200 hover:border-primary/50 hover:shadow-2xs gap-6">
       <div className="flex flex-col gap-3 pb-4 border-b border-border/60">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <Badge variant="outline" className="rounded-none text-[11px] font-ui font-semibold uppercase tracking-wider text-primary px-2.5 py-1">
@@ -62,7 +62,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
         </p>
       </div>
 
-      <div className="flex flex-col gap-4 text-sm">
+      <div className="flex flex-col gap-4 text-sm flex-1">
         <p className="font-sans leading-relaxed text-muted-foreground text-xs sm:text-sm">
           {scholarship.eligibilitySummary}
         </p>

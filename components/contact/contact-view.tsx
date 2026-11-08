@@ -98,7 +98,7 @@ export function ContactView() {
         {/* Page Header */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),48rem)] 2xl:min-h-[min(calc(100dvh-3.75rem),54rem)] py-8 sm:py-10 md:py-14 2xl:py-20 3xl:py-24 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8 overflow-hidden"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),40rem)] 2xl:min-h-[min(calc(100dvh-3.75rem),44rem)] py-8 sm:py-10 md:py-12 2xl:py-14 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8 overflow-hidden"
         >
           {/* Subtle Atmospheric Ambient Radial Light for 4K / Large Desktop Monitors */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)/0.035,transparent_75%)] pointer-events-none" />
@@ -161,7 +161,7 @@ export function ContactView() {
                 <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
-                      src="/image/constituency-office-intake.png"
+                      src="/image/constituency-open-desk.png"
                       alt="Dr. Khumujam Ratankumar Singh meeting residents at Saturday grievance desk in Mayang Imphal"
                       fill
                       sizes="(max-width: 768px) 100vw, 360px"

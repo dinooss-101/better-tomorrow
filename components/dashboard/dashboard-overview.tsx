@@ -271,7 +271,7 @@ export function DashboardOverview() {
             </CardHeader>
 
             <CardContent className="p-0">
-              <div className="max-h-72 overflow-y-auto">
+              <div className="max-h-72 lg:max-h-84 2xl:max-h-96 overflow-y-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="border-b border-border/70 text-[10px] font-ui uppercase">
@@ -338,6 +338,42 @@ export function DashboardOverview() {
               .
             </AlertDescription>
           </Alert>
+
+          {/* Desk Coordination & Field Hours (Harmonizes Column Height on Wide Displays) */}
+          <Card className="rounded-none border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-3.5">
+            <div className="flex items-center justify-between border-b border-border/60 pb-2.5">
+              <span className="font-ui text-xs font-bold uppercase tracking-wider text-foreground">
+                Casework Desk &amp; Field Hours
+              </span>
+              <Badge variant="outline" className="rounded-none text-[9px] font-ui uppercase font-semibold">
+                Central Bazar
+              </Badge>
+            </div>
+
+            <div className="space-y-2 text-xs font-sans text-muted-foreground">
+              <div className="flex justify-between items-center">
+                <span>Field Triage:</span>
+                <span className="font-mono text-[11px] text-foreground">Mon–Fri · 10:00 – 16:00</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span>Saturday Clinic:</span>
+                <span className="font-mono text-[11px] text-foreground">Sat · 08:30 – 12:30</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span>Desk Office:</span>
+                <span className="text-[11px] text-foreground">Ward 5 Corridor, 795132</span>
+              </div>
+            </div>
+
+            <Link href="/dashboard/grievances" className="block pt-1">
+              <Button
+                variant="outline"
+                className="w-full rounded-none h-9 text-xs font-ui uppercase tracking-wider font-semibold border-border hover:bg-muted/40 transition-colors"
+              >
+                Open Full Grievance Register
+              </Button>
+            </Link>
+          </Card>
         </div>
       </div>
     </div>

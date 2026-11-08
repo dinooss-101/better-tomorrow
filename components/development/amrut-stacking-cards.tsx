@@ -204,23 +204,108 @@ export function AmrutStackingCards({ rfpUrl }: { rfpUrl: string }) {
   })
 
   return (
-    <div ref={containerRef} className="relative w-full">
-      {AMRUT_LAYERS.map((card, i) => {
-        // Earlier cards scale down slightly as later cards stack on top
-        const targetScale = 1 - (AMRUT_LAYERS.length - i) * 0.025
-        return (
-          <StackingCard
-            key={card.id}
-            card={card}
-            index={i}
-            totalCards={AMRUT_LAYERS.length}
-            progress={scrollYProgress}
-            range={[i * 0.22, 1]}
-            targetScale={targetScale}
-            rfpUrl={rfpUrl}
-          />
-        )
-      })}
-    </div>
+    <>
+      {/* Adaptive 2x2 Grid for Wide Screens (xl and above, including 2560x1080 ultrawide and 4K displays) */}
+      <div className="hidden xl:grid xl:grid-cols-2 gap-6 2xl:gap-8 w-full">
+        {AMRUT_LAYERS.map((card) => {
+          const IconComponent = card.icon
+          return (
+            <div
+              key={card.id}
+              className="flex flex-col justify-between rounded-none border border-border bg-card/95 p-6 sm:p-8 2xl:p-9 shadow-xs hover:border-primary/50 transition-colors h-full"
+            >
+              <div>
+                {/* Top Header Row */}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4 mb-5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex size-7 shrink-0 items-center justify-center border border-border bg-muted/40 text-primary">
+                      <IconComponent className="size-3.5" />
+                    </div>
+                    <span className="font-ui text-xs font-bold uppercase tracking-wider text-primary">
+                      {card.tag}
+                    </span>
+                  </div>
+
+                  <Badge
+                    variant="outline"
+                    className="text-primary border-primary/30 bg-primary/5 text-[11px] font-mono rounded-none py-0.5 px-2"
+                  >
+                    {card.rfpClause}
+                  </Badge>
+                </div>
+
+                {/* Main Card Content */}
+                <div className="space-y-3.5">
+                  <h3 className="font-display text-xl 2xl:text-2xl font-bold uppercase tracking-tight text-foreground leading-snug">
+                    {card.title}
+                  </h3>
+
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
+
+                  {/* Minimalist 3-Metric Specification Strip */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                    {card.highlights.map((h, i) => (
+                      <div
+                        key={i}
+                        className="border border-border/60 bg-muted/20 p-2.5 sm:p-3 flex flex-col gap-1 rounded-none"
+                      >
+                        <span className="font-mono text-xs sm:text-[13px] font-bold text-foreground">
+                          {h.value}
+                        </span>
+                        <span className="font-ui text-[10px] sm:text-[11px] text-muted-foreground uppercase tracking-wider font-medium truncate">
+                          {h.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Deliverable Bar */}
+              <div className="pt-4 mt-5 border-t border-border/60 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-muted-foreground font-sans">
+                  <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-foreground">
+                    Deliverable:
+                  </span>
+                  <span className="text-xs">{card.surveyDeliverable}</span>
+                </div>
+
+                <a
+                  href={rfpUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary font-ui text-[11px] font-bold uppercase tracking-wider hover:underline ml-auto"
+                >
+                  <span>View RFP</span>
+                  <ExternalLink className="size-3" />
+                </a>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Stacked Parallax for Mobile / Tablet / Laptop (< xl) */}
+      <div ref={containerRef} className="relative w-full xl:hidden">
+        {AMRUT_LAYERS.map((card, i) => {
+          // Earlier cards scale down slightly as later cards stack on top
+          const targetScale = 1 - (AMRUT_LAYERS.length - i) * 0.025
+          return (
+            <StackingCard
+              key={card.id}
+              card={card}
+              index={i}
+              totalCards={AMRUT_LAYERS.length}
+              progress={scrollYProgress}
+              range={[i * 0.22, 1]}
+              targetScale={targetScale}
+              rfpUrl={rfpUrl}
+            />
+          )
+        })}
+      </div>
+    </>
   )
 }

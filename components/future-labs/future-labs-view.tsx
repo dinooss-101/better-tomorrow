@@ -31,7 +31,7 @@ export function FutureLabsView() {
         {/* Page Hero */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),48rem)] 2xl:min-h-[min(calc(100dvh-3.75rem),54rem)] py-8 sm:py-10 md:py-14 2xl:py-20 3xl:py-24 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8 overflow-hidden"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-0 md:min-h-[min(calc(100dvh-3.75rem),40rem)] 2xl:min-h-[min(calc(100dvh-3.75rem),44rem)] py-8 sm:py-10 md:py-12 2xl:py-14 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6 in-data-[density=compact]:md:py-8 overflow-hidden"
         >
           {/* Subtle Atmospheric Ambient Radial Light for 4K / Large Desktop Monitors */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)/0.035,transparent_75%)] pointer-events-none" />
