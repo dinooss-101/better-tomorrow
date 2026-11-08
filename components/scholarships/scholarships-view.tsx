@@ -120,7 +120,7 @@ export function ScholarshipsView() {
 
       <main className="flex-1">
         {/* Page Hero */}
-        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16">
+        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
@@ -192,7 +192,7 @@ export function ScholarshipsView() {
         </div>
 
         {/* Directory Controls & Listings with Dropdown Menus */}
-        <section className="border-b border-border/60 bg-background py-12 sm:py-16 lg:py-20">
+        <section className="border-b border-border/60 bg-background py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             {/* Filter Controls Bar */}
             <div className="mb-10 sm:mb-14 rounded-none border border-border/80 bg-card p-6 sm:p-8 shadow-xs">
@@ -406,7 +406,7 @@ export function ScholarshipsView() {
         </section>
 
         {/* Essential Documents & Checklist */}
-        <section className="border-b border-border/60 bg-muted/30 py-16 sm:py-24 lg:py-28">
+        <section className="border-b border-border/60 bg-muted/30 py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 sm:mb-16 max-w-2xl">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
@@ -477,7 +477,7 @@ export function ScholarshipsView() {
         </section>
 
         {/* Diaspora Mentoring & Safeguarding */}
-        <section className="bg-background py-16 sm:py-24 lg:py-28">
+        <section className="bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-none border border-border/80 bg-card p-8 shadow-xs sm:p-12">
               <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">

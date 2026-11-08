@@ -99,7 +99,7 @@ export function ProgressView() {
 
       <main className="flex-1">
         {/* Page Hero */}
-        <div className="bg-background py-10 sm:py-12 md:py-14 lg:py-16 border-b border-border">
+        <div className="bg-background py-10 sm:py-12 md:py-14 lg:py-16 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10 border-b border-border">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
@@ -163,7 +163,7 @@ export function ProgressView() {
         </div>
 
         {/* Search & Filter Bar with Dropdown Menus */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-background border-b border-border/60">
+        <section className="py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12 bg-background border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-none border border-border/80 bg-card p-6 sm:p-8 mb-10 sm:mb-14 shadow-xs">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center">
@@ -327,7 +327,7 @@ export function ProgressView() {
         </section>
 
         {/* Methodology & Integrity Architecture */}
-        <section id="methodology" className="py-16 sm:py-24 lg:py-28 bg-muted/30 border-b border-border/60">
+        <section id="methodology" className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/30 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
@@ -383,7 +383,7 @@ export function ProgressView() {
         </section>
 
         {/* Citizen Field Reporting CTA */}
-        <section className="py-16 sm:py-24 lg:py-28 bg-background">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-background">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-5">
             <div className="flex size-14 items-center justify-center rounded-none border border-secondary/30 bg-secondary/10 text-secondary">
               <MessageSquarePlus className="size-7" />

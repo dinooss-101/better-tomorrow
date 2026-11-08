@@ -29,7 +29,7 @@ export function DevelopmentView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <div className="bg-background text-foreground py-10 sm:py-12 md:py-14 lg:py-16 border-b border-border">
+        <div className="bg-background text-foreground py-10 sm:py-12 md:py-14 lg:py-16 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10 border-b border-border">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
@@ -95,7 +95,7 @@ export function DevelopmentView() {
         </div>
 
         {/* Section 1: Statutory Framework */}
-        <section className="py-16 sm:py-24 lg:py-28 border-b border-border/60">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary dark:text-emerald-400 tracking-wider uppercase font-ui">
@@ -139,7 +139,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 2: The 4 Core Survey Layers (Stacking Cards Parallax) */}
-        <section className="py-14 sm:py-20 lg:py-24 bg-muted/20 border-b border-border/60">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-8 sm:mb-12">
               <div className="flex items-center gap-2 text-xs font-semibold text-primary dark:text-emerald-400 tracking-wider uppercase font-ui">
@@ -167,7 +167,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 3: Drainage Hotspot & Technical Specs */}
-        <section className="py-16 sm:py-24 lg:py-28 border-b border-border/60">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <div className="lg:col-span-6 space-y-5">
@@ -224,7 +224,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 4: Accountability Demarcation Table */}
-        <section className="py-16 sm:py-24 lg:py-28 bg-background border-b border-border/60">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-background border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
@@ -332,7 +332,7 @@ export function DevelopmentView() {
         </section>
 
         {/* Section 5: Citizen Action & Participation */}
-        <section className="py-16 sm:py-24 lg:py-28 bg-muted/20">
+        <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-foreground">
               Have Your Say Before the Master Plan is Gazetted

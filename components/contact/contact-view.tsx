@@ -50,7 +50,7 @@ export function ContactView() {
 
       <main>
         {/* Page Header */}
-        <section className="border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14">
+        <section className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-3.5 lg:col-span-7">
@@ -102,7 +102,7 @@ export function ContactView() {
         </section>
 
         {/* Office Info + Form */}
-        <section className="border-b border-border bg-background py-12 sm:py-16 lg:py-20">
+        <section className="border-b border-border bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
 

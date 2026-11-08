@@ -12,7 +12,7 @@ export function AboutView() {
 
       <main className="flex-1">
         {/* Page Hero: Quiet Imphal Editorial Style */}
-        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16">
+        <div className="border-b border-border bg-background py-10 sm:py-12 md:py-14 lg:py-16 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
@@ -120,7 +120,7 @@ export function AboutView() {
         {/* Section 1: Platform Identity */}
         <section
           id="identity"
-          className="border-b border-border bg-background py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12"
+          className="border-b border-border bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl space-y-6 sm:space-y-8">
@@ -198,7 +198,7 @@ export function AboutView() {
         {/* Section 2: Statutory Boundaries & Exclusions */}
         <section
           id="statutory"
-          className="border-b border-border bg-muted/20 py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12"
+          className="border-b border-border bg-muted/20 py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -275,7 +275,7 @@ export function AboutView() {
         {/* Section 3: DPDP Privacy Policy */}
         <section
           id="dpdp"
-          className="border-b border-border bg-background py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12"
+          className="border-b border-border bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -338,7 +338,7 @@ export function AboutView() {
         {/* Section 4: Election Compliance */}
         <section
           id="election"
-          className="border-b border-border bg-muted/20 py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12"
+          className="border-b border-border bg-muted/20 py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
@@ -372,7 +372,7 @@ export function AboutView() {
         {/* Section 5: Corrections Policy */}
         <section
           id="corrections"
-          className="bg-background py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-12"
+          className="bg-background py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
             <div>
