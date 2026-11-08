@@ -292,9 +292,9 @@ export function AboutView() {
             </div>
 
             <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
-              In compliance with the{" "}
+              In proactive alignment with the core principles of the{" "}
               <strong className="text-foreground">Digital Personal Data Protection (DPDP) Act, 2023</strong>{" "}
-              and international best practices for civic data handling, Mayang
+              and the statutory phased enforcement timeline, Mayang
               Imphal operates under strict data minimization standards:
             </p>
 

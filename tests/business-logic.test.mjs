@@ -127,3 +127,15 @@ test("routes: validates presence of all 7 core routes in sitemap.ts", () => {
     assert.ok(sitemapContent.includes(route), `sitemap must include route ${route}`)
   }
 })
+
+// Canonical ward invariants: ensures single authoritative ward directory
+test("canonicalWards: validates canonical 12-ward directory invariants", () => {
+  const wardsPath = path.resolve("lib/data/wards.ts")
+  const wardsContent = fs.readFileSync(wardsPath, "utf-8")
+
+  assert.ok(wardsContent.includes("CANONICAL_WARDS"), "must define CANONICAL_WARDS")
+  assert.ok(wardsContent.includes('name: "Central Bazar"'), "Ward 5 must be Central Bazar")
+  assert.ok(wardsContent.includes('name: "Konchak Awang"'), "Ward 1 must be Konchak Awang")
+  assert.ok(wardsContent.includes('name: "Kokhai Makha"'), "Ward 12 must be Kokhai Makha")
+})
+
