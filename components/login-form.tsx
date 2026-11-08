@@ -115,9 +115,9 @@ export function LoginForm({
 
       {/* Main Minimalist Split Card */}
       <Card className="overflow-hidden p-0 rounded-none border border-border/80 bg-card shadow-xs">
-        <CardContent className="grid p-0 md:grid-cols-12 min-h-115">
+        <CardContent className="grid p-0 md:grid-cols-12 items-stretch">
           {/* Form Column */}
-          <div className="md:col-span-7 p-8 sm:p-10 flex flex-col justify-between gap-6">
+          <div className="md:col-span-7 p-6 sm:p-8 md:p-9 flex flex-col justify-between gap-5 sm:gap-6">
             <div className="flex flex-col gap-6">
               {/* Logo & Calm Heading */}
               <div>
@@ -352,7 +352,7 @@ export function LoginForm({
               className="object-cover"
             />
             {/* Subtle scrim only at the bottom */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-4 left-4 right-4 text-[11px] font-sans text-white/90">
               Mayang Imphal · AC-23 Desk
             </div>
@@ -361,7 +361,7 @@ export function LoginForm({
       </Card>
 
       {/* Quiet Footer */}
-      <div className="text-center text-xs text-muted-foreground flex items-center justify-center gap-2 pt-1">
+      <div className="text-center text-xs text-muted-foreground flex flex-wrap items-center justify-center gap-x-2 gap-y-1 pt-1">
         <span>
           New constituent?{" "}
           <Link
