@@ -122,11 +122,11 @@ export function ScholarshipsView() {
         {/* Page Hero */}
         <section
           id="hero"
-          className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-8 sm:py-10 lg:py-12 in-data-[density=compact]:py-6 in-data-[density=compact]:sm:py-8"
+          className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-6 sm:py-8 lg:py-10 in-data-[density=compact]:py-4 in-data-[density=compact]:sm:py-6"
         >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
+            <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-10">
+              <div className="flex flex-col gap-2.5 sm:gap-3.5 lg:col-span-7">
                 <Link
                   href="/"
                   className="inline-flex w-fit items-center gap-1.5 font-ui text-xs font-semibold tracking-wider text-primary uppercase transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-80 dark:text-emerald-400"
@@ -144,20 +144,19 @@ export function ScholarshipsView() {
                   </span>
                 </div>
 
-                <h1 className="font-display text-2xl leading-tight font-bold tracking-tight text-foreground uppercase sm:text-3xl lg:text-4xl">
+                <h1 className="font-display text-2xl leading-tight font-bold tracking-tight text-foreground uppercase sm:text-3xl lg:text-3xl xl:text-4xl">
                   Scholarships &amp; Global Pathways
                 </h1>
 
-                <p className="mt-2.5 max-w-2xl font-sans text-xs leading-relaxed font-normal tracking-normal text-muted-foreground sm:text-sm">
+                <p className="mt-1.5 max-w-xl font-sans text-xs leading-relaxed font-normal tracking-normal text-muted-foreground sm:text-sm">
                   Direct, transparent access to central and state scholarship
                   schemes for students of Mayang Imphal, paired with screened
-                  mentorship to connect national and international higher
-                  education opportunities.
+                  mentorship for higher education opportunities.
                 </p>
 
-                <div className="flex w-full flex-col items-stretch gap-3 pt-2 sm:w-auto sm:flex-row sm:items-center">
+                <div className="flex w-full flex-col items-stretch gap-3 pt-1.5 sm:w-auto sm:flex-row sm:items-center">
                   <RegisterInterestDialog initialProgramType="SCHOLARSHIP_ALERT">
-                    <Button className="min-h-11 justify-center rounded-none text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:scale-95 disabled:opacity-50 sm:text-sm">
+                    <Button className="min-h-10 justify-center rounded-none font-ui text-xs font-semibold uppercase tracking-wider focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:scale-95 disabled:opacity-50 px-5">
                       Get Alerts
                     </Button>
                   </RegisterInterestDialog>
@@ -165,7 +164,7 @@ export function ScholarshipsView() {
                     href="https://scholarships.gov.in"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-none border border-border px-3 py-2.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:opacity-80"
+                    className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-none border border-border px-3.5 py-2 font-ui text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary active:opacity-80"
                   >
                     <span>NSP Portal</span>
                     <ExternalLink className="size-3" />
@@ -174,19 +173,19 @@ export function ScholarshipsView() {
               </div>
 
               <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
+                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-[280px] xl:max-w-xs border border-border/80 bg-card p-2 sm:p-2.5 shadow-xs">
                   <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/scholarship-academic-aspiration.png"
                       alt="Mayang Imphal academic scholar pursuing higher education pathways"
                       fill
-                      sizes="(max-width: 768px) 100vw, 360px"
+                      sizes="(max-width: 768px) 100vw, 320px"
                       className="object-cover"
                       priority
                     />
                   </div>
-                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-[11px] font-sans text-muted-foreground">
-                    Academic Aspiration &amp; Merit Progression · Mayang Imphal
+                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[10px] sm:text-[11px] font-sans text-muted-foreground">
+                    Merit Progression · Mayang Imphal
                   </div>
                 </div>
               </div>
