@@ -110,7 +110,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       {/* Top Header */}
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 gap-4">
+          <div className="flex items-center justify-between h-14 sm:h-16 gap-4">
             {/* Left: Brand + Section Title */}
             <div className="flex items-center gap-3 sm:gap-4">
               <Link href="/" className="shrink-0 flex items-center">
@@ -146,7 +146,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         {/* Secondary Navigation Bar (Desktop) */}
         <div className="hidden sm:block border-t border-border/70 bg-card/40">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <nav className="flex items-center gap-1 overflow-x-auto py-0.5">
+            <nav className="flex items-center gap-1.5 overflow-x-auto py-1">
               {navItems.map((item) => {
                 const Icon = item.icon
                 const isActive = item.exact ? pathname === item.href : pathname.startsWith(item.href)
@@ -155,7 +155,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "px-3 py-2 text-xs font-ui font-semibold uppercase tracking-wider flex items-center gap-1.5 border-b-2 transition-colors",
+                      "px-3.5 py-2.5 text-xs font-ui font-semibold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors",
                       isActive
                         ? "border-primary text-primary dark:text-emerald-400 font-bold"
                         : "border-transparent text-muted-foreground hover:text-foreground"
@@ -170,7 +170,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
             <Link
               href="/"
-              className="text-xs font-ui font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+              className="text-xs font-ui font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5 py-2.5"
             >
               <ArrowLeft className="size-3" /> Public Portal
             </Link>
@@ -231,13 +231,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Main Content Body */}
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
         {children}
       </main>
 
       {/* Dashboard Footer */}
-      <footer className="border-t border-border/70 py-4 px-4 sm:px-6 lg:px-8 text-xs font-sans text-muted-foreground">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <footer className="border-t border-border/70 py-6 px-4 sm:px-6 lg:px-8 text-xs font-sans text-muted-foreground">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <span>Mayang Imphal AC-23 Civic Dashboard · LGD 250326</span>
           <span className="flex items-center gap-3">
             <Link href="/about#dpdp" className="hover:underline">DPDP Compliance</Link>

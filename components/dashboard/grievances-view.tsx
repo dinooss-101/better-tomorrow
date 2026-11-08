@@ -112,26 +112,26 @@ export function GrievancesView() {
   }
 
   return (
-    <div className="space-y-5 sm:space-y-6">
+    <div className="space-y-8 sm:space-y-10">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/70 pb-4 sm:pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-6 sm:pb-7">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-0.5">
+          <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
             <span>Mayang Imphal AC-23</span>
             <span>·</span>
             <span>Ward Casework Ledger</span>
           </div>
-          <h1 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-foreground">
             Ward Priority &amp; Grievance Ledger
           </h1>
-          <p className="font-sans text-xs text-muted-foreground mt-0.5 max-w-xl">
+          <p className="font-sans text-xs sm:text-sm text-muted-foreground mt-1.5 max-w-xl leading-relaxed">
             Verifiable record of community drainage bottlenecks, unpaved school connectivity, and street lighting audits across Wards 1 through 12.
           </p>
         </div>
 
         <Button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-1.5 shrink-0 shadow-xs"
+          className="rounded-none h-10 px-4 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2 shrink-0 shadow-xs"
         >
           {showAddForm ? <X className="size-3.5" /> : <Plus className="size-3.5" />}
           <span>{showAddForm ? "Cancel Form" : "Log Ward Priority"}</span>
@@ -141,9 +141,9 @@ export function GrievancesView() {
       {/* Add New Grievance Inline Card Form */}
       {showAddForm && (
         <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
-          <CardHeader className="p-4 sm:p-5 border-b border-border/70 pb-3 flex flex-row items-center justify-between">
+          <CardHeader className="p-5 sm:p-6 border-b border-border/70 pb-4 flex flex-row items-center justify-between">
             <div>
-              <CardTitle className="font-display text-base font-bold uppercase tracking-tight text-foreground">
+              <CardTitle className="font-display text-base sm:text-lg font-bold uppercase tracking-tight text-foreground">
                 Submit Constituency Priority Issue
               </CardTitle>
               <span className="font-ui text-xs text-muted-foreground">Logging as: {user?.name}</span>
@@ -153,10 +153,10 @@ export function GrievancesView() {
             </Badge>
           </CardHeader>
 
-          <CardContent className="p-4 sm:p-5 pt-4">
-            <form onSubmit={handleCreateGrievance} className="space-y-4">
-              <FieldGroup className="space-y-3.5">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <CardContent className="p-5 sm:p-6 pt-5">
+            <form onSubmit={handleCreateGrievance} className="space-y-5">
+              <FieldGroup className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <Field className="sm:col-span-2">
                     <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
                       Issue Summary / Title *
@@ -166,7 +166,7 @@ export function GrievancesView() {
                       value={newTitle}
                       onChange={(e) => setNewTitle(e.target.value)}
                       placeholder="e.g. Silt blockage at Bazar primary drainage outfall"
-                      className="rounded-none text-xs h-9"
+                      className="rounded-none text-xs sm:text-sm h-10"
                     />
                   </Field>
 
@@ -177,7 +177,7 @@ export function GrievancesView() {
                     <select
                       value={newWard}
                       onChange={(e) => setNewWard(Number(e.target.value) as WardNumber)}
-                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                      className="w-full h-10 border border-input bg-background px-3 text-xs sm:text-sm rounded-none font-sans text-foreground"
                     >
                       {WARD_OPTIONS.map((opt) => (
                         <option key={opt.ward} value={opt.ward}>
@@ -188,7 +188,7 @@ export function GrievancesView() {
                   </Field>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <Field>
                     <FieldLabel className="text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground">
                       Specific Locality / Landmark *
@@ -198,7 +198,7 @@ export function GrievancesView() {
                       value={newLocality}
                       onChange={(e) => setNewLocality(e.target.value)}
                       placeholder="e.g. Near Heituppokpi Community Hall"
-                      className="rounded-none text-xs h-9"
+                      className="rounded-none text-xs sm:text-sm h-10"
                     />
                   </Field>
 
@@ -209,7 +209,7 @@ export function GrievancesView() {
                     <select
                       value={newCategory}
                       onChange={(e) => setNewCategory(e.target.value as GrievanceCategory)}
-                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                      className="w-full h-10 border border-input bg-background px-3 text-xs sm:text-sm rounded-none font-sans text-foreground"
                     >
                       <option value="WATER_AND_DRAINAGE">Water &amp; Drainage</option>
                       <option value="ROAD_CONNECTIVITY">Roads &amp; Connectivity</option>
@@ -225,7 +225,7 @@ export function GrievancesView() {
                     <select
                       value={newPriority}
                       onChange={(e) => setNewPriority(e.target.value as GrievancePriority)}
-                      className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+                      className="w-full h-10 border border-input bg-background px-3 text-xs sm:text-sm rounded-none font-sans text-foreground"
                     >
                       <option value="ROUTINE">Routine Maintenance</option>
                       <option value="URGENT">Urgent (Before Rains)</option>
@@ -240,27 +240,27 @@ export function GrievancesView() {
                   </FieldLabel>
                   <textarea
                     required
-                    rows={3}
+                    rows={4}
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
                     placeholder="Describe the physical condition, number of households affected, or specific impediment..."
-                    className="w-full border border-input bg-background p-2.5 text-xs rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary"
+                    className="w-full border border-input bg-background p-3 text-xs sm:text-sm rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary leading-relaxed"
                   />
                 </Field>
               </FieldGroup>
 
-              <div className="flex justify-end gap-2.5 pt-2 border-t border-border/60">
+              <div className="flex justify-end gap-3 pt-3 border-t border-border/60">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setShowAddForm(false)}
-                  className="rounded-none text-xs h-8 px-3 font-ui uppercase"
+                  className="rounded-none text-xs h-9 px-4 font-ui uppercase"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="rounded-none text-xs h-8 px-3 font-ui uppercase font-semibold bg-primary text-primary-foreground"
+                  className="rounded-none text-xs h-9 px-4 font-ui uppercase font-semibold bg-primary text-primary-foreground"
                 >
                   Submit to Ward Desk
                 </Button>
@@ -271,16 +271,16 @@ export function GrievancesView() {
       )}
 
       {/* Filter & Search Bar Composed with Card */}
-      <Card className="rounded-none border-border/80 bg-card p-3 sm:p-3.5 shadow-xs space-y-2.5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      <Card className="rounded-none border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {/* Search Input */}
           <div className="relative">
-            <Search className="size-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Search className="size-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search issues, localities, IDs..."
-              className="pl-8.5 h-9 rounded-none text-xs"
+              className="pl-9 h-10 rounded-none text-xs sm:text-sm"
             />
           </div>
 
@@ -289,7 +289,7 @@ export function GrievancesView() {
             <select
               value={selectedWard}
               onChange={(e) => setSelectedWard(e.target.value)}
-              className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+              className="w-full h-10 border border-input bg-background px-3 text-xs sm:text-sm rounded-none font-sans text-foreground"
             >
               <option value="ALL">All 12 Wards</option>
               {WARD_OPTIONS.map((opt) => (
@@ -305,7 +305,7 @@ export function GrievancesView() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
+              className="w-full h-10 border border-input bg-background px-3 text-xs sm:text-sm rounded-none font-sans text-foreground"
             >
               <option value="ALL">All Stages</option>
               <option value="PROPOSED">Proposed</option>
@@ -383,7 +383,7 @@ export function GrievancesView() {
       )}
 
       {/* Grievance Ledger Items Composed with Card & Badge */}
-      <div className="space-y-2.5 sm:space-y-3">
+      <div className="space-y-4 sm:space-y-5">
         {filteredTickets.map((ticket) => {
           const isEditing = editingTicketId === ticket.id
           const canManage = role === "ward_coordinator" || role === "desk_admin"
@@ -399,52 +399,52 @@ export function GrievancesView() {
           return (
             <Card
               key={ticket.id}
-              className="rounded-none border-border/80 bg-card p-3.5 sm:p-4 shadow-xs transition-colors hover:border-primary/40 space-y-2.5"
+              className="rounded-none border-border/80 bg-card p-5 sm:p-6 shadow-xs transition-colors hover:border-primary/40 space-y-3.5"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
-                <div className="flex items-start gap-2.5 min-w-0">
-                  <Avatar className="size-8 rounded-none border border-border/70 shrink-0 mt-0.5">
-                    <AvatarFallback className="rounded-none bg-muted font-ui text-[10px] font-bold text-foreground">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                <div className="flex items-start gap-3 min-w-0">
+                  <Avatar className="size-9 rounded-none border border-border/70 shrink-0 mt-0.5">
+                    <AvatarFallback className="rounded-none bg-muted font-ui text-[11px] font-bold text-foreground">
                       {initials}
                     </AvatarFallback>
                   </Avatar>
 
-                  <div className="space-y-0.5 min-w-0">
+                  <div className="space-y-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="font-mono text-[11px] font-bold text-foreground">
+                      <span className="font-mono text-xs font-bold text-foreground">
                         {ticket.id}
                       </span>
                       <span className="text-muted-foreground">·</span>
                       <Badge
                         variant="outline"
-                        className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1 flex items-center gap-0.5"
+                        className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1.5 flex items-center gap-1"
                       >
-                        <MapPin className="size-2 text-primary dark:text-emerald-400" />
+                        <MapPin className="size-2.5 text-primary dark:text-emerald-400" />
                         Ward {ticket.ward} ({ticket.locality})
                       </Badge>
                       <span className="text-muted-foreground">·</span>
-                      <span className="text-[10px] font-sans text-muted-foreground">
+                      <span className="text-[11px] font-sans text-muted-foreground">
                         Logged {new Date(ticket.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                       </span>
                     </div>
 
-                    <h3 className="font-sans font-semibold text-xs sm:text-sm text-foreground leading-snug">
+                    <h3 className="font-sans font-semibold text-sm sm:text-base text-foreground leading-snug">
                       {ticket.title}
                     </h3>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto pt-1 sm:pt-0">
                   <Badge
                     variant={priorityVariantMap[ticket.priority] || "outline"}
-                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-1.5 py-0.5"
+                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-2 py-0.5"
                   >
                     {ticket.priority}
                   </Badge>
 
                   <Badge
                     variant={statusVariantMap[ticket.status] || "outline"}
-                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-2 py-0.5"
+                    className="rounded-none text-[9px] font-ui uppercase font-semibold tracking-wider px-2.5 py-0.5"
                   >
                     {ticket.status.replace(/_/g, " ")}
                   </Badge>
@@ -458,7 +458,7 @@ export function GrievancesView() {
                         setEditStatus(ticket.status)
                         setEditNotes(ticket.fieldVerificationNotes || "")
                       }}
-                      className="h-6 text-[10px] px-2 font-ui uppercase rounded-none border-dashed"
+                      className="h-6.5 text-[10px] px-2.5 font-ui uppercase rounded-none border-dashed"
                     >
                       Audit
                     </Button>
@@ -466,7 +466,7 @@ export function GrievancesView() {
                 </div>
               </div>
 
-              <p className="text-xs font-sans text-muted-foreground leading-relaxed pl-10.5">
+              <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed pl-12">
                 {ticket.description}
               </p>
 
