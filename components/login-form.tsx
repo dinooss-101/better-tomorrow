@@ -11,24 +11,9 @@ import { UserRole } from "@/lib/types/auth"
 import { TextLogo } from "@/components/text-logo"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldSeparator,
-} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import {
-  Phone,
-  Mail,
-  ArrowLeft,
-  ShieldCheck,
-  User,
-  HardHat,
-  Shield,
-  Loader2,
-} from "lucide-react"
+import { Label } from "@/components/ui/label"
+import { ArrowLeft, Loader2 } from "lucide-react"
 
 export function LoginForm({
   className,
@@ -49,7 +34,7 @@ export function LoginForm({
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault()
     if (!phone.trim() || phone.replace(/\D/g, "").length < 10) {
-      setError("Please enter a valid 10-digit Indian mobile number.")
+      setError("Please enter a valid 10-digit mobile number.")
       return
     }
     setError("")
@@ -58,8 +43,8 @@ export function LoginForm({
 
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!otp.trim() || otp.length < 4) {
-      setError("Please enter the 6-digit verification code.")
+    if (!otp.trim()) {
+      setError("Please enter the verification code.")
       return
     }
     setError("")
@@ -77,7 +62,7 @@ export function LoginForm({
   const handlePasswordLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.trim() || !password.trim()) {
-      setError("Please provide both email and password.")
+      setError("Please enter email and password.")
       return
     }
     setError("")
@@ -117,88 +102,54 @@ export function LoginForm({
   }
 
   return (
-    <div className={cn("flex flex-col gap-4", className)} {...props}>
-      {/* Return to Portal Link */}
-      <div className="flex items-center justify-between px-1">
+    <div className={cn("w-full max-w-3xl mx-auto flex flex-col gap-4", className)} {...props}>
+      {/* Return Link */}
+      <div>
         <Link
           href="/"
-          className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
+          className="font-ui inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
-          <ArrowLeft className="size-3.5" /> Return to Mayang Imphal Portal
+          <ArrowLeft className="size-3.5" /> Back to portal
         </Link>
-        <span className="font-ui text-[11px] font-bold uppercase tracking-wider text-primary dark:text-emerald-400">
-          AC-23 Civic Docket
-        </span>
       </div>
 
+      {/* Main Minimalist Split Card */}
       <Card className="overflow-hidden p-0 rounded-none border border-border/80 bg-card shadow-xs">
-        <CardContent className="grid p-0 md:grid-cols-2">
-          {/* Column 1: Form */}
-          <div className="p-6 sm:p-8 flex flex-col justify-between">
-            <FieldGroup>
-              {/* Header */}
-              <div className="flex flex-col gap-2">
-                <Link href="/" className="inline-block w-fit mb-1">
+        <CardContent className="grid p-0 md:grid-cols-12 min-h-[460px]">
+          {/* Form Column */}
+          <div className="md:col-span-7 p-8 sm:p-10 flex flex-col justify-between gap-6">
+            <div className="flex flex-col gap-6">
+              {/* Logo & Calm Heading */}
+              <div>
+                <Link href="/" className="inline-block mb-3">
                   <TextLogo size="sm" />
                 </Link>
                 <h1 className="font-display text-2xl font-bold uppercase tracking-tight text-foreground">
-                  Sign In to Ward Desk
+                  Sign In
                 </h1>
-                <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Track registered constituency priorities, inspect field verification audit logs, and access public casework.
+                <p className="font-sans text-xs text-muted-foreground mt-1">
+                  Access your constituency casework docket and ground audits.
                 </p>
-              </div>
-
-              {/* Method Switcher */}
-              <div className="grid grid-cols-2 gap-1 p-1 bg-muted/60 border border-border/60">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setAuthMethod("otp")
-                    setError("")
-                  }}
-                  className={cn(
-                    "font-ui py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5",
-                    authMethod === "otp"
-                      ? "bg-background text-foreground shadow-2xs border border-border/60"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  <Phone className="size-3.5" /> Mobile OTP
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setAuthMethod("password")
-                    setError("")
-                  }}
-                  className={cn(
-                    "font-ui py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5",
-                    authMethod === "password"
-                      ? "bg-background text-foreground shadow-2xs border border-border/60"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  <Mail className="size-3.5" /> Secretariat
-                </button>
               </div>
 
               {/* Error Alert */}
               {error && (
                 <div
                   role="alert"
-                  className="border border-destructive/30 bg-destructive/10 p-2.5 text-xs font-sans text-destructive dark:text-red-400 leading-normal"
+                  className="border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs font-sans text-destructive dark:text-red-400"
                 >
                   {error}
                 </div>
               )}
 
-              {/* Primary Form */}
+              {/* Form Body */}
               {authMethod === "otp" ? (
                 !otpSent ? (
-                  <form onSubmit={handleSendOtp} className="flex flex-col gap-3">
-                    <Field>
-                      <FieldLabel htmlFor="phone">Citizen Mobile Number</FieldLabel>
+                  <form onSubmit={handleSendOtp} className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <Label htmlFor="phone" className="text-xs font-medium">
+                        Mobile Number
+                      </Label>
                       <div className="relative">
                         <span className="absolute left-3 top-1/2 -translate-y-1/2 font-mono text-xs text-muted-foreground pointer-events-none">
                           +91
@@ -209,42 +160,51 @@ export function LoginForm({
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="98620 12345"
-                          className="pl-12 font-mono"
+                          className="pl-11 h-10 font-mono text-xs"
                           required
                           autoFocus
                         />
                       </div>
-                      <FieldDescription>
-                        A 6-digit verification code will be sent to your mobile.
-                      </FieldDescription>
-                    </Field>
-                    <Field>
-                      <Button
-                        type="submit"
-                        className="w-full font-ui uppercase tracking-wider"
-                        disabled={isSubmitting || isLoading}
+                    </div>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || isLoading}
+                      className="w-full h-10 font-ui uppercase tracking-wider text-xs font-semibold"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="size-3.5 animate-spin mr-1.5" /> Sending...
+                        </>
+                      ) : (
+                        "Get One-Time Passcode"
+                      )}
+                    </Button>
+                    <div className="text-center pt-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setAuthMethod("password")
+                          setError("")
+                        }}
+                        className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
                       >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="size-3.5 animate-spin mr-1.5" /> Sending...
-                          </>
-                        ) : (
-                          "Get One-Time Passcode"
-                        )}
-                      </Button>
-                    </Field>
+                        Use secretariat email instead
+                      </button>
+                    </div>
                   </form>
                 ) : (
-                  <form onSubmit={handleVerifyOtp} className="flex flex-col gap-3">
-                    <Field>
+                  <form onSubmit={handleVerifyOtp} className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between">
-                        <FieldLabel htmlFor="otp">Enter 6-Digit Code</FieldLabel>
+                        <Label htmlFor="otp" className="text-xs font-medium">
+                          6-Digit Code
+                        </Label>
                         <button
                           type="button"
                           onClick={() => setOtpSent(false)}
-                          className="font-ui text-[11px] font-semibold text-primary dark:text-emerald-400 hover:underline"
+                          className="text-xs text-primary dark:text-emerald-400 hover:underline"
                         >
-                          Change Number
+                          Change
                         </button>
                       </div>
                       <Input
@@ -254,200 +214,166 @@ export function LoginForm({
                         onChange={(e) => setOtp(e.target.value)}
                         placeholder="123456"
                         maxLength={6}
-                        className="font-mono text-center tracking-widest text-base"
+                        className="h-10 font-mono text-center tracking-widest text-base"
                         required
                         autoFocus
                       />
-                      <FieldDescription>
-                        Simulated code: <span className="font-mono font-bold text-foreground">123456</span>
-                      </FieldDescription>
-                    </Field>
-                    <Field>
-                      <Button
-                        type="submit"
-                        className="w-full font-ui uppercase tracking-wider"
-                        disabled={isSubmitting || isLoading}
+                    </div>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || isLoading}
+                      className="w-full h-10 font-ui uppercase tracking-wider text-xs font-semibold"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="size-3.5 animate-spin mr-1.5" /> Verifying...
+                        </>
+                      ) : (
+                        "Verify & Sign In"
+                      )}
+                    </Button>
+                    <div className="text-center pt-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setAuthMethod("password")
+                          setError("")
+                        }}
+                        className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
                       >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="size-3.5 animate-spin mr-1.5" /> Verifying...
-                          </>
-                        ) : (
-                          "Verify Code & Enter Dashboard"
-                        )}
-                      </Button>
-                    </Field>
+                        Use secretariat email instead
+                      </button>
+                    </div>
                   </form>
                 )
               ) : (
-                <form onSubmit={handlePasswordLogin} className="flex flex-col gap-3">
-                  <Field>
-                    <FieldLabel htmlFor="email">Administrative Email</FieldLabel>
+                <form onSubmit={handlePasswordLogin} className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <Label htmlFor="email" className="text-xs font-medium">
+                      Email
+                    </Label>
                     <Input
                       id="email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="admin@bmi.app"
+                      className="h-10 text-xs"
                       required
                       autoFocus
                     />
-                  </Field>
-                  <Field>
-                    <div className="flex items-center justify-between">
-                      <FieldLabel htmlFor="password">Password</FieldLabel>
-                      <span className="text-[11px] text-muted-foreground font-ui">
-                        AC-23 Master Key
-                      </span>
-                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <Label htmlFor="password" className="text-xs font-medium">
+                      Password
+                    </Label>
                     <Input
                       id="password"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      className="h-10 text-xs"
                       required
                     />
-                  </Field>
-                  <Field>
-                    <Button
-                      type="submit"
-                      className="w-full font-ui uppercase tracking-wider"
-                      disabled={isSubmitting || isLoading}
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting || isLoading}
+                    className="w-full h-10 font-ui uppercase tracking-wider text-xs font-semibold"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="size-3.5 animate-spin mr-1.5" /> Signing In...
+                      </>
+                    ) : (
+                      "Sign In"
+                    )}
+                  </Button>
+                  <div className="text-center pt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthMethod("otp")
+                        setError("")
+                      }}
+                      className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="size-3.5 animate-spin mr-1.5" /> Signing In...
-                        </>
-                      ) : (
-                        "Sign In as Secretariat Officer"
-                      )}
-                    </Button>
-                  </Field>
+                      Use mobile OTP instead
+                    </button>
+                  </div>
                 </form>
               )}
+            </div>
 
-              {/* Instant Persona Switcher */}
-              <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card *:data-[slot=field-separator-content]:text-[11px] *:data-[slot=field-separator-content]:uppercase *:data-[slot=field-separator-content]:tracking-wider">
-                1-Click Role Simulation
-              </FieldSeparator>
-
-              <div className="grid grid-cols-3 gap-2">
-                <Button
-                  variant="outline"
+            {/* Understated Demo Switcher */}
+            <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
+              <span className="font-ui text-[11px] uppercase tracking-wider text-muted-foreground/80">
+                Demo:
+              </span>
+              <div className="flex items-center gap-2 font-ui text-[11px] font-semibold">
+                <button
                   type="button"
-                  size="sm"
                   onClick={() => handleQuickPersona("citizen")}
                   disabled={isSubmitting}
-                  className="flex flex-col h-auto py-2 px-1 items-center justify-center text-center gap-1 rounded-none border-border"
+                  className="hover:text-foreground transition-colors"
                 >
-                  <User className="size-3.5 text-muted-foreground" />
-                  <span className="font-ui text-[11px] font-bold leading-tight">Citizen</span>
-                  <span className="text-[11px] text-muted-foreground scale-90">Ward 4</span>
-                </Button>
-                <Button
-                  variant="outline"
+                  Citizen
+                </button>
+                <span className="text-border">·</span>
+                <button
                   type="button"
-                  size="sm"
                   onClick={() => handleQuickPersona("ward_coordinator")}
                   disabled={isSubmitting}
-                  className="flex flex-col h-auto py-2 px-1 items-center justify-center text-center gap-1 rounded-none border-border"
+                  className="hover:text-foreground transition-colors"
                 >
-                  <HardHat className="size-3.5 text-muted-foreground" />
-                  <span className="font-ui text-[11px] font-bold leading-tight">Coordinator</span>
-                  <span className="text-[11px] text-muted-foreground scale-90">Ward 7</span>
-                </Button>
-                <Button
-                  variant="outline"
+                  Coordinator
+                </button>
+                <span className="text-border">·</span>
+                <button
                   type="button"
-                  size="sm"
                   onClick={() => handleQuickPersona("desk_admin")}
                   disabled={isSubmitting}
-                  className="flex flex-col h-auto py-2 px-1 items-center justify-center text-center gap-1 rounded-none border-border"
+                  className="hover:text-foreground transition-colors"
                 >
-                  <Shield className="size-3.5 text-muted-foreground" />
-                  <span className="font-ui text-[11px] font-bold leading-tight">Desk Admin</span>
-                  <span className="text-[11px] text-muted-foreground scale-90">Central</span>
-                </Button>
+                  Admin
+                </button>
               </div>
-
-              {/* Registration Link */}
-              <FieldDescription className="text-center pt-1 text-xs">
-                First-time constituent?{" "}
-                <Link
-                  href="/register"
-                  className="text-foreground font-semibold underline underline-offset-4 hover:text-primary dark:hover:text-emerald-400"
-                >
-                  Register new citizen profile
-                </Link>
-              </FieldDescription>
-            </FieldGroup>
+            </div>
           </div>
 
-          {/* Column 2: Visual Editorial Panel */}
-          <div className="relative hidden md:flex flex-col justify-between bg-muted overflow-hidden border-l border-border/80">
+          {/* Serene Visual Column */}
+          <div className="md:col-span-5 relative hidden md:block overflow-hidden bg-muted border-l border-border/60">
             <Image
               src="/image/constituency-open-desk.png"
-              alt="Mayang Imphal Constituency Open Desk citizen intake"
+              alt="Mayang Imphal Constituency Desk"
               fill
               priority
-              sizes="(max-width: 1024px) 50vw, 450px"
+              sizes="(max-width: 1024px) 350px, 400px"
               className="object-cover"
             />
-            {/* Tone Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/25 z-10" />
-
-            {/* Overlay Content */}
-            <div className="relative z-20 p-6 sm:p-8 flex flex-col justify-between h-full text-white">
-              {/* Top Tag */}
-              <div className="flex items-center justify-between">
-                <span className="font-ui text-[11px] font-bold uppercase tracking-wider bg-white/15 backdrop-blur-xs px-2.5 py-1 border border-white/20">
-                  Ward 5 Central Bazar Desk
-                </span>
-                <span className="font-mono text-[11px] text-white/80">
-                  AC-23 Secretariat
-                </span>
-              </div>
-
-              {/* Bottom Documentary Highlights */}
-              <div className="flex flex-col gap-3">
-                <div className="border-l-2 border-primary pl-3">
-                  <p className="font-serif italic text-base leading-snug text-white/95">
-                    &ldquo;Every registered civic priority is tracked with photographic evidence and direct administrative accountability.&rdquo;
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/20 text-[11px] font-sans text-white/80">
-                  <div>
-                    <span className="font-mono font-bold text-white block text-sm">12 Wards</span>
-                    <span>Constituency Ground Audits</span>
-                  </div>
-                  <div>
-                    <span className="font-mono font-bold text-white block text-sm">Saturday</span>
-                    <span>Weekly Citizen Clinic</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 pt-1 text-[11px] text-white/70">
-                  <ShieldCheck className="size-3.5 shrink-0 text-emerald-400" />
-                  <span>Citizen Data Vault · DPDP Act 2023 Sec. 6 Compliant</span>
-                </div>
-              </div>
+            {/* Subtle scrim only at the bottom */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-[11px] font-sans text-white/90">
+              Mayang Imphal · AC-23 Desk
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Statutory Privacy Footnote */}
-      <p className="text-balance text-center text-[11px] font-sans text-muted-foreground px-4">
-        Protected under the Digital Personal Data Protection Act 2023. By signing in, you access your authenticated constituency records.{" "}
-        <Link href="/about" className="underline underline-offset-2 hover:text-foreground">
-          Civic Charter
-        </Link>
-        {" "}·{" "}
-        <Link href="/contact" className="underline underline-offset-2 hover:text-foreground">
-          Secretariat Support
-        </Link>
-      </p>
+      {/* Quiet Footer */}
+      <div className="text-center text-xs text-muted-foreground flex items-center justify-center gap-2 pt-1">
+        <span>
+          New constituent?{" "}
+          <Link
+            href="/register"
+            className="text-foreground underline underline-offset-4 font-medium hover:text-primary dark:hover:text-emerald-400"
+          >
+            Register
+          </Link>
+        </span>
+        <span className="text-border">·</span>
+        <span className="text-[11px]">DPDP Act 2023 Compliant</span>
+      </div>
     </div>
   )
 }
