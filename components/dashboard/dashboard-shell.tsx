@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth/auth-context"
@@ -21,7 +21,18 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+const emptySubscribe = () => () => {}
+
+function useIsClient() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  )
+}
+
 export function DashboardShell({ children }: { children: React.ReactNode }) {
+  const isClient = useIsClient()
   const pathname = usePathname()
   const router = useRouter()
   const { user, role, logout, isLoading, isAuthenticated } = useAuth()
@@ -29,10 +40,10 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [showDevSwitcher, setShowDevSwitcher] = useState(false)
 
   React.useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (isClient && !isLoading && !isAuthenticated) {
       router.replace("/login")
     }
-  }, [isLoading, isAuthenticated, router])
+  }, [isClient, isLoading, isAuthenticated, router])
 
   const handleLogout = async () => {
     await logout()
@@ -72,10 +83,28 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     desk_admin: "Desk Admin",
   }
 
-  if (isLoading || !isAuthenticated) {
+  if (!isClient || isLoading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-secondary selection:text-secondary-foreground">
+        <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+            <TextLogo size="sm" />
+            <div className="text-xs text-muted-foreground font-ui">Civic Portal</div>
+          </div>
+        </header>
+        <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 flex items-center justify-center">
+          <div className="text-xs text-muted-foreground font-sans">
+            Loading civic docket...
+          </div>
+        </main>
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center text-xs font-sans text-muted-foreground">
-        {isLoading ? "Loading session..." : "Redirecting to sign in..."}
+        Redirecting to sign in...
       </div>
     )
   }
