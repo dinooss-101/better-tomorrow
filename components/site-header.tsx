@@ -88,6 +88,16 @@ const NAV_GROUPS: NavGroup[] = [
   },
 ]
 
+const emptySubscribe = () => () => {}
+
+function useIsMounted() {
+  return React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  )
+}
+
 export function SiteHeader() {
   const { theme, setTheme } = useTheme()
   const { density, toggleDensity } = useDensity()
@@ -95,6 +105,8 @@ export function SiteHeader() {
   const pathname = usePathname()
   const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isMounted = useIsMounted()
+  const isAuth = isMounted && isAuthenticated
 
   const handleReplayIntro = () => {
     setMobileOpen(false)
@@ -230,11 +242,12 @@ export function SiteHeader() {
         <div className="flex items-center gap-2.5 shrink-0">
           {/* Civic Portal / Dashboard Link */}
           <Link
-            href={isAuthenticated ? "/dashboard" : "/login"}
+            href={isAuth ? "/dashboard" : "/login"}
+            suppressHydrationWarning
             className="hidden sm:inline-flex font-ui uppercase tracking-widest text-[11px] font-semibold items-center gap-1.5 border border-border bg-card px-3 py-2 text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary min-h-9"
           >
             <User className="size-3 text-primary dark:text-emerald-400" />
-            <span>{isAuthenticated ? "Dashboard" : "Sign In"}</span>
+            <span suppressHydrationWarning>{isAuth ? "Dashboard" : "Sign In"}</span>
           </Link>
 
           {/* Quick Desk Action Button */}
@@ -414,12 +427,13 @@ export function SiteHeader() {
                     </button>
                   </div>
                   <Link
-                    href={isAuthenticated ? "/dashboard" : "/login"}
+                    href={isAuth ? "/dashboard" : "/login"}
                     onClick={() => setMobileOpen(false)}
+                    suppressHydrationWarning
                     className="font-ui uppercase tracking-widest text-xs font-semibold w-full flex items-center justify-center gap-2 border border-border bg-card px-4 py-2.5 text-foreground hover:bg-muted transition-colors"
                   >
                     <User className="size-3.5 text-primary dark:text-emerald-400" />
-                    <span>{isAuthenticated ? "Citizen Dashboard" : "Sign In to Ward Portal"}</span>
+                    <span suppressHydrationWarning>{isAuth ? "Citizen Dashboard" : "Sign In to Ward Portal"}</span>
                   </Link>
                   <Link
                     href="/contact"
