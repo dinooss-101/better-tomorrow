@@ -141,7 +141,7 @@ export function HomeHero() {
                 {/* Profile Image */}
                 <Image
                   src="/image/hero-image-profile.png"
-                  alt="Dr. Khumujam Ratankumar Singh — MLA, Mayang Imphal AC-23"
+                  alt="Dr. Khumujam Ratankumar Singh · MLA, Mayang Imphal AC-23"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-top"

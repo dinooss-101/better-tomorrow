@@ -49,7 +49,7 @@ export function VerificationsView() {
         <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-0.5">
           <span>Mayang Imphal AC-23</span>
           <span>·</span>
-          <span>Evidence-Based Governance</span>
+          <span>Field Audit Docket</span>
         </div>
         <h1 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground">
           Ground Verifications &amp; Field Audits
