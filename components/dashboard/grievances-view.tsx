@@ -98,28 +98,28 @@ export function GrievancesView() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/70 pb-4 sm:pb-5">
         <div>
-          <div className="flex items-center gap-2 text-xs font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-0.5">
             <span>Mayang Imphal AC-23</span>
             <span>·</span>
             <span>Ward Casework Ledger</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-foreground">
+          <h1 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground">
             Ward Priority &amp; Grievance Ledger
           </h1>
-          <p className="font-sans text-xs sm:text-sm text-muted-foreground mt-1">
+          <p className="font-sans text-xs text-muted-foreground mt-0.5 max-w-xl">
             Verifiable record of community drainage bottlenecks, unpaved school connectivity, and street lighting audits across Wards 1 through 12.
           </p>
         </div>
 
         <Button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="rounded-none min-h-11 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2 shrink-0"
+          className="rounded-none h-9 px-3.5 text-xs font-ui font-semibold uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-1.5 shrink-0"
         >
-          {showAddForm ? <X className="size-4" /> : <Plus className="size-4" />}
+          {showAddForm ? <X className="size-3.5" /> : <Plus className="size-3.5" />}
           <span>{showAddForm ? "Cancel Form" : "Log Ward Priority"}</span>
         </Button>
       </div>
@@ -128,18 +128,18 @@ export function GrievancesView() {
       {showAddForm && (
         <form
           onSubmit={handleCreateGrievance}
-          className="border-2 border-primary/40 bg-card p-6 shadow-sm space-y-4"
+          className="border border-border/80 bg-card p-4 sm:p-5 shadow-xs space-y-3.5"
         >
-          <div className="flex items-center justify-between border-b border-border/80 pb-2">
-            <h2 className="font-display text-lg font-bold uppercase tracking-tight text-foreground">
+          <div className="flex items-center justify-between border-b border-border/70 pb-2">
+            <h2 className="font-display text-base font-bold uppercase tracking-tight text-foreground">
               Submit Constituency Priority Issue
             </h2>
             <span className="font-ui text-xs text-muted-foreground">Logged as: {user?.name}</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
                 Issue Summary / Title *
               </label>
               <Input
@@ -147,18 +147,18 @@ export function GrievancesView() {
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
                 placeholder="e.g. Silt blockage at Bazar primary drainage outfall"
-                className="rounded-none text-sm h-10"
+                className="rounded-none text-xs h-9"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
                 Ward Number *
               </label>
               <select
                 value={newWard}
                 onChange={(e) => setNewWard(Number(e.target.value) as WardNumber)}
-                className="w-full h-10 border border-input bg-background px-3 text-sm rounded-none font-sans text-foreground"
+                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
                   <option key={w} value={w}>
@@ -169,9 +169,9 @@ export function GrievancesView() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
                 Specific Locality / Landmark *
               </label>
               <Input
@@ -179,18 +179,18 @@ export function GrievancesView() {
                 value={newLocality}
                 onChange={(e) => setNewLocality(e.target.value)}
                 placeholder="e.g. Near Heituppokpi Community Hall"
-                className="rounded-none text-sm h-10"
+                className="rounded-none text-xs h-9"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
                 Category
               </label>
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value as GrievanceCategory)}
-                className="w-full h-10 border border-input bg-background px-3 text-sm rounded-none font-sans text-foreground"
+                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
               >
                 <option value="WATER_AND_DRAINAGE">Water &amp; Drainage</option>
                 <option value="ROAD_CONNECTIVITY">Roads &amp; Connectivity</option>
@@ -200,13 +200,13 @@ export function GrievancesView() {
             </div>
 
             <div>
-              <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+              <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
                 Urgency Priority
               </label>
               <select
                 value={newPriority}
                 onChange={(e) => setNewPriority(e.target.value as GrievancePriority)}
-                className="w-full h-10 border border-input bg-background px-3 text-sm rounded-none font-sans text-foreground"
+                className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
               >
                 <option value="ROUTINE">Routine Maintenance</option>
                 <option value="URGENT">Urgent (Before Rains)</option>
@@ -216,7 +216,7 @@ export function GrievancesView() {
           </div>
 
           <div>
-            <label className="block text-xs font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
+            <label className="block text-[11px] font-ui uppercase tracking-wider font-semibold text-foreground mb-1">
               Detailed Description &amp; Ground Evidence *
             </label>
             <textarea
@@ -225,22 +225,22 @@ export function GrievancesView() {
               value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
               placeholder="Describe the physical condition, number of households affected, or specific impediment..."
-              className="w-full border border-input bg-background p-3 text-sm rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary"
+              className="w-full border border-input bg-background p-2.5 text-xs rounded-none font-sans text-foreground focus-visible:outline-2 focus-visible:outline-primary"
             />
           </div>
 
-          <div className="flex justify-end gap-3 pt-2">
+          <div className="flex justify-end gap-2.5 pt-1">
             <Button
               type="button"
               variant="outline"
               onClick={() => setShowAddForm(false)}
-              className="rounded-none text-xs font-ui uppercase"
+              className="rounded-none text-xs h-8 px-3 font-ui uppercase"
             >
               Cancel
             </Button>
             <Button
               type="submit"
-              className="rounded-none text-xs font-ui uppercase font-semibold bg-primary text-primary-foreground"
+              className="rounded-none text-xs h-8 px-3 font-ui uppercase font-semibold bg-primary text-primary-foreground"
             >
               Submit to Ward Desk
             </Button>
@@ -249,16 +249,16 @@ export function GrievancesView() {
       )}
 
       {/* Filter & Search Bar */}
-      <div className="border border-border bg-card p-4 shadow-xs space-y-3">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="border border-border/80 bg-card p-3 sm:p-3.5 shadow-xs space-y-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           {/* Search Input */}
           <div className="relative">
-            <Search className="size-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Search className="size-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search issues, localities, IDs..."
-              className="pl-9 h-10 rounded-none text-xs"
+              className="pl-8.5 h-9 rounded-none text-xs"
             />
           </div>
 
@@ -267,7 +267,7 @@ export function GrievancesView() {
             <select
               value={selectedWard}
               onChange={(e) => setSelectedWard(e.target.value)}
-              className="w-full h-10 border border-input bg-background px-3 text-xs rounded-none font-sans text-foreground"
+              className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
             >
               <option value="ALL">All 12 Wards</option>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((w) => (
@@ -283,7 +283,7 @@ export function GrievancesView() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full h-10 border border-input bg-background px-3 text-xs rounded-none font-sans text-foreground"
+              className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
             >
               <option value="ALL">All Stages</option>
               <option value="PROPOSED">Proposed</option>
@@ -299,7 +299,7 @@ export function GrievancesView() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full h-10 border border-input bg-background px-3 text-xs rounded-none font-sans text-foreground"
+              className="w-full h-9 border border-input bg-background px-2.5 text-xs rounded-none font-sans text-foreground"
             >
               <option value="ALL">All Categories</option>
               <option value="WATER_AND_DRAINAGE">Water &amp; Drainage</option>
@@ -310,7 +310,7 @@ export function GrievancesView() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-[11px] text-muted-foreground font-ui pt-1">
+        <div className="flex items-center justify-between text-[11px] text-muted-foreground font-ui pt-0.5">
           <span>Showing {filteredTickets.length} of {grievances.length} constituency records</span>
           {(searchQuery || selectedWard !== "ALL" || selectedStatus !== "ALL" || selectedCategory !== "ALL") && (
             <button
@@ -330,7 +330,7 @@ export function GrievancesView() {
       </div>
 
       {/* Grievance Ledger Items */}
-      <div className="space-y-3">
+      <div className="space-y-2.5 sm:space-y-3">
         {filteredTickets.map((ticket) => {
           const isEditing = editingTicketId === ticket.id
           const canManage = role === "ward_coordinator" || role === "desk_admin"
@@ -338,32 +338,32 @@ export function GrievancesView() {
           return (
             <div
               key={ticket.id}
-              className="border border-border bg-card p-5 shadow-xs transition-colors hover:border-primary/40 space-y-3"
+              className="border border-border/80 bg-card p-3.5 sm:p-4 shadow-xs transition-colors hover:border-primary/40 space-y-2.5"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                <div className="space-y-1">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+                <div className="space-y-0.5">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-foreground">
+                    <span className="font-mono text-[11px] font-bold text-foreground">
                       {ticket.id}
                     </span>
                     <span className="text-muted-foreground">·</span>
-                    <span className="font-ui text-xs font-semibold uppercase text-primary dark:text-emerald-400 flex items-center gap-1">
-                      <MapPin className="size-3" /> Ward {ticket.ward} ({ticket.locality})
+                    <span className="font-ui text-[11px] font-semibold uppercase text-primary dark:text-emerald-400 flex items-center gap-1">
+                      <MapPin className="size-2.5" /> Ward {ticket.ward} ({ticket.locality})
                     </span>
                     <span className="text-muted-foreground">·</span>
-                    <span className="text-[11px] font-sans text-muted-foreground">
+                    <span className="text-[10px] font-sans text-muted-foreground">
                       Logged {new Date(ticket.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                     </span>
                   </div>
 
-                  <h3 className="font-sans font-bold text-base text-foreground leading-snug">
+                  <h3 className="font-sans font-semibold text-xs sm:text-sm text-foreground leading-snug">
                     {ticket.title}
                   </h3>
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
                   <span
-                    className={`text-[11px] font-ui uppercase font-bold tracking-wider px-2.5 py-1 border ${statusBadges[ticket.status]}`}
+                    className={`text-[10px] font-ui uppercase font-semibold tracking-wider px-2 py-0.5 border ${statusBadges[ticket.status]}`}
                   >
                     {ticket.status.replace(/_/g, " ")}
                   </span>
@@ -377,7 +377,7 @@ export function GrievancesView() {
                         setEditStatus(ticket.status)
                         setEditNotes(ticket.fieldVerificationNotes || "")
                       }}
-                      className="h-7 text-[11px] font-ui uppercase rounded-none"
+                      className="h-6.5 text-[10px] px-2 font-ui uppercase rounded-none"
                     >
                       Audit
                     </Button>
@@ -385,14 +385,14 @@ export function GrievancesView() {
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
+              <p className="text-xs font-sans text-muted-foreground leading-relaxed">
                 {ticket.description}
               </p>
 
               {/* Status Updater Panel for Coordinators/Admin */}
               {isEditing && (
-                <div className="border-t border-border pt-3 mt-3 p-3 bg-muted/30 space-y-3">
-                  <div className="flex items-center justify-between text-xs font-ui font-bold uppercase text-primary dark:text-emerald-400">
+                <div className="border-t border-border/70 pt-2.5 mt-2.5 p-3 bg-muted/20 space-y-2.5">
+                  <div className="flex items-center justify-between text-[11px] font-ui font-bold uppercase text-primary dark:text-emerald-400">
                     <span>Field Verification &amp; Status Update</span>
                     <button
                       type="button"
@@ -403,15 +403,15 @@ export function GrievancesView() {
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <div>
-                      <label className="block text-[11px] font-ui uppercase text-muted-foreground mb-1">
+                      <label className="block text-[10px] font-ui uppercase text-muted-foreground mb-1">
                         Update Status
                       </label>
                       <select
                         value={editStatus}
                         onChange={(e) => setEditStatus(e.target.value as GrievanceStatus)}
-                        className="w-full h-9 border border-input bg-background px-2 text-xs rounded-none font-sans"
+                        className="w-full h-8.5 border border-input bg-background px-2 text-xs rounded-none font-sans"
                       >
                         <option value="PROPOSED">PROPOSED</option>
                         <option value="UNDER_REVIEW">UNDER REVIEW</option>
@@ -422,14 +422,14 @@ export function GrievancesView() {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-ui uppercase text-muted-foreground mb-1">
+                      <label className="block text-[10px] font-ui uppercase text-muted-foreground mb-1">
                         Inspector Notes
                       </label>
                       <Input
                         value={editNotes}
                         onChange={(e) => setEditNotes(e.target.value)}
                         placeholder="e.g. Inspected site. Verified 40cm silt blockage..."
-                        className="h-9 rounded-none text-xs"
+                        className="h-8.5 rounded-none text-xs"
                       />
                     </div>
                   </div>
@@ -439,14 +439,14 @@ export function GrievancesView() {
                       size="sm"
                       variant="outline"
                       onClick={() => setEditingTicketId(null)}
-                      className="h-8 text-[11px] font-ui uppercase rounded-none"
+                      className="h-7.5 px-2.5 text-[10px] font-ui uppercase rounded-none"
                     >
                       Cancel
                     </Button>
                     <Button
                       size="sm"
                       onClick={() => handleSaveStatus(ticket.id)}
-                      className="h-8 text-[11px] font-ui uppercase font-semibold bg-primary text-primary-foreground rounded-none"
+                      className="h-7.5 px-2.5 text-[10px] font-ui uppercase font-semibold bg-primary text-primary-foreground rounded-none"
                     >
                       Save Status
                     </Button>
@@ -455,7 +455,7 @@ export function GrievancesView() {
               )}
 
               {/* Field Notes & Dispatch Reference Footer */}
-              <div className="border-t border-border/60 pt-2 flex flex-wrap items-center justify-between gap-2 text-[11px] font-sans text-muted-foreground">
+              <div className="border-t border-border/60 pt-2 flex flex-wrap items-center justify-between gap-2 text-[10px] font-sans text-muted-foreground">
                 <div className="flex items-center gap-3">
                   {ticket.assignedCoordinator && (
                     <span>Assigned: <strong>{ticket.assignedCoordinator}</strong></span>
