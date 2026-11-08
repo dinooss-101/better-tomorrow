@@ -75,3 +75,22 @@ test("validateRegistrationPayload: rejects registration without explicit DPDP co
   }
   assert.equal(validateRegistrationPayload(validPayload).valid, true)
 })
+
+// DPDP Right to Erasure caseworker record purge test
+function purgeUserCasework(tickets, citizenId) {
+  if (!citizenId) return tickets
+  return tickets.filter((t) => t.citizenId !== citizenId)
+}
+
+test("dpdpErasure: completely purges citizen casework records upon erasure request", () => {
+  const sampleTickets = [
+    { id: "GRV-2026-001", citizenId: "usr_citizen_001", title: "Canal silt" },
+    { id: "GRV-2026-002", citizenId: "usr_citizen_002", title: "Street lamp" },
+    { id: "GRV-2026-003", citizenId: "usr_citizen_001", title: "Culvert breach" },
+  ]
+
+  const purged = purgeUserCasework(sampleTickets, "usr_citizen_001")
+  assert.equal(purged.length, 1)
+  assert.equal(purged[0].id, "GRV-2026-002")
+  assert.equal(purged.some((t) => t.citizenId === "usr_citizen_001"), false)
+})

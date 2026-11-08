@@ -23,11 +23,11 @@ export function LoginForm({
   const { login, isLoading } = useAuth()
 
   const [authMethod, setAuthMethod] = useState<"otp" | "password">("otp")
-  const [phone, setPhone] = useState("98620 12345")
+  const [phone, setPhone] = useState("")
   const [otpSent, setOtpSent] = useState(false)
-  const [otp, setOtp] = useState("123456")
-  const [email, setEmail] = useState("admin@bmi.app")
-  const [password, setPassword] = useState("••••••••")
+  const [otp, setOtp] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -272,6 +272,7 @@ export function LoginForm({
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
                       className="h-10 text-xs"
                       required
                     />

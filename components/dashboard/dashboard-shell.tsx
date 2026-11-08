@@ -24,9 +24,15 @@ import { cn } from "@/lib/utils"
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
-  const { user, role, logout } = useAuth()
+  const { user, role, logout, isLoading, isAuthenticated } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showDevSwitcher, setShowDevSwitcher] = useState(false)
+
+  React.useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.replace("/login")
+    }
+  }, [isLoading, isAuthenticated, router])
 
   const handleLogout = async () => {
     await logout()
@@ -64,6 +70,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     citizen: "Citizen",
     ward_coordinator: "Ward Coordinator",
     desk_admin: "Desk Admin",
+  }
+
+  if (isLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center text-xs font-sans text-muted-foreground">
+        {isLoading ? "Loading session..." : "Redirecting to sign in..."}
+      </div>
+    )
   }
 
   return (

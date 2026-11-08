@@ -1,5 +1,6 @@
 "use client"
 
+// shortcut: client-side mock auth in localStorage; wire @supabase/ssr once cloud PostgreSQL tables and RLS are connected
 import React, { createContext, useContext, useState, ReactNode } from "react"
 import { UserProfile, UserRole, RegisterPayload } from "@/lib/types/auth"
 import { GrievanceTicket, GrievanceStatus } from "@/lib/types/dashboard"
@@ -14,6 +15,7 @@ interface AuthContextType {
   register: (payload: RegisterPayload) => Promise<void>
   switchRole: (role: UserRole) => void
   logout: () => Promise<void>
+  eraseUserData: () => Promise<void>
   grievances: GrievanceTicket[]
   addGrievance: (ticket: Omit<GrievanceTicket, "id" | "createdAt" | "updatedAt">) => void
   updateGrievanceStatus: (id: string, status: GrievanceStatus, notes?: string) => void
@@ -26,12 +28,12 @@ const STORAGE_KEY_GRIEVANCES = "mayang_imphal_grievances"
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(() => {
-    if (typeof window === "undefined") return PRESET_USERS.citizen
+    if (typeof window === "undefined") return null
     try {
       const storedUser = localStorage.getItem(STORAGE_KEY_USER)
-      return storedUser ? JSON.parse(storedUser) : PRESET_USERS.citizen
+      return storedUser ? JSON.parse(storedUser) : null
     } catch {
-      return PRESET_USERS.citizen
+      return null
     }
   })
 
@@ -71,8 +73,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (identifier: string, roleOverride?: UserRole) => {
     setIsLoading(true)
-    // Simulate network latency (200ms)
-    await new Promise((res) => setTimeout(res, 200))
+    // Simulate network latency (150ms)
+    await new Promise((res) => setTimeout(res, 150))
 
     let matchedUser: UserProfile = PRESET_USERS.citizen
 
@@ -93,7 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (payload: RegisterPayload) => {
     setIsLoading(true)
-    await new Promise((res) => setTimeout(res, 250))
+    await new Promise((res) => setTimeout(res, 200))
 
     const newUser: UserProfile = {
       id: `usr_citizen_${Date.now()}`,
@@ -127,10 +129,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false)
   }
 
+  const eraseUserData = async () => {
+    setIsLoading(true)
+    const currentUserId = user?.id
+    if (currentUserId) {
+      const remaining = grievances.filter((g) => g.citizenId !== currentUserId)
+      saveGrievances(remaining)
+    }
+    saveUser(null)
+    setIsLoading(false)
+  }
+
   const addGrievance = (ticket: Omit<GrievanceTicket, "id" | "createdAt" | "updatedAt">) => {
     const newTicket: GrievanceTicket = {
       ...ticket,
-      id: `GRV-2026-${String(Math.floor(100 + Math.random() * 900))}`,
+      id: `GRV-2026-${Date.now().toString().slice(-4)}`,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
@@ -164,6 +177,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         register,
         switchRole,
         logout,
+        eraseUserData,
         grievances,
         addGrievance,
         updateGrievanceStatus,

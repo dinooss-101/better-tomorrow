@@ -14,7 +14,7 @@ import {
 } from "lucide-react"
 
 export function ProfileView() {
-  const { user, logout, grievances } = useAuth()
+  const { user, eraseUserData, grievances } = useAuth()
   const [downloadSuccess, setDownloadSuccess] = useState(false)
   const [erasureConfirmed, setErasureConfirmed] = useState(false)
 
@@ -46,12 +46,12 @@ export function ProfileView() {
   }
 
   const handleErasureRequest = async () => {
-    // In accordance with DPDP Act 2023, completely wipes session and local storage
-    if (confirm("Are you sure you wish to exercise your statutory Right to Erasure? This will permanently delete your stored profile and sign you out.")) {
+    // In accordance with DPDP Act 2023, permanently purges profile and personal casework from storage
+    if (confirm("Are you sure you wish to exercise your statutory Right to Erasure? This will permanently delete your stored profile, casework, and personal details under the DPDP Act 2023.")) {
       setErasureConfirmed(true)
       setTimeout(async () => {
-        await logout()
-      }, 1000)
+        await eraseUserData()
+      }, 600)
     }
   }
 
