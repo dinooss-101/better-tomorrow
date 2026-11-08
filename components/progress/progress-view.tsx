@@ -146,14 +146,14 @@ export function ProgressView() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
+              <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
+                <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/civic-audit-field-verification.png"
                       alt="Civic works ground verification and physical audit in Mayang Imphal"
                       fill
-                      sizes="(max-width: 768px) 100vw, 360px"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 384px, 480px"
                       className="object-cover"
                       priority
                     />

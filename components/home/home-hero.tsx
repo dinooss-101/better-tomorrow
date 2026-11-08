@@ -38,11 +38,11 @@ export function HomeHero() {
       {/* Subtle Atmospheric Ambient Radial Light for 4K / Large Desktop Monitors */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)/0.035,transparent_75%)] pointer-events-none" />
       <div className="relative mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
           {/* ================================================================ */}
-          {/* LEFT 50%: Vision, Mandate & Sourced Provenance                   */}
+          {/* LEFT: Vision, Mandate & Sourced Provenance (7 Cols)              */}
           {/* ================================================================ */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start lg:col-span-7">
             {/* Civic Identifier Eyebrow */}
             <div className="mb-3.5 flex flex-wrap items-center gap-2 font-ui text-xs">
               <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-wider text-primary">
@@ -122,11 +122,11 @@ export function HomeHero() {
           </div>
 
           {/* ================================================================ */}
-          {/* RIGHT 50%: Profile Image & Video Frame                          */}
+          {/* RIGHT: Profile Image & Video Frame (5 Cols)                      */}
           {/* ================================================================ */}
-          <div className="w-full">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
             {isPlayingVideo ? (
-              <div className="relative w-full aspect-4/3 sm:aspect-16/11 bg-black border border-border shadow-xs overflow-hidden">
+              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-4/3 sm:aspect-16/11 bg-black border border-border shadow-xs overflow-hidden">
                 <video
                   ref={videoRef}
                   controls
@@ -161,7 +161,7 @@ export function HomeHero() {
                 </div>
               </div>
             ) : (
-              <div className="relative w-full aspect-4/3 sm:aspect-16/11 border border-border/80 bg-card shadow-xs overflow-hidden">
+              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-4/3 sm:aspect-16/11 border border-border/80 bg-card shadow-xs overflow-hidden">
                 {/* Architectural Corner Crop Marks */}
                 <span className="absolute -top-1.5 -left-1.5 text-primary font-mono text-sm leading-none select-none z-10">
                   ┌
@@ -181,7 +181,7 @@ export function HomeHero() {
                   src="/image/hero-image-profile.png"
                   alt="Dr. Khumujam Ratankumar Singh · MLA, Mayang Imphal AC-23"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 384px, 480px"
                   className="object-cover object-top"
                   priority
                 />

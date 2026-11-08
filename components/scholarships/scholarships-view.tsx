@@ -127,7 +127,7 @@ export function ScholarshipsView() {
           {/* Subtle Atmospheric Ambient Radial Light for 4K / Large Desktop Monitors */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)/0.035,transparent_75%)] pointer-events-none" />
           <div className="relative mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-8 2xl:px-10 w-full">
-            <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-10">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col gap-2.5 sm:gap-3.5 lg:col-span-7">
                 <Link
                   href="/"
@@ -174,19 +174,19 @@ export function ScholarshipsView() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-70 xl:max-w-xs border border-border/80 bg-card p-2 sm:p-2.5 shadow-xs">
+              <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
+                <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none border border-border/80 bg-card p-2.5 sm:p-3 shadow-xs">
                   <div className="relative aspect-4/3 sm:aspect-16/11 w-full overflow-hidden bg-muted/20">
                     <Image
                       src="/image/scholarship-academic-aspiration.png"
                       alt="Mayang Imphal academic scholar pursuing higher education pathways"
                       fill
-                      sizes="(max-width: 768px) 100vw, 320px"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 384px, 480px"
                       className="object-cover"
                       priority
                     />
                   </div>
-                  <div className="mt-2 border-t border-border/40 pt-1.5 text-center text-[10px] sm:text-[11px] font-sans text-muted-foreground">
+                  <div className="mt-2.5 border-t border-border/40 pt-2 text-center text-[11px] font-sans text-muted-foreground">
                     Merit Progression · Mayang Imphal
                   </div>
                 </div>
