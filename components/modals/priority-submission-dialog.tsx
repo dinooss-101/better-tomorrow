@@ -99,7 +99,7 @@ export function PrioritySubmissionDialog({
       <DialogContent className="w-[calc(100vw-2rem)] sm:max-w-xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="rounded-none border-secondary/30 text-secondary text-xs font-ui font-semibold uppercase tracking-wider">
+            <Badge variant="outline" className="rounded-none border-primary/30 text-primary text-xs font-ui font-semibold uppercase tracking-wider">
               Demonstration Preview Mode
             </Badge>
           </div>

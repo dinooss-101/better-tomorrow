@@ -88,7 +88,7 @@ export function RegisterInterestDialog({
         <DialogHeader className="flex flex-col gap-2">
           <Badge
             variant="outline"
-            className="w-fit rounded-none border-secondary/30 text-xs font-ui font-semibold uppercase tracking-wider text-secondary"
+            className="w-fit rounded-none border-primary/30 text-xs font-ui font-semibold uppercase tracking-wider text-primary"
           >
             Preview Mode · Program Interest
           </Badge>
