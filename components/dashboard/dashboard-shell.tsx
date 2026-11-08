@@ -6,8 +6,8 @@ import { usePathname, useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth/auth-context"
 import { TextLogo } from "@/components/text-logo"
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { DevAccountSwitcher } from "@/components/auth/dev-account-switcher"
+import { DashboardUserNav } from "@/components/dashboard/dashboard-user-nav"
 import {
   LayoutDashboard,
   ClipboardList,
@@ -15,10 +15,8 @@ import {
   UserCheck,
   LogOut,
   ArrowLeft,
-  Shield,
   Menu,
   X,
-  MapPin,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -130,56 +128,20 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
 
-            {/* Right: User Role Badge + Actions */}
+            {/* Right: User Profile Dropdown + Role Actions */}
             <div className="flex items-center gap-2 sm:gap-2.5">
-              {/* User Avatar + Role Badge */}
-              <div className="flex items-center gap-2">
-                <Avatar className="size-7.5 rounded-none border border-border">
-                  <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui text-[11px] font-bold">
-                    {user?.name
-                      ? user.name
-                          .split(" ")
-                          .map((w) => w[0])
-                          .slice(0, 2)
-                          .join("")
-                      : "MI"}
-                  </AvatarFallback>
-                </Avatar>
-
-                <div className="hidden md:flex items-center gap-1.5 border border-border/70 px-2 py-0.5 text-xs bg-muted/20">
-                  <Shield className="size-3 text-primary dark:text-emerald-400" />
-                  <span className="font-ui text-[10px] font-semibold uppercase tracking-wider text-foreground">
-                    {roleLabels[role]}
-                  </span>
-                  {user?.ward && (
-                    <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
-                      <MapPin className="size-2.5" /> W{user.ward}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Dev Switcher Toggle */}
+              {/* Quick Dev Role Switcher Trigger (Tablet/Desktop) */}
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setShowDevSwitcher(!showDevSwitcher)}
-                className="h-7.5 px-2.5 rounded-none text-[10px] font-ui uppercase font-semibold border-dashed text-muted-foreground hover:text-foreground"
+                className="hidden sm:flex h-8 px-2.5 rounded-none text-[10px] font-ui uppercase font-semibold border-dashed text-muted-foreground hover:text-foreground"
               >
                 Switch Role
               </Button>
 
-              {/* Logout Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleLogout}
-                title="Sign out of portal"
-                className="h-7.5 px-2 rounded-none text-xs font-ui text-muted-foreground hover:text-foreground flex items-center gap-1.5"
-              >
-                <LogOut className="size-3.5" />
-                <span className="hidden sm:inline">Sign Out</span>
-              </Button>
+              {/* Top Navigation Right User Profile Menu with Settings & Sign Out */}
+              <DashboardUserNav />
 
               {/* Mobile Menu Trigger */}
               <button
@@ -270,7 +232,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               )
             })}
 
-            <div className="pt-3 border-t border-border mt-3">
+            <div className="pt-3 border-t border-border mt-3 space-y-1.5">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
@@ -278,6 +240,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               >
                 <ArrowLeft className="size-3.5" /> Return to Public Portal
               </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="w-full flex items-center gap-2 p-2 text-xs text-destructive hover:bg-destructive/10 font-semibold"
+              >
+                <LogOut className="size-3.5" /> Sign Out of Portal
+              </button>
             </div>
           </div>
         )}
