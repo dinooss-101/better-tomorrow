@@ -289,7 +289,7 @@ export function DashboardOverview() {
                         <TableRow key={wm.ward} className="border-b border-border/40 hover:bg-muted/30">
                           <TableCell className="py-2.5 pl-4 font-ui font-semibold text-foreground text-[11px]">
                             <span>Ward {wm.ward}</span>
-                            <span className="block text-[10px] font-sans font-normal text-muted-foreground truncate max-w-[110px]">
+                            <span className="block text-[10px] font-sans font-normal text-muted-foreground truncate max-w-27.5">
                               {wardInfo?.name || ""}
                             </span>
                           </TableCell>
