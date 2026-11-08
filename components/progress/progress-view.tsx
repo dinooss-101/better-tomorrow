@@ -108,13 +108,13 @@ export function ProgressView() {
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
-                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
                 >
                   <ArrowLeft className="size-3.5" /> Overview
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary">
                     Public Transparency
                   </span>
                   <span className="text-muted-foreground/80">/</span>
@@ -373,7 +373,7 @@ export function ProgressView() {
               </div>
 
               <div className="rounded-none border border-border/80 bg-card p-6 sm:p-8 flex flex-col gap-3">
-                <div className="font-ui text-xs font-bold uppercase tracking-wider text-nordic-amber">Rule 04</div>
+                <div className="font-ui text-xs font-bold uppercase tracking-wider text-chart-3">Rule 04</div>
                 <h4 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-foreground">
                   Clear &ldquo;Proposed&rdquo; Distinction
                 </h4>

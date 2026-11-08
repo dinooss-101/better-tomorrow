@@ -74,7 +74,7 @@ export function ProfileView() {
     <div className="space-y-8 sm:space-y-10">
       {/* Header */}
       <div className="border-b border-border/70 pb-6 sm:pb-7">
-        <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+        <div className="flex items-center gap-2 text-[11px] font-ui text-primary font-bold uppercase tracking-wider mb-1">
           <span>Mayang Imphal AC-23</span>
           <span>·</span>
           <span>DPDP Act 2023 Controls</span>
@@ -92,7 +92,7 @@ export function ProfileView() {
         <CardHeader className="p-5 sm:p-6 border-b border-border/70 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3.5">
             <Avatar className="size-11 rounded-none border border-border/70 shrink-0">
-              <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui font-bold text-xs sm:text-sm">
+              <AvatarFallback className="rounded-none bg-primary/10 text-primary font-ui font-bold text-xs sm:text-sm">
                 {initials}
               </AvatarFallback>
             </Avatar>
@@ -113,7 +113,7 @@ export function ProfileView() {
 
           {user?.ward && (
             <Badge variant="outline" className="rounded-none text-[10px] font-ui font-semibold uppercase px-2.5 py-1 flex items-center gap-1.5 w-fit">
-              <MapPin className="size-3 text-primary dark:text-emerald-400" />
+              <MapPin className="size-3 text-primary" />
               Ward {user.ward}
             </Badge>
           )}
@@ -166,7 +166,7 @@ export function ProfileView() {
       <Card className="rounded-none border-border/80 bg-card p-0 shadow-xs">
         <CardHeader className="p-5 sm:p-6 border-b border-border/70 pb-4">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="size-4.5 text-primary dark:text-emerald-400 shrink-0" />
+            <ShieldCheck className="size-4.5 text-primary shrink-0" />
             <CardTitle className="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-foreground">
               Statutory Data Rights (Sections 11 &amp; 12)
             </CardTitle>
@@ -223,7 +223,7 @@ export function ProfileView() {
 
         <div className="border-t border-border/60 py-3 px-5 sm:px-6 bg-muted/20 flex items-center justify-between text-xs font-sans text-muted-foreground">
           <span className="flex items-center gap-2">
-            <Lock className="size-3.5 text-primary dark:text-emerald-400" />
+            <Lock className="size-3.5 text-primary" />
             End-to-end client-side privacy architecture
           </span>
           <span className="font-mono text-[10px]">DPDP-2023-SEC-12</span>

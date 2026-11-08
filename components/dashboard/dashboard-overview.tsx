@@ -51,7 +51,7 @@ export function DashboardOverview() {
       {/* Welcome & Context Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-6 sm:pb-7">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-[11px] font-ui text-primary font-bold uppercase tracking-wider mb-1">
             <span>Mayang Imphal AC-23</span>
             <span>·</span>
             <span>Constituency Docket</span>
@@ -85,7 +85,7 @@ export function DashboardOverview() {
           <CardHeader className="p-5 sm:p-6 pb-2.5">
             <div className="flex items-center justify-between text-muted-foreground">
               <span className="font-ui text-xs font-bold uppercase tracking-wider">Active Intake</span>
-              <ClipboardList className="size-4 text-primary dark:text-emerald-400" />
+              <ClipboardList className="size-4 text-primary" />
             </div>
             <div className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-1">
               {totalGrievances}
@@ -107,7 +107,7 @@ export function DashboardOverview() {
           <CardHeader className="p-5 sm:p-6 pb-2.5">
             <div className="flex items-center justify-between text-muted-foreground">
               <span className="font-ui text-xs font-bold uppercase tracking-wider">Field Verified</span>
-              <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
+              <CheckCircle2 className="size-4 text-primary" />
             </div>
             <div className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-1">
               {verifiedCount}
@@ -127,7 +127,7 @@ export function DashboardOverview() {
           <CardHeader className="p-5 sm:p-6 pb-2.5">
             <div className="flex items-center justify-between text-muted-foreground">
               <span className="font-ui text-xs font-bold uppercase tracking-wider">Works Resolved</span>
-              <Clock className="size-4 text-primary dark:text-emerald-400" />
+              <Clock className="size-4 text-primary" />
             </div>
             <div className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-1">
               {resolvedCount}
@@ -146,7 +146,7 @@ export function DashboardOverview() {
       {/* Saturday Clinic Notice Alert */}
       <Alert className="rounded-none border-border/80 bg-card/60 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
         <div className="flex items-center gap-3">
-          <Calendar className="size-4.5 text-primary dark:text-emerald-400 shrink-0" />
+          <Calendar className="size-4.5 text-primary shrink-0" />
           <div>
             <AlertTitle className="text-xs sm:text-sm font-semibold text-foreground">
               Open Grievance Clinic: Every Saturday 08:30 AM – 12:30 PM
@@ -158,7 +158,7 @@ export function DashboardOverview() {
         </div>
         <Link
           href="/contact"
-          className="font-ui text-xs uppercase font-semibold text-primary dark:text-emerald-400 hover:underline shrink-0 flex items-center gap-1.5 py-1"
+          className="font-ui text-xs uppercase font-semibold text-primary hover:underline shrink-0 flex items-center gap-1.5 py-1"
         >
           <span>Schedule &amp; Location</span>
           <ArrowRight className="size-3.5" />
@@ -177,7 +177,7 @@ export function DashboardOverview() {
             </div>
             <Link
               href="/dashboard/grievances"
-              className="text-xs font-ui font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:underline flex items-center gap-1.5"
+              className="text-xs font-ui font-semibold uppercase tracking-wider text-primary hover:underline flex items-center gap-1.5"
             >
               <span>View All ({grievances.length})</span>
               <ArrowRight className="size-3.5" />
@@ -217,7 +217,7 @@ export function DashboardOverview() {
                             variant="outline"
                             className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1.5 flex items-center gap-1"
                           >
-                            <MapPin className="size-2 text-primary dark:text-emerald-400" />
+                            <MapPin className="size-2 text-primary" />
                             Ward {ticket.ward} ({ticket.locality})
                           </Badge>
                         </div>
@@ -241,7 +241,7 @@ export function DashboardOverview() {
 
                   {ticket.fieldVerificationNotes && (
                     <div className="mt-3.5 pt-2.5 border-t border-border/50 text-[11px] font-sans text-foreground/80 flex items-start gap-2">
-                      <CheckCircle2 className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="size-3.5 text-primary shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{ticket.fieldVerificationNotes}</span>
                     </div>
                   )}
@@ -291,13 +291,13 @@ export function DashboardOverview() {
                           <TableCell className="py-2.5 text-center text-muted-foreground text-[11px]">
                             {wm.totalIssues}
                           </TableCell>
-                          <TableCell className="py-2.5 text-center text-primary dark:text-emerald-400 font-semibold text-[11px]">
+                          <TableCell className="py-2.5 text-center text-primary font-semibold text-[11px]">
                             {wm.verifiedIssues}
                           </TableCell>
                           <TableCell className="py-2.5 pr-4 text-right">
                             <div className="flex items-center justify-end gap-2">
                               <Progress value={wardRate} className="w-12 h-1 bg-muted hidden sm:block" />
-                              <span className="font-mono text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                              <span className="font-mono text-[10px] font-semibold text-primary">
                                 {wardRate}%
                               </span>
                             </div>
@@ -318,14 +318,14 @@ export function DashboardOverview() {
           {/* DPDP Privacy Notice Card */}
           <Alert className="rounded-none border-border/70 bg-card/60 p-4 sm:p-5 text-xs">
             <AlertTitle className="flex items-center gap-2 font-ui text-xs font-bold uppercase tracking-wider text-foreground mb-1.5">
-              <ShieldCheck className="size-4 text-primary dark:text-emerald-400 shrink-0" />
+              <ShieldCheck className="size-4 text-primary shrink-0" />
               <span>DPDP Compliance</span>
             </AlertTitle>
             <AlertDescription className="text-xs text-muted-foreground leading-relaxed">
               Casework is processed under statutory DPDP Act 2023 controls. Citizens may export or request erasure in the{" "}
               <Link
                 href="/dashboard/profile"
-                className="text-primary dark:text-emerald-400 underline font-semibold inline-flex items-center gap-0.5 whitespace-nowrap"
+                className="text-primary underline font-semibold inline-flex items-center gap-0.5 whitespace-nowrap"
               >
                 <span>Citizen Data Vault</span>
                 <ExternalLink className="size-2.5" />

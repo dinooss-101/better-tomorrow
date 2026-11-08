@@ -105,7 +105,7 @@ export function SectionHeading({
       {...props}
     >
       {eyebrow && (
-        <p className="mb-3 font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+        <p className="mb-3 font-ui text-xs font-semibold uppercase tracking-wider text-primary">
           {eyebrow}
         </p>
       )}
@@ -138,7 +138,7 @@ export function TextLink({
   return (
     <Link
       className={cn(
-        "group inline-flex min-h-11 sm:min-h-0 items-center gap-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-secondary py-1 sm:py-0 active:scale-[0.99]",
+        "group inline-flex min-h-11 sm:min-h-0 items-center gap-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-primary transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary py-1 sm:py-0 active:scale-[0.99]",
         className
       )}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -165,9 +165,9 @@ export function StatusLabel({
 }: StatusLabelProps) {
   const variantStyles = {
     neutral: "border-border bg-muted/40 text-muted-foreground",
-    active: "border-secondary/40 bg-secondary/10 text-secondary",
-    success: "border-emerald-600/30 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300",
-    warning: "border-amber-600/30 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300",
+    active: "border-primary/40 bg-primary/10 text-primary",
+    success: "border-chart-1/30 bg-chart-1/10 text-chart-1",
+    warning: "border-chart-3/30 bg-chart-3/10 text-chart-3",
   }[variant]
 
   return (

@@ -35,9 +35,9 @@ export function HomePathways() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Pathway 1 */}
-          <div className="flex flex-col justify-between border-t border-primary/40 dark:border-emerald-500/40 pt-5">
+          <div className="flex flex-col justify-between border-t border-primary/40 pt-5">
             <div>
-              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary">
                 <Layers className="size-4" />
                 <span>01 / URBAN PLANNING</span>
               </div>
@@ -54,9 +54,9 @@ export function HomePathways() {
           </div>
 
           {/* Pathway 2 */}
-          <div className="flex flex-col justify-between border-t border-primary/40 dark:border-emerald-500/40 pt-5">
+          <div className="flex flex-col justify-between border-t border-primary/40 pt-5">
             <div>
-              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary">
                 <CheckCircle2 className="size-4" />
                 <span>02 / ACCOUNTABILITY</span>
               </div>
@@ -73,9 +73,9 @@ export function HomePathways() {
           </div>
 
           {/* Pathway 3 */}
-          <div className="flex flex-col justify-between border-t border-primary/40 dark:border-emerald-500/40 pt-5">
+          <div className="flex flex-col justify-between border-t border-primary/40 pt-5">
             <div>
-              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+              <div className="flex items-center gap-2 text-xs font-ui font-semibold uppercase tracking-wider text-primary">
                 <GraduationCap className="size-4" />
                 <span>03 / EDUCATION &amp; STEM</span>
               </div>

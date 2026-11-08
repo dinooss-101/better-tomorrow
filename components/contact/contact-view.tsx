@@ -59,13 +59,13 @@ export function ContactView() {
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
-                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
                 >
                   <ArrowLeft className="size-3.5" /> Overview
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary">
                     Direct access
                   </span>
                   <span className="text-muted-foreground/80">/</span>

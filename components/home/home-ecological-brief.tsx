@@ -9,7 +9,7 @@ export function HomeEcologicalBrief() {
       <Container>
         <EditorialSplit>
           <div className="lg:col-span-6 space-y-5">
-            <p className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 flex items-center gap-2">
+            <p className="font-ui text-xs font-semibold uppercase tracking-wider text-primary flex items-center gap-2">
               <Droplets className="size-3.5" />
               <span>Immediate Ecological Priority</span>
             </p>
@@ -24,15 +24,15 @@ export function HomeEcologicalBrief() {
 
             <div className="font-sans space-y-3 pt-2 text-xs text-muted-foreground">
               <div className="flex items-start gap-2.5">
-                <span className="font-ui font-semibold text-primary dark:text-emerald-400">A.</span>
+                <span className="font-ui font-semibold text-primary">A.</span>
                 <span><strong>Pre-Monsoon Desiltation:</strong> Mechanized desiltation of the 3.8 km main corridor completed prior to heavy rainfall.</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="font-ui font-semibold text-primary dark:text-emerald-400">B.</span>
+                <span className="font-ui font-semibold text-primary">B.</span>
                 <span><strong>Culvert Widening:</strong> Replacing narrow 600mm RCC pipes with 1200mm box culverts at major bazaar intersections.</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="font-ui font-semibold text-primary dark:text-emerald-400">C.</span>
+                <span className="font-ui font-semibold text-primary">C.</span>
                 <span><strong>Gravity Retention Basins:</strong> Designating natural low-lying depressions to buffer surface runoff before road overflow.</span>
               </div>
             </div>

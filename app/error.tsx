@@ -27,7 +27,7 @@ export default function GlobalError({
       <main className="flex-1 flex items-center justify-center">
         <Section border={false} spacing="spacious" className="w-full">
           <Container size="narrow" className="text-center flex flex-col items-center">
-            <div className="size-10 border border-amber-600/30 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300 flex items-center justify-center mb-4">
+            <div className="size-10 border border-chart-3/30 bg-chart-3/10 text-chart-3 flex items-center justify-center mb-4">
               <AlertCircle className="size-5" />
             </div>
 

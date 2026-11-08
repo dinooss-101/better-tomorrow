@@ -127,17 +127,17 @@ function StackingCard({
         {/* Top Header Row */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4 mb-6">
           <div className="flex items-center gap-2.5">
-            <div className="flex size-7 shrink-0 items-center justify-center border border-border bg-muted/40 text-primary dark:text-emerald-400">
+            <div className="flex size-7 shrink-0 items-center justify-center border border-border bg-muted/40 text-primary">
               <IconComponent className="size-3.5" />
             </div>
-            <span className="font-ui text-xs font-bold uppercase tracking-wider text-primary dark:text-emerald-400">
+            <span className="font-ui text-xs font-bold uppercase tracking-wider text-primary">
               {card.tag}
             </span>
           </div>
 
           <Badge
             variant="outline"
-            className="text-primary dark:text-emerald-400 border-primary/30 dark:border-emerald-400/30 bg-primary/5 text-[11px] font-mono rounded-none py-0.5 px-2"
+            className="text-primary border-primary/30 bg-primary/5 text-[11px] font-mono rounded-none py-0.5 px-2"
           >
             {card.rfpClause}
           </Badge>
@@ -183,7 +183,7 @@ function StackingCard({
               href={rfpUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-primary dark:text-emerald-400 font-ui text-[11px] font-bold uppercase tracking-wider hover:underline ml-auto"
+              className="inline-flex items-center gap-1 text-primary font-ui text-[11px] font-bold uppercase tracking-wider hover:underline ml-auto"
             >
               <span>View RFP</span>
               <ExternalLink className="size-3" />

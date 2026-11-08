@@ -412,7 +412,7 @@ export function TypewriterTitle({
           {kept}
           <Caret caretRef={caretRef} />
           {selected && (
-            <span className="rounded-[0.08em] bg-primary/20 text-foreground dark:bg-emerald-400/25">
+            <span className="rounded-[0.08em] bg-primary/20 text-foreground">
               {selected}
             </span>
           )}
@@ -432,7 +432,7 @@ function Caret({ caretRef }: { caretRef: Ref<HTMLSpanElement> }) {
   return (
     <span className="relative inline-block w-0">
       <span
-        className="absolute bottom-[-0.1em] left-[0.04em] h-[1.05em] w-[0.08em] min-w-0.5 bg-primary dark:bg-emerald-400 motion-safe:data-[idle=true]:animate-[kokonutui-typewriter-caret_1s_linear_infinite]"
+        className="absolute bottom-[-0.1em] left-[0.04em] h-[1.05em] w-[0.08em] min-w-0.5 bg-primary motion-safe:data-[idle=true]:animate-[kokonutui-typewriter-caret_1s_linear_infinite]"
         data-idle="true"
         ref={caretRef}
       />

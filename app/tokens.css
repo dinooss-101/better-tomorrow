@@ -1,72 +1,108 @@
-/* Mayang Imphal / Quiet Imphal — Nordic Lagom Tokens */
+/* Mayang Imphal — Violet Bloom Theme Tokens */
 
 :root {
-  /* Quiet Imphal Palette */
-  --background: #f7f6f2;
-  --foreground: #232b29;
-  --card: #ffffff;
-  --card-foreground: #232b29;
-  --popover: #ffffff;
-  --popover-foreground: #232b29;
-  --primary: #294f46;
-  --primary-foreground: #ffffff;
-  --secondary: #294f46;
-  --secondary-foreground: #ffffff;
-  --muted: #e7ebe5;
-  --muted-foreground: #47544f;
-  --accent: #e7ebe5;
-  --accent-foreground: #232b29;
-  --destructive: #a4352b;
-  --border: #d7ddd7;
-  --input: #d7ddd7;
-  --ring: #294f46;
-  --radius: 0.5rem;
+  /* Violet Bloom Light Mode Palette */
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0 0 0);
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0.54 0.27 286.75);
+  --primary-foreground: oklch(1.00 0 0);
+  --secondary: oklch(0.95 0.01 255.49);
+  --secondary-foreground: oklch(0.13 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.44 0 0);
+  --accent: oklch(0.94 0.03 266.38);
+  --accent-foreground: oklch(0.54 0.19 259.48);
+  --destructive: oklch(0.63 0.19 23.07);
+  --border: oklch(0.93 0.01 286.34);
+  --input: oklch(0.94 0 0);
+  --ring: oklch(0.54 0.27 286.75);
+  --radius: 0.75rem;
 
-  /* Nordic Semantic Palette */
-  --nordic-stone: #f7f6f2;
-  --nordic-paper: #ffffff;
-  --nordic-charcoal: #232b29;
-  --nordic-fjord: #294f46;
-  --nordic-pine: #294f46;
-  --nordic-amber: #b38c6d;
-  --nordic-sand: #e7ebe5;
-  --nordic-border: #d7ddd7;
-  /* Brand Logo Colors — forensic match to reference identity */
-  --logo-navy: #170852;
-  --logo-red:  #fa2816;
+  /* Charts & Accents */
+  --chart-1: oklch(0.75 0.15 156.44);
+  --chart-2: oklch(0.54 0.27 286.75);
+  --chart-3: oklch(0.73 0.18 50.55);
+  --chart-4: oklch(0.58 0.18 259.73);
+  --chart-5: oklch(0.56 0 0);
+
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.98 0.01 247.84);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: oklch(0.54 0.27 286.75);
+  --sidebar-primary-foreground: oklch(1.00 0 0);
+  --sidebar-accent: oklch(0.94 0 0);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.94 0 0);
+  --sidebar-ring: oklch(0.54 0.27 286.75);
+
+  /* Semantic Legacy Bridge */
+  --nordic-stone: oklch(0.99 0 0);
+  --nordic-paper: oklch(0.99 0 0);
+  --nordic-charcoal: oklch(0 0 0);
+  --nordic-fjord: oklch(0.54 0.27 286.75);
+  --nordic-pine: oklch(0.54 0.27 286.75);
+  --nordic-amber: oklch(0.73 0.18 50.55);
+  --nordic-sand: oklch(0.95 0.01 255.49);
+  --nordic-border: oklch(0.93 0.01 286.34);
+
+  /* Brand Logo Colors */
+  --logo-navy: oklch(0.25 0.12 286);
+  --logo-red: #fa2816;
 }
 
 .dark {
-  --background: #0f141c;
-  --foreground: #f2f0eb;
-  --card: #151c26;
-  --card-foreground: #f2f0eb;
-  --popover: #151c26;
-  --popover-foreground: #f2f0eb;
-  --primary: #f2f0eb;
-  --primary-foreground: #0f141c;
-  --secondary: #3b6b52;
-  --secondary-foreground: #f2f0eb;
-  --muted: #1a222e;
-  --muted-foreground: #9ca7b5;
-  --accent: #1f2836;
-  --accent-foreground: #f2f0eb;
-  --destructive: #d9534f;
-  --border: rgba(242, 240, 235, 0.14);
-  --input: rgba(242, 240, 235, 0.18);
-  --ring: #3b6b52;
-  --radius: 0.5rem;
+  /* Violet Bloom Dark Mode Palette */
+  --background: oklch(0.22 0.01 271.16);
+  --foreground: oklch(0.96 0 0);
+  --card: oklch(0.26 0.01 274.68);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.26 0.01 274.68);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.61 0.23 291.75);
+  --primary-foreground: oklch(1.00 0 0);
+  --secondary: oklch(0.29 0.01 272.95);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.29 0.01 272.95);
+  --muted-foreground: oklch(0.71 0 0);
+  --accent: oklch(0.28 0.04 260.03);
+  --accent-foreground: oklch(0.79 0.12 246.65);
+  --destructive: oklch(0.71 0.17 22.22);
+  --border: oklch(0.33 0.01 268.40);
+  --input: oklch(0.33 0.01 268.40);
+  --ring: oklch(0.61 0.23 291.75);
+  --radius: 0.75rem;
 
-  --nordic-stone: #0f141c;
-  --nordic-paper: #151c26;
-  --nordic-charcoal: #f2f0eb;
-  --nordic-fjord: #1a2432;
-  --nordic-pine: #3b6b52;
-  --nordic-amber: #c88949;
-  --nordic-sand: #1f2836;
-  --nordic-border: rgba(242, 240, 235, 0.14);
+  /* Charts & Accents */
+  --chart-1: oklch(0.80 0.18 151.71);
+  --chart-2: oklch(0.61 0.23 291.75);
+  --chart-3: oklch(0.81 0.10 19.58);
+  --chart-4: oklch(0.67 0.16 260.10);
+  --chart-5: oklch(0.71 0 0);
 
-  /* Brand Logo Colors — high-contrast luminous palette for dark backgrounds (WCAG AAA) */
-  --logo-navy: #c7d2fe;
-  --logo-red:  #ff523b;
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.20 0.00 286.10);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-primary: oklch(0.61 0.23 291.75);
+  --sidebar-accent: oklch(0.29 0.01 272.95);
+  --sidebar-accent-foreground: oklch(0.61 0.23 291.75);
+  --sidebar-border: oklch(0.33 0.01 268.40);
+  --sidebar-ring: oklch(0.61 0.23 291.75);
+
+  /* Semantic Legacy Bridge */
+  --nordic-stone: oklch(0.22 0.01 271.16);
+  --nordic-paper: oklch(0.26 0.01 274.68);
+  --nordic-charcoal: oklch(0.96 0 0);
+  --nordic-fjord: oklch(0.28 0.04 260.03);
+  --nordic-pine: oklch(0.61 0.23 291.75);
+  --nordic-amber: oklch(0.81 0.10 19.58);
+  --nordic-sand: oklch(0.29 0.01 272.95);
+  --nordic-border: oklch(0.33 0.01 268.40);
+
+  /* Brand Logo Colors */
+  --logo-navy: oklch(0.85 0.12 286);
+  --logo-red: #ff523b;
 }

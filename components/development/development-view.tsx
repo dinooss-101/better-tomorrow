@@ -38,13 +38,13 @@ export function DevelopmentView() {
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
-                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
                 >
                   <ArrowLeft className="size-3.5" /> Overview
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary">
                     AMRUT 2.0 Sub-Scheme
                   </span>
                   <span className="text-muted-foreground/80">/</span>
@@ -101,7 +101,7 @@ export function DevelopmentView() {
         <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
-              <div className="flex items-center gap-2 text-xs font-semibold text-primary dark:text-emerald-400 tracking-wider uppercase font-ui">
+              <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
                 <Layers className="size-3.5" />
                 <span>Statutory Mandate</span>
               </div>
@@ -145,7 +145,7 @@ export function DevelopmentView() {
         <section className="py-16 sm:py-24 lg:py-28 in-data-[density=compact]:py-10 in-data-[density=compact]:sm:py-14 bg-muted/20 border-b border-border/60">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-8 sm:mb-12">
-              <div className="flex items-center gap-2 text-xs font-semibold text-primary dark:text-emerald-400 tracking-wider uppercase font-ui">
+              <div className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wider uppercase font-ui">
                 <Map className="size-3.5" />
                 <span>Geospatial Survey Layers</span>
               </div>

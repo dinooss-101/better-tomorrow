@@ -48,7 +48,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
           {scholarship.name}
         </h3>
 
-        <p className="text-xs font-ui font-semibold uppercase tracking-wider text-secondary dark:text-emerald-400">
+        <p className="text-xs font-ui font-semibold uppercase tracking-wider text-primary">
           Official Sponsor: {scholarship.officialSponsor}
         </p>
       </div>
@@ -67,10 +67,10 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
         <div className="flex flex-col gap-2 rounded-none border border-border/60 bg-muted/30 p-3 sm:p-3.5 text-xs">
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5 text-muted-foreground font-ui uppercase tracking-wider text-[11px]">
-              <Calendar className="size-3.5 text-secondary" />
+              <Calendar className="size-3.5 text-primary" />
               Student Deadline:
             </span>
-            <span className={`font-mono font-medium ${isClosingSoon ? "text-amber-700 dark:text-amber-400" : "text-foreground"}`}>
+            <span className={`font-mono font-medium ${isClosingSoon ? "text-chart-3" : "text-foreground"}`}>
               {scholarship.studentDeadline || "Announced by Portal"}
             </span>
           </div>
@@ -87,7 +87,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
       <div className="flex flex-col gap-3 border-t border-border/60 pt-4 mt-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-muted-foreground font-ui">
           <span className="flex items-center gap-1 font-medium">
-            <ShieldCheck className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <ShieldCheck className="size-3.5 text-primary shrink-0" />
             Verified on NSP: {scholarship.lastVerifiedAt}
           </span>
           <span className="sm:text-right uppercase tracking-wider font-medium text-foreground/80 sm:text-muted-foreground">{scholarship.targetGroup}</span>
@@ -97,7 +97,7 @@ export function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
           href={scholarship.officialApplicationUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-primary py-3 min-h-11 text-xs font-ui font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-primary py-3 min-h-11 text-xs font-ui font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           <span>Apply on Portal</span>
           <ExternalLink className="size-3.5" />

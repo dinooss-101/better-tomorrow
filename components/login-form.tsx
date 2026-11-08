@@ -202,7 +202,7 @@ export function LoginForm({
                         <button
                           type="button"
                           onClick={() => setOtpSent(false)}
-                          className="text-xs text-primary dark:text-emerald-400 hover:underline"
+                          className="text-xs text-primary hover:underline"
                         >
                           Change
                         </button>
@@ -367,7 +367,7 @@ export function LoginForm({
           New constituent?{" "}
           <Link
             href="/register"
-            className="text-foreground underline underline-offset-4 font-medium hover:text-primary dark:hover:text-emerald-400"
+            className="text-foreground underline underline-offset-4 font-medium hover:text-primary"
           >
             Register
           </Link>

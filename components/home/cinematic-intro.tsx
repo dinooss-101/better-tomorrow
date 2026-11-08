@@ -405,7 +405,7 @@ export function CinematicIntro() {
         id="cinematic-curtain"
         ref={curtainRef}
         onClick={dismiss}
-        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f7f6f2] dark:bg-[#070b09] text-foreground dark:text-white select-none overflow-hidden transition-colors cursor-pointer"
+        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background text-foreground select-none overflow-hidden transition-colors cursor-pointer"
         role="dialog"
         aria-modal="true"
         aria-label="Mayang Imphal Vision Intro"
@@ -425,8 +425,8 @@ export function CinematicIntro() {
         />
 
         {/* Top Civic Mandate Marker */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 flex items-center gap-2 text-[10px] sm:text-[11px] font-ui uppercase tracking-widest text-muted-foreground dark:text-white/50">
-          <span className="size-1.5 rounded-none bg-primary dark:bg-emerald-500" />
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 flex items-center gap-2 text-[10px] sm:text-[11px] font-ui uppercase tracking-widest text-muted-foreground">
+          <span className="size-1.5 rounded-none bg-primary" />
           <span>Mayang Imphal AC-23 · LGD 250326</span>
         </div>
 
@@ -438,7 +438,7 @@ export function CinematicIntro() {
             e.stopPropagation()
             dismiss()
           }}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 border border-border bg-card/90 hover:bg-card text-foreground dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white px-3.5 py-2 text-xs font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-md cursor-pointer shadow-sm active:scale-95"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 border border-border bg-card/90 hover:bg-card text-foreground px-3.5 py-2 text-xs font-ui font-semibold uppercase tracking-widest transition-colors backdrop-blur-md cursor-pointer shadow-sm active:scale-95"
           aria-label="Skip introduction"
         >
           <span className="sm:hidden">Skip</span>
@@ -456,7 +456,7 @@ export function CinematicIntro() {
           {/* Coordinates Header */}
           <div
             ref={coordsRef}
-            className="mb-4 font-mono text-[11px] tracking-[0.3em] uppercase text-primary/80 dark:text-emerald-400/80 font-medium"
+            className="mb-4 font-mono text-[11px] tracking-[0.3em] uppercase text-primary/80 font-medium"
           >
             24°46&apos;N 93°53&apos;E · HORIZON 2045
           </div>
@@ -464,23 +464,23 @@ export function CinematicIntro() {
           {/* Build Line 1: Tracked Line that Breathes In */}
           <h2
             ref={buildLine1Ref}
-            className="font-ui text-xs sm:text-sm font-bold uppercase text-foreground/80 dark:text-white/80 tracking-widest"
+            className="font-ui text-xs sm:text-sm font-bold uppercase text-foreground/80 tracking-widest"
           >
             For A Better Mayang Imphal
           </h2>
 
           {/* Central Progress Line */}
-          <div className="mt-4 h-px w-32 bg-border dark:bg-white/15 overflow-hidden rounded-full">
+          <div className="mt-4 h-px w-32 bg-border overflow-hidden rounded-full">
             <div
               ref={progressLineRef}
-              className="h-full w-full bg-linear-to-r from-primary/30 via-primary to-primary/30 dark:from-emerald-500/30 dark:via-emerald-400 dark:to-emerald-500/30 origin-left"
+              className="h-full w-full bg-linear-to-r from-primary/30 via-primary to-primary/30 origin-left"
             />
           </div>
 
           {/* Build Line 2: Cuts in during Phase 2 */}
           <div
             ref={buildLine2Ref}
-            className="mt-4 opacity-0 flex items-center justify-center text-primary dark:text-emerald-400 font-display text-lg sm:text-2xl font-bold uppercase tracking-widest"
+            className="mt-4 opacity-0 flex items-center justify-center text-primary font-display text-lg sm:text-2xl font-bold uppercase tracking-widest"
           >
             <span>For Tomorrow</span>
           </div>
@@ -496,15 +496,15 @@ export function CinematicIntro() {
           {/* Shockwave Flash Burst */}
           <div
             ref={flashRef}
-            className="absolute -inset-32 bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 via-primary/10 to-transparent dark:from-white/60 dark:via-emerald-400/25 rounded-full pointer-events-none"
+            className="absolute -inset-32 bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/15 rounded-full pointer-events-none"
           />
 
           {/* Eyebrow Pill */}
           <div
             ref={eyebrowRef}
-            className="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-primary/20 bg-primary/5 dark:border-white/20 dark:bg-white/5 px-3 py-1 font-ui text-[11px] font-semibold uppercase tracking-widest text-primary dark:text-emerald-400 backdrop-blur-xs"
+            className="mb-5 sm:mb-6 inline-flex items-center gap-2 border border-primary/20 bg-primary/5 dark:border-primary/30 dark:bg-primary/10 px-3 py-1 font-ui text-[11px] font-semibold uppercase tracking-widest text-primary backdrop-blur-xs"
           >
-            <span className="size-1.5 rounded-none bg-primary dark:bg-emerald-400 inline-block" />
+            <span className="size-1.5 rounded-none bg-primary inline-block" />
             <span>Civic Leadership &amp; Mandate</span>
           </div>
 
@@ -512,19 +512,19 @@ export function CinematicIntro() {
           <h1 className="flex flex-col items-center justify-center font-display uppercase tracking-tight leading-[0.92] text-center select-none">
             <span
               ref={titleRow1Ref}
-              className="text-2xl sm:text-4xl lg:text-5xl font-black text-foreground/80 dark:text-white/90 tracking-normal drop-shadow-xs dark:drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)]"
+              className="text-2xl sm:text-4xl lg:text-5xl font-black text-foreground/80 tracking-normal drop-shadow-xs dark:drop-shadow-[0_8px_30px_rgba(0,0,0,0.9)]"
             >
               Dr. Khumujam
             </span>
             <span
               ref={titleRow2Ref}
-              className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#170852] dark:text-white mt-1 sm:mt-2 tracking-tight drop-shadow-sm dark:drop-shadow-[0_10px_35px_rgba(255,255,255,0.25)]"
+              className="text-3xl sm:text-5xl lg:text-6xl font-black text-foreground mt-1 sm:mt-2 tracking-tight drop-shadow-sm dark:drop-shadow-[0_10px_35px_var(--primary)]"
             >
               Ratankumar
             </span>
             <span
               ref={titleRow3Ref}
-              className="text-4xl sm:text-6xl lg:text-7xl font-black text-primary dark:text-emerald-400 mt-1 sm:mt-2 tracking-tight drop-shadow-sm dark:drop-shadow-[0_12px_45px_rgba(52,211,153,0.35)]"
+              className="text-4xl sm:text-6xl lg:text-7xl font-black text-primary mt-1 sm:mt-2 tracking-tight drop-shadow-sm dark:drop-shadow-[0_12px_45px_var(--primary)]"
             >
               Singh
             </span>
@@ -535,27 +535,27 @@ export function CinematicIntro() {
             ref={dividerRef}
             className="mt-6 sm:mt-8 flex w-full max-w-lg items-center justify-center gap-4 origin-center"
           >
-            <span className="h-px flex-1 bg-linear-to-r from-transparent via-foreground/30 to-foreground/60 dark:via-white/50 dark:to-white/70" />
-            <span className="font-ui text-[11px] sm:text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 dark:text-white/90 whitespace-nowrap">
+            <span className="h-px flex-1 bg-linear-to-r from-transparent via-foreground/30 to-foreground/60" />
+            <span className="font-ui text-[11px] sm:text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 whitespace-nowrap">
               Mayang Imphal AC-23 · For The People
             </span>
-            <span className="h-px flex-1 bg-linear-to-l from-transparent via-foreground/30 to-foreground/60 dark:via-white/50 dark:to-white/70" />
+            <span className="h-px flex-1 bg-linear-to-l from-transparent via-foreground/30 to-foreground/60" />
           </div>
 
           {/* Provenanced Subtitle */}
           <p
             ref={sublineRef}
-            className="mt-3.5 sm:mt-4 font-sans text-xs text-muted-foreground dark:text-white/60 tracking-normal"
+            className="mt-3.5 sm:mt-4 font-sans text-xs text-muted-foreground tracking-normal"
           >
             Statutory Town Planning · Municipal Infrastructure · Youth Education
           </p>
         </div>
 
         {/* Global Hairline Timeline Bar at Bottom (10.5s total) */}
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black/10 dark:bg-white/10">
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-muted">
           <div
             ref={bottomProgressRef}
-            className="h-full bg-linear-to-r from-primary via-primary/80 to-primary dark:from-emerald-500 dark:via-emerald-400 dark:to-emerald-300 origin-left"
+            className="h-full bg-linear-to-r from-primary via-primary/80 to-primary origin-left"
           />
         </div>
       </div>
@@ -593,7 +593,7 @@ export function ReplayIntroButton({ className }: { className?: string }) {
       className={className}
       aria-label="Replay Mayang Imphal vision intro"
     >
-      <RotateCcw className="size-3 text-primary dark:text-emerald-400" />
+      <RotateCcw className="size-3 text-primary" />
       <span>Vision Intro</span>
     </button>
   )

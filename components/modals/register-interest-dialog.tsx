@@ -103,7 +103,7 @@ export function RegisterInterestDialog({
 
         {submitted ? (
           <div className="flex flex-col gap-4 py-6 text-center">
-            <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
+            <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
               <CheckCircle2 className="size-6" />
             </div>
             <h3 className="text-lg font-semibold text-foreground">
@@ -120,7 +120,7 @@ export function RegisterInterestDialog({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 py-2">
-            <div className="rounded-none border border-amber-500/20 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
+            <div className="rounded-none border border-chart-3/30 bg-chart-3/10 p-3 text-xs leading-relaxed text-chart-3">
               <span className="mb-1 flex items-center gap-1 font-semibold">
                 <ShieldAlert className="size-3.5" /> Prototype Notice:
               </span>
@@ -131,7 +131,7 @@ export function RegisterInterestDialog({
             </div>
 
             {errorMessage && (
-              <div className="flex items-center gap-1.5 rounded-none border border-rose-500/20 bg-rose-500/10 p-2.5 text-xs text-rose-800 dark:text-rose-200">
+              <div className="flex items-center gap-1.5 rounded-none border border-destructive/30 bg-destructive/10 p-2.5 text-xs text-destructive">
                 <AlertCircle className="size-4 shrink-0" />
                 <span>{errorMessage}</span>
               </div>

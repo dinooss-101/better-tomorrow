@@ -9,7 +9,7 @@ export function HomeContactPanel() {
       <Container>
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-4 lg:col-span-7">
-            <p className="font-ui text-xs font-semibold tracking-wider text-primary uppercase dark:text-emerald-400">
+            <p className="font-ui text-xs font-semibold tracking-wider text-primary uppercase">
               Constituency Desk &amp; Transparency
             </p>
             <h2 className="font-display text-2xl leading-tight font-bold tracking-tight text-foreground uppercase sm:text-3xl lg:text-4xl">
@@ -23,19 +23,19 @@ export function HomeContactPanel() {
 
             <div className="space-y-2.5 pt-2 font-sans text-xs text-muted-foreground">
               <div className="flex items-center gap-2">
-                <MapPin className="size-3.5 shrink-0 text-primary dark:text-emerald-400" />
+                <MapPin className="size-3.5 shrink-0 text-primary" />
                 <span>Central Bazaar Corridor, Mayang Imphal, Manipur</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="size-3.5 shrink-0 text-primary dark:text-emerald-400" />
+                <Clock className="size-3.5 shrink-0 text-primary" />
                 <span>Every Saturday: 08:30 AM to 12:30 PM</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="size-3.5 shrink-0 text-primary dark:text-emerald-400" />
+                <Mail className="size-3.5 shrink-0 text-primary" />
                 <span>desk@bettermayangimphal.org</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="size-3.5 shrink-0 text-primary dark:text-emerald-400" />
+                <ShieldCheck className="size-3.5 shrink-0 text-primary" />
                 <span>
                   DPDP Act 2025 compliant · Confidential or anonymous options
                 </span>
@@ -60,7 +60,7 @@ export function HomeContactPanel() {
           </div>
 
           <div className="space-y-4 border border-border bg-card p-6 lg:col-span-5">
-            <span className="block font-ui text-xs font-semibold tracking-wider text-primary uppercase dark:text-emerald-400">
+            <span className="block font-ui text-xs font-semibold tracking-wider text-primary uppercase">
               STATUTORY NOTICE
             </span>
             <h3 className="font-display text-base font-bold tracking-tight text-foreground uppercase">

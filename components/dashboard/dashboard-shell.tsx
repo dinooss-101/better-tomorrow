@@ -157,7 +157,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                     className={cn(
                       "px-3.5 py-2.5 text-xs font-ui font-semibold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors",
                       isActive
-                        ? "border-primary text-primary dark:text-emerald-400 font-bold"
+                        ? "border-primary text-primary font-bold"
                         : "border-transparent text-muted-foreground hover:text-foreground"
                     )}
                   >

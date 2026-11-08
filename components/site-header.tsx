@@ -164,7 +164,7 @@ export function SiteHeader() {
             className={cn(
               "font-ui uppercase tracking-wider px-3 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-primary",
               pathname === "/"
-                ? "text-foreground border-b-2 border-primary dark:border-emerald-400"
+                ? "text-foreground border-b-2 border-primary"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -183,7 +183,7 @@ export function SiteHeader() {
                   className={cn(
                     "font-ui uppercase tracking-wider px-3 py-1.5 text-xs font-semibold transition-colors inline-flex items-center gap-1 group outline-none focus-visible:outline-2 focus-visible:outline-primary cursor-pointer data-popup-open:text-foreground",
                     isGroupActive
-                      ? "text-foreground border-b-2 border-primary dark:border-emerald-400"
+                      ? "text-foreground border-b-2 border-primary"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -199,7 +199,7 @@ export function SiteHeader() {
                     <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                       {group.label}
                     </span>
-                    <span className="font-ui text-[11px] uppercase tracking-wider text-primary dark:text-emerald-400 font-semibold">
+                    <span className="font-ui text-[11px] uppercase tracking-wider text-primary font-semibold">
                       Mayang Imphal AC-23
                     </span>
                   </div>
@@ -211,7 +211,7 @@ export function SiteHeader() {
                         render={<Link href={subItem.href} />}
                         className={cn(
                           "p-2.5 rounded-none flex flex-col items-start gap-0.5 hover:bg-muted/60 focus:bg-muted cursor-pointer transition-colors",
-                          active && "bg-muted/80 border-l-2 border-primary dark:border-emerald-400"
+                          active && "bg-muted/80 border-l-2 border-primary"
                         )}
                       >
                         <div className="w-full flex items-center justify-between">
@@ -246,7 +246,7 @@ export function SiteHeader() {
             suppressHydrationWarning
             className="hidden sm:inline-flex font-ui uppercase tracking-widest text-[11px] font-semibold items-center gap-1.5 border border-border bg-card px-3 py-2 text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary min-h-9"
           >
-            <User className="size-3 text-primary dark:text-emerald-400" />
+            <User className="size-3 text-primary" />
             <span suppressHydrationWarning>{isAuth ? "Dashboard" : "Sign In"}</span>
           </Link>
 
@@ -255,7 +255,7 @@ export function SiteHeader() {
             href="/contact"
             className="hidden sm:inline-flex font-ui uppercase tracking-widest text-[11px] font-semibold items-center gap-1.5 border border-border bg-card px-3.5 py-2 text-foreground hover:bg-muted/60 transition-colors focus-visible:outline-2 focus-visible:outline-primary min-h-9"
           >
-            <Send className="size-3 text-primary dark:text-emerald-400" />
+            <Send className="size-3 text-primary" />
             <span>Desk</span>
           </Link>
 
@@ -340,7 +340,7 @@ export function SiteHeader() {
                         className={cn(
                           "font-ui uppercase tracking-wider px-3 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-between border border-border bg-card transition-colors",
                           pathname === "/"
-                            ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
+                            ? "bg-muted text-foreground border-l-2 border-primary"
                             : "text-muted-foreground hover:text-foreground"
                         )}
                       >
@@ -353,7 +353,7 @@ export function SiteHeader() {
                         className="font-ui uppercase tracking-wider px-3 py-2.5 min-h-11 text-xs font-semibold flex items-center justify-between border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer text-left active:scale-[0.98]"
                       >
                         <span className="flex items-center gap-1.5">
-                          <RotateCcw className="size-3 text-primary dark:text-emerald-400" />
+                          <RotateCcw className="size-3 text-primary" />
                           <span>Vision Intro</span>
                         </span>
                       </button>
@@ -376,7 +376,7 @@ export function SiteHeader() {
                                 className={cn(
                                   "p-3 flex flex-col gap-0.5 transition-colors",
                                   active
-                                    ? "bg-muted text-foreground border-l-2 border-primary dark:border-emerald-400"
+                                    ? "bg-muted text-foreground border-l-2 border-primary"
                                     : "text-muted-foreground hover:bg-muted/40 hover:text-foreground"
                                 )}
                               >
@@ -411,7 +411,7 @@ export function SiteHeader() {
                     <button
                       type="button"
                       onClick={toggleDensity}
-                      className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:underline inline-flex items-center gap-1.5"
+                      className="font-ui text-xs font-semibold uppercase tracking-wider text-primary hover:underline inline-flex items-center gap-1.5"
                     >
                       {density === "spacious" ? (
                         <>
@@ -432,7 +432,7 @@ export function SiteHeader() {
                     suppressHydrationWarning
                     className="font-ui uppercase tracking-widest text-xs font-semibold w-full flex items-center justify-center gap-2 border border-border bg-card px-4 py-2.5 text-foreground hover:bg-muted transition-colors"
                   >
-                    <User className="size-3.5 text-primary dark:text-emerald-400" />
+                    <User className="size-3.5 text-primary" />
                     <span suppressHydrationWarning>{isAuth ? "Citizen Dashboard" : "Sign In to Ward Portal"}</span>
                   </Link>
                   <Link

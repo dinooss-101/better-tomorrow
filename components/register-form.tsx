@@ -217,7 +217,7 @@ export function RegisterForm({
               <span>Already registered?</span>
               <Link
                 href="/login"
-                className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground transition-colors"
+                className="font-ui text-xs font-semibold uppercase tracking-wider text-primary hover:text-foreground transition-colors"
               >
                 Sign In
               </Link>

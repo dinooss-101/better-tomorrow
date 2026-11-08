@@ -253,7 +253,7 @@ export function CircleCredits({
         key={slot}
         data-name
         data-slot={slot}
-        className="absolute top-0 left-0 cursor-default select-none transition-colors hover:text-primary dark:hover:text-emerald-400"
+        className="absolute top-0 left-0 cursor-default select-none transition-colors hover:text-primary"
         style={{ lineHeight: LINE }}
       >
         <span data-inner data-row={row} className="inline-block">
@@ -288,7 +288,7 @@ export function CircleCredits({
           aria-label={isPaused ? "Resume registry motion" : "Pause registry motion"}
           title={isPaused ? "Resume motion" : "Pause motion"}
         >
-          <span className="font-ui text-[11px] font-bold uppercase tracking-widest text-primary dark:text-emerald-400 flex items-center gap-1">
+          <span className="font-ui text-[11px] font-bold uppercase tracking-widest text-primary flex items-center gap-1">
             Registry
             {isPaused ? <Play className="size-2.5 fill-current" /> : <Pause className="size-2.5 fill-current" />}
           </span>

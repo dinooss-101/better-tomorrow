@@ -116,7 +116,7 @@ export function GrievancesView() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-6 sm:pb-7">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-[11px] font-ui text-primary font-bold uppercase tracking-wider mb-1">
             <span>Mayang Imphal AC-23</span>
             <span>·</span>
             <span>Ward Casework Ledger</span>
@@ -348,7 +348,7 @@ export function GrievancesView() {
                 setSelectedStatus("ALL")
                 setSelectedCategory("ALL")
               }}
-              className="text-primary dark:text-emerald-400 hover:underline flex items-center gap-1 font-semibold"
+              className="text-primary hover:underline flex items-center gap-1 font-semibold"
             >
               <RotateCcw className="size-3" /> Reset Filters
             </button>
@@ -419,7 +419,7 @@ export function GrievancesView() {
                         variant="outline"
                         className="rounded-none text-[9px] font-ui uppercase font-semibold h-4 px-1.5 flex items-center gap-1"
                       >
-                        <MapPin className="size-2.5 text-primary dark:text-emerald-400" />
+                        <MapPin className="size-2.5 text-primary" />
                         Ward {ticket.ward} ({ticket.locality})
                       </Badge>
                       <span className="text-muted-foreground">·</span>
@@ -473,7 +473,7 @@ export function GrievancesView() {
               {/* Status Updater Panel for Coordinators/Admin */}
               {isEditing && (
                 <div className="border-t border-border/70 pt-2.5 mt-2.5 p-3 bg-muted/20 space-y-2.5">
-                  <div className="flex items-center justify-between text-[11px] font-ui font-bold uppercase text-primary dark:text-emerald-400">
+                  <div className="flex items-center justify-between text-[11px] font-ui font-bold uppercase text-primary">
                     <span className="flex items-center gap-1.5">
                       <FileCheck className="size-3.5" />
                       Field Verification &amp; Status Update
@@ -551,7 +551,7 @@ export function GrievancesView() {
 
                 {ticket.fieldVerificationNotes && !isEditing && (
                   <div className="text-foreground/90 font-medium flex items-center gap-1.5">
-                    <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
+                    <CheckCircle2 className="size-3 text-primary" />
                     <span>{ticket.fieldVerificationNotes}</span>
                   </div>
                 )}

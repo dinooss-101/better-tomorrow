@@ -52,7 +52,7 @@ export function ProjectCard({ project, showFullDetails = false }: ProjectCardPro
         <ProjectStatusBadge stage={project.currentStage} condition={project.currentCondition} />
 
         {project.delayExplanation && (
-          <div className="border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-900 dark:text-amber-200">
+          <div className="border border-chart-3/30 bg-chart-3/10 p-3 text-xs text-chart-3">
             <span className="font-semibold font-ui uppercase tracking-wider">Implementation Note:</span> {project.delayExplanation}
           </div>
         )}

@@ -76,12 +76,12 @@ export function DashboardUserNav() {
         >
           {/* Square Avatar UI */}
           <Avatar className="size-full rounded-none border-0">
-            <AvatarFallback className="rounded-none bg-primary/10 text-primary dark:text-emerald-400 font-ui text-xs font-bold uppercase tracking-wider group-hover:bg-primary/20 transition-colors">
+            <AvatarFallback className="rounded-none bg-primary/10 text-primary font-ui text-xs font-bold uppercase tracking-wider group-hover:bg-primary/20 transition-colors">
               {initials}
             </AvatarFallback>
           </Avatar>
           {/* Active online status indicator */}
-          <span className="absolute bottom-0 right-0 size-2 bg-emerald-600 dark:bg-emerald-400 rounded-none ring-1 ring-background" />
+          <span className="absolute bottom-0 right-0 size-2 bg-primary rounded-none ring-1 ring-background" />
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
@@ -105,7 +105,7 @@ export function DashboardUserNav() {
             <div className="flex items-center gap-1.5 text-[11px] font-mono text-muted-foreground">
               {user?.ward && (
                 <span className="flex items-center gap-0.5">
-                  <MapPin className="size-2.5 text-primary dark:text-emerald-400" />
+                  <MapPin className="size-2.5 text-primary" />
                   Ward {user.ward}
                 </span>
               )}
@@ -126,7 +126,7 @@ export function DashboardUserNav() {
               className="cursor-pointer flex items-center gap-2 p-2 text-xs"
               onClick={() => router.push("/dashboard/profile")}
             >
-              <User className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <User className="size-3.5 text-primary shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground">Citizen Profile</div>
                 <div className="text-[10px] text-muted-foreground">Ward enrollment &amp; credentials</div>
@@ -137,7 +137,7 @@ export function DashboardUserNav() {
               className="cursor-pointer flex items-center gap-2 p-2 text-xs"
               onClick={() => router.push("/dashboard/grievances")}
             >
-              <ClipboardList className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <ClipboardList className="size-3.5 text-primary shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground">Ward Grievances</div>
                 <div className="text-[10px] text-muted-foreground">Casework docket &amp; new intake</div>
@@ -148,7 +148,7 @@ export function DashboardUserNav() {
               className="cursor-pointer flex items-center gap-2 p-2 text-xs"
               onClick={() => router.push("/dashboard/verifications")}
             >
-              <CheckCircle className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <CheckCircle className="size-3.5 text-primary shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground">Ground Audits</div>
                 <div className="text-[10px] text-muted-foreground">Photographic site inspections</div>
@@ -159,7 +159,7 @@ export function DashboardUserNav() {
               className="cursor-pointer flex items-center gap-2 p-2 text-xs"
               onClick={() => router.push("/dashboard/profile#statutory")}
             >
-              <Database className="size-3.5 text-primary dark:text-emerald-400 shrink-0" />
+              <Database className="size-3.5 text-primary shrink-0" />
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground">Data Vault &amp; DPDP</div>
                 <div className="text-[10px] text-muted-foreground">Export JSON or Right to Erasure</div>
@@ -194,7 +194,7 @@ export function DashboardUserNav() {
               <span className={role === "citizen" ? "font-bold text-foreground" : "text-muted-foreground"}>
                 Citizen Resident (Ward 5)
               </span>
-              {role === "citizen" && <Check className="size-3 text-primary dark:text-emerald-400" />}
+              {role === "citizen" && <Check className="size-3 text-primary" />}
             </DropdownMenuItem>
 
             <DropdownMenuItem
@@ -204,7 +204,7 @@ export function DashboardUserNav() {
               <span className={role === "ward_coordinator" ? "font-bold text-foreground" : "text-muted-foreground"}>
                 Ward Coordinator (Ward 8)
               </span>
-              {role === "ward_coordinator" && <Check className="size-3 text-primary dark:text-emerald-400" />}
+              {role === "ward_coordinator" && <Check className="size-3 text-primary" />}
             </DropdownMenuItem>
 
             <DropdownMenuItem
@@ -214,7 +214,7 @@ export function DashboardUserNav() {
               <span className={role === "desk_admin" ? "font-bold text-foreground" : "text-muted-foreground"}>
                 Desk Secretariat (Central)
               </span>
-              {role === "desk_admin" && <Check className="size-3 text-primary dark:text-emerald-400" />}
+              {role === "desk_admin" && <Check className="size-3 text-primary" />}
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
@@ -237,7 +237,7 @@ export function DashboardUserNav() {
         <DialogContent className="max-w-md p-4 sm:p-6 rounded-none border border-border/80 bg-card shadow-lg">
           <DialogHeader className="space-y-1">
             <div className="flex items-center gap-2">
-              <Sliders className="size-4 text-primary dark:text-emerald-400" />
+              <Sliders className="size-4 text-primary" />
               <DialogTitle className="font-display text-lg font-bold uppercase tracking-tight text-foreground">
                 Dashboard &amp; Privacy Settings
               </DialogTitle>
@@ -252,7 +252,7 @@ export function DashboardUserNav() {
             <div className="flex items-start justify-between gap-3 p-3 border border-border/60 bg-muted/20">
               <div className="space-y-0.5">
                 <span className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Database className="size-3.5 text-primary dark:text-emerald-400" />
+                  <Database className="size-3.5 text-primary" />
                   Local State Persistence
                 </span>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">
@@ -271,7 +271,7 @@ export function DashboardUserNav() {
             <div className="flex items-start justify-between gap-3 p-3 border border-border/60 bg-muted/20">
               <div className="space-y-0.5">
                 <span className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Bell className="size-3.5 text-primary dark:text-emerald-400" />
+                  <Bell className="size-3.5 text-primary" />
                   Casework Status Notifications
                 </span>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">
@@ -290,7 +290,7 @@ export function DashboardUserNav() {
             <div className="flex items-start justify-between gap-3 p-3 border border-border/60 bg-muted/20">
               <div className="space-y-0.5">
                 <span className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Eye className="size-3.5 text-primary dark:text-emerald-400" />
+                  <Eye className="size-3.5 text-primary" />
                   Anonymous Drainage Analytics
                 </span>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">

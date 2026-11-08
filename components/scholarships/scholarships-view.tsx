@@ -129,13 +129,13 @@ export function ScholarshipsView() {
               <div className="flex flex-col gap-2.5 sm:gap-3.5 lg:col-span-7">
                 <Link
                   href="/"
-                  className="inline-flex w-fit items-center gap-1.5 font-ui text-xs font-semibold tracking-wider text-primary uppercase transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-80 dark:text-emerald-400"
+                  className="inline-flex w-fit items-center gap-1.5 font-ui text-xs font-semibold tracking-wider text-primary uppercase transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-80"
                 >
                   <ArrowLeft className="size-3.5" /> Overview
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold tracking-wider text-primary uppercase dark:text-emerald-400">
+                  <span className="font-ui text-xs font-semibold tracking-wider text-primary uppercase">
                     Academic Year 2026 to 2027
                   </span>
                   <span className="text-muted-foreground/80">/</span>
@@ -449,7 +449,7 @@ export function ScholarshipsView() {
               </div>
 
               <div className="flex flex-col gap-3 rounded-none border border-border/80 bg-card p-6 sm:p-7">
-                <div className="font-ui text-xs font-bold uppercase tracking-wider text-nordic-amber">
+                <div className="font-ui text-xs font-bold uppercase tracking-wider text-chart-3">
                   03. Aadhaar-Seeded Account
                 </div>
                 <h4 className="font-display text-base sm:text-lg font-bold uppercase tracking-tight text-foreground">

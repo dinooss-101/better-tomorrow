@@ -51,18 +51,18 @@ export function HomeLedger({ projects }: HomeLedgerProps) {
                 </div>
 
                 <h3 className="font-display text-base font-bold uppercase tracking-tight text-foreground sm:text-lg">
-                  <Link href={`/progress#${p.slug}`} className="hover:text-primary dark:hover:text-emerald-400 transition-colors">
+                  <Link href={`/progress#${p.slug}`} className="hover:text-primary transition-colors">
                     {p.title}
                   </Link>
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1 font-sans">
-                    <MapPin className="size-3 text-primary dark:text-emerald-400" />
+                    <MapPin className="size-3 text-primary" />
                     {p.locality}
                   </span>
                   <span className="flex items-center gap-1 font-sans">
-                    <Building2 className="size-3 text-primary dark:text-emerald-400" />
+                    <Building2 className="size-3 text-primary" />
                     {p.responsibleAuthority.name}
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export function HomeLedger({ projects }: HomeLedgerProps) {
               <div className="shrink-0 text-left md:text-right">
                 <Link
                   href={`/progress#${p.slug}`}
-                  className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:underline inline-flex items-center gap-1"
+                  className="font-ui text-xs font-semibold uppercase tracking-wider text-primary hover:underline inline-flex items-center gap-1"
                 >
                   <span>Audit Log</span>
                   <ArrowRight className="size-3" />

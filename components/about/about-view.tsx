@@ -21,13 +21,13 @@ export function AboutView() {
               <div className="flex flex-col gap-3 sm:gap-4 lg:col-span-7">
                 <Link
                   href="/"
-                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400 hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
+                  className="font-ui inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary hover:text-foreground active:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors w-fit"
                 >
                   <ArrowLeft className="size-3.5" /> Overview
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-primary">
                     Governance &amp; Compliance
                   </span>
                   <span className="text-muted-foreground/80">/</span>
@@ -222,7 +222,7 @@ export function AboutView() {
             <div className="space-y-6">
               <div className="space-y-3 border border-border bg-card p-6 sm:p-8">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-ui uppercase tracking-wider font-bold text-foreground">
-                  <CheckCircle2 className="size-4 shrink-0 text-emerald-600" />
+                  <CheckCircle2 className="size-4 shrink-0 text-primary" />
                   <span>What We CAN Do:</span>
                 </div>
                 <ul className="list-disc space-y-2 pl-6 font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -247,7 +247,7 @@ export function AboutView() {
 
               <div className="space-y-3 border border-border bg-card p-6 sm:p-8">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-ui uppercase tracking-wider font-bold text-foreground">
-                  <ShieldCheck className="size-4 shrink-0 text-amber-600" />
+                  <ShieldCheck className="size-4 shrink-0 text-chart-3" />
                   <span>What We CANNOT Do (Statutory Exclusions):</span>
                 </div>
                 <ul className="list-disc space-y-2 pl-6 font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed">

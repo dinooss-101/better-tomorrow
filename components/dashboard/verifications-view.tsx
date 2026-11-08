@@ -49,7 +49,7 @@ export function VerificationsView() {
     <div className="space-y-8 sm:space-y-10">
       {/* Header */}
       <div className="border-b border-border/70 pb-6 sm:pb-7">
-        <div className="flex items-center gap-2 text-[11px] font-ui text-primary dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+        <div className="flex items-center gap-2 text-[11px] font-ui text-primary font-bold uppercase tracking-wider mb-1">
           <span>Mayang Imphal AC-23</span>
           <span>·</span>
           <span>Field Audit Docket</span>
@@ -67,7 +67,7 @@ export function VerificationsView() {
         <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/70">
           <div className="p-5 sm:p-6 space-y-2">
             <div className="flex items-center gap-2 font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
-              <Camera className="size-4 text-primary dark:text-emerald-400" />
+              <Camera className="size-4 text-primary" />
               <span>1. Geotagged Photography</span>
             </div>
             <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
@@ -77,7 +77,7 @@ export function VerificationsView() {
 
           <div className="p-5 sm:p-6 space-y-2">
             <div className="flex items-center gap-2 font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
-              <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
+              <CheckCircle2 className="size-4 text-primary" />
               <span>2. Ward Team Inspection</span>
             </div>
             <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
@@ -87,7 +87,7 @@ export function VerificationsView() {
 
           <div className="p-5 sm:p-6 space-y-2">
             <div className="flex items-center gap-2 font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
-              <FileText className="size-4 text-primary dark:text-emerald-400" />
+              <FileText className="size-4 text-primary" />
               <span>3. Public File Reference</span>
             </div>
             <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
@@ -127,7 +127,7 @@ export function VerificationsView() {
 
                 <div className="mt-3.5 space-y-1.5">
                   <div className="flex items-center justify-between text-[11px] text-muted-foreground font-ui">
-                    <span className="flex items-center gap-1 font-semibold text-primary dark:text-emerald-400">
+                    <span className="flex items-center gap-1 font-semibold text-primary">
                       <MapPin className="size-3" /> {item.location}
                     </span>
                     <span>{item.date}</span>

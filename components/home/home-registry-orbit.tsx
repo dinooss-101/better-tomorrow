@@ -18,27 +18,27 @@ export function HomeRegistryOrbit() {
         {/* Orbiting Ring Stage Console */}
         <div className="relative border border-border/80 bg-card p-6 sm:p-10 shadow-xs">
           {/* Architectural Corner Crop Marks */}
-          <span className="absolute -top-1.5 -left-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none">
+          <span className="absolute -top-1.5 -left-1.5 text-primary font-mono text-sm leading-none select-none">
             ┌
           </span>
-          <span className="absolute -top-1.5 -right-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none">
+          <span className="absolute -top-1.5 -right-1.5 text-primary font-mono text-sm leading-none select-none">
             ┐
           </span>
-          <span className="absolute -bottom-1.5 -left-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none">
+          <span className="absolute -bottom-1.5 -left-1.5 text-primary font-mono text-sm leading-none select-none">
             └
           </span>
-          <span className="absolute -bottom-1.5 -right-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none">
+          <span className="absolute -bottom-1.5 -right-1.5 text-primary font-mono text-sm leading-none select-none">
             ┘
           </span>
 
           {/* Console Header Bar */}
           <div className="flex items-center justify-between border-b border-border/60 pb-3 mb-6">
             <div className="flex items-center gap-2">
-              <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+              <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-primary">
                 01 / Statutory Infrastructure Works
               </span>
             </div>
-            <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
+            <span className="font-ui text-[11px] font-semibold uppercase tracking-wider text-primary">
               02 / Education &amp; Public Schemes
             </span>
           </div>

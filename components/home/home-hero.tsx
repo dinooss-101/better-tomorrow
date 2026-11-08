@@ -43,8 +43,8 @@ export function HomeHero() {
           <div className="flex flex-col items-start">
             {/* Civic Identifier Eyebrow */}
             <div className="mb-3.5 flex flex-wrap items-center gap-2 font-ui text-xs">
-              <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-wider text-primary dark:text-emerald-400">
-                <span className="size-2 rounded-full bg-primary dark:bg-emerald-400 inline-block" />
+              <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-wider text-primary">
+                <span className="size-2 rounded-full bg-primary inline-block" />
                 Mayang Imphal AC-23
               </span>
               <span className="text-border">·</span>
@@ -61,7 +61,7 @@ export function HomeHero() {
                 <TypewriterTitle
                   as="span"
                   className="w-full justify-start items-center text-left font-display uppercase"
-                  textClassName="inline-grid justify-items-start whitespace-nowrap font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-primary dark:text-emerald-400 uppercase"
+                  textClassName="inline-grid justify-items-start whitespace-nowrap font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.2] tracking-tight text-primary uppercase"
                   sequences={[
                     {
                       text: "statutory master plan.",
@@ -144,7 +144,7 @@ export function HomeHero() {
                     className="inline-flex min-h-11 items-center gap-1 bg-black/85 hover:bg-black text-white text-[11px] px-2.5 py-1 font-mono border border-white/20 transition-colors active:scale-95"
                     aria-label={isMuted ? "Unmute video sound" : "Mute video sound"}
                   >
-                    {isMuted ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5 text-emerald-400" />}
+                    {isMuted ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5 text-primary" />}
                     <span className="hidden sm:inline">{isMuted ? "Unmute" : "Muted"}</span>
                   </button>
                   <button
@@ -161,16 +161,16 @@ export function HomeHero() {
             ) : (
               <div className="relative w-full aspect-4/3 sm:aspect-16/11 border border-border/80 bg-card shadow-xs overflow-hidden">
                 {/* Architectural Corner Crop Marks */}
-                <span className="absolute -top-1.5 -left-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none z-10">
+                <span className="absolute -top-1.5 -left-1.5 text-primary font-mono text-sm leading-none select-none z-10">
                   ┌
                 </span>
-                <span className="absolute -top-1.5 -right-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none z-10">
+                <span className="absolute -top-1.5 -right-1.5 text-primary font-mono text-sm leading-none select-none z-10">
                   ┐
                 </span>
-                <span className="absolute -bottom-1.5 -left-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none z-10">
+                <span className="absolute -bottom-1.5 -left-1.5 text-primary font-mono text-sm leading-none select-none z-10">
                   └
                 </span>
-                <span className="absolute -bottom-1.5 -right-1.5 text-primary dark:text-emerald-400 font-mono text-sm leading-none select-none z-10">
+                <span className="absolute -bottom-1.5 -right-1.5 text-primary font-mono text-sm leading-none select-none z-10">
                   ┘
                 </span>
 
