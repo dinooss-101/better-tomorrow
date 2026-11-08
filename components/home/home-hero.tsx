@@ -12,7 +12,7 @@ export function HomeHero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-12 sm:py-16 lg:py-20 in-data-[density=compact]:py-8 in-data-[density=compact]:sm:py-10"
+      className="relative flex flex-col justify-center border-b border-border bg-background min-h-[calc(100dvh-3.5rem)] sm:min-h-[calc(100dvh-3.75rem)] py-8 sm:py-10 lg:py-12 in-data-[density=compact]:py-6 in-data-[density=compact]:sm:py-8"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
