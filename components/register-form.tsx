@@ -79,7 +79,7 @@ export function RegisterForm({
   }
 
   return (
-    <div className={cn("w-full max-w-3xl mx-auto flex flex-col gap-4", className)} {...props}>
+    <div className={cn("w-full max-w-3xl mx-auto flex flex-col gap-2.5 sm:gap-3", className)} {...props}>
       {/* Return Link */}
       <div>
         <Link
@@ -94,17 +94,17 @@ export function RegisterForm({
       <Card className="overflow-hidden p-0 rounded-none border border-border/80 bg-card shadow-xs">
         <CardContent className="grid p-0 md:grid-cols-12 items-stretch">
           {/* Form Column */}
-          <div className="md:col-span-7 p-6 sm:p-8 md:p-9 flex flex-col justify-between gap-5 sm:gap-6">
-            <div className="flex flex-col gap-5">
+          <div className="md:col-span-7 p-5 sm:p-6 md:p-7 flex flex-col justify-between gap-4">
+            <div className="flex flex-col gap-3.5 sm:gap-4">
               {/* Logo & Calm Heading */}
               <div>
-                <Link href="/" className="inline-block mb-3">
+                <Link href="/" className="inline-block mb-1.5">
                   <TextLogo size="sm" />
                 </Link>
-                <h1 className="font-display text-2xl font-bold uppercase tracking-tight text-foreground">
+                <h1 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground">
                   Citizen Profile
                 </h1>
-                <p className="font-sans text-xs text-muted-foreground mt-1">
+                <p className="font-sans text-xs text-muted-foreground mt-0.5">
                   Enroll to log ward priority issues and track constituency casework.
                 </p>
               </div>
@@ -120,32 +120,31 @@ export function RegisterForm({
               )}
 
               {/* Registration Form */}
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-                {/* Full Name */}
-                <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="name" className="text-xs font-medium">
-                    Full Name
-                  </Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. Khumukcham Sanajaoba"
-                    className="h-10 text-xs"
-                    required
-                    autoFocus
-                  />
-                </div>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                {/* Row 1: Full Name & Mobile Number */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                  <div className="flex flex-col gap-1">
+                    <Label htmlFor="name" className="text-xs font-medium">
+                      Full Name
+                    </Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="e.g. Khumukcham Sanajaoba"
+                      className="h-9 text-xs"
+                      required
+                      autoFocus
+                    />
+                  </div>
 
-                {/* Mobile & Ward Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1">
                     <Label htmlFor="reg-phone" className="text-xs font-medium">
                       Mobile Number
                     </Label>
                     <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 font-mono text-xs text-muted-foreground pointer-events-none">
+                      <span className="absolute left-2.5 top-1/2 -translate-y-1/2 font-mono text-xs text-muted-foreground pointer-events-none">
                         +91
                       </span>
                       <Input
@@ -154,13 +153,16 @@ export function RegisterForm({
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="98620 12345"
-                        className="pl-11 h-10 font-mono text-xs"
+                        className="pl-10 h-9 font-mono text-xs"
                         required
                       />
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex flex-col gap-1.5">
+                {/* Row 2: Residential Ward & Optional Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                  <div className="flex flex-col gap-1">
                     <Label htmlFor="ward" className="text-xs font-medium">
                       Residential Ward
                     </Label>
@@ -168,7 +170,7 @@ export function RegisterForm({
                       id="ward"
                       value={ward}
                       onChange={(e) => setWard(Number(e.target.value) as WardNumber)}
-                      className="h-10 w-full border border-input bg-transparent px-2.5 text-xs rounded-none font-sans text-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50"
+                      className="h-9 w-full border border-input bg-transparent px-2 text-xs rounded-none font-sans text-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50"
                     >
                       {WARD_OPTIONS.map((opt) => (
                         <option key={opt.ward} value={opt.ward} className="bg-background text-foreground">
@@ -177,33 +179,32 @@ export function RegisterForm({
                       ))}
                     </select>
                   </div>
-                </div>
 
-                {/* Optional Email */}
-                <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="reg-email" className="text-xs font-medium">
-                    Email <span className="text-muted-foreground font-normal">(Optional)</span>
-                  </Label>
-                  <Input
-                    id="reg-email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="h-10 text-xs"
-                  />
+                  <div className="flex flex-col gap-1">
+                    <Label htmlFor="reg-email" className="text-xs font-medium">
+                      Email <span className="text-muted-foreground font-normal">(Optional)</span>
+                    </Label>
+                    <Input
+                      id="reg-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="name@example.com"
+                      className="h-9 text-xs"
+                    />
+                  </div>
                 </div>
 
                 {/* DPDP Consent */}
-                <div className="pt-1">
+                <div className="pt-0.5">
                   <label className="flex items-start gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={dpdpConsent}
                       onChange={(e) => setDpdpConsent(e.target.checked)}
-                      className="size-3.5 mt-0.5 rounded-none border-input text-primary focus:ring-primary accent-primary"
+                      className="size-3.5 mt-0.5 rounded-none border-input text-primary focus:ring-primary accent-primary shrink-0"
                     />
-                    <span className="text-[11px] font-sans text-muted-foreground leading-snug">
+                    <span className="text-[11px] font-sans text-muted-foreground leading-tight">
                       I consent to contact processing for municipal casework triage under the <strong>DPDP Act 2023</strong>.
                     </span>
                   </label>
@@ -212,7 +213,7 @@ export function RegisterForm({
                 <Button
                   type="submit"
                   disabled={isSubmitting || isLoading}
-                  className="w-full h-10 font-ui uppercase tracking-wider text-xs font-semibold mt-1"
+                  className="w-full h-9 font-ui uppercase tracking-wider text-xs font-semibold mt-0.5"
                 >
                   {isSubmitting ? (
                     <>
@@ -226,7 +227,7 @@ export function RegisterForm({
             </div>
 
             {/* Bottom Form Link */}
-            <div className="pt-3 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
+            <div className="pt-2.5 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
               <span>Already registered?</span>
               <Link
                 href="/login"
@@ -265,3 +266,4 @@ export function RegisterForm({
     </div>
   )
 }
+
